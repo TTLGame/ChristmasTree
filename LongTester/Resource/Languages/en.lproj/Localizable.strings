@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  LongTester
+
+  Created by Long on 12/29/22.
+  
+*/
+
+"welcome" = "Welcome";
+"vietnamese" = "Vietnamese";
+"english" = "English";
