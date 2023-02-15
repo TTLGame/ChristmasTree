@@ -9,6 +9,7 @@ pod 'RxSwift', '6.5.0'
 	pod 'Moya/RxSwift', '~> 15.0'
 pod 'Alamofire'
 pod 'SnapKit'
+pod 'RealmSwift', '~>10'
   # Pods for LongTester
 
 end
