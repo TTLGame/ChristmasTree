@@ -11,14 +11,20 @@ import RxSwift
 class TableScreenViewController : UIViewController {
     
     @IBOutlet weak var tblView: UITableView!
-    
     private(set) var binding: Disposable?
     var viewModel = TableScreenViewModel()
-    
+    var currentColor : UIColor = UIColor(red: 110/255, green: 235/255, blue: 52/255, alpha: 1)
+    var pressed = true
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupTableView()
+    }
+    @IBAction func pressMeBtn(_ sender: Any) {
+        pressed = !pressed
+        currentColor = pressed ? UIColor(red: 110/255, green: 235/255, blue: 52/255, alpha: 1) :
+                                 UIColor(red: 115/255, green: 25/255, blue: 152/255, alpha: 1)
+        tblView.reloadData()
     }
     
     private func setupTableView(){
@@ -35,7 +41,7 @@ extension TableScreenViewController : UITableViewDelegate {
 
 extension TableScreenViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,6 +51,7 @@ extension TableScreenViewController : UITableViewDataSource {
         let cell: TableScreenCell! = tableView.dequeueReusableCell(
             withIdentifier: String(describing: TableScreenCell.self),
             for: indexPath) as? TableScreenCell
+        cell.renderColor(color: currentColor, pressed : pressed)
         return cell
     }
     

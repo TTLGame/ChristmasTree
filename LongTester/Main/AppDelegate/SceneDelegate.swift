@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -24,6 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             AppDelegate.shared.window = window
             AppDelegate.shared.window?.rootViewController = navi
             AppDelegate.shared.window?.makeKeyAndVisible()
+            
+//            window?.rootViewController = UIHostingController(rootView: SwiftUIView())
             self.window!.makeKeyAndVisible()
         }
     }
