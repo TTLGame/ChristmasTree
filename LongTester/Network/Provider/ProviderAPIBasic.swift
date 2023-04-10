@@ -49,6 +49,11 @@ class ProviderAPIBasic<Target>: Provider<Target> where Target: Moya.TargetType {
     }
 
     override func request(_ token: Target) -> Single<Response> {
+        print("API CALLER ----------------------")
+        let url = token.baseURL.absoluteString + token.path
+        print("API >>> URL : \(url)")
+        print("API >>> METHOD : \(token.method.rawValue)")
+        
         return provider.rx.request(token)
             .catchCommonError(autoHandleNoInternetConnection: autoHandleNoInternetConnection,
                               autoHandleAPIError: autoHandleAPIError)

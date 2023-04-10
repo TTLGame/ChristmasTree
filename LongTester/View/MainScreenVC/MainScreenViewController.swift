@@ -31,6 +31,14 @@ class MainScreenViewController: UIViewController {
             self.labelTextField.text = value
         }
         .disposed(by: DisposeBag())
+        
+        self.model.users.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] item in
+                guard let self = self else {return}
+                print("APICALL \(item.count)")
+            })
+        .disposed(by: DisposeBag())
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -49,7 +57,7 @@ class MainScreenViewController: UIViewController {
     
     
     func changeName(){
-
+        model.getUserData()
     }
     
     @IBAction func tableBtnTapped(_ sender: Any) {

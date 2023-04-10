@@ -50,6 +50,10 @@
 		FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */; };
 		FDF14B30295C311500BF079F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF14B2F295C311500BF079F /* RootViewController.swift */; };
 		FDF14B39295D861300BF079F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDF14B3B295D861300BF079F /* Localizable.strings */; };
+		FDF300BE29E3C99A0084562A /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300BD29E3C99A0084562A /* Realm.swift */; };
+		FDF300C129E3CB0E0084562A /* MainScreenTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300C029E3CB0E0084562A /* MainScreenTarget.swift */; };
+		FDF300C329E3CCEA0084562A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300C229E3CCEA0084562A /* Environment.swift */; };
+		FDF300C529E3D0880084562A /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300C429E3D0880084562A /* Decoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +110,10 @@
 		FDF14B3A295D861300BF079F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDF14B3C295D874D00BF079F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FDF14B3D295D874D00BF079F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FDF300BD29E3C99A0084562A /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
+		FDF300C029E3CB0E0084562A /* MainScreenTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTarget.swift; sourceTree = "<group>"; };
+		FDF300C229E3CCEA0084562A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		FDF300C429E3D0880084562A /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				FD564B94296584A500A527ED /* AppConfig.swift */,
+				FDF300C229E3CCEA0084562A /* Environment.swift */,
 			);
 			path = GlobalValues;
 			sourceTree = "<group>";
@@ -274,6 +283,7 @@
 				FD564B8D29656F8B00A527ED /* UISwitch.swift */,
 				FD564B8F2965769100A527ED /* Language.swift */,
 				FD564B962965855200A527ED /* String.swift */,
+				FDF300BD29E3C99A0084562A /* Realm.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -281,10 +291,12 @@
 		FD5765A72963D165005969BE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				FDF300BF29E3CB000084562A /* Target */,
 				FD564B8A29656C7F00A527ED /* Prefs */,
 				FD564B83296569C100A527ED /* Plugin */,
 				FD564B80296568D100A527ED /* Error */,
 				FD5765A82963D170005969BE /* Provider */,
+				FDF300C429E3D0880084562A /* Decoder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -433,6 +445,14 @@
 			path = Languages;
 			sourceTree = "<group>";
 		};
+		FDF300BF29E3CB000084562A /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				FDF300C029E3CB0E0084562A /* MainScreenTarget.swift */,
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -568,6 +588,7 @@
 				FDF14B30295C311500BF079F /* RootViewController.swift in Sources */,
 				FD564B8C29656CFE00A527ED /* PrefsImp.swift in Sources */,
 				FD896198295BF11A00C7BE20 /* AppDelegate.swift in Sources */,
+				FDF300C329E3CCEA0084562A /* Environment.swift in Sources */,
 				FD564B79296567AB00A527ED /* DefaultAlamofireManager.swift in Sources */,
 				FD564B8529656A2A00A527ED /* APIErrorProcessPlugin.swift in Sources */,
 				FD564B7B296567D700A527ED /* Provider.swift in Sources */,
@@ -577,6 +598,7 @@
 				FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */,
 				FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */,
 				FD564B95296584A500A527ED /* AppConfig.swift in Sources */,
+				FDF300C529E3D0880084562A /* Decoder.swift in Sources */,
 				FD5765AC2963D206005969BE /* Array.swift in Sources */,
 				FD5765AA2963D17F005969BE /* ProviderType.swift in Sources */,
 				FD564B752965648D00A527ED /* TableScreenCellViewModel.swift in Sources */,
@@ -585,9 +607,11 @@
 				FD564B73296561FE00A527ED /* UITableView.swift in Sources */,
 				FD57659E2963CDB3005969BE /* Constaint.swift in Sources */,
 				FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */,
+				FDF300C129E3CB0E0084562A /* MainScreenTarget.swift in Sources */,
 				FD564B772965675400A527ED /* ProviderAPIBasic.swift in Sources */,
 				FD57659C2963CD9D005969BE /* Color.swift in Sources */,
 				FD564B82296568E300A527ED /* APIError.swift in Sources */,
+				FDF300BE29E3C99A0084562A /* Realm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +729,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				apiHost = "https://reqres.in/";
+				apiPath = api/;
 			};
 			name = Pico;
 		};
@@ -798,6 +824,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				apiHost = "https://reqres.in/";
+				apiPath = api/;
 			};
 			name = 374;
 		};
@@ -946,6 +974,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				apiHost = "https://reqres.in/";
+				apiPath = api/;
 			};
 			name = Debug;
 		};
@@ -978,6 +1008,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				apiHost = "https://reqres.in/";
+				apiPath = api/;
 			};
 			name = Release;
 		};

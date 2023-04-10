@@ -15,7 +15,6 @@ class TableScreenCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        print("Here")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
