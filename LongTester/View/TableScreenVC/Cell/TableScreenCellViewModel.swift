@@ -11,11 +11,15 @@ class TableScreenCellViewModel {
     let avatar: String?
     let fullName: String?
     init(avatar: String?,
-         firstName: String = "",
-         lastName: String = ""
-         ) {
+         firstName: String?,
+         lastName: String?) {
         self.avatar = avatar
-        self.fullName = firstName + " " + lastName
+        
+        if let firstName = firstName, let lastName = lastName {
+            self.fullName = firstName + " " + lastName
+        }
+        else {
+            self.fullName = ""
+        }
     }
-
 }

@@ -15,9 +15,12 @@ class TableScreenViewController : UIViewController {
     var viewModel = TableScreenViewModel()
     var currentColor : UIColor = UIColor(red: 110/255, green: 235/255, blue: 52/255, alpha: 1)
     var pressed = true
+    private let disposeBag: DisposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        bindToViewModel()
         setupTableView()
     }
     @IBAction func pressMeBtn(_ sender: Any) {
@@ -31,6 +34,18 @@ class TableScreenViewController : UIViewController {
         self.tblView.register(UINib(nibName: String(describing: TableScreenCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TableScreenCell.self))
         self.tblView.delegate = self
         self.tblView.dataSource = self
+        
+        viewModel.getUserData()
+    }
+    
+    private func bindToViewModel() {
+        self.viewModel.cellViewModels.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] item in
+                guard let self = self else {return}
+                self.tblView.reloadData()
+                print("self.viewModel.cellViewModels.value.count \(self.viewModel.cellViewModels.value.count)")
+            })
+        .disposed(by: disposeBag)
     }
 }
 extension TableScreenViewController : UITableViewDelegate {
@@ -41,7 +56,7 @@ extension TableScreenViewController : UITableViewDelegate {
 
 extension TableScreenViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        self.viewModel.cellViewModels.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,6 +66,8 @@ extension TableScreenViewController : UITableViewDataSource {
         let cell: TableScreenCell! = tableView.dequeueReusableCell(
             withIdentifier: String(describing: TableScreenCell.self),
             for: indexPath) as? TableScreenCell
+        
+        cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
         cell.renderColor(color: currentColor, pressed : pressed)
         return cell
     }

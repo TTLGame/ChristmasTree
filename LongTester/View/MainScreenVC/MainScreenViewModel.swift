@@ -21,7 +21,7 @@ class MainScreenViewModel : NSObject {
     init(api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
         self.api = api
         super.init()
-        setData()
+//        setData()
 //        bindToEvents()
     }
     
@@ -37,6 +37,7 @@ class MainScreenViewModel : NSObject {
                 guard let self = self else { return }
                 switch event {
                 case .success(let value):
+                    print("value of data \(value.data?.count)")
                     if let value = value.data {
                         self.users.accept(value)
                     }
@@ -49,6 +50,5 @@ class MainScreenViewModel : NSObject {
                 }
             }.disposed(by: disposeBag)
     }
-    
 }
 

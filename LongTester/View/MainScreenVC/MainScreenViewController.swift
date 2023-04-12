@@ -17,6 +17,7 @@ class MainScreenViewController: UIViewController {
     //Init realm
     let realm = try! Realm()
     let model = MainScreenViewModel()
+    private let disposeBag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +31,14 @@ class MainScreenViewController: UIViewController {
             guard let self = self else {return}
             self.labelTextField.text = value
         }
-        .disposed(by: DisposeBag())
+        .disposed(by: disposeBag)
         
         self.model.users.observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] item in
                 guard let self = self else {return}
                 print("APICALL \(item.count)")
             })
-        .disposed(by: DisposeBag())
+        .disposed(by: disposeBag)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +59,7 @@ class MainScreenViewController: UIViewController {
     
     func changeName(){
         model.getUserData()
+        model.setData()
     }
     
     @IBAction func tableBtnTapped(_ sender: Any) {
