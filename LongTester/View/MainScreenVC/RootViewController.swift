@@ -12,6 +12,7 @@ final class RootViewController: UIViewController {
         /// Khi ấn vào item trong menu.
         /// Khi lần cuối thay đổi mật khẩu đến thời điểm hiện tại quá 90 ngày. (API checkPasswordExpire)
         case main
+        case tableView
     }
     
     init() {
@@ -43,6 +44,9 @@ final class RootViewController: UIViewController {
         switch type {
         case .main:
             rootViewController = MainScreenViewController()
+            update(current: rootViewController)
+        case .tableView:
+            rootViewController = TableScreenViewController()
             update(current: rootViewController)
         }
     }

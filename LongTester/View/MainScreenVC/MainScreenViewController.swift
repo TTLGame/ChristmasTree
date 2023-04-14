@@ -67,12 +67,19 @@ class MainScreenViewController: UIViewController {
         changeName()
         
         let newController = TableScreenViewController()
-        self.navigationController?.pushViewController(newController, animated: true)
+        let navigationController = (navigationController as? BaseNavigationView)
+        navigationController?.setTitle(title: "Long")
+        navigationController?.pushViewController(newController, animated: true)
+        
     }
     
     @IBAction func collectionBtnTapped(_ sender: Any) {
         print("Collection")
 //        print(Locale.current.languageCode)
+        
+        AppDelegate.shared.rootViewController.show(.tableView)
+
+        
         changeName()
     }
     

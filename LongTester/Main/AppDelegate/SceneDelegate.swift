@@ -19,7 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             self.window = UIWindow(windowScene: windowScene)
             let vc = RootViewController()
-            let navi = UINavigationController(rootViewController: vc)
+            let navi = BaseNavigationView(rootViewController: vc)
+            
+//            let navi = UINavigationController(rootViewController: vc)
             self.window!.rootViewController = navi
             AppDelegate.shared.window = window
             AppDelegate.shared.window?.rootViewController = navi
