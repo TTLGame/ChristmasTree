@@ -4,20 +4,15 @@ import SnapKit
 final class RootViewController: UIViewController {
     var currentVC: UIViewController!
     enum ScreenType {
-        /// Có 2 loại màn hình change password, xuất hiện khi:
-        /// - ChangeDefaultPassViewController:
-        /// Khi tài khoản chưa bao giờ thay đổi mật khẩu. (Check tại RootViewController)
-        /// ----------------------------------------------------------
-        /// - ChangePasswordViewController:
-        /// Khi ấn vào item trong menu.
-        /// Khi lần cuối thay đổi mật khẩu đến thời điểm hiện tại quá 90 ngày. (API checkPasswordExpire)
+        /// Main way to access Root View Controller
         case main
         case tableView
+        case login
     }
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        currentVC = MainScreenViewController()
+        currentVC = LoginViewController()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +32,25 @@ final class RootViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         currentVC.didMove(toParent: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+                self.view.frame.origin.y += 90
+                
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func show(_ type: ScreenType) {
@@ -48,7 +62,12 @@ final class RootViewController: UIViewController {
         case .tableView:
             rootViewController = TableScreenViewController()
             update(current: rootViewController)
+        case .login:
+            rootViewController = LoginViewController()
+            update(current: rootViewController)
         }
+        
+        
     }
 }
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextFieldView" customModule="LongTester" customModuleProvider="target">
+            <connections>
+                <outlet property="separatorView" destination="qfA-8a-eQy" id="V8P-aO-9FU"/>
+                <outlet property="textFieldView" destination="NcK-17-PqO" id="rip-O0-rQg"/>
+                <outlet property="titleLbl" destination="sKJ-mk-Si9" id="eHC-Zg-Eli"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="zlX-hB-oiq">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="98"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKJ-mk-Si9">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="19.333333333333332"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NcK-17-PqO">
+                    <rect key="frame" x="0.0" y="19.333333333333336" width="393" height="77.666666666666657"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfA-8a-eQy" userLabel="Separator">
+                    <rect key="frame" x="0.0" y="97" width="393" height="1"/>
+                    <color key="backgroundColor" systemColor="systemMintColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="EzJ-KQ-tdE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qfA-8a-eQy" secondAttribute="bottom" id="3AN-Wq-3au"/>
+                <constraint firstItem="sKJ-mk-Si9" firstAttribute="leading" secondItem="zlX-hB-oiq" secondAttribute="leading" id="5U1-el-k20"/>
+                <constraint firstItem="qfA-8a-eQy" firstAttribute="top" secondItem="NcK-17-PqO" secondAttribute="bottom" id="76j-rk-XJi"/>
+                <constraint firstAttribute="trailing" secondItem="NcK-17-PqO" secondAttribute="trailing" id="MXG-an-d15"/>
+                <constraint firstItem="NcK-17-PqO" firstAttribute="leading" secondItem="zlX-hB-oiq" secondAttribute="leading" id="Q9N-Lo-Kzj"/>
+                <constraint firstItem="NcK-17-PqO" firstAttribute="top" secondItem="sKJ-mk-Si9" secondAttribute="bottom" id="hZw-eH-d4H"/>
+                <constraint firstItem="sKJ-mk-Si9" firstAttribute="top" secondItem="zlX-hB-oiq" secondAttribute="top" id="k25-a2-Bu7"/>
+                <constraint firstAttribute="trailing" secondItem="sKJ-mk-Si9" secondAttribute="trailing" id="mUc-gl-TQ1"/>
+                <constraint firstItem="qfA-8a-eQy" firstAttribute="leading" secondItem="zlX-hB-oiq" secondAttribute="leading" id="px4-TX-K8N"/>
+                <constraint firstAttribute="trailing" secondItem="qfA-8a-eQy" secondAttribute="trailing" id="zAl-q3-4Rt"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-816.03053435114498" y="-600"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -10,6 +10,7 @@ pod 'RxSwift', '6.5.0'
 pod 'Alamofire'
 pod 'SnapKit'
 pod 'RealmSwift', '~>10'
+pod 'IQKeyboardManagerSwift'
   # Pods for LongTester
 
 end

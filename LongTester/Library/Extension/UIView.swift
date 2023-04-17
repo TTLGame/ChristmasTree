@@ -26,4 +26,13 @@ extension UIView {
         shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 5).cgPath
         self.layer.addSublayer(shapeLayer)
     }
+    
+    func loadViewFromNib() {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
+        let nibView = nib.instantiate(withOwner: self, options: nil).first as! UIView
+        nibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        nibView.frame = bounds
+        addSubview(nibView)
+    }
 }

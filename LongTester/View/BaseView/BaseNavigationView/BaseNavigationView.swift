@@ -7,42 +7,7 @@
 
 import Foundation
 import UIKit
-
 import SnapKit
-
-//final class BaseNavigationView: UINavigationController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        interactivePopGestureRecognizer?.isEnabled = false
-//        delegate = self
-//        navigationBar.setColors(background: Color.primary, text: .white)
-////        navigationBar.shadowImage = R.image.imageShadowNavibarBlue()
-//        self.navigationBar.titleTextAttributes = [
-//            NSAttributedString.Key.foregroundColor: UIColor.red,
-//            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)
-//        ]
-//    }
-//
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        if let preferredStatusBarStyle = topViewController?.preferredStatusBarStyle {
-//            return preferredStatusBarStyle
-//        }
-//        return .lightContent
-//    }
-//
-//    func setTile(title: String){
-//        navigationBar.topItem?.title = title
-//
-//    }
-//}
-//
-//extension BaseNavigationView: UINavigationControllerDelegate {
-//    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-//        let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        viewController.navigationItem.backBarButtonItem = backBarButton
-//    }
-//}
 
 extension UINavigationBar {
     public func setColors(background: UIColor, text: UIColor) {
@@ -54,7 +19,6 @@ extension UINavigationBar {
         titleTextAttributes = [.foregroundColor: text]
     }
 }
-
 
 class BaseNavigationView: UINavigationController {
     let label = UILabel()
@@ -78,7 +42,7 @@ class BaseNavigationView: UINavigationController {
         }
         
     }
-    func setTitle(title: String, color : UIColor = .red){
+    func setTitle(title: String, color : UIColor = Color.redPrimary){
         navigationBar.topItem?.title = ""
         navigationBar.tintColor = color
         self.navigationBar.addSubview(label)
