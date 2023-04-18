@@ -23,28 +23,22 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIconForLauch" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-Mq-5D1">
-                    <rect key="frame" x="98.333333333333329" y="99.999999999999986" width="196.33333333333337" height="196.66666666666663"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="KWa-Mq-5D1" secondAttribute="height" multiplier="1:1" id="YT8-4W-LqH"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9w-1T-irl" userLabel="Username" customClass="TextFieldView" customModule="LongTester" customModuleProvider="target">
-                    <rect key="frame" x="30" y="381.66666666666669" width="333" height="60"/>
+                    <rect key="frame" x="30" y="390.66666666666669" width="333" height="60"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="CWQ-LS-OpD"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmg-fl-Yu6" userLabel="Password" customClass="TextFieldView" customModule="LongTester" customModuleProvider="target">
-                    <rect key="frame" x="30" y="446.66666666666669" width="333" height="60"/>
+                    <rect key="frame" x="30" y="455.66666666666669" width="333" height="60.000000000000057"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Ujl-UO-hfd"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1k-UT-dle">
-                    <rect key="frame" x="30" y="556.66666666666663" width="333" height="35"/>
+                    <rect key="frame" x="30" y="565.66666666666663" width="333" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="xSq-D6-WJG"/>
                     </constraints>
@@ -60,7 +54,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c40-SG-spu" customClass="CustomSwitch" customModule="LongTester" customModuleProvider="target">
-                    <rect key="frame" x="318" y="30" width="45" height="30"/>
+                    <rect key="frame" x="318" y="89" width="45" height="30"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="FIJ-0h-f0m"/>
@@ -95,6 +89,12 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isAnimation" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIconForLauch" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-Mq-5D1">
+                    <rect key="frame" x="98.333333333333329" y="108.99999999999999" width="196.33333333333337" height="196.66666666666663"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="KWa-Mq-5D1" secondAttribute="height" multiplier="1:1" id="YT8-4W-LqH"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -103,13 +103,13 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P9w-1T-irl" secondAttribute="trailing" constant="30" id="Ih9-7Z-1JU"/>
                 <constraint firstItem="KWa-Mq-5D1" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="Ip5-AE-0qD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c40-SG-spu" secondAttribute="trailing" constant="30" id="MQp-AZ-E4T"/>
+                <constraint firstItem="KWa-Mq-5D1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="O8X-dK-Olf"/>
                 <constraint firstItem="P9w-1T-irl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="Oqp-mB-n0T"/>
                 <constraint firstItem="KWa-Mq-5D1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="R9B-fI-Fvt"/>
                 <constraint firstItem="P9w-1T-irl" firstAttribute="top" secondItem="KWa-Mq-5D1" secondAttribute="bottom" constant="85" id="UTZ-IZ-oGD"/>
-                <constraint firstItem="c40-SG-spu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="cI6-RA-F3d"/>
                 <constraint firstItem="fmg-fl-Yu6" firstAttribute="top" secondItem="P9w-1T-irl" secondAttribute="bottom" constant="5" id="es7-4U-Laf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h1k-UT-dle" secondAttribute="trailing" constant="30" id="fQj-BJ-0e3"/>
-                <constraint firstItem="KWa-Mq-5D1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="lTt-Q9-vYc"/>
+                <constraint firstItem="c40-SG-spu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="lcp-K7-JVW"/>
                 <constraint firstItem="h1k-UT-dle" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="mMX-Q9-j2N"/>
                 <constraint firstItem="fmg-fl-Yu6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="q7t-Aa-gSa"/>
                 <constraint firstItem="h1k-UT-dle" firstAttribute="top" secondItem="fmg-fl-Yu6" secondAttribute="bottom" constant="50" id="xag-jw-hrv"/>

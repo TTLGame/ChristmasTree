@@ -23,21 +23,25 @@ final class RootViewController: UIViewController {
     func setupData(){
         let newQuery = ["id" : "-1"]
         if let appConfigData = StoreManager.shared.find(AppConfigModel.self, queryParts: newQuery, in: .appConfig) {
+            print("appConfigData \(appConfigData)")
             if let language = appConfigData.first?.language {
                 AppConfig.shared.language = Language(rawValue: language) ?? .vietnamese
             }
-        }
-        else {
-            let data = AppConfigModel()
-            data.language = AppConfig.shared.language.rawValue
-            guard var tmpJson = data.json() else { return }
-            tmpJson["id"] = "-1"
-            do {
-                try StoreManager.shared.save(data: tmpJson, in: .appConfig)
-            } catch {
-                print(error.localizedDescription)
+            else {
+                addLanguage()
             }
-
+        }
+    }
+    
+    func addLanguage(){
+        let data = AppConfigModel()
+        data.language = AppConfig.shared.language.rawValue
+        guard var tmpJson = data.json() else { return }
+        tmpJson["id"] = "-1"
+        do {
+            try StoreManager.shared.save(data: tmpJson, in: .appConfig)
+        } catch {
+            print(error.localizedDescription)
         }
     }
     override func viewDidLoad() {

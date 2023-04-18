@@ -6,13 +6,14 @@
 //
 
 import UIKit
-
 class LoginViewController: UIViewController {
     @IBOutlet weak var userNameView: TextFieldView!
     @IBOutlet weak var passwordView: TextFieldView!
     
     @IBOutlet weak var customSwitch: CustomSwitch!
     @IBOutlet weak var loginBtn: UIButton!
+    
+    let viewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -20,12 +21,14 @@ class LoginViewController: UIViewController {
     }
     
     private func setup(){
+        viewModel.setupLanguage()
         userNameView.setup(text: Language.localized("username"))
         passwordView.setup(text: Language.localized("password"))
         customSwitch.delegate = self
         loginBtn.setTitle(Language.localized("login"), for: .normal)
-        setSwitchChange(isOn: true)
+        setSwitchChange()
     }
+    
     @IBAction func loginBtnPressed(_ sender: Any) {
         AppDelegate.shared.rootViewController.show(.main)
     }
@@ -37,11 +40,11 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    func setSwitchChange(isOn: Bool) {
+    func setSwitchChange() {
+        let isOn = AppConfig.shared.language == .vietnamese
         customSwitch.myColor =  Color.redPrimary
         customSwitch.disableColor = Color.greyPrimary
         customSwitch.isOn = isOn
-       
     }
 }
 
@@ -52,11 +55,6 @@ extension LoginViewController : CustomSwitchDelegate {
     
     func switchDidChanged(sender: CustomSwitch) {
         print("sender.isOn \(sender.isOn)")
-        AppConfig.shared.language = sender.isOn ? .vietnamese : .english
-        AppDelegate.shared.rootViewController.show(.login)
-//        self.setSwitchChange(isOn: customSwitch.isOn)
-        
+        viewModel.changeLanguage(language : sender.isOn ? .vietnamese : .english)
     }
-    
-    
 }

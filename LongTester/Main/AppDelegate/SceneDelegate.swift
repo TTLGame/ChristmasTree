@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import FLEX
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -27,11 +28,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             AppDelegate.shared.window?.rootViewController = navi
             AppDelegate.shared.window?.makeKeyAndVisible()
             
+            FLEXManager.shared.isNetworkDebuggingEnabled = true
+            FLEXManager.shared.showExplorer()
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                     action: #selector(handleFingerQuadrupleTap(_:)))
+            tap.numberOfTapsRequired = 2
+            tap.numberOfTouchesRequired = 2
+            window?.addGestureRecognizer(tap)
+            
 //            window?.rootViewController = UIHostingController(rootView: SwiftUIView())
             self.window!.makeKeyAndVisible()
         }
     }
 
+    @objc fileprivate func handleFingerQuadrupleTap(_ tapRecognizer: UITapGestureRecognizer) {
+
+        if tapRecognizer.state == .recognized {
+            FLEXManager.shared.showExplorer()
+        }
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

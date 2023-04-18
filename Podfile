@@ -11,6 +11,7 @@ pod 'Alamofire'
 pod 'SnapKit'
 pod 'RealmSwift', '~>10'
 pod 'IQKeyboardManagerSwift'
+pod 'FLEX'
   # Pods for LongTester
 
 end
