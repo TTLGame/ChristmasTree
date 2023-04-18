@@ -54,6 +54,11 @@
 		FD8961AE295C1E5900C7BE20 /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD8961AD295C1E5900C7BE20 /* MainScreenViewController.xib */; };
 		FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8961AF295C1E6900C7BE20 /* MainScreenViewModel.swift */; };
 		FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852BA29EE780B00A6357F /* CustomSwitch.swift */; };
+		FDA852C129EE786900A6357F /* RealmCollectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852BE29EE786900A6357F /* RealmCollectionModels.swift */; };
+		FDA852C229EE786900A6357F /* AppConfigRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852BF29EE786900A6357F /* AppConfigRealmModel.swift */; };
+		FDA852C329EE786900A6357F /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852C029EE786900A6357F /* StoreManager.swift */; };
+		FDA852C529EE7B2A00A6357F /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852C429EE7B2A00A6357F /* Pages.swift */; };
+		FDA852C729EE7B4100A6357F /* AppConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852C629EE7B4100A6357F /* AppConfigModel.swift */; };
 		FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */; };
 		FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCA2967DF2700FC0D68 /* Inline.swift */; };
 		FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */; };
@@ -121,6 +126,11 @@
 		FD8961AD295C1E5900C7BE20 /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		FD8961AF295C1E6900C7BE20 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		FDA852BA29EE780B00A6357F /* CustomSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
+		FDA852BE29EE786900A6357F /* RealmCollectionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmCollectionModels.swift; sourceTree = "<group>"; };
+		FDA852BF29EE786900A6357F /* AppConfigRealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigRealmModel.swift; sourceTree = "<group>"; };
+		FDA852C029EE786900A6357F /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		FDA852C429EE7B2A00A6357F /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
+		FDA852C629EE7B4100A6357F /* AppConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigModel.swift; sourceTree = "<group>"; };
 		FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		FDCB9FCA2967DF2700FC0D68 /* Inline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inline.swift; sourceTree = "<group>"; };
 		FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheels.swift; sourceTree = "<group>"; };
@@ -206,7 +216,6 @@
 			children = (
 				FDA852B929EE780B00A6357F /* CustomSwitch */,
 				FD4DF3CD29ED97F000AB6A50 /* TextFieldView */,
-				FDF14B2F295C311500BF079F /* RootViewController.swift */,
 				FD2184E029E8F20300761826 /* BaseNavigationView */,
 			);
 			path = BaseView;
@@ -263,6 +272,7 @@
 		FD564B83296569C100A527ED /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				FDF300C429E3D0880084562A /* Decoder.swift */,
 				FD564B8429656A2A00A527ED /* APIErrorProcessPlugin.swift */,
 			);
 			path = Plugin;
@@ -309,13 +319,17 @@
 			isa = PBXGroup;
 			children = (
 				FD5765A02963CE8B005969BE /* User.swift */,
+				FDA852C429EE7B2A00A6357F /* Pages.swift */,
+				FDA852C629EE7B4100A6357F /* AppConfigModel.swift */,
 			);
-			path = Models;
+			name = Models;
+			path = ../Resource/Models;
 			sourceTree = "<group>";
 		};
 		FD5765A22963CED0005969BE /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				FDA852BC29EE786900A6357F /* StorageManager */,
 				FD57659A2963CD8E005969BE /* Define */,
 				FD564B932965849600A527ED /* GlobalValues */,
 				FD5765A42963CEFA005969BE /* Extension */,
@@ -350,12 +364,12 @@
 		FD5765A72963D165005969BE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				FD57659F2963CE78005969BE /* Models */,
 				FDF300BF29E3CB000084562A /* Target */,
 				FD564B8A29656C7F00A527ED /* Prefs */,
 				FD564B83296569C100A527ED /* Plugin */,
 				FD564B80296568D100A527ED /* Error */,
 				FD5765A82963D170005969BE /* Provider */,
-				FDF300C429E3D0880084562A /* Decoder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -407,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				FD4DF3C229ED929300AB6A50 /* BaseView */,
+				FDF14B2F295C311500BF079F /* RootViewController.swift */,
 				FD4DF3C129ED927D00AB6A50 /* LoginVC */,
 				FD3B1DD829DAABDF00448F99 /* CropImage */,
 				FDBBCB1A29B6DFDE0095162F /* SwiftUI */,
@@ -442,6 +457,24 @@
 			path = CustomSwitch;
 			sourceTree = "<group>";
 		};
+		FDA852BC29EE786900A6357F /* StorageManager */ = {
+			isa = PBXGroup;
+			children = (
+				FDA852BD29EE786900A6357F /* RealmModels */,
+				FDA852C029EE786900A6357F /* StoreManager.swift */,
+			);
+			path = StorageManager;
+			sourceTree = "<group>";
+		};
+		FDA852BD29EE786900A6357F /* RealmModels */ = {
+			isa = PBXGroup;
+			children = (
+				FDA852BE29EE786900A6357F /* RealmCollectionModels.swift */,
+				FDA852BF29EE786900A6357F /* AppConfigRealmModel.swift */,
+			);
+			path = RealmModels;
+			sourceTree = "<group>";
+		};
 		FDBBCB1A29B6DFDE0095162F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,7 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				FDF14B33295D84D200BF079F /* Support */,
-				FD57659F2963CE78005969BE /* Models */,
 				FDF14B36295D851200BF079F /* Languages */,
 				FDF14B35295D850700BF079F /* Images */,
 			);
@@ -647,6 +679,8 @@
 				FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */,
 				FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */,
 				FD564B972965855200A527ED /* String.swift in Sources */,
+				FDA852C229EE786900A6357F /* AppConfigRealmModel.swift in Sources */,
+				FDA852C729EE7B4100A6357F /* AppConfigModel.swift in Sources */,
 				FD564B7029655D8600A527ED /* TableScreenCell.swift in Sources */,
 				FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */,
 				FD0B1FCF29AB38730069F98F /* ButtonView.swift in Sources */,
@@ -663,13 +697,16 @@
 				FD564B8C29656CFE00A527ED /* PrefsImp.swift in Sources */,
 				FD896198295BF11A00C7BE20 /* AppDelegate.swift in Sources */,
 				FDF300C329E3CCEA0084562A /* Environment.swift in Sources */,
+				FDA852C329EE786900A6357F /* StoreManager.swift in Sources */,
 				FD564B79296567AB00A527ED /* DefaultAlamofireManager.swift in Sources */,
 				FD4DF3C829ED92CD00AB6A50 /* LoginViewModel.swift in Sources */,
 				FD564B8529656A2A00A527ED /* APIErrorProcessPlugin.swift in Sources */,
+				FDA852C529EE7B2A00A6357F /* Pages.swift in Sources */,
 				FD564B7B296567D700A527ED /* Provider.swift in Sources */,
 				FD5765AE2963D2A0005969BE /* Dictionary.swift in Sources */,
 				FD5765A12963CE8B005969BE /* User.swift in Sources */,
 				FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */,
+				FDA852C129EE786900A6357F /* RealmCollectionModels.swift in Sources */,
 				FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */,
 				FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */,
 				FD564B95296584A500A527ED /* AppConfig.swift in Sources */,

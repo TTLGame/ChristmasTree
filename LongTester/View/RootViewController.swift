@@ -12,6 +12,7 @@ final class RootViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        setupData()
         currentVC = LoginViewController()
     }
     
@@ -19,6 +20,26 @@ final class RootViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupData(){
+        let newQuery = ["id" : "-1"]
+        if let appConfigData = StoreManager.shared.find(AppConfigModel.self, queryParts: newQuery, in: .appConfig) {
+            if let language = appConfigData.first?.language {
+                AppConfig.shared.language = Language(rawValue: language) ?? .vietnamese
+            }
+        }
+        else {
+            let data = AppConfigModel()
+            data.language = AppConfig.shared.language.rawValue
+            guard var tmpJson = data.json() else { return }
+            tmpJson["id"] = "-1"
+            do {
+                try StoreManager.shared.save(data: tmpJson, in: .appConfig)
+            } catch {
+                print(error.localizedDescription)
+            }
+
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         addChild(currentVC)

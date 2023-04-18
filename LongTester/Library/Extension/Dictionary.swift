@@ -230,3 +230,15 @@ extension Data {
         return prettyPrintedString
     }
 }
+
+extension JSObject {
+    func convertDict() -> String {
+        let jsonData = try! JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            return jsonString
+        }
+        else {
+            return ""
+        }
+    }
+}
