@@ -35,4 +35,13 @@ extension UIView {
         nibView.frame = bounds
         addSubview(nibView)
     }
+    
+    func addBottomShadow() {
+        self.layer.masksToBounds = false
+        self.layer.shadowRadius = 10
+        self.layer.shadowOffset =  CGSize(width: 0, height: 10.0)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowColor = UIColor(red: 0.118, green: 0.255, blue: 0.608, alpha: 0.5).cgColor
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+    }
 }

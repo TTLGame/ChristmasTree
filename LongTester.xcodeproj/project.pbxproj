@@ -71,11 +71,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09A420D693CD9A5EF5F68C14 /* Pods-LongTester.release-uat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-uat.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-uat.xcconfig"; sourceTree = "<group>"; };
 		25EF2E8DA40523042570A5AB /* Pods-LongTester.374.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.374.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.374.xcconfig"; sourceTree = "<group>"; };
 		33C1E2B479E6288276C29BD4 /* Pods_LongTester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LongTester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A224FA303DD05C3ADF6BD2D /* Pods-LongTester.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release.xcconfig"; sourceTree = "<group>"; };
+		547BD16E8008791BAA11D10B /* Pods-LongTester.debug-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-stg.xcconfig"; sourceTree = "<group>"; };
 		78965C43F39DAB486AD9B46B /* Pods-LongTester.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug.xcconfig"; sourceTree = "<group>"; };
+		9346FA632B4BF64E8D8A79E6 /* Pods-LongTester.debug-uat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-uat.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-uat.xcconfig"; sourceTree = "<group>"; };
 		D8960534B0AA149067CC9917 /* Pods-LongTester.pico.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.pico.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.pico.xcconfig"; sourceTree = "<group>"; };
+		F54645999DA342962EE17425 /* Pods-LongTester.release-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-stg.xcconfig"; sourceTree = "<group>"; };
 		FD0B1FCE29AB38730069F98F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		FD0B1FD029AB38D60069F98F /* ButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonView.xib; sourceTree = "<group>"; };
 		FD2184E129E8F21D00761826 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
@@ -163,6 +167,10 @@
 				D8960534B0AA149067CC9917 /* Pods-LongTester.pico.xcconfig */,
 				25EF2E8DA40523042570A5AB /* Pods-LongTester.374.xcconfig */,
 				4A224FA303DD05C3ADF6BD2D /* Pods-LongTester.release.xcconfig */,
+				9346FA632B4BF64E8D8A79E6 /* Pods-LongTester.debug-uat.xcconfig */,
+				09A420D693CD9A5EF5F68C14 /* Pods-LongTester.release-uat.xcconfig */,
+				547BD16E8008791BAA11D10B /* Pods-LongTester.debug-stg.xcconfig */,
+				F54645999DA342962EE17425 /* Pods-LongTester.release-stg.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -752,7 +760,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FD564B5B2963E5E400A527ED /* Pico */ = {
+		FD564B5B2963E5E400A527ED /* Release-UAT */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -811,13 +819,13 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Pico;
+			name = "Release-UAT";
 		};
-		FD564B5C2963E5E400A527ED /* Pico */ = {
+		FD564B5C2963E5E400A527ED /* Release-UAT */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8960534B0AA149067CC9917 /* Pods-LongTester.pico.xcconfig */;
+			baseConfigurationReference = 09A420D693CD9A5EF5F68C14 /* Pods-LongTester.release-uat.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "[Pico]LongTester";
+				APP_DISPLAY_NAME = "[UAT]LongTester";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -839,15 +847,16 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = long.LongTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = UAT;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				apiHost = "https://reqres.in/";
 				apiPath = api/;
 			};
-			name = Pico;
+			name = "Release-UAT";
 		};
-		FD564B5D2963E5EA00A527ED /* 374 */ = {
+		FD564B5D2963E5EA00A527ED /* Debug-STG */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -906,13 +915,13 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = 374;
+			name = "Debug-STG";
 		};
-		FD564B5E2963E5EA00A527ED /* 374 */ = {
+		FD564B5E2963E5EA00A527ED /* Debug-STG */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25EF2E8DA40523042570A5AB /* Pods-LongTester.374.xcconfig */;
+			baseConfigurationReference = 547BD16E8008791BAA11D10B /* Pods-LongTester.debug-stg.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "[374]LongTester";
+				APP_DISPLAY_NAME = "[STG]LongTester";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -934,15 +943,16 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = long.LongTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG STG";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				apiHost = "https://reqres.in/";
 				apiPath = api/;
 			};
-			name = 374;
+			name = "Debug-STG";
 		};
-		FD8961A6295BF11D00C7BE20 /* Debug */ = {
+		FD8961A6295BF11D00C7BE20 /* Debug-UAT */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1001,9 +1011,9 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = "Debug-UAT";
 		};
-		FD8961A7295BF11D00C7BE20 /* Release */ = {
+		FD8961A7295BF11D00C7BE20 /* Release-STG */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1056,13 +1066,13 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = "Release-STG";
 		};
-		FD8961A9295BF11D00C7BE20 /* Debug */ = {
+		FD8961A9295BF11D00C7BE20 /* Debug-UAT */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78965C43F39DAB486AD9B46B /* Pods-LongTester.debug.xcconfig */;
+			baseConfigurationReference = 9346FA632B4BF64E8D8A79E6 /* Pods-LongTester.debug-uat.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "[374]LongTester";
+				APP_DISPLAY_NAME = "[UAT]LongTester";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1084,19 +1094,20 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = long.LongTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG UAT";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				apiHost = "https://reqres.in/";
 				apiPath = api/;
 			};
-			name = Debug;
+			name = "Debug-UAT";
 		};
-		FD8961AA295BF11D00C7BE20 /* Release */ = {
+		FD8961AA295BF11D00C7BE20 /* Release-STG */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A224FA303DD05C3ADF6BD2D /* Pods-LongTester.release.xcconfig */;
+			baseConfigurationReference = F54645999DA342962EE17425 /* Pods-LongTester.release-stg.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "[374]LongTester";
+				APP_DISPLAY_NAME = "[STG]LongTester";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1118,13 +1129,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = long.LongTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				apiHost = "https://reqres.in/";
 				apiPath = api/;
 			};
-			name = Release;
+			name = "Release-STG";
 		};
 /* End XCBuildConfiguration section */
 
@@ -1132,24 +1144,24 @@
 		FD89618F295BF11A00C7BE20 /* Build configuration list for PBXProject "LongTester" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FD8961A6295BF11D00C7BE20 /* Debug */,
-				FD564B5B2963E5E400A527ED /* Pico */,
-				FD564B5D2963E5EA00A527ED /* 374 */,
-				FD8961A7295BF11D00C7BE20 /* Release */,
+				FD8961A6295BF11D00C7BE20 /* Debug-UAT */,
+				FD564B5B2963E5E400A527ED /* Release-UAT */,
+				FD564B5D2963E5EA00A527ED /* Debug-STG */,
+				FD8961A7295BF11D00C7BE20 /* Release-STG */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release-STG";
 		};
 		FD8961A8295BF11D00C7BE20 /* Build configuration list for PBXNativeTarget "LongTester" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FD8961A9295BF11D00C7BE20 /* Debug */,
-				FD564B5C2963E5E400A527ED /* Pico */,
-				FD564B5E2963E5EA00A527ED /* 374 */,
-				FD8961AA295BF11D00C7BE20 /* Release */,
+				FD8961A9295BF11D00C7BE20 /* Debug-UAT */,
+				FD564B5C2963E5E400A527ED /* Release-UAT */,
+				FD564B5E2963E5EA00A527ED /* Debug-STG */,
+				FD8961AA295BF11D00C7BE20 /* Release-STG */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release-STG";
 		};
 /* End XCConfigurationList section */
 	};

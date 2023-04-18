@@ -14,3 +14,6 @@
 "username" = "Tên đăng nhập";
 "password" = "Mật khẩu";
 "login" = "Đăng nhập";
+
+//Main View
+"mainTitle" = "Quản lí địa điểm";

@@ -10,24 +10,30 @@ import RealmSwift
 import RxSwift
 class MainScreenViewController: UIViewController {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var labelTextField: UITextField!
-    
-    //Init realm
-    let realm = try! Realm()
+    @IBOutlet weak var headerBackGround: UIView!
+    @IBOutlet weak var headerLbl: UILabel!
+    @IBOutlet weak var headerView: UIView!
     let model = MainScreenViewModel()
     private let disposeBag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bindToViewModel()
+        setup()
         // Do any additional setup after loading the view.
     }
     
+    private func setup(){
+//        headerView.addBottomShadow()
+        headerBackGround.addBottomShadow()
+        headerLbl.text = Language.localized("mainTitle")
+        headerLbl.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        
+    }
+
     private func bindToViewModel() {
         self.model.title.observe(on: MainScheduler.instance).subscribe{[weak self] value in
             guard let self = self else {return}
-            self.labelTextField.text = value
         }
         .disposed(by: disposeBag)
         
@@ -64,11 +70,7 @@ class MainScreenViewController: UIViewController {
     
     @IBAction func collectionBtnTapped(_ sender: Any) {
         print("Collection")
-//        print(Locale.current.languageCode)
-        
-        AppDelegate.shared.rootViewController.show(.tableView)
-
-        
+//        AppDelegate.shared.rootViewController.show(.tableView)
         changeName()
     }
     

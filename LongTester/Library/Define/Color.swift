@@ -19,6 +19,7 @@ struct Color {
     static let greyPrimary = RGB(71,71,71)
     static let redPrimary = RGB(249,79,72)
     static let normalTextColor = RGB(102, 102, 102)
+    static let darkGreen = RGB(62,136,122)
     
     static func makeGradientLayer(size: CGSize, from: UIColor, to color: UIColor, type: GradientType) -> CAGradientLayer {
         let colors = [from.cgColor, color.cgColor]

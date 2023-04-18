@@ -7,7 +7,9 @@
 
 import UIKit
 import SwiftUI
+#if DEBUG
 import FLEX
+#endif
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -28,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             AppDelegate.shared.window?.rootViewController = navi
             AppDelegate.shared.window?.makeKeyAndVisible()
             
+            #if DEBUG
             FLEXManager.shared.isNetworkDebuggingEnabled = true
             FLEXManager.shared.showExplorer()
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
@@ -35,6 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             tap.numberOfTapsRequired = 2
             tap.numberOfTouchesRequired = 2
             window?.addGestureRecognizer(tap)
+            #endif
             
 //            window?.rootViewController = UIHostingController(rootView: SwiftUIView())
             self.window!.makeKeyAndVisible()
@@ -42,10 +46,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     @objc fileprivate func handleFingerQuadrupleTap(_ tapRecognizer: UITapGestureRecognizer) {
-
+        #if DEBUG
         if tapRecognizer.state == .recognized {
             FLEXManager.shared.showExplorer()
         }
+        #endif
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

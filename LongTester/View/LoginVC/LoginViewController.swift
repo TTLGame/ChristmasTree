@@ -10,6 +10,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameView: TextFieldView!
     @IBOutlet weak var passwordView: TextFieldView!
     
+    @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var languageLbl: UILabel!
     @IBOutlet weak var customSwitch: CustomSwitch!
     @IBOutlet weak var loginBtn: UIButton!
     
@@ -27,6 +29,12 @@ class LoginViewController: UIViewController {
         customSwitch.delegate = self
         loginBtn.setTitle(Language.localized("login"), for: .normal)
         setSwitchChange()
+        
+        circleView.layer.cornerRadius = circleView.frame.size.width/2
+        circleView.clipsToBounds = true
+
+        circleView.layer.borderColor = Color.darkGreen.cgColor
+        circleView.layer.borderWidth = 5.0
     }
     
     @IBAction func loginBtnPressed(_ sender: Any) {
@@ -42,6 +50,7 @@ class LoginViewController: UIViewController {
     
     func setSwitchChange() {
         let isOn = AppConfig.shared.language == .vietnamese
+        languageLbl.text = AppConfig.shared.language.rawValue
         customSwitch.myColor =  Color.redPrimary
         customSwitch.disableColor = Color.greyPrimary
         customSwitch.isOn = isOn

@@ -47,6 +47,10 @@ class TableScreenViewController : UIViewController {
             })
         .disposed(by: disposeBag)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }
 extension TableScreenViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

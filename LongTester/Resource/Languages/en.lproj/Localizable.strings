@@ -14,3 +14,6 @@
 "username" = "Username";
 "password" = "Password";
 "login" = "Login";
+
+//Main View
+"mainTitle" = "Manage Location";
