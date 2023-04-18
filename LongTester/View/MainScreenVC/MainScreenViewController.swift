@@ -10,7 +10,6 @@ import RealmSwift
 import RxSwift
 class MainScreenViewController: UIViewController {
 
-    @IBOutlet weak var languageSwitch: UISwitch!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var labelTextField: UITextField!
     
@@ -21,7 +20,6 @@ class MainScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSwitch()
         bindToViewModel()
         // Do any additional setup after loading the view.
     }
@@ -48,15 +46,6 @@ class MainScreenViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
    
-    private func setupSwitch(){
-        self.languageSwitch.setOnValueChangeListener { isOn in
-            print(isOn)
-           AppDelegate.shared.rootViewController.show(.main)
-        }
-    }
-    
-    
-    
     func changeName(){
         model.getUserData()
         model.setData()

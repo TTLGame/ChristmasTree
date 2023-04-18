@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController" customModule="LongTester" customModuleProvider="target">
             <connections>
                 <outlet property="labelTextField" destination="vgi-wl-Ixs" id="6ug-Uk-7wu"/>
-                <outlet property="languageSwitch" destination="jKf-cQ-Jgp" id="H3G-Ok-k6Q"/>
                 <outlet property="titleLabel" destination="TPY-y0-arh" id="rWl-om-XdT"/>
                 <outlet property="view" destination="8y9-jB-euk" id="7rP-IO-G93"/>
             </connections>
@@ -80,19 +79,14 @@
                         <constraint firstAttribute="height" constant="50" id="QXs-xJ-A55"/>
                     </constraints>
                 </stackView>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jKf-cQ-Jgp">
-                    <rect key="frame" x="314" y="89" width="51" height="31"/>
-                </switch>
             </subviews>
             <viewLayoutGuide key="safeArea" id="gKN-ch-fOj"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="HLn-Bh-6lC" firstAttribute="leading" secondItem="gKN-ch-fOj" secondAttribute="leading" constant="50" id="1xh-8J-kU2"/>
                 <constraint firstItem="gKN-ch-fOj" firstAttribute="bottom" secondItem="HLn-Bh-6lC" secondAttribute="bottom" constant="20" id="2tp-df-PkZ"/>
-                <constraint firstItem="jKf-cQ-Jgp" firstAttribute="top" secondItem="gKN-ch-fOj" secondAttribute="top" constant="30" id="JqV-ib-9hB"/>
                 <constraint firstItem="nDv-0y-vtt" firstAttribute="centerX" secondItem="gKN-ch-fOj" secondAttribute="centerX" id="SVU-LW-Hdp"/>
                 <constraint firstItem="nDv-0y-vtt" firstAttribute="centerY" secondItem="gKN-ch-fOj" secondAttribute="centerY" id="gbW-Ex-sFO"/>
-                <constraint firstItem="gKN-ch-fOj" firstAttribute="trailing" secondItem="jKf-cQ-Jgp" secondAttribute="trailing" constant="30" id="m2W-fx-hvE"/>
                 <constraint firstItem="gKN-ch-fOj" firstAttribute="trailing" secondItem="HLn-Bh-6lC" secondAttribute="trailing" constant="50" id="qOZ-rL-dFE"/>
                 <constraint firstItem="nDv-0y-vtt" firstAttribute="width" secondItem="8y9-jB-euk" secondAttribute="width" multiplier="0.6" id="zxk-hu-sii"/>
             </constraints>

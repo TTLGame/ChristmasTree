@@ -24,25 +24,51 @@ class TextFieldView : UIView {
         commonInit()
     }
     
-    func commonInit(){
+    private func commonInit(){
         loadViewFromNib()
+        titleLbl.isHidden = true
+        setup()
         textFieldView.delegate = self
     }
     
-    func setup(text : String, color: UIColor = Color.greyPrimary) {
-        titleLbl.text = text
-        separatorView.backgroundColor = color
+    private func changePlaceholder(disable: Bool){
+        titleLbl.isHidden = disable
+        textFieldView.placeholder = disable ?  titleLbl.text : ""
     }
 }
 
+///FUNCTION ACCESSABLE
+extension TextFieldView {
+    func setup(text : String = "Label", color: UIColor = Color.greyPrimary) {
+        titleLbl.text = text
+        textFieldView.attributedPlaceholder = NSAttributedString(
+            string: titleLbl.text ?? "",
+            attributes: [NSAttributedString.Key.foregroundColor: Color.greyPrimary]
+        )
+        separatorView.backgroundColor = color
+    }
+    
+    func getData() -> String? {
+        return textFieldView.text
+    }
+    
+    
+}
 extension TextFieldView : UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         textFieldView.resignFirstResponder()
     }
-}
-
-extension UITextField {
-    public override func resignFirstResponder() -> Bool {
-        return super.resignFirstResponder()
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        changePlaceholder(disable: false)
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField.text == "") {
+            changePlaceholder(disable: true)
+        }
+        else {
+            changePlaceholder(disable: false)
+        }
     }
 }

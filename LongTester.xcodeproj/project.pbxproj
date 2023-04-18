@@ -53,6 +53,7 @@
 		FD8961A4295BF11D00C7BE20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8961A2295BF11D00C7BE20 /* LaunchScreen.storyboard */; };
 		FD8961AE295C1E5900C7BE20 /* MainScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD8961AD295C1E5900C7BE20 /* MainScreenViewController.xib */; };
 		FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8961AF295C1E6900C7BE20 /* MainScreenViewModel.swift */; };
+		FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852BA29EE780B00A6357F /* CustomSwitch.swift */; };
 		FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */; };
 		FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCA2967DF2700FC0D68 /* Inline.swift */; };
 		FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */; };
@@ -119,6 +120,7 @@
 		FD8961A5295BF11D00C7BE20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD8961AD295C1E5900C7BE20 /* MainScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenViewController.xib; sourceTree = "<group>"; };
 		FD8961AF295C1E6900C7BE20 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
+		FDA852BA29EE780B00A6357F /* CustomSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		FDCB9FCA2967DF2700FC0D68 /* Inline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inline.swift; sourceTree = "<group>"; };
 		FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheels.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		FD4DF3C229ED929300AB6A50 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				FDA852B929EE780B00A6357F /* CustomSwitch */,
 				FD4DF3CD29ED97F000AB6A50 /* TextFieldView */,
 				FDF14B2F295C311500BF079F /* RootViewController.swift */,
 				FD2184E029E8F20300761826 /* BaseNavigationView */,
@@ -431,6 +434,14 @@
 			path = LongTesterUnitTest;
 			sourceTree = "<group>";
 		};
+		FDA852B929EE780B00A6357F /* CustomSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				FDA852BA29EE780B00A6357F /* CustomSwitch.swift */,
+			);
+			path = CustomSwitch;
+			sourceTree = "<group>";
+		};
 		FDBBCB1A29B6DFDE0095162F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +645,7 @@
 			files = (
 				FD48DBE729E68FC800264497 /* UIView.swift in Sources */,
 				FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */,
+				FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */,
 				FD564B972965855200A527ED /* String.swift in Sources */,
 				FD564B7029655D8600A527ED /* TableScreenCell.swift in Sources */,
 				FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */,

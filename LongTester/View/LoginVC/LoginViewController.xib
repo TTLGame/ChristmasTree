@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="LongTester" customModuleProvider="target">
             <connections>
+                <outlet property="customSwitch" destination="c40-SG-spu" id="cPa-YI-dRI"/>
                 <outlet property="loginBtn" destination="h1k-UT-dle" id="hrN-fA-FvY"/>
                 <outlet property="passwordView" destination="fmg-fl-Yu6" id="Ip5-Zb-YFf"/>
                 <outlet property="userNameView" destination="P9w-1T-irl" id="ESu-sS-Ufy"/>
@@ -58,6 +59,42 @@
                         <action selector="loginBtnPressed:" destination="-1" eventType="touchUpInside" id="Rbj-8w-Asq"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c40-SG-spu" customClass="CustomSwitch" customModule="LongTester" customModuleProvider="target">
+                    <rect key="frame" x="318" y="30" width="45" height="30"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="FIJ-0h-f0m"/>
+                        <constraint firstAttribute="width" constant="45" id="Se6-cp-fgg"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="size" keyPath="mySize">
+                            <size key="value" width="45" height="30"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="myColor">
+                            <color key="value" red="0.0" green="0.51372549019607838" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="dotOnColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="dotOffColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="NO"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="smallDotColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="dotTime">
+                            <real key="value" value="0.20000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="smallDot0to1">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="dotSpacer">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isAnimation" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -65,9 +102,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fmg-fl-Yu6" secondAttribute="trailing" constant="30" id="H5a-7Y-hXO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P9w-1T-irl" secondAttribute="trailing" constant="30" id="Ih9-7Z-1JU"/>
                 <constraint firstItem="KWa-Mq-5D1" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="Ip5-AE-0qD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c40-SG-spu" secondAttribute="trailing" constant="30" id="MQp-AZ-E4T"/>
                 <constraint firstItem="P9w-1T-irl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="Oqp-mB-n0T"/>
                 <constraint firstItem="KWa-Mq-5D1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="R9B-fI-Fvt"/>
                 <constraint firstItem="P9w-1T-irl" firstAttribute="top" secondItem="KWa-Mq-5D1" secondAttribute="bottom" constant="85" id="UTZ-IZ-oGD"/>
+                <constraint firstItem="c40-SG-spu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="cI6-RA-F3d"/>
                 <constraint firstItem="fmg-fl-Yu6" firstAttribute="top" secondItem="P9w-1T-irl" secondAttribute="bottom" constant="5" id="es7-4U-Laf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h1k-UT-dle" secondAttribute="trailing" constant="30" id="fQj-BJ-0e3"/>
                 <constraint firstItem="KWa-Mq-5D1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="lTt-Q9-vYc"/>

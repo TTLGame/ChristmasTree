@@ -9,3 +9,8 @@
 "welcome" = "Welcome";
 "vietnamese" = "Vietnamese";
 "english" = "English";
+
+//Login View
+"username" = "Username";
+"password" = "Password";
+"login" = "Login";

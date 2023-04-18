@@ -9,3 +9,8 @@
 "welcome" = "Xin chào";
 "vietnamese" = "Việt Nam";
 "english" = "Tiếng Anh";
+
+//Login View
+"username" = "Tên đăng nhập";
+"password" = "Mật khẩu";
+"login" = "Đăng nhập";
