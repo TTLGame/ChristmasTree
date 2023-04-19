@@ -17,3 +17,7 @@
 
 //Main View
 "mainTitle" = "Quản lí địa điểm";
+
+//Hamburger Menu
+"logout" = "Đăng xuất";
+"hello" = "Xin chào, ";

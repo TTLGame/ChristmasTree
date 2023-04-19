@@ -62,6 +62,15 @@
 		FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */; };
 		FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCA2967DF2700FC0D68 /* Inline.swift */; };
 		FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */; };
+		FDDB485529EFAFB500D212A7 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB485329EFAFB500D212A7 /* SlideMenuViewController.swift */; };
+		FDDB485629EFAFB500D212A7 /* SlideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDB485429EFAFB500D212A7 /* SlideMenuViewController.xib */; };
+		FDDB485F29EFB01000D212A7 /* SlideMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB485D29EFB01000D212A7 /* SlideMenuViewCell.swift */; };
+		FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDB485E29EFB01000D212A7 /* SlideMenuViewCell.xib */; };
+		FDDB486229EFB0CB00D212A7 /* SubSlideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486129EFB0CB00D212A7 /* SubSlideMenuView.swift */; };
+		FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDB486329EFB0D200D212A7 /* SubSlideMenuView.xib */; };
+		FDDB486629EFC80F00D212A7 /* SlideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486529EFC80F00D212A7 /* SlideMenuViewModel.swift */; };
+		FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486729EFC8CE00D212A7 /* SubSlideMenuViewModel.swift */; };
+		FDDB486A29EFD28E00D212A7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486929EFD28E00D212A7 /* UIViewController.swift */; };
 		FDF14B30295C311500BF079F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF14B2F295C311500BF079F /* RootViewController.swift */; };
 		FDF14B39295D861300BF079F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDF14B3B295D861300BF079F /* Localizable.strings */; };
 		FDF300BE29E3C99A0084562A /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300BD29E3C99A0084562A /* Realm.swift */; };
@@ -138,6 +147,15 @@
 		FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		FDCB9FCA2967DF2700FC0D68 /* Inline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inline.swift; sourceTree = "<group>"; };
 		FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheels.swift; sourceTree = "<group>"; };
+		FDDB485329EFAFB500D212A7 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
+		FDDB485429EFAFB500D212A7 /* SlideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideMenuViewController.xib; sourceTree = "<group>"; };
+		FDDB485D29EFB01000D212A7 /* SlideMenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewCell.swift; sourceTree = "<group>"; };
+		FDDB485E29EFB01000D212A7 /* SlideMenuViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideMenuViewCell.xib; sourceTree = "<group>"; };
+		FDDB486129EFB0CB00D212A7 /* SubSlideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSlideMenuView.swift; sourceTree = "<group>"; };
+		FDDB486329EFB0D200D212A7 /* SubSlideMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubSlideMenuView.xib; sourceTree = "<group>"; };
+		FDDB486529EFC80F00D212A7 /* SlideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewModel.swift; sourceTree = "<group>"; };
+		FDDB486729EFC8CE00D212A7 /* SubSlideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSlideMenuViewModel.swift; sourceTree = "<group>"; };
+		FDDB486929EFD28E00D212A7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		FDF14B2F295C311500BF079F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		FDF14B3A295D861300BF079F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDF14B3C295D874D00BF079F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -222,6 +240,7 @@
 		FD4DF3C229ED929300AB6A50 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				FDDB485129EFAF7C00D212A7 /* SlideMenu */,
 				FDA852B929EE780B00A6357F /* CustomSwitch */,
 				FD4DF3CD29ED97F000AB6A50 /* TextFieldView */,
 				FD2184E029E8F20300761826 /* BaseNavigationView */,
@@ -365,6 +384,7 @@
 				FD564B962965855200A527ED /* String.swift */,
 				FDF300BD29E3C99A0084562A /* Realm.swift */,
 				FD48DBE629E68FC800264497 /* UIView.swift */,
+				FDDB486929EFD28E00D212A7 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -501,6 +521,45 @@
 			path = DateVC;
 			sourceTree = "<group>";
 		};
+		FDDB485129EFAF7C00D212A7 /* SlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FDDB485729EFAFC000D212A7 /* SubSlideMenuView */,
+				FDDB485229EFAF9900D212A7 /* SlideMenuVC */,
+			);
+			path = SlideMenu;
+			sourceTree = "<group>";
+		};
+		FDDB485229EFAF9900D212A7 /* SlideMenuVC */ = {
+			isa = PBXGroup;
+			children = (
+				FDDB485329EFAFB500D212A7 /* SlideMenuViewController.swift */,
+				FDDB485429EFAFB500D212A7 /* SlideMenuViewController.xib */,
+			);
+			path = SlideMenuVC;
+			sourceTree = "<group>";
+		};
+		FDDB485729EFAFC000D212A7 /* SubSlideMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				FDDB485C29EFAFE300D212A7 /* Cell */,
+				FDDB486129EFB0CB00D212A7 /* SubSlideMenuView.swift */,
+				FDDB486329EFB0D200D212A7 /* SubSlideMenuView.xib */,
+				FDDB486729EFC8CE00D212A7 /* SubSlideMenuViewModel.swift */,
+			);
+			path = SubSlideMenuView;
+			sourceTree = "<group>";
+		};
+		FDDB485C29EFAFE300D212A7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FDDB486529EFC80F00D212A7 /* SlideMenuViewModel.swift */,
+				FDDB485D29EFB01000D212A7 /* SlideMenuViewCell.swift */,
+				FDDB485E29EFB01000D212A7 /* SlideMenuViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		FDF14B31295D847100BF079F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -623,8 +682,11 @@
 			files = (
 				FD4DF3D129ED981800AB6A50 /* TextFieldView.xib in Resources */,
 				FD8961A4295BF11D00C7BE20 /* LaunchScreen.storyboard in Resources */,
+				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
+				FDDB485629EFAFB500D212A7 /* SlideMenuViewController.xib in Resources */,
 				FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */,
 				FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */,
+				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
 				FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */,
@@ -696,12 +758,16 @@
 				FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */,
 				FD5765A62963CF0A005969BE /* Model.swift in Sources */,
 				FD564B632965582200A527ED /* TableScreenViewModel.swift in Sources */,
+				FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */,
+				FDDB486A29EFD28E00D212A7 /* UIViewController.swift in Sources */,
 				FD89619C295BF11A00C7BE20 /* MainScreenViewController.swift in Sources */,
 				FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */,
 				FD564B8729656B2000A527ED /* ProviderAPIWithAccessToken.swift in Sources */,
 				FD564B8929656C7900A527ED /* Prefs.swift in Sources */,
 				FD4DF3CF29ED980E00AB6A50 /* TextFieldView.swift in Sources */,
 				FDF14B30295C311500BF079F /* RootViewController.swift in Sources */,
+				FDDB486629EFC80F00D212A7 /* SlideMenuViewModel.swift in Sources */,
+				FDDB485F29EFB01000D212A7 /* SlideMenuViewCell.swift in Sources */,
 				FD564B8C29656CFE00A527ED /* PrefsImp.swift in Sources */,
 				FD896198295BF11A00C7BE20 /* AppDelegate.swift in Sources */,
 				FDF300C329E3CCEA0084562A /* Environment.swift in Sources */,
@@ -720,9 +786,11 @@
 				FD564B95296584A500A527ED /* AppConfig.swift in Sources */,
 				FDF300C529E3D0880084562A /* Decoder.swift in Sources */,
 				FD5765AC2963D206005969BE /* Array.swift in Sources */,
+				FDDB485529EFAFB500D212A7 /* SlideMenuViewController.swift in Sources */,
 				FD5765AA2963D17F005969BE /* ProviderType.swift in Sources */,
 				FD564B752965648D00A527ED /* TableScreenCellViewModel.swift in Sources */,
 				FD89619A295BF11A00C7BE20 /* SceneDelegate.swift in Sources */,
+				FDDB486229EFB0CB00D212A7 /* SubSlideMenuView.swift in Sources */,
 				FD564B902965769100A527ED /* Language.swift in Sources */,
 				FD4DF3CB29ED92E900AB6A50 /* LoginViewController.swift in Sources */,
 				FD564B73296561FE00A527ED /* UITableView.swift in Sources */,
@@ -833,12 +901,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -850,7 +919,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = UAT;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				apiHost = "https://reqres.in/";
 				apiPath = api/;
 			};
@@ -929,12 +998,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -946,7 +1016,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG STG";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				apiHost = "https://reqres.in/";
 				apiPath = api/;
 			};
@@ -1080,12 +1150,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1097,7 +1168,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG UAT";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				apiHost = "https://reqres.in/";
 				apiPath = api/;
 			};
@@ -1115,12 +1186,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1132,7 +1204,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				apiHost = "https://reqres.in/";
 				apiPath = api/;
 			};

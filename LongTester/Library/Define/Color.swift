@@ -16,10 +16,11 @@ struct Color {
         case topLeftToBottomRight
         case bottomLeftToTopRight
     }
-    static let greyPrimary = RGB(71,71,71)
-    static let redPrimary = RGB(249,79,72)
-    static let normalTextColor = RGB(102, 102, 102)
-    static let darkGreen = RGB(62,136,122)
+    static let greyPrimary = #colorLiteral(red: 0.3493813574, green: 0.3493813574, blue: 0.3493813574, alpha: 1)
+    static let redPrimary =  #colorLiteral(red: 0.7928444743, green: 0.2171653211, blue: 0.3652344942, alpha: 1)
+    static let normalTextColor =  #colorLiteral(red: 0.4756370187, green: 0.4756369591, blue: 0.4756369591, alpha: 1)
+    static let darkGreen =  #colorLiteral(red: 0.2978984118, green: 0.5977677703, blue: 0.5521355271, alpha: 1)
+    static let selectTableView = #colorLiteral(red: 0.895850122, green: 0.895850122, blue: 0.895850122, alpha: 1)
     
     static func makeGradientLayer(size: CGSize, from: UIColor, to color: UIColor, type: GradientType) -> CAGradientLayer {
         let colors = [from.cgColor, color.cgColor]

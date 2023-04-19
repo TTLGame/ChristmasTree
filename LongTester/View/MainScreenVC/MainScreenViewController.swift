@@ -9,10 +9,12 @@ import UIKit
 import RealmSwift
 import RxSwift
 class MainScreenViewController: UIViewController {
-
+    
     @IBOutlet weak var headerBackGround: UIView!
     @IBOutlet weak var headerLbl: UILabel!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var menuBtn: UIButton!
+    
     let model = MainScreenViewModel()
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -24,13 +26,14 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setup(){
-//        headerView.addBottomShadow()
+        //        headerView.addBottomShadow()
         headerBackGround.addBottomShadow()
+        headerBackGround.backgroundColor = Color.redPrimary
         headerLbl.text = Language.localized("mainTitle")
         headerLbl.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
     }
-
+    
     private func bindToViewModel() {
         self.model.title.observe(on: MainScheduler.instance).subscribe{[weak self] value in
             guard let self = self else {return}
@@ -40,9 +43,8 @@ class MainScreenViewController: UIViewController {
         self.model.users.observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] item in
                 guard let self = self else {return}
-                print("APICALL \(item.count)")
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +53,7 @@ class MainScreenViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-   
+    
     func changeName(){
         model.getUserData()
         model.setData()
@@ -70,9 +72,15 @@ class MainScreenViewController: UIViewController {
     
     @IBAction func collectionBtnTapped(_ sender: Any) {
         print("Collection")
-//        AppDelegate.shared.rootViewController.show(.tableView)
+        //        AppDelegate.shared.rootViewController.show(.tableView)
         changeName()
     }
     
+    @IBAction func menuBtnPressed(_ sender: Any) {
+        //        print(revealViewController())
+        
+        let slideMenu = SlideMenuViewController()
+        self.present(slideMenu, animated: true)
+        
+    }
 }
-

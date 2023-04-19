@@ -17,3 +17,8 @@
 
 //Main View
 "mainTitle" = "Manage Location";
+
+//Hamburger Menu
+"logout" = "Log out";
+"hello" = "Hello, ";
+
