@@ -17,7 +17,7 @@ class MainScreenViewController: UIViewController {
     
     let model = MainScreenViewModel()
     private let disposeBag: DisposeBag = DisposeBag()
-    
+    private var slideMenu = SlideMenuView()
     override func viewDidLoad() {
         super.viewDidLoad()
         bindToViewModel()
@@ -31,6 +31,10 @@ class MainScreenViewController: UIViewController {
         headerBackGround.backgroundColor = Color.redPrimary
         headerLbl.text = Language.localized("mainTitle")
         headerLbl.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        
+        let slideMenu = SlideMenuView(frame: self.view.frame, baseVC: self)
+        self.slideMenu = slideMenu
+        self.view.addSubview(self.slideMenu)
         
     }
     
@@ -77,10 +81,8 @@ class MainScreenViewController: UIViewController {
     }
     
     @IBAction func menuBtnPressed(_ sender: Any) {
-        //        print(revealViewController())
-        
-        let slideMenu = SlideMenuViewController()
-        self.present(slideMenu, animated: true)
+        print("Long")
+        self.slideMenu.handleAction()
         
     }
 }

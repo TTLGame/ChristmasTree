@@ -15,6 +15,7 @@ protocol SubSlideMenuViewDelegate : AnyObject {
 
 class SubSlideMenuView : UIView {
     
+    @IBOutlet weak var imageBack: UIImageView!
     @IBOutlet weak var contentTblView: UITableView!
     @IBOutlet weak var logoutView: UIView!
     @IBOutlet weak var logoutLbl: UILabel!
@@ -50,7 +51,7 @@ class SubSlideMenuView : UIView {
         loadViewFromNib()
         logoutLbl.text = Language.localized("logout")
         helloLbl.text = Language.localized("hello")
-        
+        imageBack.image = UIImage(named: "logOut")
         logoutView.backgroundColor = Color.redPrimary
         headerView.backgroundColor = Color.redPrimary
         //Add gesture

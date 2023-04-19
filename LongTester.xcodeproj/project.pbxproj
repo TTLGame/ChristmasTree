@@ -59,11 +59,11 @@
 		FDA852C329EE786900A6357F /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852C029EE786900A6357F /* StoreManager.swift */; };
 		FDA852C529EE7B2A00A6357F /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852C429EE7B2A00A6357F /* Pages.swift */; };
 		FDA852C729EE7B4100A6357F /* AppConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852C629EE7B4100A6357F /* AppConfigModel.swift */; };
+		FDADC19D29EFFFD600803536 /* SlideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC19C29EFFFD600803536 /* SlideMenuView.swift */; };
+		FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC19E29EFFFDE00803536 /* SlideMenuView.xib */; };
 		FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */; };
 		FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCA2967DF2700FC0D68 /* Inline.swift */; };
 		FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */; };
-		FDDB485529EFAFB500D212A7 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB485329EFAFB500D212A7 /* SlideMenuViewController.swift */; };
-		FDDB485629EFAFB500D212A7 /* SlideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDB485429EFAFB500D212A7 /* SlideMenuViewController.xib */; };
 		FDDB485F29EFB01000D212A7 /* SlideMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB485D29EFB01000D212A7 /* SlideMenuViewCell.swift */; };
 		FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDB485E29EFB01000D212A7 /* SlideMenuViewCell.xib */; };
 		FDDB486229EFB0CB00D212A7 /* SubSlideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486129EFB0CB00D212A7 /* SubSlideMenuView.swift */; };
@@ -144,11 +144,11 @@
 		FDA852C029EE786900A6357F /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		FDA852C429EE7B2A00A6357F /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		FDA852C629EE7B4100A6357F /* AppConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigModel.swift; sourceTree = "<group>"; };
+		FDADC19C29EFFFD600803536 /* SlideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuView.swift; sourceTree = "<group>"; };
+		FDADC19E29EFFFDE00803536 /* SlideMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideMenuView.xib; sourceTree = "<group>"; };
 		FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		FDCB9FCA2967DF2700FC0D68 /* Inline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inline.swift; sourceTree = "<group>"; };
 		FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheels.swift; sourceTree = "<group>"; };
-		FDDB485329EFAFB500D212A7 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
-		FDDB485429EFAFB500D212A7 /* SlideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideMenuViewController.xib; sourceTree = "<group>"; };
 		FDDB485D29EFB01000D212A7 /* SlideMenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewCell.swift; sourceTree = "<group>"; };
 		FDDB485E29EFB01000D212A7 /* SlideMenuViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideMenuViewCell.xib; sourceTree = "<group>"; };
 		FDDB486129EFB0CB00D212A7 /* SubSlideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSlideMenuView.swift; sourceTree = "<group>"; };
@@ -503,6 +503,15 @@
 			path = RealmModels;
 			sourceTree = "<group>";
 		};
+		FDADC19B29EFFFC500803536 /* SlideMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				FDADC19C29EFFFD600803536 /* SlideMenuView.swift */,
+				FDADC19E29EFFFDE00803536 /* SlideMenuView.xib */,
+			);
+			path = SlideMenuView;
+			sourceTree = "<group>";
+		};
 		FDBBCB1A29B6DFDE0095162F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,19 +533,10 @@
 		FDDB485129EFAF7C00D212A7 /* SlideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				FDADC19B29EFFFC500803536 /* SlideMenuView */,
 				FDDB485729EFAFC000D212A7 /* SubSlideMenuView */,
-				FDDB485229EFAF9900D212A7 /* SlideMenuVC */,
 			);
 			path = SlideMenu;
-			sourceTree = "<group>";
-		};
-		FDDB485229EFAF9900D212A7 /* SlideMenuVC */ = {
-			isa = PBXGroup;
-			children = (
-				FDDB485329EFAFB500D212A7 /* SlideMenuViewController.swift */,
-				FDDB485429EFAFB500D212A7 /* SlideMenuViewController.xib */,
-			);
-			path = SlideMenuVC;
 			sourceTree = "<group>";
 		};
 		FDDB485729EFAFC000D212A7 /* SubSlideMenuView */ = {
@@ -683,12 +683,12 @@
 				FD4DF3D129ED981800AB6A50 /* TextFieldView.xib in Resources */,
 				FD8961A4295BF11D00C7BE20 /* LaunchScreen.storyboard in Resources */,
 				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
-				FDDB485629EFAFB500D212A7 /* SlideMenuViewController.xib in Resources */,
 				FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */,
 				FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */,
 				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
+				FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */,
 				FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */,
 				FD8961A1295BF11D00C7BE20 /* Assets.xcassets in Resources */,
 				FD8961AE295C1E5900C7BE20 /* MainScreenViewController.xib in Resources */,
@@ -765,6 +765,7 @@
 				FD564B8729656B2000A527ED /* ProviderAPIWithAccessToken.swift in Sources */,
 				FD564B8929656C7900A527ED /* Prefs.swift in Sources */,
 				FD4DF3CF29ED980E00AB6A50 /* TextFieldView.swift in Sources */,
+				FDADC19D29EFFFD600803536 /* SlideMenuView.swift in Sources */,
 				FDF14B30295C311500BF079F /* RootViewController.swift in Sources */,
 				FDDB486629EFC80F00D212A7 /* SlideMenuViewModel.swift in Sources */,
 				FDDB485F29EFB01000D212A7 /* SlideMenuViewCell.swift in Sources */,
@@ -786,7 +787,6 @@
 				FD564B95296584A500A527ED /* AppConfig.swift in Sources */,
 				FDF300C529E3D0880084562A /* Decoder.swift in Sources */,
 				FD5765AC2963D206005969BE /* Array.swift in Sources */,
-				FDDB485529EFAFB500D212A7 /* SlideMenuViewController.swift in Sources */,
 				FD5765AA2963D17F005969BE /* ProviderType.swift in Sources */,
 				FD564B752965648D00A527ED /* TableScreenCellViewModel.swift in Sources */,
 				FD89619A295BF11A00C7BE20 /* SceneDelegate.swift in Sources */,
