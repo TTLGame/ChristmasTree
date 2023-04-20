@@ -19,20 +19,26 @@ class MainScreenViewModel : NSObject {
     private(set) var rootViewModel: RootViewModel
     let limit: Int = 50
     
-    private let randomPic = ["PyramidBG", "NatureBG", "ShipBG", "SnowBG"]
+    private var randomPic = [String]()
     let disposeBag = DisposeBag()
     init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
         self.api = api
         self.rootViewModel = rootViewModel
         super.init()
+        addAllEnumType()
         bindToEvents()
     }
     
+    func addAllEnumType(){
+        for type in backbroundType.allCases {
+            randomPic.append(type.rawValue)
+        }
+    }
     func bindToEvents() {
         users.map {users in
             users.map {user in
                 return MainScreenCellViewModel(logo: user.avatar,
-                                               background: backbroundType(rawValue: self.randomPic[Int.random(in: 0..<4)]),
+                                               background: backbroundType(rawValue: self.randomPic[Int.random(in: 0..<self.randomPic.count)]),
                                                name: (user.firstName ?? "") + " " + (user.lastName ?? ""),
                                                address: user.email)
             }
@@ -40,6 +46,7 @@ class MainScreenViewModel : NSObject {
     }
     
     func getUserData() {
+        var tempUser = [User]()
         rootViewModel.handleProgress(true)
         api.request(MultiTarget(MainScreenTarget.getUser(page: 1)))
             .map(Pages.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
@@ -48,9 +55,27 @@ class MainScreenViewModel : NSObject {
                 switch event {
                 case .success(let value):
                     if let value = value.data {
-                        self.users.accept(value)
-                        self.rootViewModel.handleProgress(false)
-                        SVProgressHUD.dismiss()
+                        tempUser.append(contentsOf: value)
+                        self.api.request(MultiTarget(MainScreenTarget.getUser(page: 2)))
+                            .map(Pages.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
+                            .subscribe {[weak self] event in
+                                guard let self = self else { return }
+                                switch event {
+                                case .success(let value):
+                                    if let value = value.data {
+                                        tempUser.append(contentsOf: value)
+                                        self.users.accept(tempUser)
+                                        self.rootViewModel.handleProgress(false)
+                                        SVProgressHUD.dismiss()
+                                    }
+                                case .failure(_):
+                                    break
+                                }
+                            }.disposed(by: self.disposeBag)
+                        
+//                        self.users.accept(value)
+//                        self.rootViewModel.handleProgress(false)
+//                        SVProgressHUD.dismiss()
                     }
                 case .failure(_):
                     break

@@ -28,7 +28,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6c-8w-Qan" userLabel="Info">
                                 <rect key="frame" x="0.0" y="0.0" width="275" height="60"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PyramidBG" translatesAutoresizingMaskIntoConstraints="NO" id="Xqp-Se-NWp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachBG" translatesAutoresizingMaskIntoConstraints="NO" id="Xqp-Se-NWp">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="60"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9X-Dh-XPx" userLabel="Circle View">
@@ -48,10 +48,10 @@
                                             <constraint firstItem="tGv-gO-nms" firstAttribute="top" secondItem="E9X-Dh-XPx" secondAttribute="top" id="s5L-1Q-5iC"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmf-6Z-PLD" userLabel="TextLbl">
-                                        <rect key="frame" x="222.66666666666666" y="20.333333333333336" width="42.333333333333343" height="19.333333333333336"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label LabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmf-6Z-PLD" userLabel="TextLbl">
+                                        <rect key="frame" x="96.333333333333329" y="11" width="168.66666666666669" height="38.333333333333336"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -133,6 +133,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="BeachBG" width="640" height="400"/>
         <image name="PyramidBG" width="171.33332824707031" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

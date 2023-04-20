@@ -8,17 +8,18 @@
 import Foundation
 import UIKit
 
-enum backbroundType : String {
+enum backbroundType : String, CaseIterable {
     case pyramid = "PyramidBG"
     case nature = "NatureBG"
     case ship = "ShipBG"
     case snow = "SnowBG"
+    case beach = "BeachBG"
     var font : UIColor {
         switch self {
-        case .nature, .ship:
+        case .nature, .ship, .pyramid, .snow:
             return .white
-        case .pyramid, .snow:
-            return .white
+        case .beach:
+            return .black
             
         }
     }
