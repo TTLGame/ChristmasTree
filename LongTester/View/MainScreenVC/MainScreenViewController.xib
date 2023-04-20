@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController" customModule="LongTester" customModuleProvider="target">
             <connections>
+                <outlet property="addressTblView" destination="LQ6-Lz-s9w" id="Q1r-Yq-zsd"/>
                 <outlet property="headerBackGround" destination="ztI-BZ-YO8" id="cOo-Vf-RiJ"/>
                 <outlet property="headerLbl" destination="Qb4-Ti-gsu" id="4tW-70-Gxf"/>
                 <outlet property="headerView" destination="uuB-48-iTa" id="jdC-Av-x4s"/>
@@ -79,43 +80,24 @@
                         <constraint firstAttribute="height" constant="60" id="t8U-sb-FUj"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLn-Bh-6lC">
-                    <rect key="frame" x="50" y="748" width="293" height="50"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZR-89-9ap" userLabel="Table">
-                            <rect key="frame" x="0.0" y="0.0" width="146.66666666666666" height="50"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Table"/>
-                            <connections>
-                                <action selector="tableBtnTapped:" destination="-1" eventType="touchUpInside" id="POq-F3-gW0"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSP-Bn-iKu" userLabel="Collection">
-                            <rect key="frame" x="146.66666666666663" y="0.0" width="146.33333333333337" height="50"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Collection"/>
-                            <connections>
-                                <action selector="collectionBtnTapped:" destination="-1" eventType="touchUpInside" id="Lbs-eX-iep"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="QXs-xJ-A55"/>
-                    </constraints>
-                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LQ6-Lz-s9w">
+                    <rect key="frame" x="0.0" y="119" width="393" height="699"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="gKN-ch-fOj"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="HLn-Bh-6lC" firstAttribute="leading" secondItem="gKN-ch-fOj" secondAttribute="leading" constant="50" id="1xh-8J-kU2"/>
-                <constraint firstItem="gKN-ch-fOj" firstAttribute="bottom" secondItem="HLn-Bh-6lC" secondAttribute="bottom" constant="20" id="2tp-df-PkZ"/>
                 <constraint firstItem="ztI-BZ-YO8" firstAttribute="leading" secondItem="8y9-jB-euk" secondAttribute="leading" id="8IG-s7-ZOA"/>
                 <constraint firstItem="uuB-48-iTa" firstAttribute="top" secondItem="gKN-ch-fOj" secondAttribute="top" id="9Qr-OJ-TqR"/>
                 <constraint firstItem="uuB-48-iTa" firstAttribute="leading" secondItem="gKN-ch-fOj" secondAttribute="leading" id="F1b-wc-812"/>
+                <constraint firstItem="gKN-ch-fOj" firstAttribute="bottom" secondItem="LQ6-Lz-s9w" secondAttribute="bottom" id="HEm-ZK-EIh"/>
                 <constraint firstItem="ztI-BZ-YO8" firstAttribute="top" secondItem="8y9-jB-euk" secondAttribute="top" id="Hcm-DC-gQn"/>
                 <constraint firstAttribute="trailing" secondItem="ztI-BZ-YO8" secondAttribute="trailing" id="Ltr-jb-rXe"/>
                 <constraint firstItem="ztI-BZ-YO8" firstAttribute="bottom" secondItem="uuB-48-iTa" secondAttribute="bottom" id="dBT-sX-ubI"/>
-                <constraint firstItem="gKN-ch-fOj" firstAttribute="trailing" secondItem="HLn-Bh-6lC" secondAttribute="trailing" constant="50" id="qOZ-rL-dFE"/>
+                <constraint firstItem="LQ6-Lz-s9w" firstAttribute="top" secondItem="ztI-BZ-YO8" secondAttribute="bottom" id="nda-7q-SYW"/>
+                <constraint firstItem="gKN-ch-fOj" firstAttribute="trailing" secondItem="LQ6-Lz-s9w" secondAttribute="trailing" id="rbN-7F-ESD"/>
+                <constraint firstItem="LQ6-Lz-s9w" firstAttribute="leading" secondItem="gKN-ch-fOj" secondAttribute="leading" id="sqS-K6-Tzd"/>
                 <constraint firstItem="gKN-ch-fOj" firstAttribute="trailing" secondItem="uuB-48-iTa" secondAttribute="trailing" id="teG-LQ-LqC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

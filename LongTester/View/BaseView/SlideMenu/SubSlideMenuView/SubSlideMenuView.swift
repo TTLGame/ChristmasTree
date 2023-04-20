@@ -78,9 +78,13 @@ class SubSlideMenuView : UIView {
     }
     
     private func addTapGesture(){
-        let uiTapGesture = UITapGestureRecognizer(target: self, action: #selector(logout))
+        let uiTapGesture = UITapGestureRecognizer(target: self, action: #selector(pressLogout))
+        let uiLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(selectLogout(_:)))
+                
+        uiLongGesture.minimumPressDuration = 0.3
         logoutView.isUserInteractionEnabled = true
         logoutView.addGestureRecognizer(uiTapGesture)
+        logoutView.addGestureRecognizer(uiLongGesture)
     }
     
     private func initTableView(){
@@ -97,9 +101,28 @@ class SubSlideMenuView : UIView {
         //        }
     }
     
-    @objc func logout() {
+    private func logout(){
         self.delegate?.selectedCell(-1)
         AppDelegate.shared.rootViewController.show(.login)
+    }
+    @objc func pressLogout() {
+        logout()
+    }
+    @objc func selectLogout(_ gestureRecognizer: UILongPressGestureRecognizer!){
+        if (gestureRecognizer.state == .began){
+            logoutView.backgroundColor = Color.selectLogout
+            
+        }
+        else if (gestureRecognizer.state == .ended){
+            let size = gestureRecognizer.location(in: logoutView)
+            if (size.y < 0 || size.y > 40.0 ||
+                size.x < 0 || size.x > self.frame.size.width){
+                logoutView.backgroundColor = Color.redPrimary
+            }
+            else {
+                logout()
+            }
+        }
     }
 }
 

@@ -10,6 +10,8 @@ import UIKit
 
 class SlideMenuView : UIView {
     
+    @IBOutlet var _contentView: UIView!
+    @IBOutlet weak var slideMenuLeadingContraint: NSLayoutConstraint!
     
     @IBOutlet weak var sideMenuWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var sideMenuView: SubSlideMenuView!
@@ -18,7 +20,7 @@ class SlideMenuView : UIView {
     private let paddingForRotation: CGFloat = 150
     private var isExpanded: Bool = false
     private var sideMenuShadowView: UIView!
-    
+    private var maxSubSlideMenuWidth : CGFloat = 0
     private var baseVC = UIViewController()
     // Expand/Collapse the side menu by changing trailing's constant
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
@@ -51,14 +53,15 @@ class SlideMenuView : UIView {
         self.backgroundColor = .clear
         self.addLeftShadow()
         
+        
         self.sideMenuWidthConstraint.constant = 0
         self.backgroundView.isHidden = true
         self.backgroundView.isUserInteractionEnabled = false
         self.frame.size.width = 0
         
-        
         // Side Menu
         DispatchQueue.main.async {
+            self.maxSubSlideMenuWidth = self.baseVC.view.frame.size.width * 0.7
             self.sideMenuView.defaultHighlightedCell = 0 // Default Highlighted Cell
             self.sideMenuView.delegate = self
            
@@ -67,24 +70,12 @@ class SlideMenuView : UIView {
             self.backgroundView.addGestureRecognizer(tapGesture)
             
         }
-    }
-    func handleAction(){
-        if (isExpanded) {
-            hideMenu()
-        }
-        else {
-            openMenu()
-        }
-        isExpanded = !isExpanded
-    }
-
-    @objc func viewTapped(){
-        handleAction()
+        
+        addGesture()
     }
     
     private func hideMenu(){
-        print("self.frame.size.height \(self.frame.size.height)")
-        print("baseVC.view.frame.size.height \(baseVC.view.frame.size.height)")
+        isExpanded = false
         print("-> Slide Menu : HIDE")
         UIView.animate(withDuration: 0.2) {
             self.sideMenuWidthConstraint.constant = 0
@@ -100,10 +91,11 @@ class SlideMenuView : UIView {
     }
     
     private func openMenu(){
+        isExpanded = true
         print("-> Slide Menu : OPEN")
         UIView.animate(withDuration: 0.2) {
             self.frame.size.width = self.baseVC.view.frame.size.width
-            self.sideMenuWidthConstraint.constant = self.baseVC.view.frame.size.width * 0.7
+            self.sideMenuWidthConstraint.constant = self.maxSubSlideMenuWidth
             self.sideMenuView.isHidden = false
             self.backgroundView.isHidden = false
             
@@ -116,11 +108,61 @@ class SlideMenuView : UIView {
             
         }
     }
+    
+    private func addGesture(){
+        let uiPanGestureContainerSwipeHorizontally = UIPanGestureRecognizer(target: self, action: #selector(vContainerOnScroll(_:)))
+        uiPanGestureContainerSwipeHorizontally.delaysTouchesBegan = false
+        uiPanGestureContainerSwipeHorizontally.delaysTouchesEnded = false
+        _contentView.addGestureRecognizer(uiPanGestureContainerSwipeHorizontally)
+    }
+    
+    @objc func viewTapped(){
+        handleAction()
+    }
+    
+    @objc func vContainerOnScroll(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: self._contentView)
+        let newPosition = sideMenuWidthConstraint.constant + (translation.x/20)
+        
+        switch sender.state {
+        case .changed:
+            let a = 123
+            sideMenuWidthConstraint.constant = newPosition > maxSubSlideMenuWidth ? maxSubSlideMenuWidth : newPosition < 0 ? 0 : newPosition
+        case .ended:
+            if ( newPosition > maxSubSlideMenuWidth / 2) {
+                self.openMenu()
+            }
+            else {
+                self.hideMenu()
+            }
+        default:
+            break
+        }
+        print("newPosition \(newPosition)")
+    }
+}
+
+///CALLER
+extension SlideMenuView {
+    func handleAction(){
+        isExpanded ? hideMenu() : openMenu()
+    }
 }
 
 extension SlideMenuView : SubSlideMenuViewDelegate {
     func selectedCell(_ row: Int) {
         print(row)
+        switch row {
+        case 0:
+            self.baseVC.pushNavigationView(TableScreenViewController(), "Long")
+        case 1:
+            self.baseVC.pushNavigationView(TableScreenViewController(), "Long")
+        case 2:
+            self.baseVC.pushNavigationView(TableScreenViewController(), "Long")
+        default:
+            break
+        }
+    
         handleAction()
     }
 }

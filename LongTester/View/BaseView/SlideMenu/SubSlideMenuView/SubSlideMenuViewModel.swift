@@ -18,7 +18,7 @@ class SubSlideMenuViewModel : NSObject {
     let disposeBag = DisposeBag()
     
     var menu: [SlideMenuViewModel] = [
-        SlideMenuViewModel(icon: UIImage(systemName: "house.fill")!, title: "Home"),
+        SlideMenuViewModel(icon: UIImage(systemName: "house.fill")!, title: "TableView"),
         SlideMenuViewModel(icon: UIImage(systemName: "music.note")!, title: "Music"),
         SlideMenuViewModel(icon: UIImage(systemName: "film.fill")!, title: "Movies"),
         SlideMenuViewModel(icon: UIImage(systemName: "book.fill")!, title: "Books"),
