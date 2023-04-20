@@ -15,6 +15,11 @@ protocol LocalizedAppError {
 /**
  Error when calling api
  */
+
+enum ReadError: Error{
+    case invalidURL
+}
+
 enum APIError: Error {
     case ignore(_ error: Error)
     case accessTokenExpired(_ error: Error)

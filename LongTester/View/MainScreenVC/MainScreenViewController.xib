@@ -80,13 +80,14 @@
                         <constraint firstAttribute="height" constant="60" id="t8U-sb-FUj"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LQ6-Lz-s9w">
-                    <rect key="frame" x="0.0" y="119" width="393" height="699"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LQ6-Lz-s9w">
+                    <rect key="frame" x="10" y="119" width="373" height="699"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="gKN-ch-fOj"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ztI-BZ-YO8" firstAttribute="leading" secondItem="8y9-jB-euk" secondAttribute="leading" id="8IG-s7-ZOA"/>
                 <constraint firstItem="uuB-48-iTa" firstAttribute="top" secondItem="gKN-ch-fOj" secondAttribute="top" id="9Qr-OJ-TqR"/>
@@ -96,8 +97,8 @@
                 <constraint firstAttribute="trailing" secondItem="ztI-BZ-YO8" secondAttribute="trailing" id="Ltr-jb-rXe"/>
                 <constraint firstItem="ztI-BZ-YO8" firstAttribute="bottom" secondItem="uuB-48-iTa" secondAttribute="bottom" id="dBT-sX-ubI"/>
                 <constraint firstItem="LQ6-Lz-s9w" firstAttribute="top" secondItem="ztI-BZ-YO8" secondAttribute="bottom" id="nda-7q-SYW"/>
-                <constraint firstItem="gKN-ch-fOj" firstAttribute="trailing" secondItem="LQ6-Lz-s9w" secondAttribute="trailing" id="rbN-7F-ESD"/>
-                <constraint firstItem="LQ6-Lz-s9w" firstAttribute="leading" secondItem="gKN-ch-fOj" secondAttribute="leading" id="sqS-K6-Tzd"/>
+                <constraint firstItem="gKN-ch-fOj" firstAttribute="trailing" secondItem="LQ6-Lz-s9w" secondAttribute="trailing" constant="10" id="rbN-7F-ESD"/>
+                <constraint firstItem="LQ6-Lz-s9w" firstAttribute="leading" secondItem="gKN-ch-fOj" secondAttribute="leading" constant="10" id="sqS-K6-Tzd"/>
                 <constraint firstItem="gKN-ch-fOj" firstAttribute="trailing" secondItem="uuB-48-iTa" secondAttribute="trailing" id="teG-LQ-LqC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -108,9 +109,6 @@
         <image name="hamburgerMenu" width="341.33334350585938" height="341.33334350585938"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

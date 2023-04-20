@@ -49,10 +49,11 @@ class SlideMenuView : UIView {
     }
     func commonInit(){
         loadViewFromNib()
-       
+        hideMenu()
+        self.sideMenuView.isHidden = true
+        
         self.backgroundColor = .clear
         self.addLeftShadow()
-        
         
         self.sideMenuWidthConstraint.constant = 0
         self.backgroundView.isHidden = true
@@ -126,7 +127,6 @@ class SlideMenuView : UIView {
         
         switch sender.state {
         case .changed:
-            let a = 123
             sideMenuWidthConstraint.constant = newPosition > maxSubSlideMenuWidth ? maxSubSlideMenuWidth : newPosition < 0 ? 0 : newPosition
         case .ended:
             if ( newPosition > maxSubSlideMenuWidth / 2) {
@@ -138,7 +138,6 @@ class SlideMenuView : UIView {
         default:
             break
         }
-        print("newPosition \(newPosition)")
     }
 }
 

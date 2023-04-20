@@ -42,17 +42,13 @@ class MainScreenViewController: UIViewController {
     }
     
     private func bindToViewModel() {
-//        self.model.title.observe(on: MainScheduler.instance).subscribe{[weak self] value in
-//            guard let self = self else {return}
-//        }
-//        .disposed(by: disposeBag)
-//        
-//        self.model.users.observe(on: MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] item in
-//                guard let self = self else {return}
-//            })
-//            .disposed(by: disposeBag)
-//        
+        self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let self = self else {return}
+            self.addressTblView.reloadData()
+            
+        }).disposed(by: disposeBag)
+        
+        viewModel.getUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,12 +59,10 @@ class MainScreenViewController: UIViewController {
     }
     
     private func setupTableView(){
-        self.addressTblView.register(UINib(nibName: String(describing: TableScreenCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TableScreenCell.self))
+        self.addressTblView.register(UINib(nibName: String(describing: MainScreenCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MainScreenCell.self))
         self.addressTblView.delegate = self
-        self.addressTblView.dataSource = self
-        
+        self.addressTblView.dataSource = self        
     }
-    
     
     @IBAction func menuBtnPressed(_ sender: Any) {
         self.slideMenu.handleAction()
@@ -78,28 +72,49 @@ class MainScreenViewController: UIViewController {
 
 extension MainScreenViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let bg = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 10))
+        bg.backgroundColor = .clear
+        return bg
+    }
+    
 }
 
 extension MainScreenViewController : UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        viewModel.cellViewModels.value.count
 //        self.viewModel.cellViewModels.value.count
     }
     
+   
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueCell(TableScreenCell.self)
-//        return cell
+        let cell: MainScreenCell! = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: MainScreenCell.self),
+            for: indexPath) as? MainScreenCell
+
+        cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
         
-        let cell: TableScreenCell! = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: TableScreenCell.self),
-            for: indexPath) as? TableScreenCell
+        // Highlighted color
+        let myCustomSelectionColorView = UIView()
+        myCustomSelectionColorView.backgroundColor = .clear
+        cell.selectedBackgroundView = myCustomSelectionColorView
         
-//        cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
-//        cell.renderColor(color: currentColor, pressed : pressed)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Select \(indexPath.row)")
+    }
     
 }

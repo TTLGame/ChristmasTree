@@ -61,9 +61,10 @@
 		FDA852C729EE7B4100A6357F /* AppConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA852C629EE7B4100A6357F /* AppConfigModel.swift */; };
 		FDADC19D29EFFFD600803536 /* SlideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC19C29EFFFD600803536 /* SlideMenuView.swift */; };
 		FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC19E29EFFFDE00803536 /* SlideMenuView.xib */; };
-		FDADC1A229F122ED00803536 /* MainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1A129F122ED00803536 /* MainScreenCell.swift */; };
-		FDADC1A529F1230100803536 /* MainScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC1A429F1230100803536 /* MainScreenCell.xib */; };
 		FDADC1A729F1230B00803536 /* MainScreenCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1A629F1230B00803536 /* MainScreenCellViewModel.swift */; };
+		FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1A829F1319900803536 /* MainScreenCell.swift */; };
+		FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC1A929F1319900803536 /* MainScreenCell.xib */; };
+		FDADC1AD29F1815D00803536 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1AC29F1815D00803536 /* RootViewModel.swift */; };
 		FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */; };
 		FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCA2967DF2700FC0D68 /* Inline.swift */; };
 		FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */; };
@@ -149,9 +150,10 @@
 		FDA852C629EE7B4100A6357F /* AppConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigModel.swift; sourceTree = "<group>"; };
 		FDADC19C29EFFFD600803536 /* SlideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuView.swift; sourceTree = "<group>"; };
 		FDADC19E29EFFFDE00803536 /* SlideMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideMenuView.xib; sourceTree = "<group>"; };
-		FDADC1A129F122ED00803536 /* MainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCell.swift; sourceTree = "<group>"; };
-		FDADC1A429F1230100803536 /* MainScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenCell.xib; sourceTree = "<group>"; };
 		FDADC1A629F1230B00803536 /* MainScreenCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCellViewModel.swift; sourceTree = "<group>"; };
+		FDADC1A829F1319900803536 /* MainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCell.swift; sourceTree = "<group>"; };
+		FDADC1A929F1319900803536 /* MainScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenCell.xib; sourceTree = "<group>"; };
+		FDADC1AC29F1815D00803536 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		FDCB9FCA2967DF2700FC0D68 /* Inline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inline.swift; sourceTree = "<group>"; };
 		FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheels.swift; sourceTree = "<group>"; };
@@ -454,8 +456,8 @@
 		FD8961AB295C1D3900C7BE20 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FDADC1AE29F1818700803536 /* RootView */,
 				FD4DF3C229ED929300AB6A50 /* BaseView */,
-				FDF14B2F295C311500BF079F /* RootViewController.swift */,
 				FD4DF3C129ED927D00AB6A50 /* LoginVC */,
 				FD3B1DD829DAABDF00448F99 /* CropImage */,
 				FDBBCB1A29B6DFDE0095162F /* SwiftUI */,
@@ -522,11 +524,20 @@
 		FDADC1A029F122D800803536 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				FDADC1A129F122ED00803536 /* MainScreenCell.swift */,
-				FDADC1A429F1230100803536 /* MainScreenCell.xib */,
 				FDADC1A629F1230B00803536 /* MainScreenCellViewModel.swift */,
+				FDADC1A829F1319900803536 /* MainScreenCell.swift */,
+				FDADC1A929F1319900803536 /* MainScreenCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		FDADC1AE29F1818700803536 /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				FDF14B2F295C311500BF079F /* RootViewController.swift */,
+				FDADC1AC29F1815D00803536 /* RootViewModel.swift */,
+			);
+			path = RootView;
 			sourceTree = "<group>";
 		};
 		FDBBCB1A29B6DFDE0095162F /* SwiftUI */ = {
@@ -705,7 +716,7 @@
 				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
-				FDADC1A529F1230100803536 /* MainScreenCell.xib in Resources */,
+				FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */,
 				FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */,
 				FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */,
 				FD8961A1295BF11D00C7BE20 /* Assets.xcassets in Resources */,
@@ -763,7 +774,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDADC1A229F122ED00803536 /* MainScreenCell.swift in Sources */,
 				FD48DBE729E68FC800264497 /* UIView.swift in Sources */,
 				FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */,
 				FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */,
@@ -794,6 +804,7 @@
 				FDA852C329EE786900A6357F /* StoreManager.swift in Sources */,
 				FD564B79296567AB00A527ED /* DefaultAlamofireManager.swift in Sources */,
 				FD4DF3C829ED92CD00AB6A50 /* LoginViewModel.swift in Sources */,
+				FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */,
 				FD564B8529656A2A00A527ED /* APIErrorProcessPlugin.swift in Sources */,
 				FDA852C529EE7B2A00A6357F /* Pages.swift in Sources */,
 				FD564B7B296567D700A527ED /* Provider.swift in Sources */,
@@ -810,6 +821,7 @@
 				FD5765AA2963D17F005969BE /* ProviderType.swift in Sources */,
 				FD564B752965648D00A527ED /* TableScreenCellViewModel.swift in Sources */,
 				FD89619A295BF11A00C7BE20 /* SceneDelegate.swift in Sources */,
+				FDADC1AD29F1815D00803536 /* RootViewModel.swift in Sources */,
 				FDDB486229EFB0CB00D212A7 /* SubSlideMenuView.swift in Sources */,
 				FD564B902965769100A527ED /* Language.swift in Sources */,
 				FD4DF3CB29ED92E900AB6A50 /* LoginViewController.swift in Sources */,

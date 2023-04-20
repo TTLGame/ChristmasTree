@@ -12,6 +12,8 @@ pod 'SnapKit'
 pod 'RealmSwift', '~>10'
 pod 'IQKeyboardManagerSwift'
 pod 'FLEX'
+pod 'SDWebImage'
+pod 'SVProgressHUD'
   # Pods for LongTester
 
 end

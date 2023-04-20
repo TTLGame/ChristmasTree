@@ -20,8 +20,9 @@ struct Color {
     static let redPrimary =  #colorLiteral(red: 0.7928444743, green: 0.2171653211, blue: 0.3652344942, alpha: 1)
     static let normalTextColor =  #colorLiteral(red: 0.4756370187, green: 0.4756369591, blue: 0.4756369591, alpha: 1)
     static let darkGreen =  #colorLiteral(red: 0.2978984118, green: 0.5977677703, blue: 0.5521355271, alpha: 1)
-    static let selectTableView = #colorLiteral(red: 0.895850122, green: 0.895850122, blue: 0.895850122, alpha: 1)
+    static let selectTableView = #colorLiteral(red: 0.8941176471, green: 0.895850122, blue: 0.895850122, alpha: 1)
     static let selectLogout = #colorLiteral(red: 0.5147323608, green: 0.1563093662, blue: 0.257383287, alpha: 1)
+    static let viewDefaultColor = #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1)
     
     static func makeGradientLayer(size: CGSize, from: UIColor, to color: UIColor, type: GradientType) -> CAGradientLayer {
         let colors = [from.cgColor, color.cgColor]

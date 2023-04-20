@@ -123,8 +123,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-8Z-Tyf" userLabel="Circle View">
                                             <rect key="frame" x="137.66666666666666" y="215" width="117.66666666666666" height="118"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIconForLauch" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-Mq-5D1">
-                                                    <rect key="frame" x="29.333333333333343" y="29.333333333333314" width="59" height="59"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PyramidBG" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-Mq-5D1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="118"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="KWa-Mq-5D1" secondAttribute="height" multiplier="1:1" id="YT8-4W-LqH"/>
                                                     </constraints>
@@ -132,7 +132,7 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstItem="KWa-Mq-5D1" firstAttribute="width" secondItem="xjO-8Z-Tyf" secondAttribute="width" multiplier="0.5" id="ER3-ek-yIK"/>
+                                                <constraint firstItem="KWa-Mq-5D1" firstAttribute="width" secondItem="xjO-8Z-Tyf" secondAttribute="width" id="ER3-ek-yIK"/>
                                                 <constraint firstItem="KWa-Mq-5D1" firstAttribute="centerX" secondItem="xjO-8Z-Tyf" secondAttribute="centerX" id="IER-CT-n1B"/>
                                                 <constraint firstAttribute="width" secondItem="xjO-8Z-Tyf" secondAttribute="height" multiplier="1:1" id="g4S-hX-gN8"/>
                                                 <constraint firstItem="KWa-Mq-5D1" firstAttribute="centerY" secondItem="xjO-8Z-Tyf" secondAttribute="centerY" id="nJO-r0-PC0"/>
@@ -200,7 +200,7 @@
         </view>
     </objects>
     <resources>
-        <image name="appIconForLauch" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="PyramidBG" width="204" height="123.66666412353516"/>
         <image name="loginHeader" width="130" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
