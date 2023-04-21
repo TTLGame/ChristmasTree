@@ -65,6 +65,12 @@
 		FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1A829F1319900803536 /* MainScreenCell.swift */; };
 		FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC1A929F1319900803536 /* MainScreenCell.xib */; };
 		FDADC1AD29F1815D00803536 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1AC29F1815D00803536 /* RootViewModel.swift */; };
+		FDADC1B129F25FA300803536 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1B029F25FA300803536 /* AlertView.swift */; };
+		FDADC1B329F2608500803536 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1B229F2608500803536 /* AlertViewModel.swift */; };
+		FDADC1B529F2610700803536 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1B429F2610700803536 /* AlertModel.swift */; };
+		FDADC1B729F2615A00803536 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1B629F2615A00803536 /* AlertBuilder.swift */; };
+		FDADC1BB29F262CE00803536 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1BA29F262CE00803536 /* BaseViewController.swift */; };
+		FDADC1BD29F2642C00803536 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1BC29F2642C00803536 /* BaseViewModel.swift */; };
 		FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */; };
 		FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCA2967DF2700FC0D68 /* Inline.swift */; };
 		FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */; };
@@ -154,6 +160,12 @@
 		FDADC1A829F1319900803536 /* MainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCell.swift; sourceTree = "<group>"; };
 		FDADC1A929F1319900803536 /* MainScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenCell.xib; sourceTree = "<group>"; };
 		FDADC1AC29F1815D00803536 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		FDADC1B029F25FA300803536 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		FDADC1B229F2608500803536 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
+		FDADC1B429F2610700803536 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		FDADC1B629F2615A00803536 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		FDADC1BA29F262CE00803536 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FDADC1BC29F2642C00803536 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		FDCB9FCA2967DF2700FC0D68 /* Inline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inline.swift; sourceTree = "<group>"; };
 		FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheels.swift; sourceTree = "<group>"; };
@@ -248,6 +260,7 @@
 		FD4DF3C229ED929300AB6A50 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				FDADC1AF29F25F8000803536 /* AlertView */,
 				FDDB485129EFAF7C00D212A7 /* SlideMenu */,
 				FDA852B929EE780B00A6357F /* CustomSwitch */,
 				FD4DF3CD29ED97F000AB6A50 /* TextFieldView */,
@@ -536,8 +549,21 @@
 			children = (
 				FDF14B2F295C311500BF079F /* RootViewController.swift */,
 				FDADC1AC29F1815D00803536 /* RootViewModel.swift */,
+				FDADC1BA29F262CE00803536 /* BaseViewController.swift */,
+				FDADC1BC29F2642C00803536 /* BaseViewModel.swift */,
 			);
 			path = RootView;
+			sourceTree = "<group>";
+		};
+		FDADC1AF29F25F8000803536 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				FDADC1B029F25FA300803536 /* AlertView.swift */,
+				FDADC1B229F2608500803536 /* AlertViewModel.swift */,
+				FDADC1B429F2610700803536 /* AlertModel.swift */,
+				FDADC1B629F2615A00803536 /* AlertBuilder.swift */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 		FDBBCB1A29B6DFDE0095162F /* SwiftUI */ = {
@@ -779,6 +805,8 @@
 				FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */,
 				FD564B972965855200A527ED /* String.swift in Sources */,
 				FDA852C229EE786900A6357F /* AppConfigRealmModel.swift in Sources */,
+				FDADC1B129F25FA300803536 /* AlertView.swift in Sources */,
+				FDADC1B529F2610700803536 /* AlertModel.swift in Sources */,
 				FDA852C729EE7B4100A6357F /* AppConfigModel.swift in Sources */,
 				FD564B7029655D8600A527ED /* TableScreenCell.swift in Sources */,
 				FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */,
@@ -817,6 +845,8 @@
 				FD564B95296584A500A527ED /* AppConfig.swift in Sources */,
 				FDADC1A729F1230B00803536 /* MainScreenCellViewModel.swift in Sources */,
 				FDF300C529E3D0880084562A /* Decoder.swift in Sources */,
+				FDADC1BB29F262CE00803536 /* BaseViewController.swift in Sources */,
+				FDADC1BD29F2642C00803536 /* BaseViewModel.swift in Sources */,
 				FD5765AC2963D206005969BE /* Array.swift in Sources */,
 				FD5765AA2963D17F005969BE /* ProviderType.swift in Sources */,
 				FD564B752965648D00A527ED /* TableScreenCellViewModel.swift in Sources */,
@@ -826,11 +856,13 @@
 				FD564B902965769100A527ED /* Language.swift in Sources */,
 				FD4DF3CB29ED92E900AB6A50 /* LoginViewController.swift in Sources */,
 				FD564B73296561FE00A527ED /* UITableView.swift in Sources */,
+				FDADC1B729F2615A00803536 /* AlertBuilder.swift in Sources */,
 				FD57659E2963CDB3005969BE /* Constaint.swift in Sources */,
 				FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */,
 				FDF300C129E3CB0E0084562A /* MainScreenTarget.swift in Sources */,
 				FD564B772965675400A527ED /* ProviderAPIBasic.swift in Sources */,
 				FD57659C2963CD9D005969BE /* Color.swift in Sources */,
+				FDADC1B329F2608500803536 /* AlertViewModel.swift in Sources */,
 				FD564B82296568E300A527ED /* APIError.swift in Sources */,
 				FDF300BE29E3C99A0084562A /* Realm.swift in Sources */,
 			);

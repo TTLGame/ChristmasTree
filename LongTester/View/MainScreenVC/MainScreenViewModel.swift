@@ -89,5 +89,10 @@ class MainScreenViewModel : NSObject {
                 }
             }.disposed(by: disposeBag)
     }
+    
+    func handlePressData(index : IndexPath){
+        print("Going here")
+        rootViewModel.alertModel.accept(AlertModel(message: "Fail"))
+    }
 }
 

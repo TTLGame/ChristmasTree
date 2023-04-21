@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 import RxSwift
-class MainScreenViewController: UIViewController {
+class MainScreenViewController: BaseViewController {
     
     @IBOutlet weak var addressTblView: UITableView!
     @IBOutlet weak var headerBackGround: UIView!
@@ -16,11 +16,16 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var menuBtn: UIButton!
     
-    let viewModel = MainScreenViewModel()
-    private let disposeBag: DisposeBag = DisposeBag()
+    var viewModel = MainScreenViewModel()
+//
+//    var rootViewModel: BasicViewModel {
+//        return viewModel.rootViewModel
+//    }
+    
     private var slideMenu = SlideMenuView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         bindToViewModel()
         setup()
         // Do any additional setup after loading the view.
@@ -42,6 +47,7 @@ class MainScreenViewController: UIViewController {
     }
     
     private func bindToViewModel() {
+        self.viewModel = MainScreenViewModel(rootViewModel: rootViewModel as! RootViewModel)
         self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.addressTblView.reloadData()
@@ -115,6 +121,8 @@ extension MainScreenViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Select \(indexPath.row)")
+//        rootViewModel.alertModel.accept(AlertModel(message: "123"))
+        viewModel.handlePressData(index: indexPath)
     }
     
 }

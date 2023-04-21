@@ -11,7 +11,8 @@ import RxCocoa
 import Moya
 import SVProgressHUD
 
-class RootViewModel : NSObject {
+class RootViewModel : NSObject, BasicViewModel {
+    var alertModel: BehaviorRelay<AlertModel?> = BehaviorRelay(value: nil)
     
     func handleProgress(_ value : Bool){
         if (value){

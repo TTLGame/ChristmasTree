@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-final class RootViewController: UIViewController {
+final class RootViewController: BaseViewController {
     var currentVC: UIViewController!
     enum ScreenType {
         /// Main way to access Root View Controller
@@ -11,7 +11,7 @@ final class RootViewController: UIViewController {
     }
     
     init() {
-        super.init(nibName: nil, bundle: nil)
+        super.init()
         setupData()
         currentVC = LoginViewController()
     }
