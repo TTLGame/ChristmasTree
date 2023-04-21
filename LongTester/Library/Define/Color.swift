@@ -17,7 +17,8 @@ struct Color {
         case bottomLeftToTopRight
     }
     static let greyPrimary = #colorLiteral(red: 0.3493813574, green: 0.3493813574, blue: 0.3493813574, alpha: 1)
-    static let redPrimary =  #colorLiteral(red: 0.7928444743, green: 0.2171653211, blue: 0.3652344942, alpha: 1)
+    static let redPrimary =  #colorLiteral(red: 0.7921568627, green: 0.2156862745, blue: 0.3647058824, alpha: 1)
+    static let orangePrimary = #colorLiteral(red: 1, green: 0.6855316758, blue: 0.184951812, alpha: 1)
     static let normalTextColor =  #colorLiteral(red: 0.4756370187, green: 0.4756369591, blue: 0.4756369591, alpha: 1)
     static let darkGreen =  #colorLiteral(red: 0.2978984118, green: 0.5977677703, blue: 0.5521355271, alpha: 1)
     static let selectTableView = #colorLiteral(red: 0.8941176471, green: 0.895850122, blue: 0.895850122, alpha: 1)

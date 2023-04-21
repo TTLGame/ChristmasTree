@@ -17,6 +17,8 @@
 
 //Main View
 "mainTitle" = "Manage Location";
+"shortRoom" = "room(s) left";
+"fullRoom" = "Full room";
 
 //Hamburger Menu
 "logout" = "Log out";

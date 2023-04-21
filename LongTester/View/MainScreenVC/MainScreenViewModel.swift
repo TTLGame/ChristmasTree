@@ -37,10 +37,17 @@ class MainScreenViewModel : NSObject {
     func bindToEvents() {
         users.map {users in
             users.map {user in
+                let current = Int.random(in: 0..<5)
+                var total = Int.random(in: 1..<5)
+                if (current > total){
+                    total = current
+                }
                 return MainScreenCellViewModel(logo: user.avatar,
                                                background: backbroundType(rawValue: self.randomPic[Int.random(in: 0..<self.randomPic.count)]),
                                                name: (user.firstName ?? "") + " " + (user.lastName ?? ""),
-                                               address: user.email)
+                                               address: user.email,
+                                               currentRooms: current,
+                                               totalRooms: total)
             }
         }.bind(to: cellViewModels).disposed(by: disposeBag)
     }

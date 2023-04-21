@@ -14,29 +14,43 @@ enum backbroundType : String, CaseIterable {
     case ship = "ShipBG"
     case snow = "SnowBG"
     case beach = "BeachBG"
-    var font : UIColor {
+    var fontColor : UIColor {
         switch self {
         case .nature, .ship, .pyramid, .snow:
             return .white
         case .beach:
-            return .black
-            
+            return Color.greyPrimary
         }
     }
+    
+    var roomFontColor : UIColor {
+        switch self {
+        case .nature, .ship, .pyramid, .snow:
+            return Color.orangePrimary
+        case .beach:
+            return Color.redPrimary
+        }
+    }
+    
 }
 class MainScreenCellViewModel {
     let logo: String?
     let background: backbroundType?
     let name : String?
     let address : String?
-    
+    let currentRooms : Int?
+    let totalRooms : Int?
     init(logo: String?,
          background: backbroundType?,
          name : String?,
-         address : String?){
+         address : String?,
+         currentRooms : Int?,
+         totalRooms : Int?){
         self.logo = logo
         self.background = background
         self.name = name
         self.address = address
+        self.currentRooms = currentRooms
+        self.totalRooms = totalRooms
     }
 }

@@ -17,6 +17,8 @@
 
 //Main View
 "mainTitle" = "Quản lí địa điểm";
+"shortRoom" = "phòng chưa thu";
+"fullRoom" = "Đủ phòng";
 
 //Hamburger Menu
 "logout" = "Đăng xuất";

@@ -24,6 +24,14 @@ extension String {
         }
         return nil
     }
+    
+    public func index(of target: String) -> Int? {
+        if let range = self.range(of: target) {
+            return distance(from: startIndex, to: range.lowerBound)
+        } else {
+            return nil
+        }
+    }
 }
 
 

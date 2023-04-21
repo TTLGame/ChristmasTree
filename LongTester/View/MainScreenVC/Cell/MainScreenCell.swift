@@ -14,6 +14,7 @@ class MainScreenCell: UITableViewCell {
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var bgView: UIView!
     
+    @IBOutlet weak var ammountLbl: UILabel!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var backgroundImgView: UIImageView!
@@ -33,9 +34,11 @@ class MainScreenCell: UITableViewCell {
     
     private func bindData(){
         self.backgroundImgView.image = UIImage(named: viewModel?.background?.rawValue ?? "PyramidBG")
-        self.nameLbl.textColor = viewModel?.background?.font
+        self.nameLbl.textColor = viewModel?.background?.fontColor
         self.nameLbl.text = viewModel?.name
         self.addressLbl.text = viewModel?.address
+    
+        self.setupFullRoom()
 //        self.logoImgView.image = UIImage(named: viewModel?.logo ?? "NoImage")
         
         do {
@@ -45,6 +48,43 @@ class MainScreenCell: UITableViewCell {
             print("Cannot read URL")}
         catch {
             print("Error data")}
+    }
+    
+    private func setupFullRoom(){
+        if let current = viewModel?.currentRooms, let total = viewModel?.totalRooms {
+            
+            var fullString = String(current) + "/" + String(total)
+            let behindText = " " + (viewModel?.currentRooms != viewModel?.totalRooms ? Language.localized("shortRoom") :
+                                        Language.localized("fullRoom"))
+            fullString += behindText
+            if (viewModel?.currentRooms != viewModel?.totalRooms){
+                
+            }
+            print("fullString \(fullString)")
+            
+            let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = NSTextAlignment.right
+
+            let attributedStringColor = [NSAttributedString.Key.foregroundColor : viewModel?.background?.fontColor, NSAttributedString.Key.paragraphStyle: paragraphStyle,]; // iMarineBlue
+            
+            
+            let titleString = NSMutableAttributedString(string: fullString, attributes:attributedStringColor as [NSAttributedString.Key : Any])
+            titleString.addAttribute(.font, value: UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: titleString.length))
+            
+//            check if totalRoom equals to current Room
+            if (viewModel?.currentRooms != viewModel?.totalRooms){
+                if let indexCurrentRoom = fullString.index(of: String(current)){
+                    titleString.addAttribute(.foregroundColor,
+                                             value: viewModel?.background?.roomFontColor as Any,
+                                             range: NSRange(location: indexCurrentRoom,
+                                                            length: String(current).count))
+                }
+            }
+            
+            print("titleString \(titleString)")
+            
+            self.ammountLbl.attributedText = titleString
+        }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
