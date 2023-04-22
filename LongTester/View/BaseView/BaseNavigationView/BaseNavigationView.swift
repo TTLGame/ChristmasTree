@@ -70,7 +70,6 @@ class BaseNavigationView: UINavigationController {
         // Perform your custom actions
         // ...
         // Go back to the previous ViewController
-        print("Going here")
         _ = navigationController?.popViewController(animated: true)
     }
     

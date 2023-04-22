@@ -91,8 +91,13 @@ class MainScreenViewModel : NSObject {
     }
     
     func handlePressData(index : IndexPath){
-        print("Going here")
-        rootViewModel.alertModel.accept(AlertModel(message: "Fail"))
+//        rootViewModel.alertModel.accept(AlertModel(message: "Fail"))
+        let alertModel = AlertModel.ActionModel(title: "Open", style: .default, handler: {_ in
+            print("Hi")
+        })
+        let closeModel = AlertModel.ActionModel(title: "Close", style: .default, handler: {_ in
+        })
+        rootViewModel.alertModel.accept(AlertModel(actionModels: [alertModel,closeModel], title: "ChristmasTree", message: "Pressed in \(index.row)", prefferedStyle: .alert))
     }
 }
 

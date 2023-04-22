@@ -16,16 +16,11 @@ class MainScreenViewController: BaseViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var menuBtn: UIButton!
     
-    var viewModel = MainScreenViewModel()
-//
-//    var rootViewModel: BasicViewModel {
-//        return viewModel.rootViewModel
-//    }
-    
+    private var viewModel = MainScreenViewModel()
     private var slideMenu = SlideMenuView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         bindToViewModel()
         setup()
         // Do any additional setup after loading the view.
@@ -99,11 +94,8 @@ extension MainScreenViewController : UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.cellViewModels.value.count
-//        self.viewModel.cellViewModels.value.count
     }
-    
-   
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MainScreenCell! = tableView.dequeueReusableCell(
             withIdentifier: String(describing: MainScreenCell.self),
@@ -115,6 +107,9 @@ extension MainScreenViewController : UITableViewDataSource {
         let myCustomSelectionColorView = UIView()
         myCustomSelectionColorView.backgroundColor = .clear
         cell.selectedBackgroundView = myCustomSelectionColorView
+        cell.handlePress = {
+            self.handlePressData(indexPath: indexPath)
+        }
         
         return cell
     }
@@ -122,7 +117,10 @@ extension MainScreenViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Select \(indexPath.row)")
 //        rootViewModel.alertModel.accept(AlertModel(message: "123"))
-        viewModel.handlePressData(index: indexPath)
+        self.handlePressData(indexPath: indexPath)
     }
     
+    private func handlePressData(indexPath: IndexPath){
+        viewModel.handlePressData(index: indexPath)
+    }
 }

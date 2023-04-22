@@ -27,5 +27,12 @@ extension AlertModel {
             AlertModel.ActionModel(title: "OK", style: .default, handler: nil)
         ], title: nil, message: message, prefferedStyle: .alert)
     }
+    
+//    init(title: String, message: String, actionModels : [ActionModel], prefferedStyle : UIAlertController.Style = .alert ) {
+//        self.title = title
+//        self.message = message
+//        self.actionModels = actionModels
+//        self.prefferedStyle = prefferedStyle
+//    }
 }
 

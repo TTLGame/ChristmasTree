@@ -19,6 +19,8 @@ class MainScreenCell: UITableViewCell {
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var backgroundImgView: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
+    
+    var handlePress: () -> () = { }
     var viewModel: MainScreenCellViewModel? {
         didSet {
             bindData()
@@ -60,8 +62,6 @@ class MainScreenCell: UITableViewCell {
             if (viewModel?.currentRooms != viewModel?.totalRooms){
                 
             }
-            print("fullString \(fullString)")
-            
             let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = NSTextAlignment.right
 
@@ -81,11 +81,27 @@ class MainScreenCell: UITableViewCell {
                 }
             }
             
-            print("titleString \(titleString)")
-            
             self.ammountLbl.attributedText = titleString
         }
     }
+    
+    private func addTapGesture(){
+        let uiLongGesture = UILongPressGestureRecognizer(target: self, action: #selector(pressLongGesture(_:)))
+        uiLongGesture.minimumPressDuration = 0.3
+        stackView.addGestureRecognizer(uiLongGesture)
+    }
+    
+    @objc func pressLongGesture(_ gestureRecognizer: UILongPressGestureRecognizer!){
+        if (gestureRecognizer.state == .began){
+            bgView.addBottomShadow(height: 3, alpha: 0.4)
+            
+        }
+        else if (gestureRecognizer.state == .ended){
+            bgView.addBottomShadow(height: 3, alpha: 0.2)
+            self.handlePress()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -103,11 +119,13 @@ class MainScreenCell: UITableViewCell {
         circleView.layer.cornerRadius = circleView.frame.size.width/2
         circleView.clipsToBounds = true
         
+        addTapGesture()
+        
     }
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
     
 }

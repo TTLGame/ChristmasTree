@@ -87,6 +87,7 @@ class SubSlideMenuView : UIView {
         logoutView.addGestureRecognizer(uiLongGesture)
     }
     
+    
     private func initTableView(){
         self.contentTblView.delegate = self
         self.contentTblView.dataSource = self
