@@ -26,6 +26,7 @@ class BaseViewController: UIViewController, BasicViewPresentableView {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindAlertViewModel(alertViewModel)
+        bindRootViewModel()
         // Do any additional setup after loading the view.
     }
     
@@ -44,6 +45,18 @@ class BaseViewController: UIViewController, BasicViewPresentableView {
         return disposable
     }
     
+    @discardableResult
+    func bindRootViewModel() -> Disposable {
+        let disposable = rootViewModel.pushViewModel.observe(on: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (model: PushModel?) in
+                guard let model = model else {
+                    return
+                }
+                self?.pushNavigationView(model.viewController, model.title)
+            })
+        disposable.disposed(by: disposeBag)
+        return disposable
+    }
 
     /*
     // MARK: - Navigation

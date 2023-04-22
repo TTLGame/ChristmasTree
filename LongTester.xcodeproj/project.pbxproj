@@ -71,6 +71,14 @@
 		FDADC1B729F2615A00803536 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1B629F2615A00803536 /* AlertBuilder.swift */; };
 		FDADC1BB29F262CE00803536 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1BA29F262CE00803536 /* BaseViewController.swift */; };
 		FDADC1BD29F2642C00803536 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1BC29F2642C00803536 /* BaseViewModel.swift */; };
+		FDADC1C129F39FD400803536 /* AddressCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1BF29F39FD400803536 /* AddressCollectionViewController.swift */; };
+		FDADC1C229F39FD400803536 /* AddressCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC1C029F39FD400803536 /* AddressCollectionViewController.xib */; };
+		FDADC1C429F39FF200803536 /* AddressCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1C329F39FF200803536 /* AddressCollectionViewModel.swift */; };
+		FDADC1C629F3A38C00803536 /* DateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC1C529F3A38C00803536 /* DateVC.xib */; };
+		FDADC1CA29F3B75700803536 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1C829F3B75700803536 /* AddressCollectionViewCell.swift */; };
+		FDADC1CB29F3B75700803536 /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC1C929F3B75700803536 /* AddressCollectionViewCell.xib */; };
+		FDADC1CE29F3BCE300803536 /* PushModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1CD29F3BCE300803536 /* PushModel.swift */; };
+		FDADC1D029F3FD9A00803536 /* AddressCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1CF29F3FD9A00803536 /* AddressCollectionViewCellViewModel.swift */; };
 		FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */; };
 		FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCA2967DF2700FC0D68 /* Inline.swift */; };
 		FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */; };
@@ -166,6 +174,14 @@
 		FDADC1B629F2615A00803536 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		FDADC1BA29F262CE00803536 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FDADC1BC29F2642C00803536 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		FDADC1BF29F39FD400803536 /* AddressCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewController.swift; sourceTree = "<group>"; };
+		FDADC1C029F39FD400803536 /* AddressCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionViewController.xib; sourceTree = "<group>"; };
+		FDADC1C329F39FF200803536 /* AddressCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewModel.swift; sourceTree = "<group>"; };
+		FDADC1C529F3A38C00803536 /* DateVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateVC.xib; sourceTree = "<group>"; };
+		FDADC1C829F3B75700803536 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
+		FDADC1C929F3B75700803536 /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		FDADC1CD29F3BCE300803536 /* PushModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushModel.swift; sourceTree = "<group>"; };
+		FDADC1CF29F3FD9A00803536 /* AddressCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		FDBBCB1B29B6DFEA0095162F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		FDCB9FCA2967DF2700FC0D68 /* Inline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inline.swift; sourceTree = "<group>"; };
 		FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheels.swift; sourceTree = "<group>"; };
@@ -260,6 +276,7 @@
 		FD4DF3C229ED929300AB6A50 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				FDADC1CC29F3BCD100803536 /* PushView */,
 				FDADC1AF29F25F8000803536 /* AlertView */,
 				FDDB485129EFAF7C00D212A7 /* SlideMenu */,
 				FDA852B929EE780B00A6357F /* CustomSwitch */,
@@ -477,6 +494,7 @@
 				FDCB9FC92967DEE500FC0D68 /* DateVC */,
 				FD564B5F296557AF00A527ED /* TableScreenVC */,
 				FD8961AC295C1DD400C7BE20 /* MainScreenVC */,
+				FDADC1BE29F39E7600803536 /* AdressCollectionVC */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -566,6 +584,35 @@
 			path = AlertView;
 			sourceTree = "<group>";
 		};
+		FDADC1BE29F39E7600803536 /* AdressCollectionVC */ = {
+			isa = PBXGroup;
+			children = (
+				FDADC1C729F3B73800803536 /* Cell */,
+				FDADC1BF29F39FD400803536 /* AddressCollectionViewController.swift */,
+				FDADC1C029F39FD400803536 /* AddressCollectionViewController.xib */,
+				FDADC1C329F39FF200803536 /* AddressCollectionViewModel.swift */,
+			);
+			path = AdressCollectionVC;
+			sourceTree = "<group>";
+		};
+		FDADC1C729F3B73800803536 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FDADC1C829F3B75700803536 /* AddressCollectionViewCell.swift */,
+				FDADC1C929F3B75700803536 /* AddressCollectionViewCell.xib */,
+				FDADC1CF29F3FD9A00803536 /* AddressCollectionViewCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FDADC1CC29F3BCD100803536 /* PushView */ = {
+			isa = PBXGroup;
+			children = (
+				FDADC1CD29F3BCE300803536 /* PushModel.swift */,
+			);
+			path = PushView;
+			sourceTree = "<group>";
+		};
 		FDBBCB1A29B6DFDE0095162F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +627,7 @@
 				FDCB9FCA2967DF2700FC0D68 /* Inline.swift */,
 				FDCB9FCC2967DFA200FC0D68 /* Wheels.swift */,
 				FD3B1DD629DAA97D00448F99 /* DateVC.swift */,
+				FDADC1C529F3A38C00803536 /* DateVC.xib */,
 			);
 			path = DateVC;
 			sourceTree = "<group>";
@@ -734,13 +782,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDADC1C229F39FD400803536 /* AddressCollectionViewController.xib in Resources */,
 				FD4DF3D129ED981800AB6A50 /* TextFieldView.xib in Resources */,
+				FDADC1C629F3A38C00803536 /* DateVC.xib in Resources */,
 				FD8961A4295BF11D00C7BE20 /* LaunchScreen.storyboard in Resources */,
 				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
 				FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */,
 				FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */,
 				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
+				FDADC1CB29F3B75700803536 /* AddressCollectionViewCell.xib in Resources */,
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
 				FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */,
 				FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */,
@@ -802,11 +853,13 @@
 			files = (
 				FD48DBE729E68FC800264497 /* UIView.swift in Sources */,
 				FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */,
+				FDADC1D029F3FD9A00803536 /* AddressCollectionViewCellViewModel.swift in Sources */,
 				FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */,
 				FD564B972965855200A527ED /* String.swift in Sources */,
 				FDA852C229EE786900A6357F /* AppConfigRealmModel.swift in Sources */,
 				FDADC1B129F25FA300803536 /* AlertView.swift in Sources */,
 				FDADC1B529F2610700803536 /* AlertModel.swift in Sources */,
+				FDADC1CA29F3B75700803536 /* AddressCollectionViewCell.swift in Sources */,
 				FDA852C729EE7B4100A6357F /* AppConfigModel.swift in Sources */,
 				FD564B7029655D8600A527ED /* TableScreenCell.swift in Sources */,
 				FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */,
@@ -839,6 +892,7 @@
 				FD5765AE2963D2A0005969BE /* Dictionary.swift in Sources */,
 				FD5765A12963CE8B005969BE /* User.swift in Sources */,
 				FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */,
+				FDADC1C429F39FF200803536 /* AddressCollectionViewModel.swift in Sources */,
 				FDA852C129EE786900A6357F /* RealmCollectionModels.swift in Sources */,
 				FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */,
 				FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */,
@@ -847,6 +901,7 @@
 				FDF300C529E3D0880084562A /* Decoder.swift in Sources */,
 				FDADC1BB29F262CE00803536 /* BaseViewController.swift in Sources */,
 				FDADC1BD29F2642C00803536 /* BaseViewModel.swift in Sources */,
+				FDADC1C129F39FD400803536 /* AddressCollectionViewController.swift in Sources */,
 				FD5765AC2963D206005969BE /* Array.swift in Sources */,
 				FD5765AA2963D17F005969BE /* ProviderType.swift in Sources */,
 				FD564B752965648D00A527ED /* TableScreenCellViewModel.swift in Sources */,
@@ -856,6 +911,7 @@
 				FD564B902965769100A527ED /* Language.swift in Sources */,
 				FD4DF3CB29ED92E900AB6A50 /* LoginViewController.swift in Sources */,
 				FD564B73296561FE00A527ED /* UITableView.swift in Sources */,
+				FDADC1CE29F3BCE300803536 /* PushModel.swift in Sources */,
 				FDADC1B729F2615A00803536 /* AlertBuilder.swift in Sources */,
 				FD57659E2963CDB3005969BE /* Constaint.swift in Sources */,
 				FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */,

@@ -12,6 +12,7 @@ import Moya
 import SVProgressHUD
 
 class RootViewModel : NSObject, BasicViewModel {
+    var pushViewModel: BehaviorRelay<PushModel?> = BehaviorRelay(value: nil)
     var alertModel: BehaviorRelay<AlertModel?> = BehaviorRelay(value: nil)
     
     func handleProgress(_ value : Bool){

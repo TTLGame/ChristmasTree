@@ -157,7 +157,7 @@ extension SlideMenuView : SubSlideMenuViewDelegate {
         case 1:
             self.baseVC.pushNavigationView(TableScreenViewController(), "Long")
         case 2:
-            self.baseVC.pushNavigationView(TableScreenViewController(), "Long")
+            self.baseVC.pushNavigationView(DateVC(), "Date")
         default:
             break
         }

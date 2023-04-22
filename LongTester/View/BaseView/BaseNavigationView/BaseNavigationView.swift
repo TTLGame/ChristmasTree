@@ -25,14 +25,7 @@ class BaseNavigationView: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Customize the navigation bar appearance
-//        navigationBar.setColors(background: Color.primary, text: .white)
-        
         self.initLabel()
-        
-//        self.navigationBar.barTintColor = UIColor(red: 0.0, green: 0.5, blue: 0.5, alpha: 1.0)
-//        self.navigationBar.tintColor = UIColor.white
-//        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     func initLabel(){

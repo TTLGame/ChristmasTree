@@ -43,6 +43,7 @@ class DateVC : UIViewController{
     
     private func setupDate(){
         let labelTextField = UITextField()
+        self.view.addSubview(labelTextField)
         labelTextField.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

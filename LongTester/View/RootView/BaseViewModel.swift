@@ -6,8 +6,11 @@
 //
 
 import Foundation
-
+import RxSwift
+import RxCocoa
+import UIKit
 protocol BasicViewModel: AlertPresentableViewModel {
+    var pushViewModel: BehaviorRelay<PushModel?> { get set }
 }
 
 protocol BasicViewPresentableView: AlertPresentableView {

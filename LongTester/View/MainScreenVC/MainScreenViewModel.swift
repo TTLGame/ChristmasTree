@@ -94,6 +94,9 @@ class MainScreenViewModel : NSObject {
 //        rootViewModel.alertModel.accept(AlertModel(message: "Fail"))
         let alertModel = AlertModel.ActionModel(title: "Open", style: .default, handler: {_ in
             print("Hi")
+//            self.rootViewModel.pushView.accept(AddressCollectionViewController())
+            self.rootViewModel.pushViewModel.accept(PushModel(viewController: AddressCollectionViewController(),
+                                                              title: "Detail"))
         })
         let closeModel = AlertModel.ActionModel(title: "Close", style: .default, handler: {_ in
         })
