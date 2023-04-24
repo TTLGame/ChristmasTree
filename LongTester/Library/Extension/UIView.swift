@@ -36,13 +36,13 @@ extension UIView {
         addSubview(nibView)
     }
     
-    func addBottomShadow(height : CGFloat = 10.0, alpha : CGFloat = 0.5) {
+    func addBottomShadow(height : CGFloat = 10.0, alpha : CGFloat = 0.5, radius: CGFloat = 10 )  {
         self.clipsToBounds = false
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor(red: 0.118, green: 0.255, blue: 0.608, alpha: alpha).cgColor
         self.layer.shadowOpacity = 1.0
         self.layer.shadowOffset = CGSize(width: 0, height: height)
-        self.layer.shadowRadius = 10
+        self.layer.shadowRadius = radius
     }
     
     func addLeftShadow() {

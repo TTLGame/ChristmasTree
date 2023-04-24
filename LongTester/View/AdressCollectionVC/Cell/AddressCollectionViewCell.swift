@@ -18,7 +18,7 @@ class AddressCollectionViewCell: UICollectionViewCell {
     }
 
     private func setup(){
-        bgView.addBottomShadow(height: 3, alpha: 0.2)
+        bgView.addBottomShadow(height: 3, alpha: 0.2,radius: 5)
         bgView.layer.masksToBounds = false
         bgView.backgroundColor = .white
         bgView.layer.cornerRadius = 10

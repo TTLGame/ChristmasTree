@@ -32,12 +32,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-T6-k2I" userLabel="ContentScrollView">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="663"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="633"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginHeader" translatesAutoresizingMaskIntoConstraints="NO" id="Zil-c0-uoX">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="285"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="240"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="Zil-c0-uoX" secondAttribute="height" multiplier="131:95" id="pRr-bu-NaW"/>
+                                                <constraint firstAttribute="width" secondItem="Zil-c0-uoX" secondAttribute="height" multiplier="131:80" id="pRr-bu-NaW"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUN-bf-ff4">
@@ -83,20 +83,20 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Christmas Tree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jM5-fR-JIa">
-                                            <rect key="frame" x="92.333333333333329" y="343" width="208.66666666666669" height="35"/>
+                                            <rect key="frame" x="92.333333333333329" y="298" width="208.66666666666669" height="35"/>
                                             <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="30"/>
                                             <color key="textColor" red="0.24313725490196078" green="0.53333333333333333" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9w-1T-irl" userLabel="Username" customClass="TextFieldView" customModule="LongTester" customModuleProvider="target">
-                                            <rect key="frame" x="30" y="408" width="333" height="60"/>
+                                            <rect key="frame" x="30" y="363" width="333" height="60"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="CWQ-LS-OpD"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmg-fl-Yu6" userLabel="Password" customClass="TextFieldView" customModule="LongTester" customModuleProvider="target">
-                                            <rect key="frame" x="30" y="488" width="333" height="60"/>
+                                            <rect key="frame" x="30" y="443" width="333" height="60"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="UVP-37-YuP"/>
@@ -104,10 +104,9 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1k-UT-dle">
-                                            <rect key="frame" x="30" y="578" width="333" height="35"/>
+                                            <rect key="frame" x="30" y="533" width="333" height="50"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Hhd-68-Kpg"/>
-                                                <constraint firstAttribute="height" constant="35" id="xSq-D6-WJG"/>
+                                                <constraint firstAttribute="height" constant="50" id="xSq-D6-WJG"/>
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Login">
@@ -121,9 +120,9 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-8Z-Tyf" userLabel="Circle View">
-                                            <rect key="frame" x="137.66666666666666" y="215" width="117.66666666666666" height="118"/>
+                                            <rect key="frame" x="137.66666666666666" y="170" width="117.66666666666666" height="118"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PyramidBG" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-Mq-5D1">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIconForLauch" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-Mq-5D1">
                                                     <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="118"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="KWa-Mq-5D1" secondAttribute="height" multiplier="1:1" id="YT8-4W-LqH"/>
@@ -200,7 +199,7 @@
         </view>
     </objects>
     <resources>
-        <image name="PyramidBG" width="204" height="123.66666412353516"/>
+        <image name="appIconForLauch" width="166.66667175292969" height="166.66667175292969"/>
         <image name="loginHeader" width="130" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

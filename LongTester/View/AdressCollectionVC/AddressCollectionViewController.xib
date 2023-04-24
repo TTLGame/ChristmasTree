@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressCollectionViewController" customModule="LongTester" customModuleProvider="target">
             <connections>
                 <outlet property="detailCollectionView" destination="u5u-S9-bwx" id="ttb-FK-ouU"/>
+                <outlet property="radioViewHeightConstraint" destination="yvp-dd-nw0" id="WXo-Vu-jfL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-S9-bwx">
-                    <rect key="frame" x="10" y="97" width="370" height="713"/>
+                    <rect key="frame" x="10" y="147" width="370" height="663"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pcN-38-hOI">
                         <size key="itemSize" width="128" height="128"/>
@@ -31,13 +32,20 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H3R-FZ-D7W">
-                    <rect key="frame" x="0.0" y="47" width="390" height="50"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xod-G5-bpT">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="G3P-f5-Erk"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q9-dR-d3b" userLabel="RadioView">
+                            <rect key="frame" x="0.0" y="50" width="390" height="50"/>
+                            <color key="backgroundColor" systemColor="tintColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="yvp-dd-nw0"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -60,6 +68,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

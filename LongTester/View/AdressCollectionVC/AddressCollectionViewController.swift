@@ -9,13 +9,16 @@ import UIKit
 
 class AddressCollectionViewController: UIViewController {
 
+    @IBOutlet weak var radioViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailCollectionView: UICollectionView!
+    private var shouldChangeValue = false
+    private var contentY : CGFloat = 0
+    private var currentHeight : CGFloat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         // Do any additional setup after loading the view.
     }
-
 
     private func setup(){
         setupCollectionView()
@@ -25,6 +28,7 @@ class AddressCollectionViewController: UIViewController {
         detailCollectionView.register(UINib(nibName: String(describing: AddressCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: AddressCollectionViewCell.self))
         detailCollectionView.delegate = self
         detailCollectionView.dataSource = self
+
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -52,7 +56,54 @@ extension AddressCollectionViewController {
 }
 extension AddressCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        20
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollingFinished(scrollView: scrollView)
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if decelerate {
+            //didEndDecelerating will be called for sure
+            return
+        }
+        scrollingFinished(scrollView: scrollView)
+    }
+
+    func scrollingFinished(scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.2) {
+            if (self.contentY < 5){
+                self.radioViewHeightConstraint.constant = 50
+            }
+            if (self.radioViewHeightConstraint.constant > 30){
+                self.radioViewHeightConstraint.constant = 50
+            }
+            else {
+                self.radioViewHeightConstraint.constant = 0
+            }
+            self.shouldChangeValue = false
+        } completion: { _ in
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var scrollPos = scrollView.contentOffset.y
+        if (!shouldChangeValue) {
+            shouldChangeValue = true
+            contentY = scrollPos
+            currentHeight = radioViewHeightConstraint.constant
+        }
+        
+        else if (shouldChangeValue) {
+            let changePos = (scrollPos - contentY)/2
+            if (changePos) > 0 {
+                radioViewHeightConstraint.constant = currentHeight - changePos < 0 ? 0 : currentHeight - changePos
+            }
+            else {
+                radioViewHeightConstraint.constant = currentHeight - changePos > 50 ? 50 : currentHeight - changePos
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -76,7 +127,7 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
 extension AddressCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = UIScreen.main.bounds
-        let width = (bounds.size.width - 50) / 2.0
+        let width = (bounds.size.width - 40) / 2.0
         return CGSize(width: width, height: 150)
     }
 }

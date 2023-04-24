@@ -150,7 +150,6 @@ extension SlideMenuView {
 
 extension SlideMenuView : SubSlideMenuViewDelegate {
     func selectedCell(_ row: Int) {
-        print(row)
         switch row {
         case 0:
             self.baseVC.pushNavigationView(TableScreenViewController(), "Long")
