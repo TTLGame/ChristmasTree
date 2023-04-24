@@ -11,9 +11,10 @@ class AddressCollectionViewController: UIViewController {
 
     @IBOutlet weak var radioViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailCollectionView: UICollectionView!
-    private var shouldChangeValue = false
+    private var shouldChangeValue = true
     private var contentY : CGFloat = 0
     private var currentHeight : CGFloat = 0
+    private var lastOffset : CGFloat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -72,38 +73,46 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
     }
 
     func scrollingFinished(scrollView: UIScrollView) {
-        UIView.animate(withDuration: 0.2) {
-            if (self.contentY < 5){
-                self.radioViewHeightConstraint.constant = 50
-            }
-            if (self.radioViewHeightConstraint.constant > 30){
-                self.radioViewHeightConstraint.constant = 50
-            }
-            else {
-                self.radioViewHeightConstraint.constant = 0
-            }
-            self.shouldChangeValue = false
-        } completion: { _ in
-        }
+        shouldChangeValue = true
+//        UIView.animate(withDuration: 0.2) {
+//            if (self.contentY < 5){
+//                self.radioViewHeightConstraint.constant = 50
+//            }
+//            if (self.radioViewHeightConstraint.constant > 30){
+//                self.radioViewHeightConstraint.constant = 50
+//            }
+//            else {
+//                self.radioViewHeightConstraint.constant = 0
+//            }
+//            self.shouldChangeValue = false
+//        } completion: { _ in
+//        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var scrollPos = scrollView.contentOffset.y
-        if (!shouldChangeValue) {
-            shouldChangeValue = true
-            contentY = scrollPos
-            currentHeight = radioViewHeightConstraint.constant
+        let scrollPos = scrollView.contentOffset.y
+        let contentSize = scrollView.contentSize.height - scrollView.frame.size.height
+        
+        if (contentSize < scrollView.frame.size.height + 200){
+            return
+        }
+        let changePos = (scrollPos - contentY)
+        if (lastOffset < scrollPos) { // scroll down
+            radioViewHeightConstraint.constant = radioViewHeightConstraint.constant - 3 < 0 ? 0 : radioViewHeightConstraint.constant - 3
+        }
+        else {
+            radioViewHeightConstraint.constant = radioViewHeightConstraint.constant + 3 > 50 ? 50 : radioViewHeightConstraint.constant + 3
         }
         
-        else if (shouldChangeValue) {
-            let changePos = (scrollPos - contentY)/2
-            if (changePos) > 0 {
-                radioViewHeightConstraint.constant = currentHeight - changePos < 0 ? 0 : currentHeight - changePos
-            }
-            else {
-                radioViewHeightConstraint.constant = currentHeight - changePos > 50 ? 50 : currentHeight - changePos
-            }
+        if (scrollPos <= 0){
+            radioViewHeightConstraint.constant = 50
         }
+        else if (scrollPos >= contentSize){
+            radioViewHeightConstraint.constant = 0
+        }
+        
+        
+        lastOffset = scrollPos
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
