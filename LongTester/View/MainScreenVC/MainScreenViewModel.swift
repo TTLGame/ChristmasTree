@@ -95,7 +95,7 @@ class MainScreenViewModel : NSObject {
         let alertModel = AlertModel.ActionModel(title: "Open", style: .default, handler: {_ in
 //            self.rootViewModel.pushView.accept(AddressCollectionViewController())
             self.rootViewModel.pushViewModel.accept(PushModel(viewController: AddressCollectionViewController(),
-                                                              title: "Detail"))
+                                                              title: Language.localized("addressCollectionMainTitle")))
         })
         let closeModel = AlertModel.ActionModel(title: "Close", style: .default, handler: {_ in
         })

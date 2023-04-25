@@ -475,8 +475,8 @@
 			isa = PBXGroup;
 			children = (
 				FD5765A72963D165005969BE /* Network */,
-				FD5765A22963CED0005969BE /* Library */,
 				FD5765992963CCCF005969BE /* Main */,
+				FD5765A22963CED0005969BE /* Library */,
 				FDF14B31295D847100BF079F /* Resource */,
 				FD8961AB295C1D3900C7BE20 /* View */,
 			);

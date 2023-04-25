@@ -23,3 +23,8 @@
 //Hamburger Menu
 "logout" = "Đăng xuất";
 "hello" = "Xin chào, ";
+
+//AddressCollectionView
+"addressCollectionMainTitle" = "Thông tin cụ thể";
+"roomNums" = "P: ";
+"renters" = "Số người: ";

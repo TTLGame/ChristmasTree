@@ -6,23 +6,38 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class AddressCollectionViewController: UIViewController {
+class AddressCollectionViewController: BaseViewController {
 
     @IBOutlet weak var radioViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailCollectionView: UICollectionView!
+    
     private var shouldChangeValue = true
-    private var contentY : CGFloat = 0
-    private var currentHeight : CGFloat = 0
     private var lastOffset : CGFloat = 0
+    private var viewModel = AddressCollectionViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        bindToViewModel()
         // Do any additional setup after loading the view.
     }
 
     private func setup(){
         setupCollectionView()
+    }
+    
+    private func bindToViewModel() {
+        self.viewModel = AddressCollectionViewModel(rootViewModel: rootViewModel as! RootViewModel)
+        self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let self = self else {return}
+            self.detailCollectionView.reloadData()
+            
+        }).disposed(by: disposeBag)
+        
+        viewModel.getData()
     }
     
     private func setupCollectionView(){
@@ -39,7 +54,7 @@ class AddressCollectionViewController: UIViewController {
 //MARK: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension AddressCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 10
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -57,36 +72,7 @@ extension AddressCollectionViewController {
 }
 extension AddressCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        scrollingFinished(scrollView: scrollView)
-    }
-
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if decelerate {
-            //didEndDecelerating will be called for sure
-            return
-        }
-        scrollingFinished(scrollView: scrollView)
-    }
-
-    func scrollingFinished(scrollView: UIScrollView) {
-        shouldChangeValue = true
-//        UIView.animate(withDuration: 0.2) {
-//            if (self.contentY < 5){
-//                self.radioViewHeightConstraint.constant = 50
-//            }
-//            if (self.radioViewHeightConstraint.constant > 30){
-//                self.radioViewHeightConstraint.constant = 50
-//            }
-//            else {
-//                self.radioViewHeightConstraint.constant = 0
-//            }
-//            self.shouldChangeValue = false
-//        } completion: { _ in
-//        }
+        viewModel.cellViewModels.value.count
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -96,7 +82,6 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
         if (contentSize < scrollView.frame.size.height + 200){
             return
         }
-        let changePos = (scrollPos - contentY)
         if (lastOffset < scrollPos) { // scroll down
             radioViewHeightConstraint.constant = radioViewHeightConstraint.constant - 3 < 0 ? 0 : radioViewHeightConstraint.constant - 3
         }
@@ -110,8 +95,6 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
         else if (scrollPos >= contentSize){
             radioViewHeightConstraint.constant = 0
         }
-        
-        
         lastOffset = scrollPos
     }
     
@@ -124,7 +107,7 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
         let cell: AddressCollectionViewCell! = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: AddressCollectionViewCell.self),
             for: indexPath) as? AddressCollectionViewCell
-        
+        cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
         return cell
     }
     

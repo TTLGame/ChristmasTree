@@ -24,3 +24,7 @@
 "logout" = "Log out";
 "hello" = "Hello, ";
 
+//AddressCollectionView
+"addressCollectionMainTitle" = "Address Detail";
+"roomNums" = "R: ";
+"renters" = "Renters: ";

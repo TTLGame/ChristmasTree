@@ -18,18 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIconForLauch" translatesAutoresizingMaskIntoConstraints="NO" id="ydU-QK-Rqg">
-                                <rect key="frame" x="132.66666666666666" y="374.66666666666669" width="127.99999999999997" height="128"/>
+                                <rect key="frame" x="132.66666666666666" y="324.66666666666669" width="127.99999999999997" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="BxN-YI-hKm"/>
                                     <constraint firstAttribute="width" secondItem="ydU-QK-Rqg" secondAttribute="height" multiplier="1:1" id="YBn-dy-3MD"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Christmas Tree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t09-PT-dM7">
+                                <rect key="frame" x="75.000000000000014" y="462.66666666666669" width="243.33333333333337" height="39.666666666666686"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="35"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.53333333329999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ydU-QK-Rqg" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Mje-ss-ovy"/>
+                            <constraint firstItem="ydU-QK-Rqg" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-50" id="Mje-ss-ovy"/>
                             <constraint firstItem="ydU-QK-Rqg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iZu-Yu-VfQ"/>
+                            <constraint firstItem="t09-PT-dM7" firstAttribute="top" secondItem="ydU-QK-Rqg" secondAttribute="bottom" constant="10" id="n1B-V4-baq"/>
+                            <constraint firstItem="t09-PT-dM7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ppl-UJ-A9M"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,7 +47,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="appIconForLauch" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="appIconForLauch" width="166.66667175292969" height="166.66667175292969"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
