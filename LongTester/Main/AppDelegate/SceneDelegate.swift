@@ -25,9 +25,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navi = BaseNavigationView(rootViewController: vc)
             
 //            let navi = UINavigationController(rootViewController: vc)
-            self.window!.rootViewController = navi
+//            self.window!.rootViewController = navi
+//            AppDelegate.shared.window = window
+//            AppDelegate.shared.window?.rootViewController = navi
+//            AppDelegate.shared.window?.makeKeyAndVisible()
+            
+            self.window!.rootViewController = vc
             AppDelegate.shared.window = window
-            AppDelegate.shared.window?.rootViewController = navi
+            AppDelegate.shared.window?.rootViewController = vc
             AppDelegate.shared.window?.makeKeyAndVisible()
             
             #if DEBUG

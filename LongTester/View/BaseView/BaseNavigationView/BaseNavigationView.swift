@@ -26,6 +26,16 @@ class BaseNavigationView: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initLabel()
+        setUp()
+    }
+    
+    fileprivate func setUp(){
+        navigationBar.tintColor = Color.redPrimary
+        let titleTextColor: UIColor = Color.redPrimary
+        self.navigationBar.titleTextAttributes = [
+            .foregroundColor: titleTextColor,
+            .font: UIFont.boldSystemFont(ofSize: 18)
+        ]
     }
     
     func initLabel(){
@@ -50,6 +60,13 @@ class BaseNavigationView: UINavigationController {
                                                    attributes: attribute)
         
         
+    }
+    
+    func setupBackTitle(){
+
+        if self.viewControllers.count <= 1 {
+            navigationBar.topItem?.title = ""
+        }
     }
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)

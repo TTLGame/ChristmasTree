@@ -35,4 +35,9 @@ class AddressCollectionViewModel : NSObject {
         
         cellViewModels.accept(data)
     }
+    
+    func handlePressData(index : IndexPath){
+        self.rootViewModel.pushViewModel.accept(PushModel(viewController: DetailScreenViewController(),
+                                                          title: Language.localized("roomDetailTitle") + " " + String(cellViewModels.value[index.row].roomNums ?? 0)))
+    }
 }

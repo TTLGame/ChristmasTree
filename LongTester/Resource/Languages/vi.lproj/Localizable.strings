@@ -27,4 +27,7 @@
 //AddressCollectionView
 "addressCollectionMainTitle" = "Thông tin cụ thể";
 "roomNums" = "P: ";
-"renters" = "Số người: ";
+"renters" = "No: ";
+
+//Detail Screen
+"roomDetailTitle" = "Chi tiết phòng";

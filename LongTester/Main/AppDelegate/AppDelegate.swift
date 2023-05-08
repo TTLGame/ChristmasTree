@@ -14,9 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var rootViewController: RootViewController {
-        guard let rootNavi = window?.rootViewController as? UINavigationController,
-              let rootViewController = rootNavi.viewControllers.first as? RootViewController
-             else {
+        guard let rootViewController = window?.rootViewController as? RootViewController else {
             fatalError("Cannot cast the RootViewController")
         }
         return rootViewController

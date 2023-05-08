@@ -47,7 +47,7 @@ class AddressCollectionViewController: BaseViewController {
 
     }
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
 
@@ -66,7 +66,7 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
 //MARK: Handle Cell Pressed
 extension AddressCollectionViewController {
     private func didSelectItem(indexPath: IndexPath){
-
+        self.viewModel.handlePressData(index: indexPath)
     }
     
 }

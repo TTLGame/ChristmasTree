@@ -82,13 +82,14 @@ final class RootViewController: BaseViewController {
         var rootViewController: UIViewController
         switch type {
         case .main:
-            rootViewController = MainScreenViewController()
+            rootViewController = BaseNavigationView(rootViewController: MainScreenViewController())
             update(current: rootViewController)
         case .tableView:
             rootViewController = TableScreenViewController()
             update(current: rootViewController)
         case .login:
-            rootViewController = LoginViewController()
+            
+            rootViewController = BaseNavigationView(rootViewController: LoginViewController())
             update(current: rootViewController)
         }
         
