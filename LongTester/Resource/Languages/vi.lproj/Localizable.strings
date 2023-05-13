@@ -9,6 +9,7 @@
 "welcome" = "Xin chào";
 "vietnamese" = "Việt Nam";
 "english" = "Tiếng Anh";
+"noData" = "Không có dữ liệu";
 
 //Login View
 "username" = "Tên đăng nhập";

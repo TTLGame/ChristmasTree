@@ -9,6 +9,7 @@
 "welcome" = "Welcome";
 "vietnamese" = "Vietnamese";
 "english" = "English";
+"noData" = "No Data Found";
 
 //Login View
 "username" = "Username";

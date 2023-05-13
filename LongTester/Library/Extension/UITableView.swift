@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 extension UITableView {
     func dequeueCell<T: UITableViewCell>(_ withClass: T.Type, indexPath: IndexPath) -> T {
@@ -23,5 +24,18 @@ extension UITableView {
             fatalError("\(className) isn't register")
         }
         return cell
+    }
+}
+
+extension UITableView {
+    func setEmptyData(message: String = Language.localized("noData"), _ image: UIImage? = UIImage(named: "NoData")) {
+        let noDataView = UITableViewNoDataEx(frame: self.frame, image: image, text: message)
+        self.backgroundView = noDataView
+        self.separatorStyle = .none
+    }
+    
+    func restoreNewProduct() {
+        self.backgroundView = nil
+        self.separatorStyle = .none
     }
 }

@@ -93,7 +93,13 @@ extension MainScreenViewController : UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.cellViewModels.value.count
+        if (viewModel.cellViewModels.value.count == 0) {
+            tableView.setEmptyData()
+        }
+        else {
+            tableView.restoreNewProduct()
+        }
+        return viewModel.cellViewModels.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

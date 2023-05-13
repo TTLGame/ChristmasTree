@@ -76,6 +76,7 @@ class MainScreenViewModel : NSObject {
                                         SVProgressHUD.dismiss()
                                     }
                                 case .failure(_):
+                                    SVProgressHUD.dismiss()
                                     break
                                 }
                             }.disposed(by: self.disposeBag)
