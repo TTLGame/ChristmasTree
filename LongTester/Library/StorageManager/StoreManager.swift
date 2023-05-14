@@ -7,16 +7,72 @@
 
 import Foundation
 import RealmSwift
-
 final class StoreManager {
     ///INIT REALM
-    let realm = try! Realm()
-    init() { }
+    
+    var realm : Realm!
+//    let key = " O0GZJ9shekV0raY80sa3P5QjL5tuU87VlRwhxt9hwO1Q2k3euq60z5ktpOg86Nn"
+    
+    init() {
+        
+    #if DEBUG
+        print("[Realm Path] - \(Realm.Configuration.defaultConfiguration.fileURL!)")
+        initDebug()
+    #else
+        initRelease()
+    #endif
+        
+    }
+    private func initDebug(){
+        let databaseUrl = Realm.Configuration.defaultConfiguration.fileURL!
+        print("[Realm-DEBUG] - Get Encription Key")
+        do {
+            let tempRealm = try Realm()
+            realm = tempRealm
+        }
+        catch {
+            print("[Realm-DEBUG] - Remove DB")
+            removeDatabase(realmURL: databaseUrl)
+            let tempRealm = try! Realm()
+            realm = tempRealm
+        }
+    }
+    
+    private func initRelease(){
+        let databaseUrl = Realm.Configuration.defaultConfiguration.fileURL!
+        var key = Data(count: 64)
+        _ = key.withUnsafeMutableBytes {
+           SecRandomCopyBytes(kSecRandomDefault, 64, $0.baseAddress!)
+       }
+
+       //Check if encript Key is on UserDefault
+       if let storeKey = UserDefaults.standard.value(forKey: "realmKey") as? Data {
+           print("[Realm] - Get Encription Key")
+           key = storeKey
+       }
+       else {
+           print("[Realm] - Save Encription Key")
+           UserDefaults.standard.set(key, forKey: "realmKey")
+       }
+        let config = Realm.Configuration(encryptionKey: key)
+        do {
+            let tempRealm = try Realm(configuration: config)
+            realm = tempRealm
+        }
+        catch {
+            print("[Realm] - Remove DB")
+            removeDatabase(realmURL: databaseUrl)
+            let tempRealm = try! Realm(configuration: config)
+            realm = tempRealm
+        }
+    }
     
     static let shared: StoreManager = {
         let instance = StoreManager()
         return instance
     }()
+    
+    
     
     enum CollectionName: String, CaseIterable {
         case appConfig  = "AppConfig"
@@ -34,7 +90,6 @@ final class StoreManager {
     }
 
     private func initCollection(data: JSObject, in collectionName: CollectionName) -> RealmCollectionModels {
-        
         let converted = compactMapForDict(data: data)
         let stringJSON = data.convertDict()
 //        let converted = data
@@ -128,11 +183,11 @@ extension StoreManager {
                 try! self.realm.write {
                     let converted = data.convertDict()
                     obj.json = converted
-//                    obj.json = data.description
+                    //                    obj.json = data.description
                 }  // Update Exits Models
             } else {
                 let model = self.initCollection(data: data, in: collectionName)
-               
+                
                 try! self.realm.write {
                     self.realm.add(model)
                 }  // ADD New Models
@@ -149,12 +204,12 @@ extension StoreManager {
     @discardableResult
     func remove(queryParts: [String: Any], in collectionName: CollectionName) -> Bool {
         let queryValue : String = getQueryFilter(queryParts: queryParts, in: collectionName)
-
+        
         let dataFilters = realm.objects(collectionName.fieldModels.self)
             .filter(queryValue)
-                try! realm.write {
-                    realm.delete(dataFilters)
-                }
+        try! realm.write {
+            realm.delete(dataFilters)
+        }
         return true
     }
     
@@ -175,16 +230,28 @@ extension StoreManager {
         }
         return results?.compactMap { $0["json"] as? T }
     }
-
+    
     func find<T>(_ clsName: T.Type, queryParts: [String : Any] = [:], in collectionName: CollectionName) -> [T]? where T: Model {
         let results = find(queryParts: queryParts, in: collectionName)
         let arr = results?.map {
             let jsonObject = $0["json"] as? String
-
+            
             var jsonObjectDict = jsonObject?.convertStringToDictionary()
             jsonObjectDict = compactMapForDict(data: jsonObjectDict ?? [:])
             return T(json: jsonObjectDict)
         }
         return arr?.compactMap({ $0 })
+    }
+    
+    func removeDatabase(realmURL: URL) {
+        let realmURLs = [
+            realmURL,
+            realmURL.appendingPathExtension("lock"),
+            realmURL.appendingPathExtension("note"),
+            realmURL.appendingPathExtension("management"),
+        ]
+        for URL in realmURLs {
+            try? FileManager.default.removeItem(at: URL)
+        }
     }
 }
