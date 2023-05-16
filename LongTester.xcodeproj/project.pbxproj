@@ -102,6 +102,7 @@
 		FDE9CCF22A1331BC004844AD /* AddressCollectionRadioViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCF02A1331BC004844AD /* AddressCollectionRadioViewCell.swift */; };
 		FDE9CCF32A1331BC004844AD /* AddressCollectionRadioViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CCF12A1331BC004844AD /* AddressCollectionRadioViewCell.xib */; };
 		FDE9CCF52A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCF42A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift */; };
+		FDE9CCF72A139252004844AD /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCF62A139252004844AD /* Int.swift */; };
 		FDF14B30295C311500BF079F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF14B2F295C311500BF079F /* RootViewController.swift */; };
 		FDF14B39295D861300BF079F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDF14B3B295D861300BF079F /* Localizable.strings */; };
 		FDF300BE29E3C99A0084562A /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300BD29E3C99A0084562A /* Realm.swift */; };
@@ -229,6 +230,7 @@
 		FDE9CCF02A1331BC004844AD /* AddressCollectionRadioViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioViewCell.swift; sourceTree = "<group>"; };
 		FDE9CCF12A1331BC004844AD /* AddressCollectionRadioViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionRadioViewCell.xib; sourceTree = "<group>"; };
 		FDE9CCF42A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioViewCellViewModel.swift; sourceTree = "<group>"; };
+		FDE9CCF62A139252004844AD /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		FDF14B2F295C311500BF079F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		FDF14B3A295D861300BF079F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDF14B3C295D874D00BF079F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				FD48DBE629E68FC800264497 /* UIView.swift */,
 				FDDB486929EFD28E00D212A7 /* UIViewController.swift */,
 				FD738FBC2A0FD9ED00088BF0 /* UICollectionView.swift */,
+				FDE9CCF62A139252004844AD /* Int.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1028,6 +1031,7 @@
 				FDF300C329E3CCEA0084562A /* Environment.swift in Sources */,
 				FDA852C329EE786900A6357F /* StoreManager.swift in Sources */,
 				FD564B79296567AB00A527ED /* DefaultAlamofireManager.swift in Sources */,
+				FDE9CCF72A139252004844AD /* Int.swift in Sources */,
 				FD4DF3C829ED92CD00AB6A50 /* LoginViewModel.swift in Sources */,
 				FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */,
 				FD564B8529656A2A00A527ED /* APIErrorProcessPlugin.swift in Sources */,

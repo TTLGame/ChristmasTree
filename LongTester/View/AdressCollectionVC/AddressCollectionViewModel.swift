@@ -37,7 +37,15 @@ class AddressCollectionViewModel : NSObject {
         for roomNum in 0..<rooms {
             let statusNo = Int.random(in: 0..<status.count)
             let renters = Int.random(in: 1..<5)
-            data.append(AddressCollectionViewCellViewModel(roomNums: roomNum + 1, renters: renters, status: status[statusNo]))
+            let water = Int.random(in: 1..<100)
+            let electric = Int.random(in: 1..<100)
+            let total = Int.random(in: 1000000..<10000000)
+            data.append(AddressCollectionViewCellViewModel(roomNums: roomNum + 1,
+                                                           renters: renters,
+                                                           status: status[statusNo],
+                                                           waterNum: water,
+                                                           electricNum: electric,
+                                                           totalNum: total))
         }
       
 //        let data = [AddressCollectionViewCellViewModel(roomNums: 1, renters: 3, status: "Paid"),

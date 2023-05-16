@@ -27,8 +27,11 @@
 
 //AddressCollectionView
 "addressCollectionMainTitle" = "Address Detail";
-"roomNums" = "R: ";
-"renters" = "No: ";
+"roomNums" = "Room: ";
+"renters" = "Renters: ";
+"water" = "Water: ";
+"electric" = "Electric: ";
+"total" = "Total: ";
 
 //Detail Screen
 "roomDetailTitle" = "Room Detail";

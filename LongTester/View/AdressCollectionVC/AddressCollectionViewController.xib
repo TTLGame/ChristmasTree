@@ -5,12 +5,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressCollectionViewController" customModule="LongTester" customModuleProvider="target">
             <connections>
                 <outlet property="detailCollectionView" destination="u5u-S9-bwx" id="ttb-FK-ouU"/>
+                <outlet property="monthLbl" destination="dIe-9n-qLc" id="MFe-A8-le0"/>
                 <outlet property="radioView" destination="9Q9-dR-d3b" id="OL1-bq-cod"/>
                 <outlet property="radioViewHeightConstraint" destination="Hz0-2g-M9e" id="bKW-Mk-Akq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,7 +28,7 @@
                     <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-S9-bwx">
-                    <rect key="frame" x="10" y="87" width="370" height="723"/>
+                    <rect key="frame" x="10" y="117" width="370" height="693"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pcN-38-hOI">
                         <size key="itemSize" width="128" height="128"/>
@@ -36,21 +38,38 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H3R-FZ-D7W">
-                    <rect key="frame" x="0.0" y="47" width="390" height="40"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="70"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l73-Dr-5Z4">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2d-Ea-7j3" userLabel="MonthInfoView">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="30"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIe-9n-qLc">
+                                    <rect key="frame" x="173.33333333333334" y="4.3333333333333357" width="43.666666666666657" height="21.666666666666668"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="dIe-9n-qLc" firstAttribute="centerY" secondItem="s2d-Ea-7j3" secondAttribute="centerY" id="2ra-gU-WyH"/>
+                                <constraint firstAttribute="height" constant="30" id="Nqm-8P-B6a"/>
+                                <constraint firstItem="dIe-9n-qLc" firstAttribute="centerX" secondItem="s2d-Ea-7j3" secondAttribute="centerX" id="tpz-de-UYU"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l73-Dr-5Z4" userLabel="Radio">
+                            <rect key="frame" x="0.0" y="30" width="390" height="40"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q9-dR-d3b" userLabel="RadioView" customClass="AddressCollectionRadioView" customModule="LongTester" customModuleProvider="target">
-                                    <rect key="frame" x="10" y="5" width="370" height="30"/>
+                                    <rect key="frame" x="10" y="10" width="370" height="30"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Hz0-2g-M9e"/>
-                                <constraint firstAttribute="bottom" secondItem="9Q9-dR-d3b" secondAttribute="bottom" constant="5" id="Na5-qc-XrY"/>
-                                <constraint firstItem="9Q9-dR-d3b" firstAttribute="top" secondItem="l73-Dr-5Z4" secondAttribute="top" constant="5" id="RAO-l9-Ba4"/>
+                                <constraint firstAttribute="bottom" secondItem="9Q9-dR-d3b" secondAttribute="bottom" id="Na5-qc-XrY"/>
+                                <constraint firstItem="9Q9-dR-d3b" firstAttribute="top" secondItem="l73-Dr-5Z4" secondAttribute="top" constant="10" id="RAO-l9-Ba4"/>
                                 <constraint firstItem="9Q9-dR-d3b" firstAttribute="leading" secondItem="l73-Dr-5Z4" secondAttribute="leading" constant="10" id="egH-hF-cIV"/>
                                 <constraint firstAttribute="trailing" secondItem="9Q9-dR-d3b" secondAttribute="trailing" constant="10" id="mNK-kF-aVM"/>
                             </constraints>
@@ -77,4 +96,9 @@
             <point key="canvasLocation" x="-32.307692307692307" y="19.90521327014218"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

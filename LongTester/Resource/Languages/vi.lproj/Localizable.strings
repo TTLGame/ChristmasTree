@@ -27,8 +27,11 @@
 
 //AddressCollectionView
 "addressCollectionMainTitle" = "Thông tin cụ thể";
-"roomNums" = "P: ";
-"renters" = "No: ";
+"roomNums" = "Phòng: ";
+"renters" = "Người ở: ";
+"water" = "Số nước: ";
+"electric" = "Số điện: ";
+"total" = "Tổng: ";
 
 //Detail Screen
 "roomDetailTitle" = "Chi tiết phòng";

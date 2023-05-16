@@ -11,11 +11,15 @@ class AddressCollectionViewCellViewModel {
     let roomNums : Int?
     let renters : Int?
     let status : String?
-    
-    init(roomNums: Int?, renters: Int?, status: String?) {
+    let waterNum : Int?
+    let electricNum : Int?
+    let totalNum : Int?
+    init(roomNums: Int?, renters: Int?, status: String?, waterNum: Int?, electricNum: Int?, totalNum: Int?) {
         self.roomNums = roomNums
         self.renters = renters
         self.status = status
+        self.waterNum = waterNum
+        self.electricNum = electricNum
+        self.totalNum = totalNum
     }
-    
 }

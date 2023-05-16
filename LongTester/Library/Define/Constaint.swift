@@ -15,8 +15,8 @@ struct App {
 
 extension App {
     struct Format {
-        static let distance = "%.2f km"
-        static let status = "%02d"
+        static let englishMonthYear = "MMM ,yyyy"
+        static let vietnamMonthYear = "MM/yyyy"
         static let userDateTime = "yyyy/MM/dd"
         static let serverDateTime = "yyyy-MM-dd"
         static let serverCurrentDateTime = "yyyy-MM-dd HH:mm:ss"
