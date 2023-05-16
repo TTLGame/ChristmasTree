@@ -32,3 +32,8 @@
 
 //Detail Screen
 "roomDetailTitle" = "Room Detail";
+
+//Radio
+"radioAll" = "All data";
+"radioUnPaid" = "Un-paid";
+"radioPaid" = "Paid";

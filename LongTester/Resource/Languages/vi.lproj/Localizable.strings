@@ -32,3 +32,8 @@
 
 //Detail Screen
 "roomDetailTitle" = "Chi tiết phòng";
+
+//Radio
+"radioAll" = "Tất cả";
+"radioUnPaid" = "Chưa trả";
+"radioPaid" = "Đã trả";

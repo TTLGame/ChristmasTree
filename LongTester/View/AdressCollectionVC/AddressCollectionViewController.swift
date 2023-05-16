@@ -13,6 +13,7 @@ class AddressCollectionViewController: BaseViewController {
 
     @IBOutlet weak var radioViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailCollectionView: UICollectionView!
+    @IBOutlet weak var radioView: AddressCollectionRadioView!
     
     private var shouldChangeValue = true
     private var lastOffset : CGFloat = 0
@@ -27,6 +28,7 @@ class AddressCollectionViewController: BaseViewController {
 
     private func setup(){
         setupCollectionView()
+        radioView.delegate = self
     }
     
     private func bindToViewModel() {
@@ -37,7 +39,14 @@ class AddressCollectionViewController: BaseViewController {
             
         }).disposed(by: disposeBag)
         
+        self.viewModel.radioViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] viewModel in
+            guard let self = self else {return}
+            self.radioView.viewModel = viewModel
+            
+        }).disposed(by: disposeBag)
+        
         viewModel.getData()
+        viewModel.getRadioData()
     }
     
     private func setupCollectionView(){
@@ -79,21 +88,28 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
         let scrollPos = scrollView.contentOffset.y
         let contentSize = scrollView.contentSize.height - scrollView.frame.size.height
         
-        if (contentSize < scrollView.frame.size.height + 200){
+        if (contentSize < scrollView.frame.size.height + 50){
             return
         }
+        
+        let sizeMax = CGFloat(40)
         if (lastOffset < scrollPos) { // scroll down
-            radioViewHeightConstraint.constant = radioViewHeightConstraint.constant - 3 < 0 ? 0 : radioViewHeightConstraint.constant - 3
+            
+            radioViewHeightConstraint.constant = radioViewHeightConstraint.constant - 1 < 0 ? 0 : radioViewHeightConstraint.constant - 1
+            radioView.alpha = CGFloat(radioViewHeightConstraint.constant / sizeMax)
         }
         else {
-            radioViewHeightConstraint.constant = radioViewHeightConstraint.constant + 3 > 50 ? 50 : radioViewHeightConstraint.constant + 3
+            radioViewHeightConstraint.constant = radioViewHeightConstraint.constant + 1 > sizeMax ? sizeMax : radioViewHeightConstraint.constant + 1
+            radioView.alpha = CGFloat(radioViewHeightConstraint.constant / sizeMax)
         }
         
         if (scrollPos <= 0){
-            radioViewHeightConstraint.constant = 50
+            radioViewHeightConstraint.constant = sizeMax
+            radioView.alpha = 1
         }
         else if (scrollPos >= contentSize){
             radioViewHeightConstraint.constant = 0
+            radioView.alpha = 0
         }
         lastOffset = scrollPos
     }
@@ -121,5 +137,11 @@ extension AddressCollectionViewController: UICollectionViewDelegateFlowLayout {
         let bounds = UIScreen.main.bounds
         let width = (bounds.size.width - 40) / 2.0
         return CGSize(width: width, height: 150)
+    }
+}
+
+extension AddressCollectionViewController : AddressCollectionRadioViewDelegate {
+    func didSortData(type: String) {
+        viewModel.sortData(type: type)
     }
 }

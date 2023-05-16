@@ -96,6 +96,12 @@
 		FDDB486629EFC80F00D212A7 /* SlideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486529EFC80F00D212A7 /* SlideMenuViewModel.swift */; };
 		FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486729EFC8CE00D212A7 /* SubSlideMenuViewModel.swift */; };
 		FDDB486A29EFD28E00D212A7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486929EFD28E00D212A7 /* UIViewController.swift */; };
+		FDE9CCEA2A132AED004844AD /* AddressCollectionRadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCE92A132AED004844AD /* AddressCollectionRadioView.swift */; };
+		FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CCEB2A132BD9004844AD /* AddressCollectionRadioView.xib */; };
+		FDE9CCEE2A132D87004844AD /* AddressCollectionRadioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCED2A132D87004844AD /* AddressCollectionRadioViewModel.swift */; };
+		FDE9CCF22A1331BC004844AD /* AddressCollectionRadioViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCF02A1331BC004844AD /* AddressCollectionRadioViewCell.swift */; };
+		FDE9CCF32A1331BC004844AD /* AddressCollectionRadioViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CCF12A1331BC004844AD /* AddressCollectionRadioViewCell.xib */; };
+		FDE9CCF52A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCF42A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift */; };
 		FDF14B30295C311500BF079F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF14B2F295C311500BF079F /* RootViewController.swift */; };
 		FDF14B39295D861300BF079F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDF14B3B295D861300BF079F /* Localizable.strings */; };
 		FDF300BE29E3C99A0084562A /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300BD29E3C99A0084562A /* Realm.swift */; };
@@ -217,6 +223,12 @@
 		FDDB486529EFC80F00D212A7 /* SlideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewModel.swift; sourceTree = "<group>"; };
 		FDDB486729EFC8CE00D212A7 /* SubSlideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSlideMenuViewModel.swift; sourceTree = "<group>"; };
 		FDDB486929EFD28E00D212A7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		FDE9CCE92A132AED004844AD /* AddressCollectionRadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioView.swift; sourceTree = "<group>"; };
+		FDE9CCEB2A132BD9004844AD /* AddressCollectionRadioView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionRadioView.xib; sourceTree = "<group>"; };
+		FDE9CCED2A132D87004844AD /* AddressCollectionRadioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioViewModel.swift; sourceTree = "<group>"; };
+		FDE9CCF02A1331BC004844AD /* AddressCollectionRadioViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioViewCell.swift; sourceTree = "<group>"; };
+		FDE9CCF12A1331BC004844AD /* AddressCollectionRadioViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionRadioViewCell.xib; sourceTree = "<group>"; };
+		FDE9CCF42A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioViewCellViewModel.swift; sourceTree = "<group>"; };
 		FDF14B2F295C311500BF079F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		FDF14B3A295D861300BF079F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDF14B3C295D874D00BF079F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -513,6 +525,17 @@
 			path = UITableViewNoDataEx;
 			sourceTree = "<group>";
 		};
+		FD7A763B2A1321D600FC2124 /* RadioView */ = {
+			isa = PBXGroup;
+			children = (
+				FDE9CCEF2A13318B004844AD /* Cell */,
+				FDE9CCE92A132AED004844AD /* AddressCollectionRadioView.swift */,
+				FDE9CCEB2A132BD9004844AD /* AddressCollectionRadioView.xib */,
+				FDE9CCED2A132D87004844AD /* AddressCollectionRadioViewModel.swift */,
+			);
+			path = RadioView;
+			sourceTree = "<group>";
+		};
 		FD89618B295BF11A00C7BE20 = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +674,7 @@
 		FDADC1BE29F39E7600803536 /* AdressCollectionVC */ = {
 			isa = PBXGroup;
 			children = (
+				FD7A763B2A1321D600FC2124 /* RadioView */,
 				FDADC1C729F3B73800803536 /* Cell */,
 				FDADC1BF29F39FD400803536 /* AddressCollectionViewController.swift */,
 				FDADC1C029F39FD400803536 /* AddressCollectionViewController.xib */,
@@ -722,6 +746,16 @@
 				FDDB486529EFC80F00D212A7 /* SlideMenuViewModel.swift */,
 				FDDB485D29EFB01000D212A7 /* SlideMenuViewCell.swift */,
 				FDDB485E29EFB01000D212A7 /* SlideMenuViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FDE9CCEF2A13318B004844AD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FDE9CCF02A1331BC004844AD /* AddressCollectionRadioViewCell.swift */,
+				FDE9CCF12A1331BC004844AD /* AddressCollectionRadioViewCell.xib */,
+				FDE9CCF42A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -887,11 +921,13 @@
 				FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */,
 				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
+				FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */,
 				FDADC1CB29F3B75700803536 /* AddressCollectionViewCell.xib in Resources */,
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
 				FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */,
 				FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */,
 				FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */,
+				FDE9CCF32A1331BC004844AD /* AddressCollectionRadioViewCell.xib in Resources */,
 				FD8961A1295BF11D00C7BE20 /* Assets.xcassets in Resources */,
 				FD8961AE295C1E5900C7BE20 /* MainScreenViewController.xib in Resources */,
 				FD4DF3CC29ED92E900AB6A50 /* LoginViewController.xib in Resources */,
@@ -978,13 +1014,16 @@
 				FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */,
 				FD564B8729656B2000A527ED /* ProviderAPIWithAccessToken.swift in Sources */,
 				FD564B8929656C7900A527ED /* Prefs.swift in Sources */,
+				FDE9CCF22A1331BC004844AD /* AddressCollectionRadioViewCell.swift in Sources */,
 				FD4DF3CF29ED980E00AB6A50 /* TextFieldView.swift in Sources */,
 				FDADC19D29EFFFD600803536 /* SlideMenuView.swift in Sources */,
+				FDE9CCEE2A132D87004844AD /* AddressCollectionRadioViewModel.swift in Sources */,
 				FDF14B30295C311500BF079F /* RootViewController.swift in Sources */,
 				FDDB486629EFC80F00D212A7 /* SlideMenuViewModel.swift in Sources */,
 				FDDB485F29EFB01000D212A7 /* SlideMenuViewCell.swift in Sources */,
 				FD564B8C29656CFE00A527ED /* PrefsImp.swift in Sources */,
 				FD896198295BF11A00C7BE20 /* AppDelegate.swift in Sources */,
+				FDE9CCF52A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift in Sources */,
 				FD738FBA2A0FD3F900088BF0 /* UITableViewNoDataEx.swift in Sources */,
 				FDF300C329E3CCEA0084562A /* Environment.swift in Sources */,
 				FDA852C329EE786900A6357F /* StoreManager.swift in Sources */,
@@ -1025,6 +1064,7 @@
 				FDF300C129E3CB0E0084562A /* MainScreenTarget.swift in Sources */,
 				FD738FBD2A0FD9ED00088BF0 /* UICollectionView.swift in Sources */,
 				FD564B772965675400A527ED /* ProviderAPIBasic.swift in Sources */,
+				FDE9CCEA2A132AED004844AD /* AddressCollectionRadioView.swift in Sources */,
 				FD57659C2963CD9D005969BE /* Color.swift in Sources */,
 				FDADC1B329F2608500803536 /* AlertViewModel.swift in Sources */,
 				FD564B82296568E300A527ED /* APIError.swift in Sources */,

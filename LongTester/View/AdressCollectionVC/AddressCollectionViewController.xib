@@ -11,7 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressCollectionViewController" customModule="LongTester" customModuleProvider="target">
             <connections>
                 <outlet property="detailCollectionView" destination="u5u-S9-bwx" id="ttb-FK-ouU"/>
-                <outlet property="radioViewHeightConstraint" destination="yvp-dd-nw0" id="WXo-Vu-jfL"/>
+                <outlet property="radioView" destination="9Q9-dR-d3b" id="OL1-bq-cod"/>
+                <outlet property="radioViewHeightConstraint" destination="Hz0-2g-M9e" id="bKW-Mk-Akq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,8 +21,12 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rih-Xc-p2o">
+                    <rect key="frame" x="0.0" y="47" width="390" height="797"/>
+                    <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-S9-bwx">
-                    <rect key="frame" x="10" y="97" width="370" height="713"/>
+                    <rect key="frame" x="10" y="87" width="370" height="723"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pcN-38-hOI">
                         <size key="itemSize" width="128" height="128"/>
@@ -31,28 +36,43 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H3R-FZ-D7W">
-                    <rect key="frame" x="0.0" y="47" width="390" height="50"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="40"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q9-dR-d3b" userLabel="RadioView">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l73-Dr-5Z4">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q9-dR-d3b" userLabel="RadioView" customClass="AddressCollectionRadioView" customModule="LongTester" customModuleProvider="target">
+                                    <rect key="frame" x="10" y="5" width="370" height="30"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="yvp-dd-nw0"/>
+                                <constraint firstAttribute="height" constant="40" id="Hz0-2g-M9e"/>
+                                <constraint firstAttribute="bottom" secondItem="9Q9-dR-d3b" secondAttribute="bottom" constant="5" id="Na5-qc-XrY"/>
+                                <constraint firstItem="9Q9-dR-d3b" firstAttribute="top" secondItem="l73-Dr-5Z4" secondAttribute="top" constant="5" id="RAO-l9-Ba4"/>
+                                <constraint firstItem="9Q9-dR-d3b" firstAttribute="leading" secondItem="l73-Dr-5Z4" secondAttribute="leading" constant="10" id="egH-hF-cIV"/>
+                                <constraint firstAttribute="trailing" secondItem="9Q9-dR-d3b" secondAttribute="trailing" constant="10" id="mNK-kF-aVM"/>
                             </constraints>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="u5u-S9-bwx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="5fI-vF-KQ9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="H3R-FZ-D7W" secondAttribute="trailing" id="FzR-6I-kPR"/>
+                <constraint firstAttribute="bottom" secondItem="Rih-Xc-p2o" secondAttribute="bottom" id="GNm-nt-8FF"/>
+                <constraint firstItem="Rih-Xc-p2o" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Lsg-2v-sRz"/>
                 <constraint firstItem="H3R-FZ-D7W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="P5n-2W-mUB"/>
                 <constraint firstItem="H3R-FZ-D7W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="TI7-5n-OkC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rih-Xc-p2o" secondAttribute="trailing" id="XHe-Xm-a6m"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u5u-S9-bwx" secondAttribute="trailing" constant="10" id="XpG-AS-FGn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u5u-S9-bwx" secondAttribute="bottom" id="jEV-kn-7Uq"/>
                 <constraint firstItem="u5u-S9-bwx" firstAttribute="top" secondItem="H3R-FZ-D7W" secondAttribute="bottom" id="jx5-Ue-QYX"/>
+                <constraint firstItem="Rih-Xc-p2o" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="zNX-Uc-4vQ"/>
             </constraints>
             <point key="canvasLocation" x="-32.307692307692307" y="19.90521327014218"/>
         </view>
