@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import DropDown
 
 class AddressCollectionViewController: BaseViewController {
 
@@ -16,10 +17,16 @@ class AddressCollectionViewController: BaseViewController {
     @IBOutlet weak var radioView: AddressCollectionRadioView!
     
     @IBOutlet weak var monthLbl: UILabel!
+    
+    @IBOutlet weak var monthInfoView: UIView!
+    
+    @IBOutlet weak var infoStackView: UIStackView!
+    @IBOutlet weak var settingBtn: UIButton!
     private var shouldChangeValue = true
     private var lastOffset : CGFloat = 0
     private var viewModel = AddressCollectionViewModel()
     private let sizeMax = CGFloat(40)
+    private var dropdown : DropDownView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -28,11 +35,42 @@ class AddressCollectionViewController: BaseViewController {
     }
 
     private func setup(){
+        monthInfoView.addBottomShadow(height: 0, alpha: 0.4,radius: 5)
         setupCollectionView()
         setupDate()
+        setupBtnSetting()
         radioView.delegate = self
     }
     
+    private func  setupBtnSetting() {
+        settingBtn.setTitle("", for: .normal)
+        dropdown = DropDownView(frame: self.view.frame, anchorView: settingBtn)
+        dropdown.tableWidth = 200
+        dropdown.cellHeight = 50
+        dropdown.horizonalDirection = .left
+        dropdown.cellViewModels = [BaseDropDownCellViewModel(title: "Add Data"),
+                                   BaseDropDownCellViewModel(title: "Add Data")]
+        dropdown.delegate = self
+        
+//        dropDown.anchorView = settingBtn
+//        dropDown.dataSource = ["Add Data", "Info"]
+//        dropDown.direction = .bottom
+//        DropDown.appearance().trailingAnchor.constraint(equalTo: self.settingBtn.trailingAnchor, constant: 0)
+//        DropDown.DismissMode
+////        calendarView.trailingAnchor.constraint(equalTo: self.vWindowCalendar.trailingAnchor, constant: 0),
+//        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+//
+//        let cellViewModels = [AddressCollectionDropDownCellViewModel(image: UIImage(named: "book.fill"), title: "Add Data"),
+//                              AddressCollectionDropDownCellViewModel(image: UIImage(named: "info.circle.fill"), title: "Info")]
+//        dropDown.cellNib = UINib(nibName: String(describing: AddressCollectionDropDownCell.self), bundle: nil)
+//
+//        dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+//           guard let cell = cell as? AddressCollectionDropDownCell else { return }
+//
+//            cell.viewModel = cellViewModels[index]
+//        }
+        
+    }
     private func setupDate(){
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -66,6 +104,12 @@ class AddressCollectionViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    @IBAction func settingBtnTapped(_ sender: Any) {
+        
+        dropdown.show()
+
     }
 }
 
@@ -111,26 +155,32 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
         if (lastOffset < scrollPos) { // scroll down
             radioViewHeightConstraint.constant = radioViewHeightConstraint.constant - 1 < 0 ? 0 : radioViewHeightConstraint.constant - 1
             radioView.alpha = CGFloat(radioViewHeightConstraint.constant / sizeMax)
+            settingBtn.alpha = CGFloat(radioViewHeightConstraint.constant / sizeMax)
         }
         else {
             radioViewHeightConstraint.constant = radioViewHeightConstraint.constant + 1 > sizeMax ? sizeMax : radioViewHeightConstraint.constant + 1
             radioView.alpha = CGFloat(radioViewHeightConstraint.constant / sizeMax)
+            settingBtn.alpha = CGFloat(radioViewHeightConstraint.constant / sizeMax)
         }
         
         if (scrollPos <= 0){
             radioViewHeightConstraint.constant = sizeMax
             radioView.alpha = 1
+            settingBtn.alpha = 1
         }
         else if (scrollPos >= contentSize){
             radioViewHeightConstraint.constant = 0
             radioView.alpha = 0
+            settingBtn.alpha = 0
         }
         
-        if (radioView.alpha != 1){
+        if (radioView.alpha <= 0.9){
             radioView.isUserInteractionEnabled = false
+            settingBtn.isUserInteractionEnabled = false
         }
         else {
             radioView.isUserInteractionEnabled = true
+            settingBtn.isUserInteractionEnabled = true
         }
         lastOffset = scrollPos
     }
@@ -173,5 +223,16 @@ extension AddressCollectionViewController : AddressCollectionRadioViewDelegate {
         self.detailCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
         radioViewHeightConstraint.constant = sizeMax
         radioView.alpha = 1
+        settingBtn.alpha = 1
+    }
+}
+
+extension AddressCollectionViewController : DropDownViewDelegate {
+    func didSelect(indexPath: IndexPath) {
+        print("Selected at \(indexPath.row)")
+    }
+    
+    func didCloseDropdown(){
+        
     }
 }

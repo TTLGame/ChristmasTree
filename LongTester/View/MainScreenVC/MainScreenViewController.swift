@@ -121,7 +121,6 @@ extension MainScreenViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Select \(indexPath.row)")
 //        rootViewModel.alertModel.accept(AlertModel(message: "123"))
         self.handlePressData(indexPath: indexPath)
     }

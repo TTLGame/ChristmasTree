@@ -37,7 +37,7 @@ class AddressCollectionRadioViewCell: UICollectionViewCell {
     }
     func deselectView() {
         backGroundView.backgroundColor = Color.normalTextColor
-        textLbl.textColor = UIColor.black
+        textLbl.textColor = UIColor.white
     }
     
     func seletingView() {

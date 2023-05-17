@@ -103,6 +103,15 @@
 		FDE9CCF32A1331BC004844AD /* AddressCollectionRadioViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CCF12A1331BC004844AD /* AddressCollectionRadioViewCell.xib */; };
 		FDE9CCF52A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCF42A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift */; };
 		FDE9CCF72A139252004844AD /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCF62A139252004844AD /* Int.swift */; };
+		FDE9CCFB2A13E414004844AD /* AddressCollectionDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCF92A13E414004844AD /* AddressCollectionDropDownCell.swift */; };
+		FDE9CCFC2A13E414004844AD /* AddressCollectionDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CCFA2A13E414004844AD /* AddressCollectionDropDownCell.xib */; };
+		FDE9CCFE2A13E41D004844AD /* AddressCollectionDropDownCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCFD2A13E41D004844AD /* AddressCollectionDropDownCellViewModel.swift */; };
+		FDE9CD012A13F08F004844AD /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CD002A13F08F004844AD /* DropDownView.swift */; };
+		FDE9CD032A13F0E3004844AD /* DropDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CD022A13F0E3004844AD /* DropDownView.xib */; };
+		FDE9CD072A13F2FD004844AD /* BaseDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CD052A13F2FD004844AD /* BaseDropDownCell.swift */; };
+		FDE9CD082A13F2FD004844AD /* BaseDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CD062A13F2FD004844AD /* BaseDropDownCell.xib */; };
+		FDE9CD0A2A13F346004844AD /* BaseDropDownCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CD092A13F346004844AD /* BaseDropDownCellViewModel.swift */; };
+		FDE9CD0C2A14844C004844AD /* DropDownViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CD0B2A14844C004844AD /* DropDownViewDelegate.swift */; };
 		FDF14B30295C311500BF079F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF14B2F295C311500BF079F /* RootViewController.swift */; };
 		FDF14B39295D861300BF079F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDF14B3B295D861300BF079F /* Localizable.strings */; };
 		FDF300BE29E3C99A0084562A /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300BD29E3C99A0084562A /* Realm.swift */; };
@@ -231,6 +240,15 @@
 		FDE9CCF12A1331BC004844AD /* AddressCollectionRadioViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionRadioViewCell.xib; sourceTree = "<group>"; };
 		FDE9CCF42A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioViewCellViewModel.swift; sourceTree = "<group>"; };
 		FDE9CCF62A139252004844AD /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		FDE9CCF92A13E414004844AD /* AddressCollectionDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionDropDownCell.swift; sourceTree = "<group>"; };
+		FDE9CCFA2A13E414004844AD /* AddressCollectionDropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionDropDownCell.xib; sourceTree = "<group>"; };
+		FDE9CCFD2A13E41D004844AD /* AddressCollectionDropDownCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionDropDownCellViewModel.swift; sourceTree = "<group>"; };
+		FDE9CD002A13F08F004844AD /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		FDE9CD022A13F0E3004844AD /* DropDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownView.xib; sourceTree = "<group>"; };
+		FDE9CD052A13F2FD004844AD /* BaseDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDropDownCell.swift; sourceTree = "<group>"; };
+		FDE9CD062A13F2FD004844AD /* BaseDropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseDropDownCell.xib; sourceTree = "<group>"; };
+		FDE9CD092A13F346004844AD /* BaseDropDownCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDropDownCellViewModel.swift; sourceTree = "<group>"; };
+		FDE9CD0B2A14844C004844AD /* DropDownViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownViewDelegate.swift; sourceTree = "<group>"; };
 		FDF14B2F295C311500BF079F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		FDF14B3A295D861300BF079F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDF14B3C295D874D00BF079F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -322,6 +340,7 @@
 		FD4DF3C229ED929300AB6A50 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				FDE9CCFF2A13EFD9004844AD /* DropDownView */,
 				FDADC1CC29F3BCD100803536 /* PushView */,
 				FDADC1AF29F25F8000803536 /* AlertView */,
 				FDDB485129EFAF7C00D212A7 /* SlideMenu */,
@@ -677,6 +696,7 @@
 		FDADC1BE29F39E7600803536 /* AdressCollectionVC */ = {
 			isa = PBXGroup;
 			children = (
+				FDE9CCF82A13E3EA004844AD /* DropdownCell */,
 				FD7A763B2A1321D600FC2124 /* RadioView */,
 				FDADC1C729F3B73800803536 /* Cell */,
 				FDADC1BF29F39FD400803536 /* AddressCollectionViewController.swift */,
@@ -761,6 +781,37 @@
 				FDE9CCF42A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		FDE9CCF82A13E3EA004844AD /* DropdownCell */ = {
+			isa = PBXGroup;
+			children = (
+				FDE9CCF92A13E414004844AD /* AddressCollectionDropDownCell.swift */,
+				FDE9CCFA2A13E414004844AD /* AddressCollectionDropDownCell.xib */,
+				FDE9CCFD2A13E41D004844AD /* AddressCollectionDropDownCellViewModel.swift */,
+			);
+			path = DropdownCell;
+			sourceTree = "<group>";
+		};
+		FDE9CCFF2A13EFD9004844AD /* DropDownView */ = {
+			isa = PBXGroup;
+			children = (
+				FDE9CD042A13F2D0004844AD /* BaseDropDownCell */,
+				FDE9CD002A13F08F004844AD /* DropDownView.swift */,
+				FDE9CD022A13F0E3004844AD /* DropDownView.xib */,
+				FDE9CD0B2A14844C004844AD /* DropDownViewDelegate.swift */,
+			);
+			path = DropDownView;
+			sourceTree = "<group>";
+		};
+		FDE9CD042A13F2D0004844AD /* BaseDropDownCell */ = {
+			isa = PBXGroup;
+			children = (
+				FDE9CD052A13F2FD004844AD /* BaseDropDownCell.swift */,
+				FDE9CD062A13F2FD004844AD /* BaseDropDownCell.xib */,
+				FDE9CD092A13F346004844AD /* BaseDropDownCellViewModel.swift */,
+			);
+			path = BaseDropDownCell;
 			sourceTree = "<group>";
 		};
 		FDF14B31295D847100BF079F /* Resource */ = {
@@ -920,12 +971,15 @@
 				FD8961A4295BF11D00C7BE20 /* LaunchScreen.storyboard in Resources */,
 				FD738FB82A0FD28700088BF0 /* UITableViewNoDataEx.xib in Resources */,
 				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
+				FDE9CD032A13F0E3004844AD /* DropDownView.xib in Resources */,
 				FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */,
 				FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */,
 				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
 				FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */,
+				FDE9CD082A13F2FD004844AD /* BaseDropDownCell.xib in Resources */,
 				FDADC1CB29F3B75700803536 /* AddressCollectionViewCell.xib in Resources */,
+				FDE9CCFC2A13E414004844AD /* AddressCollectionDropDownCell.xib in Resources */,
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
 				FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */,
 				FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */,
@@ -1003,6 +1057,7 @@
 				FDADC1B129F25FA300803536 /* AlertView.swift in Sources */,
 				FDADC1B529F2610700803536 /* AlertModel.swift in Sources */,
 				FDADC1CA29F3B75700803536 /* AddressCollectionViewCell.swift in Sources */,
+				FDE9CD012A13F08F004844AD /* DropDownView.swift in Sources */,
 				FDA852C729EE7B4100A6357F /* AppConfigModel.swift in Sources */,
 				FD564B7029655D8600A527ED /* TableScreenCell.swift in Sources */,
 				FDBBCB1C29B6DFEA0095162F /* SwiftUIView.swift in Sources */,
@@ -1015,6 +1070,7 @@
 				FDDB486A29EFD28E00D212A7 /* UIViewController.swift in Sources */,
 				FD89619C295BF11A00C7BE20 /* MainScreenViewController.swift in Sources */,
 				FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */,
+				FDE9CD0A2A13F346004844AD /* BaseDropDownCellViewModel.swift in Sources */,
 				FD564B8729656B2000A527ED /* ProviderAPIWithAccessToken.swift in Sources */,
 				FD564B8929656C7900A527ED /* Prefs.swift in Sources */,
 				FDE9CCF22A1331BC004844AD /* AddressCollectionRadioViewCell.swift in Sources */,
@@ -1031,6 +1087,7 @@
 				FDF300C329E3CCEA0084562A /* Environment.swift in Sources */,
 				FDA852C329EE786900A6357F /* StoreManager.swift in Sources */,
 				FD564B79296567AB00A527ED /* DefaultAlamofireManager.swift in Sources */,
+				FDE9CCFB2A13E414004844AD /* AddressCollectionDropDownCell.swift in Sources */,
 				FDE9CCF72A139252004844AD /* Int.swift in Sources */,
 				FD4DF3C829ED92CD00AB6A50 /* LoginViewModel.swift in Sources */,
 				FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */,
@@ -1039,6 +1096,7 @@
 				FD564B7B296567D700A527ED /* Provider.swift in Sources */,
 				FD5765AE2963D2A0005969BE /* Dictionary.swift in Sources */,
 				FD5765A12963CE8B005969BE /* User.swift in Sources */,
+				FDE9CD0C2A14844C004844AD /* DropDownViewDelegate.swift in Sources */,
 				FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */,
 				FDADC1C429F39FF200803536 /* AddressCollectionViewModel.swift in Sources */,
 				FDA852C129EE786900A6357F /* RealmCollectionModels.swift in Sources */,
@@ -1046,6 +1104,7 @@
 				FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */,
 				FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */,
 				FD564B95296584A500A527ED /* AppConfig.swift in Sources */,
+				FDE9CCFE2A13E41D004844AD /* AddressCollectionDropDownCellViewModel.swift in Sources */,
 				FDADC1A729F1230B00803536 /* MainScreenCellViewModel.swift in Sources */,
 				FDF300C529E3D0880084562A /* Decoder.swift in Sources */,
 				FDADC1BB29F262CE00803536 /* BaseViewController.swift in Sources */,
@@ -1062,6 +1121,7 @@
 				FD4DF3CB29ED92E900AB6A50 /* LoginViewController.swift in Sources */,
 				FD564B73296561FE00A527ED /* UITableView.swift in Sources */,
 				FDADC1CE29F3BCE300803536 /* PushModel.swift in Sources */,
+				FDE9CD072A13F2FD004844AD /* BaseDropDownCell.swift in Sources */,
 				FDADC1B729F2615A00803536 /* AlertBuilder.swift in Sources */,
 				FD57659E2963CDB3005969BE /* Constaint.swift in Sources */,
 				FDCB9FCD2967DFA200FC0D68 /* Wheels.swift in Sources */,

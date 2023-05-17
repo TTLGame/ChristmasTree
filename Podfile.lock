@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.6.2)
+  - DropDown (2.3.13)
   - FLEX (5.22.10)
   - IQKeyboardManagerSwift (6.5.11)
   - Moya/Core (15.0.0):
@@ -26,6 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - DropDown
   - FLEX
   - IQKeyboardManagerSwift
   - Moya/RxSwift (~> 15.0)
@@ -39,6 +41,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DropDown
     - FLEX
     - IQKeyboardManagerSwift
     - Moya
@@ -53,6 +56,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   FLEX: f21ee4f498eed3f8a1eded66b21939fd3b7a22ce
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
@@ -65,6 +69,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 22639c0b1ccbc3be4a79d5b0375d3c24b97af48e
+PODFILE CHECKSUM: 06ddcadbcdfd757bb0da9516b40072b37b3ac8f9
 
 COCOAPODS: 1.11.3

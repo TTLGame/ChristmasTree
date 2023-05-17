@@ -92,6 +92,9 @@ class MainScreenViewModel : NSObject {
     }
     
     func handlePressData(index : IndexPath){
+        self.rootViewModel.pushViewModel.accept(PushModel(viewController: AddressCollectionViewController(),
+                                                          title: Language.localized("addressCollectionMainTitle")))
+        return
 //        rootViewModel.alertModel.accept(AlertModel(message: "Fail"))
         let alertModel = AlertModel.ActionModel(title: "Open", style: .default, handler: {_ in
 //            self.rootViewModel.pushView.accept(AddressCollectionViewController())

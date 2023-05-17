@@ -66,7 +66,7 @@ class AddressCollectionViewCell: UICollectionViewCell {
           let total = viewModel?.totalNum {
            waterAmmountLbl.text =  String(water)
            electricAmmountLbl.text =  String(electric)
-           totalAmmountLbl.text =  total.formatnumberWithDot()
+           totalAmmountLbl.text =  total.formatnumberWithDot() + " VND"
        }
         
     }

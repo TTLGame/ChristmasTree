@@ -14,6 +14,7 @@ pod 'IQKeyboardManagerSwift'
 pod 'FLEX'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
+pod 'DropDown'
   # Pods for LongTester
 
 end
