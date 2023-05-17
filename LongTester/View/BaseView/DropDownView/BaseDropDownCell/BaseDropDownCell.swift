@@ -7,19 +7,25 @@
 
 import UIKit
 
+class BaseCell<U>: UITableViewCell {
+    var viewModel: U?
+}
 
-class BaseDropDownCell: UITableViewCell {
-
-    var viewModel :  BaseDropDownCellViewModel? {
+class BaseDropDownCell : BaseCell<BaseDropDownCellViewModel> {
+    override var viewModel : BaseDropDownCellViewModel? {
         didSet {
             bindData()
         }
     }
+
     @IBOutlet weak var titleLbl: UILabel!
     
     private func bindData() {
-        self.titleLbl.text = viewModel?.title
+        if let titleLbl = titleLbl {
+            titleLbl.text = self.viewModel?.title
+        }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,7 +33,6 @@ class BaseDropDownCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

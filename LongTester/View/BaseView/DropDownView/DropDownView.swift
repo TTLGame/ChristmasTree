@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class DropDownView : UIView {
+class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewDataSource {
     enum HozitonalDirection {
         case left
         case right
@@ -29,14 +29,8 @@ class DropDownView : UIView {
     weak var delegate : DropDownViewDelegate?
    
     //Public variables
-    public var nibCell : UITableViewCell.Type = BaseDropDownCell.self {
-        didSet {
-            self.tblView.register(UINib(nibName: String(describing: nibCell), bundle: nil), forCellReuseIdentifier: String(describing: nibCell))
-            tblView.reloadData()
-        }
-    }
 
-    public var cellViewModels : [BaseDropDownCellViewModel] = [] {
+    public var cellViewModels : [U] = [] {
         didSet{
             tblView.reloadData()
         }
@@ -153,23 +147,33 @@ class DropDownView : UIView {
         self.commonInit()
     }
     func commonInit(){
-        loadViewFromNib()
+        nibSetup()
         setupTableView()
     }
     
+    private func nibSetup() {
+        backgroundColor = .clear
+        _containView = loadViewFromNib()
+        _containView.frame = bounds
+        addSubview(_containView)
+    }
+    
+    private func loadViewFromNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: "DropDownView", bundle: bundle)
+        let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView
+        return nibView!
+    }
+    
     private func setupTableView(){
-        self.tblView.register(UINib(nibName: String(describing: BaseDropDownCell.self), bundle: nil), forCellReuseIdentifier: String(describing: BaseDropDownCell.self))
+        self.tblView.register(UINib(nibName: String(describing: T.self), bundle: nil), forCellReuseIdentifier: String(describing: T.self))
 
+//        tblView.register(T.self, forCellReuseIdentifier: "Cell")
+        
         tblView.dataSource = self
         tblView.delegate = self
     }
-}
-
-//MARK: Public Function which can be access
-extension DropDownView {
     
-}
-extension DropDownView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let cellHeight = cellHeight {
             return cellHeight
@@ -177,19 +181,6 @@ extension DropDownView : UITableViewDelegate {
         return UITableView.automaticDimension
     }
 
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let bg = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 1))
-//        bg.backgroundColor = .clear
-//        return bg
-//    }
-    
-}
-
-extension DropDownView : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -204,25 +195,72 @@ extension DropDownView : UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(
-//            withIdentifier: String(describing: nibCell),
-//            for: indexPath)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! T
         
-        var cell: BaseDropDownCell! = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: nibCell),
-            for: indexPath) as? BaseDropDownCell
+        let cell: T! = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: T.self),
+            for: indexPath) as? T
         cell.viewModel = cellViewModels[indexPath.row]
         return cell
-        
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelect(indexPath: indexPath)
         if (closeOnSelect) {
             self.hide()
         }
     }
+    
 }
+//
+//extension DropDownView : UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if let cellHeight = cellHeight {
+//            return cellHeight
+//        }
+//        return UITableView.automaticDimension
+//    }
+//
+//}
+//extension DropDownView : UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if let cellHeight = cellHeight {
+//            return cellHeight
+//        }
+//        return UITableView.automaticDimension
+//    }
+//
+//}
+
+//extension DropDownView: UITableViewDataSource {
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if (cellViewModels.count == 0) {
+//            tableView.setEmptyData()
+//        }
+//        else {
+//            tableView.restoreNewProduct()
+//        }
+//        return cellViewModels.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell: BaseDropDownCell! = tableView.dequeueReusableCell(
+//            withIdentifier: String(describing: nibCell),
+//            for: indexPath) as? BaseDropDownCell
+//        cell.viewModel = cellViewModels[indexPath.row]
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        delegate?.didSelect(indexPath: indexPath)
+//        if (closeOnSelect) {
+//            self.hide()
+//        }
+//    }
+//}
 
 extension DropDownView {
     func show() {

@@ -26,14 +26,14 @@ class AddressCollectionViewController: BaseViewController {
     private var lastOffset : CGFloat = 0
     private var viewModel = AddressCollectionViewModel()
     private let sizeMax = CGFloat(40)
-    private var dropdown : DropDownView!
+//    private var dropdown : DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>!
+    private var dropdown : DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>!
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         bindToViewModel()
         // Do any additional setup after loading the view.
     }
-
     private func setup(){
         monthInfoView.addBottomShadow(height: 0, alpha: 0.4,radius: 5)
         setupCollectionView()
@@ -44,13 +44,19 @@ class AddressCollectionViewController: BaseViewController {
     
     private func  setupBtnSetting() {
         settingBtn.setTitle("", for: .normal)
-        dropdown = DropDownView(frame: self.view.frame, anchorView: settingBtn)
+//        dropdown = DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>(frame: self.view.frame, anchorView: settingBtn)
+        
+        dropdown = DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>(frame: self.view.frame, anchorView: settingBtn)
         dropdown.tableWidth = 200
         dropdown.cellHeight = 50
         dropdown.horizonalDirection = .left
-        dropdown.cellViewModels = [BaseDropDownCellViewModel(title: "Add Data"),
-                                   BaseDropDownCellViewModel(title: "Add Data")]
+        
+        dropdown.cellViewModels = [AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "book.fill"),
+                                                                          title: "Add Data"),
+                                   AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "info.circle.fill"),
+                                                                          title: "Info")]
         dropdown.delegate = self
+        
         
 //        dropDown.anchorView = settingBtn
 //        dropDown.dataSource = ["Add Data", "Info"]

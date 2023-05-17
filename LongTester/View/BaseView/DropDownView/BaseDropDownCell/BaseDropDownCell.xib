@@ -35,7 +35,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="titleLbl" destination="vWX-Mg-F8S" id="J3Y-UY-PWX"/>
+                <outlet property="titleLbl" destination="vWX-Mg-F8S" id="fch-J5-fpl"/>
             </connections>
             <point key="canvasLocation" x="-32" y="20"/>
         </tableViewCell>

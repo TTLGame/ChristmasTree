@@ -8,23 +8,27 @@
 import UIKit
 
 
-class AddressCollectionDropDownCell: UITableViewCell {
-    var viewModel: AddressCollectionDropDownCellViewModel?
+class AddressCollectionDropDownCell: BaseCell<AddressCollectionDropDownCellViewModel> {
+//    var viewModel: AddressCollectionDropDownCellViewModel?
     
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var imgView: UIImageView!
-//
-//    var viewModel: AddressCollectionDropDownCellViewModel? {
-//        didSet {
-//            bindData()
-//        }
-//    }
-//
-//    private func bindData() {
-//        imgView.image = viewModel?.image
-//    }
+    
+    override var viewModel: AddressCollectionDropDownCellViewModel? {
+        didSet {
+            bindData()
+        }
+    }
+
+    private func bindData() {
+        imgView.image = viewModel?.image
+        titleLbl.text = viewModel?.title
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
         // Initialization code
     }
 
