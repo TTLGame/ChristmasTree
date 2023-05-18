@@ -22,6 +22,8 @@ class SlideMenuView : UIView {
     private var sideMenuShadowView: UIView!
     private var maxSubSlideMenuWidth : CGFloat = 0
     private var baseVC = UIViewController()
+    private var lastOffset : CGFloat = 0
+    
     // Expand/Collapse the side menu by changing trailing's constant
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
     
@@ -123,13 +125,16 @@ class SlideMenuView : UIView {
     
     @objc func vContainerOnScroll(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self._contentView)
-        let newPosition = sideMenuWidthConstraint.constant + (translation.x/20)
+        let newPosition = sideMenuWidthConstraint.constant + (translation.x < lastOffset ? -6 : 6)
+        
         
         switch sender.state {
         case .changed:
+            lastOffset = translation.x
             sideMenuWidthConstraint.constant = newPosition > maxSubSlideMenuWidth ? maxSubSlideMenuWidth : newPosition < 0 ? 0 : newPosition
         case .ended:
-            if ( newPosition > maxSubSlideMenuWidth / 2) {
+            lastOffset = 0
+            if ( newPosition > maxSubSlideMenuWidth / 1.2) {
                 self.openMenu()
             }
             else {

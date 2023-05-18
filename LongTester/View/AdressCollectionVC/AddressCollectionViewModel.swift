@@ -15,7 +15,7 @@ import SVProgressHUD
 class AddressCollectionViewModel : NSObject {
     var cellViewModels : BehaviorRelay<[AddressCollectionViewCellViewModel]> = BehaviorRelay(value: [])
     var radioViewModels : BehaviorRelay<AddressCollectionRadioViewModel> = BehaviorRelay(value: AddressCollectionRadioViewModel(cellViewModels: []))
-    
+    var dropdownCellViewModels : BehaviorRelay<[AddressCollectionDropDownCellViewModel]> = BehaviorRelay(value: [])
     private var defaultCellViewModels = [AddressCollectionViewCellViewModel]()
     let api: Provider<MultiTarget>
     private(set) var rootViewModel: RootViewModel
@@ -47,19 +47,17 @@ class AddressCollectionViewModel : NSObject {
                                                            electricNum: electric,
                                                            totalNum: total))
         }
-      
-//        let data = [AddressCollectionViewCellViewModel(roomNums: 1, renters: 3, status: "Paid"),
-//                    AddressCollectionViewCellViewModel(roomNums: 2, renters: 4, status: "Short"),
-//                    AddressCollectionViewCellViewModel(roomNums: 3, renters: 2, status: "NotPaid"),
-//                    AddressCollectionViewCellViewModel(roomNums: 4, renters: 2, status: "Paid"),
-//                    AddressCollectionViewCellViewModel(roomNums: 4, renters: 2, status: "Paid"),
-//                    AddressCollectionViewCellViewModel(roomNums: 4, renters: 2, status: "Paid"),
-//                    AddressCollectionViewCellViewModel(roomNums: 4, renters: 2, status: "Paid")]
-//
         defaultCellViewModels = data
         cellViewModels.accept(data)
     }
     
+    func getDropdownData(){
+        let data = [AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "book.fill"),
+                                                           title: "Add Data"),
+                    AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "info.circle.fill"),
+                                                           title: "Info")]
+        dropdownCellViewModels.accept(data)
+    }
     func getRadioData(){
         let cell = [AddressCollectionRadioViewCellViewModel(title: Language.localized("radioAll"),type: "ALL"),
                     AddressCollectionRadioViewCellViewModel(title: Language.localized("radioUnPaid"),type: "UNPAID"),

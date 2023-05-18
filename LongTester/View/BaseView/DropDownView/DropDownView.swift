@@ -65,10 +65,21 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
             updateTbleView()
         }
     }
+    public var heightOffset : CGFloat = 20 {
+        didSet{
+            updateTbleView()
+        }
+    }
     
     public var bgColor : UIColor = UIColor.white {
         didSet{
             tblView.backgroundColor = bgColor
+        }
+    }
+    
+    public var highLightColor : UIColor = Color.selectTableView {
+        didSet{
+            tblView.reloadData()
         }
     }
     
@@ -101,17 +112,18 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
     
     private func setupUI(){
         self.tblView = UITableView(frame: CGRect(x: anchorView.frame.origin.x,
-                                                 y: anchorView.frame.origin.y + anchorView.frame.height + 8,
+                                                 y: anchorView.frame.origin.y + anchorView.frame.height + heightOffset,
                                                  width: anchorView.frame.width,
-                                                 height: 250.0))
+                                                 height: tableHeight))
         
         tblView.backgroundColor = bgColor
         tblView.addBottomShadow(height: 3, alpha: 0.2,radius: 5)
         tblView.layer.masksToBounds = false
         
-        self.tblView.separatorColor = UIColor.lightGray
+        self.tblView.separatorColor = Color.greyPrimary
+        
         self.tblView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
-        self.tblView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        self.tblView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         self.tblView.layer.borderColor = UIColor.clear.cgColor
         self.tblView.layer.borderWidth = 1.0
         self.tblView.layer.cornerRadius = 4
@@ -119,19 +131,22 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
 
     }
     private func updateTbleView(){
+        print("anchorView \(anchorView.frame)")
+        print("anchorView \(anchorView.frame.midX) \(anchorView.frame.midY)")
         
         var width = anchorView.frame.width
         if let tableWidth = tableWidth{
             width = tableWidth
         }
         var xPos = anchorView.frame.origin.x
-        var yPos = anchorView.frame.origin.y + anchorView.frame.height + 12
+        anchorView.frame
+        var yPos = anchorView.frame.origin.y + anchorView.frame.height + heightOffset
         if (horizonalDirection == .left){
-            xPos = anchorView.frame.origin.x - width + anchorView.frame.width/2
+            xPos = anchorView.frame.origin.x - width + anchorView.frame.width
         }
         
         if (verticalDirection == .top){
-            yPos = anchorView.frame.origin.y - 12 - tableHeight
+            yPos = anchorView.frame.origin.y - heightOffset - tableHeight
         }
         
         tblView.frame = CGRect(x: xPos, y: yPos, width: width, height: tableHeight)
@@ -201,6 +216,11 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
             withIdentifier: String(describing: T.self),
             for: indexPath) as? T
         cell.viewModel = cellViewModels[indexPath.row]
+        
+        // Highlighted color
+        let myCustomSelectionColorView = UIView()
+        myCustomSelectionColorView.backgroundColor = highLightColor
+        cell.selectedBackgroundView = myCustomSelectionColorView
         return cell
     }
 

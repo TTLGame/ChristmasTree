@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseSheetView" customModule="LongTester" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="YDW-Rl-3z0" id="hDs-Aw-gZJ"/>
+                <outlet property="sheetHeightConstraint" destination="nTT-nb-rGk" id="3I3-Jx-LwN"/>
+                <outlet property="sheetView" destination="bT5-0J-vgC" id="Sf7-za-p0K"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDW-Rl-3z0" userLabel="Background">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bT5-0J-vgC" userLabel="contentView">
+                    <rect key="frame" x="0.0" y="452" width="393" height="400"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="nTT-nb-rGk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YDW-Rl-3z0" secondAttribute="trailing" id="1Wz-T4-fEd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bT5-0J-vgC" secondAttribute="bottom" id="3ye-sY-KBu"/>
+                <constraint firstItem="bT5-0J-vgC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="F8M-Xu-rPy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="YDW-Rl-3z0" secondAttribute="bottom" id="PId-FG-nn5"/>
+                <constraint firstItem="YDW-Rl-3z0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="smQ-FM-zBi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bT5-0J-vgC" secondAttribute="trailing" id="vl4-wx-GPE"/>
+                <constraint firstItem="YDW-Rl-3z0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ySa-1b-0RL"/>
+            </constraints>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -45,37 +45,23 @@ class AddressCollectionViewController: BaseViewController {
     private func  setupBtnSetting() {
         settingBtn.setTitle("", for: .normal)
 //        dropdown = DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>(frame: self.view.frame, anchorView: settingBtn)
+        let dropDown = DropDown()
+
+        // The view to which the drop down will appear on
+        dropDown.anchorView = view
         
-        dropdown = DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>(frame: self.view.frame, anchorView: settingBtn)
-        dropdown.tableWidth = 200
-        dropdown.cellHeight = 50
-        dropdown.horizonalDirection = .left
-        
-        dropdown.cellViewModels = [AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "book.fill"),
-                                                                          title: "Add Data"),
-                                   AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "info.circle.fill"),
-                                                                          title: "Info")]
-        dropdown.delegate = self
-        
-        
-//        dropDown.anchorView = settingBtn
-//        dropDown.dataSource = ["Add Data", "Info"]
-//        dropDown.direction = .bottom
-//        DropDown.appearance().trailingAnchor.constraint(equalTo: self.settingBtn.trailingAnchor, constant: 0)
-//        DropDown.DismissMode
-////        calendarView.trailingAnchor.constraint(equalTo: self.vWindowCalendar.trailingAnchor, constant: 0),
-//        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
-//
-//        let cellViewModels = [AddressCollectionDropDownCellViewModel(image: UIImage(named: "book.fill"), title: "Add Data"),
-//                              AddressCollectionDropDownCellViewModel(image: UIImage(named: "info.circle.fill"), title: "Info")]
-//        dropDown.cellNib = UINib(nibName: String(describing: AddressCollectionDropDownCell.self), bundle: nil)
-//
-//        dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
-//           guard let cell = cell as? AddressCollectionDropDownCell else { return }
-//
-//            cell.viewModel = cellViewModels[index]
-//        }
-        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.dropdown = DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>(frame: self.view.frame, anchorView: self.settingBtn)
+            self.dropdown.tableWidth = 200
+            self.dropdown.tableHeight = 100
+            self.dropdown.cellHeight = 50
+            self.dropdown.heightOffset = 12
+            self.dropdown.highLightColor = .clear
+            self.dropdown.horizonalDirection = .left
+            self.dropdown.delegate = self
+        }
+      
     }
     private func setupDate(){
         let currentDateTime = Date()
@@ -98,8 +84,17 @@ class AddressCollectionViewController: BaseViewController {
             
         }).disposed(by: disposeBag)
         
+        self.viewModel.dropdownCellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] viewModels in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.dropdown.cellViewModels = viewModels
+            }
+           
+        }).disposed(by: disposeBag)
+        
         viewModel.getData()
         viewModel.getRadioData()
+        viewModel.getDropdownData()
     }
     
     private func setupCollectionView(){
@@ -113,9 +108,13 @@ class AddressCollectionViewController: BaseViewController {
     }
     
     @IBAction func settingBtnTapped(_ sender: Any) {
-        
+        radioViewInteract(hide: false)
         dropdown.show()
-
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions(), animations: {
+            [weak self] in
+            self?.settingBtn.transform = CGAffineTransform(rotationAngle: .pi)
+        }) { (animated) in }
+        
     }
 }
 
@@ -170,17 +169,13 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
         }
         
         if (scrollPos <= 0){
-            radioViewHeightConstraint.constant = sizeMax
-            radioView.alpha = 1
-            settingBtn.alpha = 1
+            radioViewInteract(hide: false)
         }
         else if (scrollPos >= contentSize){
-            radioViewHeightConstraint.constant = 0
-            radioView.alpha = 0
-            settingBtn.alpha = 0
+            radioViewInteract(hide: true)
         }
         
-        if (radioView.alpha <= 0.9){
+        if (radioView.alpha <= 0.5){
             radioView.isUserInteractionEnabled = false
             settingBtn.isUserInteractionEnabled = false
         }
@@ -191,6 +186,11 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
         lastOffset = scrollPos
     }
     
+    private func radioViewInteract(hide: Bool){
+        radioViewHeightConstraint.constant = hide ? 0 : sizeMax
+        radioView.alpha = hide ? 0 : 1
+        settingBtn.alpha = hide ? 0 : 1
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 10)
     }
@@ -235,10 +235,28 @@ extension AddressCollectionViewController : AddressCollectionRadioViewDelegate {
 
 extension AddressCollectionViewController : DropDownViewDelegate {
     func didSelect(indexPath: IndexPath) {
-        print("Selected at \(indexPath.row)")
+        switch indexPath.row {
+        case 0:
+            print("Selected at \(indexPath.row)")
+        case 1:
+            openSheetViewInfo()
+        default:
+            break
+        }
     }
     
     func didCloseDropdown(){
-        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions(), animations: {
+            [weak self] in
+            self?.settingBtn.transform = CGAffineTransform.identity
+        }) { (animated) in }
+    }
+}
+
+//MARK: Handle dropdown Selection
+extension AddressCollectionViewController {
+    func openSheetViewInfo(){
+        let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.5), baseVC: self, view: UIView())
+        sheetView.open()
     }
 }
