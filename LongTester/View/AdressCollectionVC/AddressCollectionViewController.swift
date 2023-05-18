@@ -19,8 +19,6 @@ class AddressCollectionViewController: BaseViewController {
     @IBOutlet weak var monthLbl: UILabel!
     
     @IBOutlet weak var monthInfoView: UIView!
-    
-    @IBOutlet weak var infoStackView: UIStackView!
     @IBOutlet weak var settingBtn: UIButton!
     private var shouldChangeValue = true
     private var lastOffset : CGFloat = 0
@@ -28,6 +26,7 @@ class AddressCollectionViewController: BaseViewController {
     private let sizeMax = CGFloat(40)
 //    private var dropdown : DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>!
     private var dropdown : DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>!
+//    private var sheetView : BaseSheetView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -42,27 +41,25 @@ class AddressCollectionViewController: BaseViewController {
         radioView.delegate = self
     }
     
+    
+    
     private func  setupBtnSetting() {
         settingBtn.setTitle("", for: .normal)
 //        dropdown = DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>(frame: self.view.frame, anchorView: settingBtn)
-        let dropDown = DropDown()
 
-        // The view to which the drop down will appear on
-        dropDown.anchorView = view
-        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.dropdown = DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>(frame: self.view.frame, anchorView: self.settingBtn)
             self.dropdown.tableWidth = 200
             self.dropdown.tableHeight = 100
             self.dropdown.cellHeight = 50
-            self.dropdown.heightOffset = 12
+            self.dropdown.heightOffset = 8
             self.dropdown.highLightColor = .clear
             self.dropdown.horizonalDirection = .left
             self.dropdown.delegate = self
         }
-      
     }
+    
     private func setupDate(){
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -256,7 +253,10 @@ extension AddressCollectionViewController : DropDownViewDelegate {
 //MARK: Handle dropdown Selection
 extension AddressCollectionViewController {
     func openSheetViewInfo(){
-        let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.5), baseVC: self, view: UIView())
-        sheetView.open()
+        DispatchQueue.main.async {
+            let addressView = AddressInfoView(frame: self.view.frame, data: "Long anh",baseVC: self)
+            let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
+            sheetView.open()
+        }
     }
 }
