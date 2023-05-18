@@ -131,15 +131,11 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
 
     }
     private func updateTbleView(){
-        print("anchorView \(anchorView.frame)")
-        print("anchorView \(anchorView.frame.midX) \(anchorView.frame.midY)")
-        
         var width = anchorView.frame.width
         if let tableWidth = tableWidth{
             width = tableWidth
         }
         var xPos = anchorView.frame.origin.x
-        anchorView.frame
         var yPos = anchorView.frame.origin.y + anchorView.frame.height + heightOffset
         if (horizonalDirection == .left){
             xPos = anchorView.frame.origin.x - width + anchorView.frame.width

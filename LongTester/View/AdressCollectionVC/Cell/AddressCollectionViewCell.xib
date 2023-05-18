@@ -237,6 +237,7 @@
                 <outlet property="mainView" destination="0QE-ly-N0h" id="3gm-mn-Qo2"/>
                 <outlet property="rentersLbl" destination="44z-Of-fLu" id="pfC-BX-3M1"/>
                 <outlet property="roomNumberLbl" destination="m9t-ok-FUa" id="jk0-gK-W5k"/>
+                <outlet property="statusImageUIView" destination="UH6-jQ-0LN" id="l1z-MV-HQm"/>
                 <outlet property="statusImgView" destination="eXq-J6-ELg" id="NUW-93-UiV"/>
                 <outlet property="statusView" destination="RNT-Oi-J5i" id="4Ie-Jk-8hK"/>
                 <outlet property="totalAmmountLbl" destination="AML-qc-CTZ" id="CzA-g3-pPZ"/>

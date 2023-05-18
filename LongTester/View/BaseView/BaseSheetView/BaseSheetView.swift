@@ -23,6 +23,11 @@ class BaseSheetView : UIView {
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var closeBtnSizeConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var infoViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var dragImage: UIImageView!
+    
+    private var isExpand = false
     
     public var size : SheetSize = .fullscreen {
         didSet{
@@ -33,6 +38,20 @@ class BaseSheetView : UIView {
     public var useDefaultCloseBtn : Bool = true {
         didSet{
             changeExitBtnLayout()
+            checkInfoHeight()
+        }
+    }
+    
+    public var draggableSheet : Bool = true {
+        didSet{
+            checkDraggable()
+        }
+    }
+
+    public var title : String? {
+        didSet{
+            titleLbl.text = title
+            checkInfoHeight()
         }
     }
     
@@ -100,19 +119,66 @@ class BaseSheetView : UIView {
     func commonInit(){
         loadViewFromNib()
         setupUI()
+        setGesture()
     }
     
-    private func setupUI(){
-        closeBtn.setTitle("", for: .normal)
-        DispatchQueue.main.async {
-            self.sheetView.roundCorners([.topLeft, .topRight], radius: 30)
+    func setGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dragViewTapped))
+        self.dragImage.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dragViewTapped() {
+        isExpand = !isExpand
+        if (self.isExpand){
+            
+            changeSheetHeight(.fullscreen)
+//            DispatchQueue.main.async {
+//                if let baseVC = self.baseVC {
+//                    UIView.animate(withDuration: 0.3) {
+//                        let guide = baseVC.view.safeAreaLayoutGuide
+//                        let height = guide.layoutFrame.size.height
+//                        let bottomSafe = baseVC.view.safeAreaInsets.bottom
+//                        self.sheetHeightConstraint.constant = height + bottomSafe
+//
+//                        if let navigationHidden = baseVC.navigationController?.navigationBar.isHidden {
+//                            self.sheetHeightConstraint.constant =  self.sheetHeightConstraint.constant + (navigationHidden ? 0 : 44)
+//                        }
+//                        self.layoutIfNeeded()
+//                    } completion: { _ in }
+//                }
+//            }
+        }
+        else {
+            UIView.animate(withDuration: 0.3) {
+                self.changeSheetHeight()
+                self.layoutIfNeeded()
+            } completion: { _ in }
+           
         }
     }
     
-    private func changeSheetHeight(){
-        switch size {
+    
+    private func changeSheetHeight(_ tempSize : SheetSize? = nil ){
+        var holdSize = self.size
+        if let tempSize = tempSize {
+            holdSize = tempSize
+        }
+        
+        switch holdSize {
         case .fullscreen:
-            sheetHeightConstraint.constant = baseVC?.view.frame.height ?? 0
+            if let baseVC = self.baseVC {
+                UIView.animate(withDuration: 0.3) {
+                    let guide = baseVC.view.safeAreaLayoutGuide
+                    let height = guide.layoutFrame.size.height
+                    let bottomSafe = baseVC.view.safeAreaInsets.bottom
+                    self.sheetHeightConstraint.constant = height + bottomSafe
+                    
+                    if let navigationHidden = baseVC.navigationController?.navigationBar.isHidden {
+                        self.sheetHeightConstraint.constant =  self.sheetHeightConstraint.constant + (navigationHidden ? 0 : 44)
+                    }
+                    self.layoutIfNeeded()
+                } completion: { _ in }
+            }
         case let .fixed(height):
             sheetHeightConstraint.constant = height
         case let .percent(percent):
@@ -123,12 +189,42 @@ class BaseSheetView : UIView {
         }
     }
     
+    private func setupUI(){
+        closeBtn.setTitle("", for: .normal)
+        
+        UIView.animate(withDuration: 3, delay: 0.0, options: [.repeat, .autoreverse, .allowUserInteraction]) { [self] in
+            dragImage.alpha = 0.3
+        }
+        
+        self.sheetView.layer.cornerRadius = 30
+        sheetView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        sheetView.layer.masksToBounds = true
+//        DispatchQueue.main.async {
+//           self.sheetView.roundCorners([.topLeft, .topRight], radius: 30)
+//        }
+        
+        
+    }
+    
     private func changeExitBtnLayout(){
         closeBtnSizeConstraint.constant = useDefaultCloseBtn ? 30 : 0
         closeBtn.isUserInteractionEnabled = useDefaultCloseBtn
         closeBtn.isHidden = !useDefaultCloseBtn
     }
     
+    private func checkInfoHeight(){
+        if (title == nil && useDefaultCloseBtn == false) {
+            infoViewHeight.constant = 10
+        }
+        else {
+            infoViewHeight.constant = 40
+        }
+    }
+    
+    private func checkDraggable(){
+        dragImage.isHidden = !draggableSheet
+        dragImage.isUserInteractionEnabled = draggableSheet
+    }
     
     @objc func dismissableViewTapped() {
         close()
@@ -145,7 +241,8 @@ extension BaseSheetView {
     func open(){
         self.baseVC?.view.addSubview(self)
         self.baseVC?.view.bringSubviewToFront(self)
-        
+        baseVC?.navigationController?.navigationBar.layer.zPosition = -2
+        baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = false
         if animate {
             sheetView.alpha = 0
             sheetHeightConstraint.constant = 0
@@ -161,13 +258,14 @@ extension BaseSheetView {
     }
     
     func close(){
-        
         if animate {
             UIView.animate(withDuration: 0.3) {
                 self.sheetView.alpha = 0
                 self.sheetHeightConstraint.constant = 0
                 self.layoutIfNeeded()
             } completion: { _ in
+                self.baseVC?.navigationController?.navigationBar.layer.zPosition = 0
+                self.baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = true
                 self.removeFromSuperview()
             }
         }

@@ -23,10 +23,17 @@ class AddressCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var waterAmmountLbl: UILabel!
     @IBOutlet weak var electricAmmountLbl: UILabel!
     @IBOutlet weak var totalAmmountLbl: UILabel!
+    @IBOutlet weak var statusImageUIView: UIView!
     
     var viewModel: AddressCollectionViewCellViewModel? {
         didSet {
             bindData()
+        }
+    }
+    
+    var enableGesture: Bool = false {
+        didSet {
+            gestureConfig()
         }
     }
     
@@ -52,8 +59,18 @@ class AddressCollectionViewCell: UICollectionViewCell {
         waterTitleLbl.text = Language.localized("water")
         electricTitleLbl.text = Language.localized("electric")
         totalTitleLbl.text = Language.localized("total")
+        
+        addGesture()
     }
     
+    private func addGesture(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(pressedStatusImage))
+        statusImageUIView.addGestureRecognizer(tap)
+    }
+    
+    @objc func pressedStatusImage(){
+        print("pressedStatusImage")
+    }
     private func bindData(){
         self.setStatusView()
         if let roomNums = viewModel?.roomNums , let renters = viewModel?.renters {
@@ -68,7 +85,14 @@ class AddressCollectionViewCell: UICollectionViewCell {
            electricAmmountLbl.text =  String(electric)
            totalAmmountLbl.text =  total.formatnumberWithDot() + " VND"
        }
+    }
+    
+    private func gestureConfig(){
+        guard let gestures = statusImageUIView.gestureRecognizers else { return }
         
+        for gesture in gestures {
+            gesture.isEnabled = enableGesture
+        }
     }
     
     private func setStatusView(){

@@ -124,6 +124,19 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         didSelectItem(indexPath: indexPath)
     }
+    
+    func configureContextMenu(indexPath: IndexPath) -> UIContextMenuConfiguration{
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let deleteAction = UIAction(title:"Delete", image: UIImage(systemName:"trash")){ _ in
+                
+            }
+            return UIMenu(title:"Option", children: [deleteAction])
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return configureContextMenu(indexPath: indexPath)
+    }
+    
 }
 
 
@@ -198,6 +211,7 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: AddressCollectionViewCell.self),
             for: indexPath) as? AddressCollectionViewCell
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
+        cell.enableGesture = false
         return cell
     }
     
@@ -256,6 +270,7 @@ extension AddressCollectionViewController {
         DispatchQueue.main.async {
             let addressView = AddressInfoView(frame: self.view.frame, data: "Long anh",baseVC: self)
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
+            sheetView.title = "Long anh"
             sheetView.open()
         }
     }
