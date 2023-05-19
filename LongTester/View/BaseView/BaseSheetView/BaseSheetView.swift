@@ -122,6 +122,18 @@ class BaseSheetView : UIView {
         setGesture()
     }
     
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        if newWindow == nil {
+            self.baseVC?.navigationController?.navigationBar.layer.zPosition = 0
+            self.baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = true
+        }
+        else {
+            baseVC?.navigationController?.navigationBar.layer.zPosition = -2
+            baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = false
+        }
+    }
+    
     func setGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dragViewTapped))
         self.dragImage.addGestureRecognizer(tapGesture)
@@ -241,8 +253,8 @@ extension BaseSheetView {
     func open(){
         self.baseVC?.view.addSubview(self)
         self.baseVC?.view.bringSubviewToFront(self)
-        baseVC?.navigationController?.navigationBar.layer.zPosition = -2
-        baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = false
+//        baseVC?.navigationController?.navigationBar.layer.zPosition = -2
+//        baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = false
         if animate {
             sheetView.alpha = 0
             sheetHeightConstraint.constant = 0
@@ -264,8 +276,8 @@ extension BaseSheetView {
                 self.sheetHeightConstraint.constant = 0
                 self.layoutIfNeeded()
             } completion: { _ in
-                self.baseVC?.navigationController?.navigationBar.layer.zPosition = 0
-                self.baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = true
+//                self.baseVC?.navigationController?.navigationBar.layer.zPosition = 0
+//                self.baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = true
                 self.removeFromSuperview()
             }
         }

@@ -55,7 +55,7 @@
                                     </connections>
                                 </button>
                                 <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movingStick" translatesAutoresizingMaskIntoConstraints="NO" id="OQg-rD-uhL">
-                                    <rect key="frame" x="80" y="2" width="160" height="8"/>
+                                    <rect key="frame" x="128" y="2" width="64" height="8"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="8" id="dHm-bf-eRQ"/>
                                     </constraints>
@@ -70,7 +70,7 @@
                                 <constraint firstItem="b4I-cv-M56" firstAttribute="top" secondItem="OQg-rD-uhL" secondAttribute="bottom" constant="2" id="RZ2-sW-WPL"/>
                                 <constraint firstItem="32X-el-epO" firstAttribute="top" secondItem="1t1-6b-j0f" secondAttribute="top" constant="10" id="Ylu-iZ-2kP"/>
                                 <constraint firstItem="b4I-cv-M56" firstAttribute="leading" secondItem="32X-el-epO" secondAttribute="trailing" constant="10" id="eYn-TL-p0y"/>
-                                <constraint firstItem="OQg-rD-uhL" firstAttribute="width" secondItem="1t1-6b-j0f" secondAttribute="width" multiplier="0.5" id="loX-B6-z9R"/>
+                                <constraint firstItem="OQg-rD-uhL" firstAttribute="width" secondItem="1t1-6b-j0f" secondAttribute="width" multiplier="0.2" id="loX-B6-z9R"/>
                                 <constraint firstItem="b4I-cv-M56" firstAttribute="centerX" secondItem="1t1-6b-j0f" secondAttribute="centerX" id="qpX-LZ-W74"/>
                             </constraints>
                         </view>

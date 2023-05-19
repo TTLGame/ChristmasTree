@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import SnapKit
 
 class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewDataSource {
     enum HozitonalDirection {
@@ -73,6 +73,7 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
     
     public var bgColor : UIColor = UIColor.white {
         didSet{
+            _containView.backgroundColor = bgColor
             tblView.backgroundColor = bgColor
         }
     }
@@ -94,6 +95,7 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
         setupUI()
         setupDismissView()
         DispatchQueue.main.async {
+            self._contentView.addSubview(self._containView)
             self._contentView.addSubview(self.tblView)
         }
         
@@ -112,13 +114,22 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
     
     private func setupUI(){
         self.tblView = UITableView(frame: CGRect(x: anchorView.frame.origin.x,
-                                                 y: anchorView.frame.origin.y + anchorView.frame.height + heightOffset,
-                                                 width: anchorView.frame.width,
-                                                 height: tableHeight))
-        
-        tblView.backgroundColor = bgColor
-        tblView.addBottomShadow(height: 3, alpha: 0.2,radius: 5)
-        tblView.layer.masksToBounds = false
+                                            y: anchorView.frame.origin.y + anchorView.frame.height + heightOffset,
+                                            width: anchorView.frame.width,
+                                            height: tableHeight))
+        self._containView = UIView(frame: CGRect(x: anchorView.frame.origin.x,
+                                                  y: anchorView.frame.origin.y + anchorView.frame.height + heightOffset,
+                                                  width: anchorView.frame.width,
+                                                  height: tableHeight))
+                                   
+                                   
+//        self._containView.addSubview(tblView)
+//        tblView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview().offset(10)
+//        }
+        _containView.backgroundColor = bgColor
+        _containView.addBottomShadow(height: 3, alpha: 0.5,radius: 10)
+        _containView.layer.masksToBounds = false
         
         self.tblView.separatorColor = Color.greyPrimary
         
@@ -126,8 +137,8 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
         self.tblView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         self.tblView.layer.borderColor = UIColor.clear.cgColor
         self.tblView.layer.borderWidth = 1.0
-        self.tblView.layer.cornerRadius = 4
-        
+        self.tblView.layer.cornerRadius = 10
+        self.tblView.layer.masksToBounds = true
 
     }
     private func updateTbleView(){
@@ -145,6 +156,7 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
             yPos = anchorView.frame.origin.y - heightOffset - tableHeight
         }
         
+        _containView.frame = CGRect(x: xPos + 3, y: yPos + 3, width: width - 6, height: tableHeight - 6)
         tblView.frame = CGRect(x: xPos, y: yPos, width: width, height: tableHeight)
         
     }
@@ -164,9 +176,9 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
     
     private func nibSetup() {
         backgroundColor = .clear
-        _containView = loadViewFromNib()
-        _containView.frame = bounds
-        addSubview(_containView)
+        _contentView = loadViewFromNib()
+        _contentView.frame = bounds
+        addSubview(_contentView)
     }
     
     private func loadViewFromNib() -> UIView {

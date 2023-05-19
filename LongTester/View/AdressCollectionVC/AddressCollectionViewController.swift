@@ -24,6 +24,7 @@ class AddressCollectionViewController: BaseViewController {
     private var lastOffset : CGFloat = 0
     private var viewModel = AddressCollectionViewModel()
     private let sizeMax = CGFloat(40)
+    private var editState = false
 //    private var dropdown : DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>!
     private var dropdown : DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>!
 //    private var sheetView : BaseSheetView!
@@ -125,16 +126,29 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
         didSelectItem(indexPath: indexPath)
     }
     
-    func configureContextMenu(indexPath: IndexPath) -> UIContextMenuConfiguration{
+    func configureInactiveContextMenu(indexPath: IndexPath) -> UIContextMenuConfiguration{
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            let deleteAction = UIAction(title:"Delete", image: UIImage(systemName:"trash")){ _ in
-                
+            let deleteAction = UIAction(title:"Edit product", image: UIImage(systemName:"pencil.line")){ _ in
+                self.editState = true
+                self.detailCollectionView.reloadData()
             }
             return UIMenu(title:"Option", children: [deleteAction])
         }
     }
+    
+    func configureActiveContextMenu(indexPath: IndexPath) -> UIContextMenuConfiguration{
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let deleteAction = UIAction(title:"Stop Editing", image: UIImage(systemName:"pencil.line")){ _ in
+                self.editState = false
+                self.detailCollectionView.reloadData()
+            }
+            return UIMenu(title:"Option", children: [deleteAction])
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return configureContextMenu(indexPath: indexPath)
+        return editState ?  configureActiveContextMenu(indexPath: indexPath) :
+                            configureInactiveContextMenu(indexPath: indexPath)
     }
     
 }
@@ -211,7 +225,7 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: AddressCollectionViewCell.self),
             for: indexPath) as? AddressCollectionViewCell
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
-        cell.enableGesture = false
+        cell.changeState(isChanged: editState)
         return cell
     }
     

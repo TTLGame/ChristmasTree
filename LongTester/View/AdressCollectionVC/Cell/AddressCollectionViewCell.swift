@@ -43,8 +43,14 @@ class AddressCollectionViewCell: UICollectionViewCell {
         setup()
     }
 
+    
+    public func changeState(isChanged: Bool){
+        self.enableGesture = isChanged
+        isChanged ? bgView.addBottomShadow(height: 3, alpha: 0.8,radius: 4,color: Color.darkGreen) :
+                    bgView.addBottomShadow(height: 3, alpha: 0.2,radius: 4)
+    }
     private func setup(){
-        bgView.addBottomShadow(height: 3, alpha: 0.2,radius: 5)
+        bgView.addBottomShadow(height: 3, alpha: 0.2,radius: 4)
         bgView.layer.masksToBounds = false
         bgView.backgroundColor = .white
         bgView.layer.cornerRadius = 10
