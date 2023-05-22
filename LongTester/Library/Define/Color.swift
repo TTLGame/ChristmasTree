@@ -26,6 +26,8 @@ struct Color {
     static let viewDefaultColor = #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1)
     static let defaultShadow = #colorLiteral(red: 0.1176470588, green: 0.2549019608, blue: 0.6078431373, alpha: 1)
     
+    static let purpleVacancy = #colorLiteral(red: 0.3725490196, green: 0.2078431373, blue: 0.5803921569, alpha: 1)
+    
     static func makeGradientLayer(size: CGSize, from: UIColor, to color: UIColor, type: GradientType) -> CAGradientLayer {
         let colors = [from.cgColor, color.cgColor]
         let gradientLayer = CAGradientLayer()

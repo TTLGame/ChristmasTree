@@ -116,6 +116,10 @@
 		FDE9CD112A1549CF004844AD /* BaseSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CD102A1549CF004844AD /* BaseSheetView.xib */; };
 		FDE9CD142A16269E004844AD /* AddressInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CD132A16269E004844AD /* AddressInfoView.swift */; };
 		FDE9CD162A1626A6004844AD /* AddressInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CD152A1626A6004844AD /* AddressInfoView.xib */; };
+		FDE9CD1A2A17DDD5004844AD /* AddressInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CD182A17DDD5004844AD /* AddressInfoViewCell.swift */; };
+		FDE9CD1B2A17DDD5004844AD /* AddressInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CD192A17DDD5004844AD /* AddressInfoViewCell.xib */; };
+		FDE9CD1D2A17E1EA004844AD /* AddressInfoViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CD1C2A17E1EA004844AD /* AddressInfoViewCellViewModel.swift */; };
+		FDE9CD1F2A17E3A6004844AD /* AddressInfoViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CD1E2A17E3A5004844AD /* AddressInfoViewViewModel.swift */; };
 		FDF14B30295C311500BF079F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF14B2F295C311500BF079F /* RootViewController.swift */; };
 		FDF14B39295D861300BF079F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDF14B3B295D861300BF079F /* Localizable.strings */; };
 		FDF300BE29E3C99A0084562A /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300BD29E3C99A0084562A /* Realm.swift */; };
@@ -257,6 +261,10 @@
 		FDE9CD102A1549CF004844AD /* BaseSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseSheetView.xib; sourceTree = "<group>"; };
 		FDE9CD132A16269E004844AD /* AddressInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoView.swift; sourceTree = "<group>"; };
 		FDE9CD152A1626A6004844AD /* AddressInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressInfoView.xib; sourceTree = "<group>"; };
+		FDE9CD182A17DDD5004844AD /* AddressInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoViewCell.swift; sourceTree = "<group>"; };
+		FDE9CD192A17DDD5004844AD /* AddressInfoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressInfoViewCell.xib; sourceTree = "<group>"; };
+		FDE9CD1C2A17E1EA004844AD /* AddressInfoViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoViewCellViewModel.swift; sourceTree = "<group>"; };
+		FDE9CD1E2A17E3A5004844AD /* AddressInfoViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoViewViewModel.swift; sourceTree = "<group>"; };
 		FDF14B2F295C311500BF079F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		FDF14B3A295D861300BF079F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDF14B3C295D874D00BF079F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -836,10 +844,22 @@
 		FDE9CD122A162687004844AD /* AddressInfoView */ = {
 			isa = PBXGroup;
 			children = (
+				FDE9CD172A17DDB5004844AD /* Cell */,
 				FDE9CD132A16269E004844AD /* AddressInfoView.swift */,
+				FDE9CD1E2A17E3A5004844AD /* AddressInfoViewViewModel.swift */,
 				FDE9CD152A1626A6004844AD /* AddressInfoView.xib */,
 			);
 			path = AddressInfoView;
+			sourceTree = "<group>";
+		};
+		FDE9CD172A17DDB5004844AD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FDE9CD182A17DDD5004844AD /* AddressInfoViewCell.swift */,
+				FDE9CD192A17DDD5004844AD /* AddressInfoViewCell.xib */,
+				FDE9CD1C2A17E1EA004844AD /* AddressInfoViewCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		FDF14B31295D847100BF079F /* Resource */ = {
@@ -1017,6 +1037,7 @@
 				FD8961A1295BF11D00C7BE20 /* Assets.xcassets in Resources */,
 				FDE9CD162A1626A6004844AD /* AddressInfoView.xib in Resources */,
 				FD8961AE295C1E5900C7BE20 /* MainScreenViewController.xib in Resources */,
+				FDE9CD1B2A17DDD5004844AD /* AddressInfoViewCell.xib in Resources */,
 				FD4DF3CC29ED92E900AB6A50 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1095,6 +1116,7 @@
 				FD0B1FCF29AB38730069F98F /* ButtonView.swift in Sources */,
 				FD564B8E29656F8B00A527ED /* UISwitch.swift in Sources */,
 				FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */,
+				FDE9CD1A2A17DDD5004844AD /* AddressInfoViewCell.swift in Sources */,
 				FD5765A62963CF0A005969BE /* Model.swift in Sources */,
 				FD564B632965582200A527ED /* TableScreenViewModel.swift in Sources */,
 				FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */,
@@ -1104,6 +1126,7 @@
 				FDE9CD0A2A13F346004844AD /* BaseDropDownCellViewModel.swift in Sources */,
 				FD564B8729656B2000A527ED /* ProviderAPIWithAccessToken.swift in Sources */,
 				FD564B8929656C7900A527ED /* Prefs.swift in Sources */,
+				FDE9CD1D2A17E1EA004844AD /* AddressInfoViewCellViewModel.swift in Sources */,
 				FDE9CCF22A1331BC004844AD /* AddressCollectionRadioViewCell.swift in Sources */,
 				FD4DF3CF29ED980E00AB6A50 /* TextFieldView.swift in Sources */,
 				FDADC19D29EFFFD600803536 /* SlideMenuView.swift in Sources */,
@@ -1160,6 +1183,7 @@
 				FDF300C129E3CB0E0084562A /* MainScreenTarget.swift in Sources */,
 				FD738FBD2A0FD9ED00088BF0 /* UICollectionView.swift in Sources */,
 				FD564B772965675400A527ED /* ProviderAPIBasic.swift in Sources */,
+				FDE9CD1F2A17E3A6004844AD /* AddressInfoViewViewModel.swift in Sources */,
 				FDE9CCEA2A132AED004844AD /* AddressCollectionRadioView.swift in Sources */,
 				FD57659C2963CD9D005969BE /* Color.swift in Sources */,
 				FDADC1B329F2608500803536 /* AlertViewModel.swift in Sources */,

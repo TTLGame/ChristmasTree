@@ -40,3 +40,23 @@
 "radioAll" = "Tất cả";
 "radioUnPaid" = "Chưa trả";
 "radioPaid" = "Đã trả";
+"radioVancancy" = "Trống";
+
+//Detail Screen
+"getInfo" = "Thông tin cụ thể";
+"addData" = "Thêm data";
+
+//AddressInfo
+"address" = "Địa chỉ: ";
+"totalRoom" = "Tổng phòng: ";
+"averageRenters" = "T/B người thuê: ";
+
+"averageWaterComsumption" = "T/B nước tiêu thụ: ";
+"waterUnit" = "Giá nước/(m3) :";
+
+"averageElectricComsumption" = "T/B điện tiêu thụ: ";
+"electricUnit" = "Giá điện/(kwh) :";
+"averageIncome" = "T/B thu nhập";
+"facilityInfo" = "Thông tin cơ sở";
+"consumptionInfo" = "Thông tin tiêu thụ";
+"totalRent" = "Tổng tiền: ";

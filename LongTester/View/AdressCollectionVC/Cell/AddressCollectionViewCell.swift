@@ -109,6 +109,9 @@ class AddressCollectionViewCell: UICollectionViewCell {
         case "NotPaid" :
             statusView.backgroundColor = Color.redPrimary
             statusImgView.image = UIImage(named: "noSymbol")
+        case "Vacancy":
+            statusView.backgroundColor = Color.purpleVacancy
+            statusImgView.image = UIImage(named: "vacancySymbol")
         default:
             statusView.backgroundColor = Color.orangePrimary
             statusImgView.image = UIImage(named: "pendingSymbol")

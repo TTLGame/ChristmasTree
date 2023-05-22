@@ -40,3 +40,23 @@
 "radioAll" = "All data";
 "radioUnPaid" = "Un-paid";
 "radioPaid" = "Paid";
+"radioVancancy" = "Vacancy";
+
+//Detail Screen
+"getInfo" = "Address's info";
+"addData" = "Add Data";
+
+//AddressInfo
+"address" = "Address: ";
+"totalRoom" = "Total Rooms: ";
+"averageRenters" = "Average Renters: ";
+
+"averageWaterComsumption" = "Average Water Coms: ";
+"waterUnit" = "Water price/(m3) :";
+
+"averageElectricComsumption" = "Average Electric Coms: ";
+"electricUnit" = "Electric price/(kwh) :";
+"averageIncome" = "Average Income";
+"facilityInfo" = "Facility Info";
+"consumptionInfo" = "Consumption Info";
+"totalRent" = "Total Rent: ";

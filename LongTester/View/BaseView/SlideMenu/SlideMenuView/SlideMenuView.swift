@@ -125,9 +125,7 @@ class SlideMenuView : UIView {
     
     @objc func vContainerOnScroll(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self._contentView)
-        let newPosition = sideMenuWidthConstraint.constant + (translation.x < lastOffset ? -6 : 6)
-        
-        
+        let newPosition = sideMenuWidthConstraint.constant + (translation.x < lastOffset ? -6 : translation.x > lastOffset ? 6 : 0)
         switch sender.state {
         case .changed:
             lastOffset = translation.x

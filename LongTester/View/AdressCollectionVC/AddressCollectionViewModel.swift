@@ -31,7 +31,7 @@ class AddressCollectionViewModel : NSObject {
     
     func getData(){
         let rooms = Int.random(in: 1..<20)
-        let status = ["Paid", "Short", "NotPaid"]
+        let status = ["Paid", "Short", "NotPaid","Vacancy"]
         var data = [AddressCollectionViewCellViewModel]()
         
         for roomNum in 0..<rooms {
@@ -40,6 +40,7 @@ class AddressCollectionViewModel : NSObject {
             let water = Int.random(in: 1..<100)
             let electric = Int.random(in: 1..<100)
             let total = Int.random(in: 1000000..<10000000)
+            
             data.append(AddressCollectionViewCellViewModel(roomNums: roomNum + 1,
                                                            renters: renters,
                                                            status: status[statusNo],
@@ -53,15 +54,17 @@ class AddressCollectionViewModel : NSObject {
     
     func getDropdownData(){
         let data = [AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "book.fill"),
-                                                           title: "Add Data"),
+                                                           title: Language.localized("addData")),
                     AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "info.circle.fill"),
-                                                           title: "Info")]
+                                                           title:  Language.localized("getInfo"))]
         dropdownCellViewModels.accept(data)
     }
+    
     func getRadioData(){
         let cell = [AddressCollectionRadioViewCellViewModel(title: Language.localized("radioAll"),type: "ALL"),
                     AddressCollectionRadioViewCellViewModel(title: Language.localized("radioUnPaid"),type: "UNPAID"),
-                    AddressCollectionRadioViewCellViewModel(title: Language.localized("radioPaid"),type: "PAID")
+                    AddressCollectionRadioViewCellViewModel(title: Language.localized("radioPaid"),type: "PAID"),
+                    AddressCollectionRadioViewCellViewModel(title: Language.localized("radioVancancy"),type: "VACANCY")
         ]
         
         let data = AddressCollectionRadioViewModel(cellViewModels: cell)
@@ -72,7 +75,9 @@ class AddressCollectionViewModel : NSObject {
         self.rootViewModel.pushViewModel.accept(PushModel(viewController: DetailScreenViewController(),
                                                           title: Language.localized("roomDetailTitle") + " " + String(cellViewModels.value[index.row].roomNums ?? 0)))
     }
-    
+}
+
+extension AddressCollectionViewModel {
     func sortData(type: String){
         switch type {
         case "ALL":
@@ -82,12 +87,17 @@ class AddressCollectionViewModel : NSObject {
                 return data.status == "Paid"
             }
             cellViewModels.accept(sortedData)
+        case "VACANCY" :
+            let sortedData = defaultCellViewModels.filter { data in
+                return data.status == "Vacancy"
+            }
+            cellViewModels.accept(sortedData)
+            
         default:
             let sortedData = defaultCellViewModels.filter { data in
                 return data.status == "Short" || data.status == "NotPaid"
             }
             cellViewModels.accept(sortedData)
         }
-        
     }
 }

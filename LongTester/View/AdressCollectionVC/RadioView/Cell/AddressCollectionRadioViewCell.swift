@@ -30,7 +30,7 @@ class AddressCollectionRadioViewCell: UICollectionViewCell {
     }
     
     private func setup(){
-        backGroundView.layer.cornerRadius = 5
+        backGroundView.layer.cornerRadius = 10
     }
     func selectingOption(didSelect: Bool){
         didSelect ? seletingView() : deselectView()

@@ -281,10 +281,11 @@ extension AddressCollectionViewController : DropDownViewDelegate {
 //MARK: Handle dropdown Selection
 extension AddressCollectionViewController {
     func openSheetViewInfo(){
-        DispatchQueue.main.async {
-            let addressView = AddressInfoView(frame: self.view.frame, data: "Long anh",baseVC: self)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let addressView = AddressInfoView(frame: self.view.frame, data: self.viewModel.cellViewModels.value,baseVC: self)
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
-            sheetView.title = "Long anh"
+            sheetView.title = Language.localized("addressCollectionMainTitle")
             sheetView.open()
         }
     }

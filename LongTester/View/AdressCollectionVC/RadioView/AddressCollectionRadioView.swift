@@ -85,7 +85,7 @@ extension AddressCollectionRadioView: UICollectionViewDataSource {
 extension AddressCollectionRadioView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let text = viewModel?.cellViewModels?[indexPath.row].title {
-            let cellWidth = text.size(withAttributes:[.font: UIFont.systemFont(ofSize:14.0)]).width + CGFloat(Int(DEFAULT_RADIO_HEIGHT))
+            let cellWidth = text.size(withAttributes:[.font: UIFont.systemFont(ofSize:13.0)]).width + CGFloat(Int(DEFAULT_RADIO_HEIGHT))
             return CGSize(width: cellWidth, height: CGFloat(Int(DEFAULT_RADIO_HEIGHT)))
         }
         else {
