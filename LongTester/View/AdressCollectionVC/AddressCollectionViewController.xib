@@ -81,7 +81,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hLv-UZ-Hs0">
-                            <rect key="frame" x="344" y="5.9999999999999964" width="21" height="18.666666666666668"/>
+                            <rect key="frame" x="348" y="10.333333333333332" width="12" height="9.6666666666666679"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="hLv-UZ-Hs0" secondAttribute="height" id="RAI-Cy-dEV"/>
                             </constraints>
@@ -91,9 +91,9 @@
                     <constraints>
                         <constraint firstItem="dIe-9n-qLc" firstAttribute="centerY" secondItem="s2d-Ea-7j3" secondAttribute="centerY" id="2ra-gU-WyH"/>
                         <constraint firstAttribute="height" constant="30" id="Nqm-8P-B6a"/>
-                        <constraint firstItem="hLv-UZ-Hs0" firstAttribute="height" secondItem="s2d-Ea-7j3" secondAttribute="height" multiplier="0.7" id="cfh-Hy-oay"/>
+                        <constraint firstItem="hLv-UZ-Hs0" firstAttribute="height" secondItem="s2d-Ea-7j3" secondAttribute="height" multiplier="0.4" id="cfh-Hy-oay"/>
                         <constraint firstItem="hLv-UZ-Hs0" firstAttribute="centerY" secondItem="s2d-Ea-7j3" secondAttribute="centerY" id="sPe-2b-L3r"/>
-                        <constraint firstAttribute="trailing" secondItem="hLv-UZ-Hs0" secondAttribute="trailing" constant="10" id="slK-Xr-qHw"/>
+                        <constraint firstAttribute="trailing" secondItem="hLv-UZ-Hs0" secondAttribute="trailing" constant="15" id="slK-Xr-qHw"/>
                         <constraint firstItem="dIe-9n-qLc" firstAttribute="centerX" secondItem="s2d-Ea-7j3" secondAttribute="centerX" id="tpz-de-UYU"/>
                     </constraints>
                 </view>

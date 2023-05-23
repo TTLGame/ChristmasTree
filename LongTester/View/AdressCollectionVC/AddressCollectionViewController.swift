@@ -77,8 +77,10 @@ class AddressCollectionViewController: BaseViewController {
         triangleDateImg.tintColor = Color.redPrimary
         triangleDateImg.transform = CGAffineTransform(rotationAngle: .pi)
 
-        UIView.animate(withDuration: 3, delay: 0.0, options: [.repeat, .autoreverse, .allowUserInteraction]) { [self] in
-            triangleDateImg.alpha = 0.3
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 3, delay: 0.0, options: [.repeat, .autoreverse, .allowUserInteraction]) { [weak self] in
+                self?.triangleDateImg.alpha = 0.3
+            }
         }
     }
     
@@ -120,7 +122,8 @@ class AddressCollectionViewController: BaseViewController {
            
         }).disposed(by: disposeBag)
         
-        viewModel.getData()
+        viewModel.getMonthYearData()
+        viewModel.getData(date: MonthYear())
         viewModel.getRadioData()
         viewModel.getDropdownData()
     }
@@ -263,12 +266,13 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
         radioView.alpha = hide ? 0 : 1
         settingBtn.alpha = hide ? 0 : 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let cell: AddressCollectionViewCell! = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: AddressCollectionViewCell.self),
             for: indexPath) as? AddressCollectionViewCell
@@ -331,7 +335,8 @@ extension AddressCollectionViewController {
     func openSheetViewInfo(){
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            let addressView = AddressInfoView(frame: self.view.frame, data: self.viewModel.cellViewModels.value,baseVC: self)
+            
+            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.monthYearViewModel, baseVC: self)
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
             sheetView.title = Language.localized("addressCollectionMainTitle")
             sheetView.open()
@@ -342,6 +347,13 @@ extension AddressCollectionViewController {
 extension AddressCollectionViewController : MonthYearViewDelegate {
     func didSelectDate(value: Date) {
         changeDateLbl(date: value)
+        
+        let calendar = Calendar.current
+        let date = value
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        
+        viewModel.getData(date: MonthYear(month: month, year: year))
     }
 }
 

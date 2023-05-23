@@ -30,23 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         configIQKeyboard()
-
-        FLEXManager.shared.isNetworkDebuggingEnabled = true
-        FLEXManager.shared.showExplorer()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                 action: #selector(handleFingerQuadrupleTap(_:)))
-        tap.numberOfTapsRequired = 2
-        tap.numberOfTouchesRequired = 2
-        window?.addGestureRecognizer(tap)
+        
+       
         return true
     }
     
-    @objc fileprivate func handleFingerQuadrupleTap(_ tapRecognizer: UITapGestureRecognizer) {
-
-        if tapRecognizer.state == .recognized {
-            FLEXManager.shared.showExplorer()
-        }
-    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

@@ -25,9 +25,15 @@ class AddressInfoViewCell: UITableViewCell {
         if let shouldHighlightValue = viewModel?.shouldHighlightValue, shouldHighlightValue{
             self.valueLbl.font = UIFont.boldSystemFont(ofSize: 14.0)
         }
+        else {
+            self.valueLbl.font = UIFont.systemFont(ofSize: 14.0)
+        }
         
         if let shouldHighlightTitle = viewModel?.shouldHighlightTitle, shouldHighlightTitle{
             self.titleLbl.font = UIFont.boldSystemFont(ofSize: 14.0)
+        }
+        else {
+            self.titleLbl.font = UIFont.systemFont(ofSize: 14.0)
         }
     }
     override func awakeFromNib() {

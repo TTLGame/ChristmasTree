@@ -20,7 +20,7 @@ class MonthYearView :UIView{
     }
     
     private var baseVC : UIViewController?
-    
+    private var isBaseView = false
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var sheetHeightConstraint: NSLayoutConstraint!
@@ -71,8 +71,10 @@ class MonthYearView :UIView{
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         if newWindow == nil {
-            self.baseVC?.navigationController?.navigationBar.layer.zPosition = 0
-            self.baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = true
+            if (isBaseView) {
+                self.baseVC?.navigationController?.navigationBar.layer.zPosition = 0
+                self.baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = true
+            }
         }
         else {
             baseVC?.navigationController?.navigationBar.layer.zPosition = -2
@@ -156,6 +158,9 @@ class MonthYearView :UIView{
 
 extension MonthYearView {
     func open(){
+        if (baseVC?.navigationController?.navigationBar.layer.zPosition == 0){
+            isBaseView = true
+        }
         self.baseVC?.view.addSubview(self)
         self.baseVC?.view.bringSubviewToFront(self)
         if animate {
@@ -184,14 +189,3 @@ extension MonthYearView {
     }
 }
 
-
-extension Date {
-    init(_ dateString:String) {
-        let dateStringFormatter = DateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        dateStringFormatter.timeZone = TimeZone(abbreviation: "GMT+7")
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
-        let date = dateStringFormatter.date(from: dateString)!
-        self.init(timeInterval:0, since:date)
-    }
-}

@@ -14,13 +14,15 @@ import SVProgressHUD
 
 class AddressCollectionViewModel : NSObject {
     var cellViewModels : BehaviorRelay<[AddressCollectionViewCellViewModel]> = BehaviorRelay(value: [])
+    var monthYearViewModel : [AddressCollectionMonthYearViewModel] = []
+    
     var radioViewModels : BehaviorRelay<AddressCollectionRadioViewModel> = BehaviorRelay(value: AddressCollectionRadioViewModel(cellViewModels: []))
     var dropdownCellViewModels : BehaviorRelay<[AddressCollectionDropDownCellViewModel]> = BehaviorRelay(value: [])
     private var defaultCellViewModels = [AddressCollectionViewCellViewModel]()
     let api: Provider<MultiTarget>
     private(set) var rootViewModel: RootViewModel
-    let limit: Int = 50
-    
+    private let limit: Int = 50
+    private let rooms = Int.random(in: 1..<20)
     private var randomPic = [String]()
     let disposeBag = DisposeBag()
     init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
@@ -29,25 +31,42 @@ class AddressCollectionViewModel : NSObject {
         super.init()
     }
     
-    func getData(){
-        let rooms = Int.random(in: 1..<20)
-        let status = ["Paid", "Short", "NotPaid","Vacancy"]
-        var data = [AddressCollectionViewCellViewModel]()
-        
-        for roomNum in 0..<rooms {
-            let statusNo = Int.random(in: 0..<status.count)
-            let renters = Int.random(in: 1..<5)
-            let water = Int.random(in: 1..<100)
-            let electric = Int.random(in: 1..<100)
-            let total = Int.random(in: 1000000..<10000000)
-            
-            data.append(AddressCollectionViewCellViewModel(roomNums: roomNum + 1,
-                                                           renters: renters,
-                                                           status: status[statusNo],
-                                                           waterNum: water,
-                                                           electricNum: electric,
-                                                           totalNum: total))
+    var currentMonthYear = MonthYear()
+    
+    func getMonthYearData(){
+        let monthYear = MonthYear()
+        for interator in 0...12 {
+            let status = ["Paid", "Short", "NotPaid","Vacancy"]
+            var data = [AddressCollectionViewCellViewModel]()
+            for roomNum in 0..<rooms {
+                let statusNo = Int.random(in: 0..<status.count)
+                let renters = Int.random(in: 1..<5)
+                let water = Int.random(in: 1..<100)
+                let electric = Int.random(in: 1..<100)
+                let total = Int.random(in: 1000000..<10000000)
+                data.append(AddressCollectionViewCellViewModel(roomNums: roomNum + 1,
+                                                               renters: renters,
+                                                               status: status[statusNo],
+                                                               waterNum: water,
+                                                               electricNum: electric,
+                                                               totalNum: total))
+            }
+            monthYearViewModel.append(AddressCollectionMonthYearViewModel(monthYear: monthYear - interator,
+                                                                          cellViewModels: data))
         }
+    }
+    func getData(date: MonthYear){
+        currentMonthYear = date
+        var data = [AddressCollectionViewCellViewModel]()
+        let checkData = monthYearViewModel.contains(where: { $0.monthYear == date})
+        if (checkData){
+            if let cellViewModel = monthYearViewModel.filter({$0.monthYear == date}).first?.cellViewModels {
+                data = cellViewModel
+                defaultCellViewModels = data
+                cellViewModels.accept(data)
+            }
+        }
+        
         defaultCellViewModels = data
         cellViewModels.accept(data)
     }

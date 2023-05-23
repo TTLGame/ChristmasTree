@@ -38,4 +38,8 @@ class MonthYear {
         
         return MonthYear(month: month, year: year)
     }
+    
+    static func ==(lhs: MonthYear, rhs: MonthYear) -> Bool {
+        return (lhs.year == rhs.year) && (rhs.month == lhs.month)
+    }
 }

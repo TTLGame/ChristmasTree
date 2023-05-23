@@ -83,7 +83,6 @@ class MonthYearPickerView: UIPickerView  {
             maxMonth = maxDate.month
         }
         var months: [Int] = []
-        var disableMonths: [Int] = []
         for month in minMonth...maxMonth {
 //            let range = minMonth...maxMonth
             months.append(month)

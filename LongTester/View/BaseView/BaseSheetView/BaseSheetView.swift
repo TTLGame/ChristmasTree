@@ -25,10 +25,10 @@ class BaseSheetView : UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var infoViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var dragImage: UIImageView!
+    @IBOutlet weak var dragView: UIView!
     
     private var isExpand = false
-    
+    private var isBaseView = false
     public var size : SheetSize = .fullscreen {
         didSet{
             changeSheetHeight()
@@ -125,8 +125,10 @@ class BaseSheetView : UIView {
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         if newWindow == nil {
-            self.baseVC?.navigationController?.navigationBar.layer.zPosition = 0
-            self.baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = true
+            if (isBaseView) {
+                self.baseVC?.navigationController?.navigationBar.layer.zPosition = 0
+                self.baseVC?.navigationController?.navigationBar.isUserInteractionEnabled = true
+            }
         }
         else {
             baseVC?.navigationController?.navigationBar.layer.zPosition = -2
@@ -136,7 +138,7 @@ class BaseSheetView : UIView {
     
     func setGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dragViewTapped))
-        self.dragImage.addGestureRecognizer(tapGesture)
+        self.dragView.addGestureRecognizer(tapGesture)
     }
     
     @objc func dragViewTapped() {
@@ -203,9 +205,9 @@ class BaseSheetView : UIView {
     
     private func setupUI(){
         closeBtn.setTitle("", for: .normal)
-        
+        dragView.layer.cornerRadius = 10
         UIView.animate(withDuration: 3, delay: 0.0, options: [.repeat, .autoreverse, .allowUserInteraction]) { [self] in
-            dragImage.alpha = 0.3
+            dragView.alpha = 0.3
         }
         
         self.sheetView.layer.cornerRadius = 30
@@ -234,8 +236,8 @@ class BaseSheetView : UIView {
     }
     
     private func checkDraggable(){
-        dragImage.isHidden = !draggableSheet
-        dragImage.isUserInteractionEnabled = draggableSheet
+        dragView.isHidden = !draggableSheet
+        dragView.isUserInteractionEnabled = draggableSheet
     }
     
     @objc func dismissableViewTapped() {
@@ -251,6 +253,10 @@ class BaseSheetView : UIView {
 
 extension BaseSheetView {
     func open(){
+        if (baseVC?.navigationController?.navigationBar.layer.zPosition == 0){
+            isBaseView = true
+        }
+        
         self.baseVC?.view.addSubview(self)
         self.baseVC?.view.bringSubviewToFront(self)
 //        baseVC?.navigationController?.navigationBar.layer.zPosition = -2
