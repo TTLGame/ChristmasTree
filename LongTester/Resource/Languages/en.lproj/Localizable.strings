@@ -10,6 +10,8 @@
 "vietnamese" = "Vietnamese";
 "english" = "English";
 "noData" = "No Data Found";
+"doneBtn" = "Done";
+"cancelBtn" = "Cancel";
 
 //Login View
 "username" = "Username";

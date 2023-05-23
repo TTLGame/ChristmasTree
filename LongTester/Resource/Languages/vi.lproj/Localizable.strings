@@ -10,6 +10,8 @@
 "vietnamese" = "Việt Nam";
 "english" = "Tiếng Anh";
 "noData" = "Không có dữ liệu";
+"doneBtn" = "Xong";
+"cancelBtn" = "Hủy bỏ";
 
 //Login View
 "username" = "Tên đăng nhập";

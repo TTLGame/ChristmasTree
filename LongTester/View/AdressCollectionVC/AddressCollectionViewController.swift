@@ -17,33 +17,42 @@ class AddressCollectionViewController: BaseViewController {
     @IBOutlet weak var radioView: AddressCollectionRadioView!
     
     @IBOutlet weak var monthLbl: UILabel!
-    
+
     @IBOutlet weak var monthInfoView: UIView!
     @IBOutlet weak var settingBtn: UIButton!
+    @IBOutlet weak var triangleDateImg: UIImageView!
+    
+
     private var shouldChangeValue = true
     private var lastOffset : CGFloat = 0
     private var viewModel = AddressCollectionViewModel()
     private let sizeMax = CGFloat(40)
     private var editState = false
+    
 //    private var dropdown : DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>!
     private var dropdown : DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>!
-//    private var sheetView : BaseSheetView!
+    private var monthYearView : MonthYearView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         bindToViewModel()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     private func setup(){
         monthInfoView.addBottomShadow(height: 0, alpha: 0.4,radius: 5)
         setupCollectionView()
         setupDate()
+        setupMonthPicker()
         setupBtnSetting()
         radioView.delegate = self
     }
-    
-    
-    
+
     private func  setupBtnSetting() {
         settingBtn.setTitle("", for: .normal)
 //        dropdown = DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>(frame: self.view.frame, anchorView: settingBtn)
@@ -63,11 +72,32 @@ class AddressCollectionViewController: BaseViewController {
     
     private func setupDate(){
         let currentDateTime = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = AppConfig.shared.language == .english ? App.Format.englishMonthYear : App.Format.vietnamMonthYear
-        monthLbl.text = AppConfig.shared.language == .english ? formatter.string(from: currentDateTime) :
-                                                                "Tháng " + formatter.string(from: currentDateTime)
+        changeDateLbl(date: currentDateTime)
+        
+        triangleDateImg.tintColor = Color.redPrimary
+        triangleDateImg.transform = CGAffineTransform(rotationAngle: .pi)
+
+        UIView.animate(withDuration: 3, delay: 0.0, options: [.repeat, .autoreverse, .allowUserInteraction]) { [self] in
+            triangleDateImg.alpha = 0.3
+        }
     }
+    
+    private func setupMonthPicker(){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.monthYearView = MonthYearView(frame: self.view.frame, size: .fixed(400), baseVC: self)
+            self.monthYearView.delegate = self
+            self.monthYearView.setupPicker()
+        }
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(monthInfoTapped))
+        monthInfoView.addGestureRecognizer(gesture)
+        
+    }
+    @objc func monthInfoTapped(){
+        monthYearView.open()
+    }
+    
     private func bindToViewModel() {
         self.viewModel = AddressCollectionViewModel(rootViewModel: rootViewModel as! RootViewModel)
         self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
@@ -99,10 +129,28 @@ class AddressCollectionViewController: BaseViewController {
         detailCollectionView.register(UINib(nibName: String(describing: AddressCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: AddressCollectionViewCell.self))
         detailCollectionView.delegate = self
         detailCollectionView.dataSource = self
+        
+        let tapDismissGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapForDismiss))
+        tapDismissGesture.numberOfTapsRequired = 2
+        
+        detailCollectionView.addGestureRecognizer(tapDismissGesture)
 
     }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
+    
+    private func changeDateLbl(date: Date){
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "GMT+7")
+        formatter.dateFormat = AppConfig.shared.language == .english ? App.Format.englishMonthYear : App.Format.vietnamMonthYear
+        monthLbl.text = AppConfig.shared.language == .english ? formatter.string(from: date) :
+                                                                "Tháng " + formatter.string(from: date)
+        
+    }
+    
+    @objc func didDoubleTapForDismiss(){
+        if (editState){
+            editState = false
+            self.detailCollectionView.reloadData()
+        }
     }
     
     @IBAction func settingBtnTapped(_ sender: Any) {
@@ -290,3 +338,10 @@ extension AddressCollectionViewController {
         }
     }
 }
+
+extension AddressCollectionViewController : MonthYearViewDelegate {
+    func didSelectDate(value: Date) {
+        changeDateLbl(date: value)
+    }
+}
+

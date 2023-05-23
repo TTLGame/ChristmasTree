@@ -59,7 +59,7 @@ class AddressInfoViewViewModel : NSObject {
          AddressInfoViewCellViewModel(title: Language.localized("totalRoom"),
                                       value: "\(currentCellData.count)/\(currentCellData.count + vacanCellData.count)"),
          AddressInfoViewCellViewModel(title: Language.localized("averageRenters"),
-                                      value: "\(renterMax?.renters ?? 0)-\(renterMax?.renters ?? 0)")
+                                      value: "\(renterMin?.renters ?? 0)-\(renterMax?.renters ?? 0)")
         ]
         
         let infoHeaderCell = AddressInfoViewTableHeaderViewModel(title: Language.localized("facilityInfo"),

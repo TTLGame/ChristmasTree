@@ -1,16 +1,15 @@
 //
-//  DateVC.swift
+//  DateSelectView.swift
 //  LongTester
 //
-//  Created by Long on 4/3/23.
+//  Created by Long on 5/22/23.
 //
 
 import Foundation
 import UIKit
+import SnapKit
 
-class DateVC : UIViewController{
-    var labelTextField = UITextField()
-    
+class DateSelectView : UIView {
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
@@ -20,31 +19,40 @@ class DateVC : UIViewController{
       
         
         datePicker.setDate(Date(), animated: true)
-        datePicker.addTarget(self, action: #selector(setTitle), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(didScrollValueDate), for: .valueChanged)
         return datePicker
     }()
+    var labelTextField = UITextField()
+    var formatDate : String = App.Format.headerDateTime
+    var dateHeight : CGFloat = 420
+    var visibleTextField  = false
     
-    @objc func setTitle() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+
+    func commonInit(){
+//        loadViewFromNib()
+        setupDate()
+    }
+    @objc func didScrollValueDate() {
         let formatter = DateFormatter()
-        formatter.dateFormat = App.Format.headerDateTime
+        formatter.dateFormat = self.formatDate
         let selectedDate = formatter.string(from: datePicker.date)
         print("selected date :\(selectedDate)")
-        // Update data if date picker has been change
-        formatter.dateFormat = App.Format.responseTime
-        let serverDate = formatter.string(from: datePicker.date)
-//        viewModel?.set(input: serverDate)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupDate()
-        // Do any additional setup after loading the view.
-    }
-    
-    private func setupDate(){
+    func setupDate(height : CGFloat = 420){
+        self.dateHeight = height
+        
         let labelTextField = UITextField()
-        labelTextField.tintColor = .clear
-        self.view.addSubview(labelTextField)
+        self.addSubview(labelTextField)
         labelTextField.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -52,35 +60,37 @@ class DateVC : UIViewController{
         self.labelTextField = labelTextField
         
         // Big enough frame
-        let rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 420)
+        let rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.dateHeight)
         let pickerWrapperView = UIView(frame: rect)
         pickerWrapperView.addSubview(datePicker)
 
         // Adding constraints
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.leadingAnchor.constraint(equalTo: pickerWrapperView.leadingAnchor).isActive = true
-        datePicker.trailingAnchor.constraint(equalTo: pickerWrapperView.trailingAnchor).isActive = true
-        datePicker.topAnchor.constraint(equalTo: pickerWrapperView.topAnchor).isActive = true
-        datePicker.bottomAnchor.constraint(equalTo: pickerWrapperView.bottomAnchor).isActive = true
+        datePicker.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
 
         // Using wrapper view instead of picker
         labelTextField.inputView = pickerWrapperView
-        
-//        labelTextField.inputView = datePicker
         configureUI()
     }
     
-    func configureUI() {
+    private func configureUI() {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done",
+        let doneButton = UIBarButtonItem(title: Language.localized("doneBtn"),
                                          style: .done,
                                          target: self,
                                          action: #selector(handleDoneButton(_:)))
+        
+        let cancelButton = UIBarButtonItem(title: Language.localized("cancelBtn"),
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(handleCancelButton(_:)))
+        
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                     target: nil,
                                     action: nil)
-        toolbar.setItems([space, doneButton], animated: true)
+        toolbar.setItems([cancelButton, space, doneButton], animated: true)
         toolbar.tintColor = Color.normalTextColor
         labelTextField.inputAccessoryView = toolbar
     }
@@ -93,4 +103,7 @@ class DateVC : UIViewController{
         labelTextField.endEditing(true)
     }
     
+    @objc func handleCancelButton(_ textField: UITextField) {
+        labelTextField.endEditing(true)
+    }
 }

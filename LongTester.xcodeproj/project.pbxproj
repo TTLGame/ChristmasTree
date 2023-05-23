@@ -10,6 +10,12 @@
 		0C1B64E0047D83EDA569D046 /* Pods_LongTester.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C1E2B479E6288276C29BD4 /* Pods_LongTester.framework */; };
 		FD0B1FCF29AB38730069F98F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0B1FCE29AB38730069F98F /* ButtonView.swift */; };
 		FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD0B1FD029AB38D60069F98F /* ButtonView.xib */; };
+		FD2015522A1BCBFF006A4C2E /* DateSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015512A1BCBFF006A4C2E /* DateSelectView.swift */; };
+		FD2015542A1BD123006A4C2E /* DateSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2015532A1BD123006A4C2E /* DateSelectView.xib */; };
+		FD2015582A1BD680006A4C2E /* MonthYearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015572A1BD680006A4C2E /* MonthYearView.swift */; };
+		FD20155A2A1BD688006A4C2E /* MonthYearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2015592A1BD687006A4C2E /* MonthYearView.xib */; };
+		FD20155C2A1BE496006A4C2E /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20155B2A1BE496006A4C2E /* MonthYearPickerView.swift */; };
+		FD20155E2A1BE4C7006A4C2E /* MonthYearModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20155D2A1BE4C7006A4C2E /* MonthYearModel.swift */; };
 		FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2184E129E8F21D00761826 /* BaseNavigationView.swift */; };
 		FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2184E329E8F22900761826 /* BaseNavigationView.xib */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
@@ -150,6 +156,12 @@
 		F54645999DA342962EE17425 /* Pods-LongTester.release-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-stg.xcconfig"; sourceTree = "<group>"; };
 		FD0B1FCE29AB38730069F98F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		FD0B1FD029AB38D60069F98F /* ButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonView.xib; sourceTree = "<group>"; };
+		FD2015512A1BCBFF006A4C2E /* DateSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectView.swift; sourceTree = "<group>"; };
+		FD2015532A1BD123006A4C2E /* DateSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSelectView.xib; sourceTree = "<group>"; };
+		FD2015572A1BD680006A4C2E /* MonthYearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearView.swift; sourceTree = "<group>"; };
+		FD2015592A1BD687006A4C2E /* MonthYearView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthYearView.xib; sourceTree = "<group>"; };
+		FD20155B2A1BE496006A4C2E /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
+		FD20155D2A1BE4C7006A4C2E /* MonthYearModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearModel.swift; sourceTree = "<group>"; };
 		FD2184E129E8F21D00761826 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FD2184E329E8F22900761826 /* BaseNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseNavigationView.xib; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
@@ -326,6 +338,26 @@
 			path = ButtonView;
 			sourceTree = "<group>";
 		};
+		FD2015552A1BD5A0006A4C2E /* DateSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				FD2015512A1BCBFF006A4C2E /* DateSelectView.swift */,
+				FD2015532A1BD123006A4C2E /* DateSelectView.xib */,
+			);
+			path = DateSelectView;
+			sourceTree = "<group>";
+		};
+		FD2015562A1BD66F006A4C2E /* MonthYearView */ = {
+			isa = PBXGroup;
+			children = (
+				FD2015572A1BD680006A4C2E /* MonthYearView.swift */,
+				FD2015592A1BD687006A4C2E /* MonthYearView.xib */,
+				FD20155D2A1BE4C7006A4C2E /* MonthYearModel.swift */,
+				FD20155B2A1BE496006A4C2E /* MonthYearPickerView.swift */,
+			);
+			path = MonthYearView;
+			sourceTree = "<group>";
+		};
 		FD2184E029E8F20300761826 /* BaseNavigationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +388,8 @@
 		FD4DF3C229ED929300AB6A50 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				FD2015562A1BD66F006A4C2E /* MonthYearView */,
+				FD2015552A1BD5A0006A4C2E /* DateSelectView */,
 				FDE9CD0D2A1549A9004844AD /* BaseSheetView */,
 				FDE9CCFF2A13EFD9004844AD /* DropDownView */,
 				FDADC1CC29F3BCD100803536 /* PushView */,
@@ -1016,12 +1050,14 @@
 				FD738FA52A08A32900088BF0 /* DetailScreenViewController.xib in Resources */,
 				FD4DF3D129ED981800AB6A50 /* TextFieldView.xib in Resources */,
 				FDADC1C629F3A38C00803536 /* DateVC.xib in Resources */,
+				FD2015542A1BD123006A4C2E /* DateSelectView.xib in Resources */,
 				FD8961A4295BF11D00C7BE20 /* LaunchScreen.storyboard in Resources */,
 				FD738FB82A0FD28700088BF0 /* UITableViewNoDataEx.xib in Resources */,
 				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
 				FDE9CD032A13F0E3004844AD /* DropDownView.xib in Resources */,
 				FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */,
 				FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */,
+				FD20155A2A1BD688006A4C2E /* MonthYearView.xib in Resources */,
 				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
 				FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */,
@@ -1109,6 +1145,7 @@
 				FDADC1B129F25FA300803536 /* AlertView.swift in Sources */,
 				FDADC1B529F2610700803536 /* AlertModel.swift in Sources */,
 				FDADC1CA29F3B75700803536 /* AddressCollectionViewCell.swift in Sources */,
+				FD2015522A1BCBFF006A4C2E /* DateSelectView.swift in Sources */,
 				FDE9CD012A13F08F004844AD /* DropDownView.swift in Sources */,
 				FDA852C729EE7B4100A6357F /* AppConfigModel.swift in Sources */,
 				FD564B7029655D8600A527ED /* TableScreenCell.swift in Sources */,
@@ -1134,6 +1171,7 @@
 				FDF14B30295C311500BF079F /* RootViewController.swift in Sources */,
 				FDDB486629EFC80F00D212A7 /* SlideMenuViewModel.swift in Sources */,
 				FDDB485F29EFB01000D212A7 /* SlideMenuViewCell.swift in Sources */,
+				FD20155C2A1BE496006A4C2E /* MonthYearPickerView.swift in Sources */,
 				FD564B8C29656CFE00A527ED /* PrefsImp.swift in Sources */,
 				FD896198295BF11A00C7BE20 /* AppDelegate.swift in Sources */,
 				FDE9CCF52A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift in Sources */,
@@ -1162,6 +1200,7 @@
 				FDE9CCFE2A13E41D004844AD /* AddressCollectionDropDownCellViewModel.swift in Sources */,
 				FDADC1A729F1230B00803536 /* MainScreenCellViewModel.swift in Sources */,
 				FDF300C529E3D0880084562A /* Decoder.swift in Sources */,
+				FD2015582A1BD680006A4C2E /* MonthYearView.swift in Sources */,
 				FDADC1BB29F262CE00803536 /* BaseViewController.swift in Sources */,
 				FDADC1BD29F2642C00803536 /* BaseViewModel.swift in Sources */,
 				FDADC1C129F39FD400803536 /* AddressCollectionViewController.swift in Sources */,
@@ -1175,6 +1214,7 @@
 				FD564B902965769100A527ED /* Language.swift in Sources */,
 				FD4DF3CB29ED92E900AB6A50 /* LoginViewController.swift in Sources */,
 				FD564B73296561FE00A527ED /* UITableView.swift in Sources */,
+				FD20155E2A1BE4C7006A4C2E /* MonthYearModel.swift in Sources */,
 				FDADC1CE29F3BCE300803536 /* PushModel.swift in Sources */,
 				FDE9CD072A13F2FD004844AD /* BaseDropDownCell.swift in Sources */,
 				FDADC1B729F2615A00803536 /* AlertBuilder.swift in Sources */,
