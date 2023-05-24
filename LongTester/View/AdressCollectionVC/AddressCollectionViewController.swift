@@ -295,12 +295,12 @@ extension AddressCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension AddressCollectionViewController : AddressCollectionRadioViewDelegate {
-    func didSortData(type: String) {
+    func didSortData(interator: Int) {
         let rootView = rootViewModel as! RootViewModel
         rootView.handleProgress(true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
             rootView.handleProgress(false)
-            self.viewModel.sortData(type: type)
+            self.viewModel.sortData(interator: interator)
         }
         
         self.detailCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
@@ -354,6 +354,7 @@ extension AddressCollectionViewController : MonthYearViewDelegate {
         let year = calendar.component(.year, from: date)
         
         viewModel.getData(date: MonthYear(month: month, year: year))
+        self.radioView.reloadRadioView()
     }
 }
 

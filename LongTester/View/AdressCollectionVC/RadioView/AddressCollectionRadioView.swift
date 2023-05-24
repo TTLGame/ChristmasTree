@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol AddressCollectionRadioViewDelegate : AnyObject {
-    func didSortData(type: String)
+    func didSortData(interator: Int)
 }
 class AddressCollectionRadioView : UIView {
     let DEFAULT_RADIO_HEIGHT : CGFloat = 30
@@ -49,6 +49,11 @@ class AddressCollectionRadioView : UIView {
         radioCollectionView.dataSource = self
 
     }
+    
+    func reloadRadioView(){
+        selectedIndex = IndexPath(row: 0, section: 0)
+        radioCollectionView.reloadData()
+    }
 }
 
 extension AddressCollectionRadioView: UICollectionViewDelegate {
@@ -58,7 +63,7 @@ extension AddressCollectionRadioView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath
-        delegate?.didSortData(type: viewModel?.cellViewModels?[indexPath.row].type ?? "ALL")
+        delegate?.didSortData(interator: indexPath.row)
         radioCollectionView.reloadData()
         
     }

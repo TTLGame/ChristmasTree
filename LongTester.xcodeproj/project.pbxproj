@@ -18,6 +18,9 @@
 		FD20155E2A1BE4C7006A4C2E /* MonthYearModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20155D2A1BE4C7006A4C2E /* MonthYearModel.swift */; };
 		FD2015602A1C71C2006A4C2E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20155F2A1C71C1006A4C2E /* Date.swift */; };
 		FD2015622A1C7430006A4C2E /* AddressCollectionMonthYearViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015612A1C7430006A4C2E /* AddressCollectionMonthYearViewModel.swift */; };
+		FD2015672A1DA30D006A4C2E /* MonthYearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015662A1DA30D006A4C2E /* MonthYearTests.swift */; };
+		FD20156A2A1DDECB006A4C2E /* IntTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015692A1DDECB006A4C2E /* IntTest.swift */; };
+		FD20156D2A1DE05C006A4C2E /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20156C2A1DE05C006A4C2E /* StringTests.swift */; };
 		FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2184E129E8F21D00761826 /* BaseNavigationView.swift */; };
 		FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2184E329E8F22900761826 /* BaseNavigationView.xib */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
@@ -166,6 +169,9 @@
 		FD20155D2A1BE4C7006A4C2E /* MonthYearModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearModel.swift; sourceTree = "<group>"; };
 		FD20155F2A1C71C1006A4C2E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FD2015612A1C7430006A4C2E /* AddressCollectionMonthYearViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionMonthYearViewModel.swift; sourceTree = "<group>"; };
+		FD2015662A1DA30D006A4C2E /* MonthYearTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearTests.swift; sourceTree = "<group>"; };
+		FD2015692A1DDECB006A4C2E /* IntTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntTest.swift; sourceTree = "<group>"; };
+		FD20156C2A1DE05C006A4C2E /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		FD2184E129E8F21D00761826 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FD2184E329E8F22900761826 /* BaseNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseNavigationView.xib; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
@@ -360,6 +366,31 @@
 				FD20155B2A1BE496006A4C2E /* MonthYearPickerView.swift */,
 			);
 			path = MonthYearView;
+			sourceTree = "<group>";
+		};
+		FD2015632A1DA053006A4C2E /* MonthYearTests */ = {
+			isa = PBXGroup;
+			children = (
+				FD2015662A1DA30D006A4C2E /* MonthYearTests.swift */,
+			);
+			path = MonthYearTests;
+			sourceTree = "<group>";
+		};
+		FD2015682A1DDEB8006A4C2E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FD2015692A1DDECB006A4C2E /* IntTest.swift */,
+				FD20156C2A1DE05C006A4C2E /* StringTests.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FD20156B2A1DDFF9006A4C2E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FD2015632A1DA053006A4C2E /* MonthYearTests */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FD2184E029E8F20300761826 /* BaseNavigationView */ = {
@@ -589,6 +620,8 @@
 		FD738FAD2A0FCD1400088BF0 /* LongTesterTests */ = {
 			isa = PBXGroup;
 			children = (
+				FD20156B2A1DDFF9006A4C2E /* Models */,
+				FD2015682A1DDEB8006A4C2E /* Extension */,
 				FD738FAE2A0FCD1400088BF0 /* LongTesterTests.swift */,
 			);
 			path = LongTesterTests;
@@ -1133,7 +1166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD20156A2A1DDECB006A4C2E /* IntTest.swift in Sources */,
 				FD738FAF2A0FCD1400088BF0 /* LongTesterTests.swift in Sources */,
+				FD20156D2A1DE05C006A4C2E /* StringTests.swift in Sources */,
+				FD2015672A1DA30D006A4C2E /* MonthYearTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

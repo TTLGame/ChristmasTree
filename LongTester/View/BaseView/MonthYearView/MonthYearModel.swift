@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MonthYear {
+class MonthYear : Equatable{
     var month: Int
     var year: Int
     

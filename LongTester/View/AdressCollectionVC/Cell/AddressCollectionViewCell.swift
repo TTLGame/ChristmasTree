@@ -102,14 +102,15 @@ class AddressCollectionViewCell: UICollectionViewCell {
     }
     
     private func setStatusView(){
-        switch viewModel?.status {
-        case "Paid" :
+        guard let status = viewModel?.status else { return }
+        switch AddressCollectionViewCellViewModel.roomStatus(rawValue: status)  {
+        case .paid :
             statusView.backgroundColor = Color.darkGreen
             statusImgView.image = UIImage(named: "yesSymbol")
-        case "NotPaid" :
+        case .notPaid :
             statusView.backgroundColor = Color.redPrimary
             statusImgView.image = UIImage(named: "noSymbol")
-        case "Vacancy":
+        case .vacancy:
             statusView.backgroundColor = Color.purpleVacancy
             statusImgView.image = UIImage(named: "vacancySymbol")
         default:

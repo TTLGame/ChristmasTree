@@ -97,8 +97,9 @@ class AddressCollectionViewModel : NSObject {
 }
 
 extension AddressCollectionViewModel {
-    func sortData(type: String){
-        switch type {
+    
+    func sortData(interator: Int){
+        switch radioViewModels.value.cellViewModels?[interator].type {
         case "ALL":
             cellViewModels.accept(defaultCellViewModels)
         case "PAID":
@@ -114,7 +115,7 @@ extension AddressCollectionViewModel {
             
         default:
             let sortedData = defaultCellViewModels.filter { data in
-                return data.status == "Short" || data.status == "NotPaid"
+                return data.status == "Pending" || data.status == "NotPaid"
             }
             cellViewModels.accept(sortedData)
         }

@@ -8,6 +8,12 @@
 import Foundation
 
 class AddressCollectionViewCellViewModel {
+    enum roomStatus : String {
+        case paid = "Paid"
+        case notPaid = "NotPaid"
+        case pending = "Pending"
+        case vacancy = "Vacancy"
+    }
     let roomNums : Int?
     let renters : Int?
     let status : String?
