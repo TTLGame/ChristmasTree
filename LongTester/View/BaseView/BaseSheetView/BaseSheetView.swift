@@ -205,7 +205,7 @@ class BaseSheetView : UIView {
     
     private func setupUI(){
         closeBtn.setTitle("", for: .normal)
-        dragView.layer.cornerRadius = 10
+        dragView.layer.cornerRadius = 3
         UIView.animate(withDuration: 3, delay: 0.0, options: [.repeat, .autoreverse, .allowUserInteraction]) { [self] in
             dragView.alpha = 0.3
         }

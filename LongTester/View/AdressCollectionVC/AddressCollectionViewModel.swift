@@ -11,56 +11,92 @@ import RxSwift
 import RxCocoa
 import Moya
 import SVProgressHUD
+import OHHTTPStubs
 
 class AddressCollectionViewModel : NSObject {
-    var cellViewModels : BehaviorRelay<[AddressCollectionViewCellViewModel]> = BehaviorRelay(value: [])
-    var monthYearViewModel : [AddressCollectionMonthYearViewModel] = []
-    
     var radioViewModels : BehaviorRelay<AddressCollectionRadioViewModel> = BehaviorRelay(value: AddressCollectionRadioViewModel(cellViewModels: []))
     var dropdownCellViewModels : BehaviorRelay<[AddressCollectionDropDownCellViewModel]> = BehaviorRelay(value: [])
-    private var defaultCellViewModels = [AddressCollectionViewCellViewModel]()
+    
+    var cellViewModels : BehaviorRelay<[AddressCollectionViewCellViewModel]> = BehaviorRelay(value: [])
+    
+    var addressDataMonthModel : BehaviorRelay<[AddressDataMonthModel]> = BehaviorRelay(value: [])
+    var monthYearViewModel : BehaviorRelay<[AddressCollectionMonthYearViewModel]> = BehaviorRelay(value: [])
+ 
+    var addressDataModel : AddressDataModel = AddressDataModel()
+    var currentMonthYear = MonthYear()
+    
     let api: Provider<MultiTarget>
     private(set) var rootViewModel: RootViewModel
     private let limit: Int = 50
     private let rooms = Int.random(in: 1..<20)
     private var randomPic = [String]()
+    private var defaultCellViewModels = [AddressCollectionViewCellViewModel]()
+    
     let disposeBag = DisposeBag()
     init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
         self.api = api
         self.rootViewModel = rootViewModel
         super.init()
+        bindToEvents()
     }
     
-    var currentMonthYear = MonthYear()
-    
-    func getMonthYearData(){
-        let monthYear = MonthYear()
-        for interator in 0...12 {
-            let status = ["Paid", "Short", "NotPaid","Vacancy"]
-            var data = [AddressCollectionViewCellViewModel]()
-            for roomNum in 0..<rooms {
-                let statusNo = Int.random(in: 0..<status.count)
-                let renters = Int.random(in: 1..<5)
-                let water = Int.random(in: 1..<100)
-                let electric = Int.random(in: 1..<100)
-                let total = Int.random(in: 1000000..<10000000)
-                data.append(AddressCollectionViewCellViewModel(roomNums: roomNum + 1,
-                                                               renters: renters,
-                                                               status: status[statusNo],
-                                                               waterNum: water,
-                                                               electricNum: electric,
-                                                               totalNum: total))
+   
+    func bindToEvents() {
+        addressDataMonthModel.map {data in
+            data.map {cell in
+                var monthYearData = MonthYear()
+                if let monthYear = cell.monthYear?.split(separator: "/"),
+                    monthYear.count > 1{
+                    if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
+                        monthYearData = MonthYear(month: month,
+                                                  year: year)
+                    }
+                   
+                }
+            
+                let roomData = cell.roomData.map { data in
+                    data.map { cell in
+                        return AddressCollectionViewCellViewModel(roomNums: cell.roomNums,
+                                                                  renters: cell.renters,
+                                                                  status: cell.status,
+                                                                  waterNum: cell.waterNum,
+                                                                  electricNum: cell.electricNum,
+                                                                  totalNum: cell.totalNum)
+                    }
+                }
+                return AddressCollectionMonthYearViewModel(monthYear: monthYearData,
+                                                           cellViewModels: roomData ?? [])
             }
-            monthYearViewModel.append(AddressCollectionMonthYearViewModel(monthYear: monthYear - interator,
-                                                                          cellViewModels: data))
-        }
+        }.bind(to: monthYearViewModel).disposed(by: disposeBag)
     }
+    
+    func getMonthYearData() {
+        createStubData()
+        rootViewModel.handleProgress(true)
+        api.request(MultiTarget(AddressCollectionTarget.getAddressData(id: "123")))
+            .map(AddressDataModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
+            .subscribe {[weak self] event in
+                guard let self = self else { return }
+                switch event {
+                case .success(let value):
+                    self.addressDataModel = value
+                    if let data = value.data {
+                        self.addressDataMonthModel.accept(data)
+                    }
+                    SVProgressHUD.dismiss()
+                case .failure(_):
+                    SVProgressHUD.dismiss()
+                    break
+                }
+            }.disposed(by: disposeBag)
+    }
+    
     func getData(date: MonthYear){
         currentMonthYear = date
         var data = [AddressCollectionViewCellViewModel]()
-        let checkData = monthYearViewModel.contains(where: { $0.monthYear == date})
+        let checkData = monthYearViewModel.value.contains(where: { $0.monthYear == date})
         if (checkData){
-            if let cellViewModel = monthYearViewModel.filter({$0.monthYear == date}).first?.cellViewModels {
+            if let cellViewModel = monthYearViewModel.value.filter({$0.monthYear == date}).first?.cellViewModels {
                 data = cellViewModel
                 defaultCellViewModels = data
                 cellViewModels.accept(data)
@@ -97,7 +133,6 @@ class AddressCollectionViewModel : NSObject {
 }
 
 extension AddressCollectionViewModel {
-    
     func sortData(interator: Int){
         switch radioViewModels.value.cellViewModels?[interator].type {
         case "ALL":
@@ -121,3 +156,90 @@ extension AddressCollectionViewModel {
         }
     }
 }
+
+
+// Create Dummy data
+extension AddressCollectionViewModel {
+    func createStubData(){
+        let monthYear = MonthYear()
+        let totalRoom = Int.random(in: 3..<20)
+        var roomData : [String:Any] = ["address" : "99/4A, KP2A, P. Dong Hung Thuan, Q12, TP.Ho Chi Minh",
+                                       "totalRoom" : totalRoom]
+        
+        var lastWater = Array(repeating: 0, count: totalRoom)
+        var lastElectric = Array(repeating: 0, count: totalRoom)
+        
+        var dataTemp = [[String : Any]]()
+        for interator in 0...12 {
+            let currentMonth = monthYear - 12 + interator
+            let monthString = "\(currentMonth.month)/\(currentMonth.year)"
+            var data : [String:Any] = ["monthYear" : monthString,
+                                       "globalElectric" : 3000,
+                                       "globalWater" : 7000,
+                                       "globalQuota" : 4,
+                                       "globalQuotaPrice": 10000,
+                                       "globalRoomPrice": Int.random(in: 1500000..<2000000)]
+            
+            let status = ["Paid", "Short", "NotPaid","Vacancy"]
+
+            var roomDataTemp = [[String : Any]]()
+            for roomNum in 0..<totalRoom {
+                var roomData : [String:Any] = [:]
+
+                let quota = data["globalQuota"] as! Int
+                let quotaPrice = data["globalQuotaPrice"] as! Int
+                let roomPrice = data["globalRoomPrice"] as! Int
+                
+                let waterNum = lastWater[roomNum] + Int.random(in: 5..<40)
+                let waterPrice = data["globalWater"] as! Int
+                let lastWaterNum = lastWater[roomNum]
+                lastWater[roomNum] = waterNum
+                
+                let electricNum = lastElectric[roomNum] + Int.random(in: 5..<40)
+                let electricPrice = data["globalElectric"] as! Int
+                let lastElectricNum = lastElectric[roomNum]
+                lastElectric[roomNum] = electricNum
+                
+                roomData["status"] = status[Int.random(in: 0..<status.count)]
+                roomData["roomNums"] = roomNum + 1
+                roomData["renters"] = Int.random(in: 1..<5)
+                roomData["quota"] = data["globalQuota"]
+                roomData["quotaPrice"] = data["globalQuota"]
+                
+                roomData["waterNum"] = waterNum
+                roomData["waterPrice"] = waterPrice
+                roomData["lastWaterNum"] = lastWaterNum
+                
+                roomData["electricNum"] = electricNum
+                roomData["electricPrice"] = electricPrice
+                roomData["lastElectricNum"] = lastElectricNum
+                
+                roomData["roomPrice"] = roomPrice
+                
+                var water = 0
+                if (waterNum - lastElectricNum > quota){
+                    water = quota * quotaPrice + (waterNum - lastElectricNum - quota) * waterPrice
+                }
+                else {
+                    water = (waterNum - lastWaterNum) * waterPrice
+                }
+                let total = roomPrice + (electricNum - lastElectricNum)*electricPrice + water
+                
+                roomData["totalNum"] = total
+                
+                roomDataTemp.append(roomData)
+            }
+            data["roomData"] = roomDataTemp
+            dataTemp.append(data)
+        }
+        
+        roomData["data"] = dataTemp
+        
+        let baseURl = "reqres.in"
+        stub(condition: isHost("\(baseURl)") &&  isPath("/api/getaddress")) { _ in
+            return HTTPStubsResponse(jsonObject: roomData, statusCode: 200, headers: nil)
+        }
+        
+    }
+}
+

@@ -19,7 +19,9 @@ class AddressInfoViewViewModel : NSObject {
     let api: Provider<MultiTarget>
     private(set) var rootViewModel: RootViewModel
 
-    var monthYearCellData = [AddressCollectionMonthYearViewModel]()
+
+    var addressDataMonthModel : BehaviorRelay<[AddressDataMonthModel]> = BehaviorRelay(value: [])
+    var addressDataModel : AddressDataModel = AddressDataModel()
     var currentMonthYear = MonthYear()
     
     let disposeBag = DisposeBag()
@@ -27,45 +29,92 @@ class AddressInfoViewViewModel : NSObject {
         self.api = api
         self.rootViewModel = rootViewModel
         super.init()
+        
     }
     
+    func setupData(){
+        if let data = addressDataModel.data {
+            self.addressDataMonthModel.accept(data)
+        }
+    }
     func getData(date: MonthYear){
         currentMonthYear = date
+
+        let checkData = addressDataMonthModel.value.contains(where: { cell in
+            var monthYearData = MonthYear()
+            if let monthYear = cell.monthYear?.split(separator: "/"),
+                monthYear.count > 1{
+                if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
+                    monthYearData = MonthYear(month: month,
+                                              year: year)
+                }
+            }
+            return monthYearData == date
+        })
         
-        let checkData = monthYearCellData.contains(where: { $0.monthYear == date})
         if (checkData){
-            if let mainCellData = monthYearCellData.filter({$0.monthYear == date}).first?.cellViewModels {
+            if let monthYearData = addressDataMonthModel.value.filter({ cell in
+                var monthYearData = MonthYear()
+                if let monthYear = cell.monthYear?.split(separator: "/"),
+                    monthYear.count > 1{
+                    if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
+                        monthYearData = MonthYear(month: month,
+                                                  year: year)
+                    }
+                }
+                return monthYearData == date
+            }).first , let mainCellData = monthYearData.roomData {
+                
                 let currentCellData = mainCellData.filter {$0.status != "Vacancy"}
                 let vacanCellData = mainCellData.filter {$0.status == "Vacancy"}
                 
+                var waterMoneyText = ""
+                if let waterMax = mainCellData.max(by: {$0.waterPrice ?? 0 < $1.waterPrice ?? 0})?.waterPrice,
+                   let waterMin = mainCellData.max(by: {$0.waterPrice ?? 0 > $1.waterPrice ?? 0})?.waterPrice {
+                    waterMoneyText = waterMin == waterMax ? waterMax.formatnumberWithDot() + " VND" :
+                    "\(waterMin.formatnumberWithDot()) - \(waterMax.formatnumberWithDot()) VND"
+                }
                 
-                let waterMoney = Int.random(in: 3000..<7000)
-                let electricMoney = Int.random(in: 2000..<4000)
+                var electricMoneyText = ""
+                if let electricMax = mainCellData.max(by: {$0.electricPrice ?? 0 < $1.electricPrice ?? 0})?.electricPrice,
+                   let electricMin = mainCellData.max(by: {$0.electricPrice ?? 0 > $1.electricPrice ?? 0})?.electricPrice {
+                    electricMoneyText = electricMin == electricMax ? electricMax.formatnumberWithDot() + " VND" :
+                    "\(electricMin.formatnumberWithDot()) - \(electricMax.formatnumberWithDot()) VND"
+                }
+                
+                var renterText = ""
+                if let renterMax = mainCellData.max(by: {$0.renters ?? 0 < $1.renters ?? 0})?.renters,
+                   let renterMin = mainCellData.max(by: {$0.renters ?? 0 > $1.renters ?? 0})?.renters {
+                    renterText = renterMin == renterMax ? String(renterMax) :
+                                                            "\(renterMin) - \(renterMax)"
+                }
+
                 let rent = currentCellData.map({$0.totalNum ?? 0}).reduce(0, +)
-                let renterMax = mainCellData.max(by: {$0.renters ?? 0 < $1.renters ?? 0})
-                let renterMin = mainCellData.max(by: {$0.renters ?? 0 > $1.renters ?? 0})
-                
-                
+                    
                 var advWater = 0
                 var advElectric = 0
                 var averageIncome = 0
+                let totalSumWater = currentCellData.map({($0.waterNum ?? 0) - ($0.lastWaterNum ?? 0)}).reduce(0, +)
+                let totalSumElectric = currentCellData.map({($0.electricNum ?? 0) - ($0.lastElectricNum ?? 0)}).reduce(0, +)
                 
                 if (currentCellData.count != 0) {
-                    let totalSumWater = currentCellData.map({$0.waterNum ?? 0}).reduce(0, +)
                     advWater = totalSumWater / currentCellData.count
-                    
-                    let totalSumElectric = currentCellData.map({$0.electricNum ?? 0}).reduce(0, +)
+                
                     advElectric = totalSumElectric / currentCellData.count
                     averageIncome = rent / currentCellData.count
                 }
              
                 let infoCell : [AddressInfoViewCellViewModel] =
                 [AddressInfoViewCellViewModel(title: Language.localized("address"),
-                                              value: "99/4A DHT18, KP2, P DONG HUNG THUAN, Q12, TP.HO CHI MINH"),
+                                              value: addressDataModel.address),
                  AddressInfoViewCellViewModel(title: Language.localized("totalRoom"),
                                               value: "\(currentCellData.count)/\(currentCellData.count + vacanCellData.count)"),
                  AddressInfoViewCellViewModel(title: Language.localized("averageRenters"),
-                                              value: "\(renterMin?.renters ?? 0)-\(renterMax?.renters ?? 0)")
+                                              value: renterText),
+                 AddressInfoViewCellViewModel(title: Language.localized("globalWater"),
+                                              value: (monthYearData.globalWater?.formatnumberWithDot() ?? "0") + " VND"),
+                 AddressInfoViewCellViewModel(title: Language.localized("globalElectric"),
+                                              value: (monthYearData.globalElectric?.formatnumberWithDot() ?? "0") + " VND")
                 ]
                 
                 let infoHeaderCell = AddressInfoViewTableHeaderViewModel(title: Language.localized("facilityInfo"),
@@ -73,18 +122,24 @@ class AddressInfoViewViewModel : NSObject {
                 
                 let comsumptionCell : [AddressInfoViewCellViewModel] =
                 [AddressInfoViewCellViewModel(title: Language.localized("averageWaterComsumption"),
-                                              value: String(advWater),
-                                              shouldHighlightTitle: true),
+                                              value: String(advWater)),
+                 
+                 AddressInfoViewCellViewModel(title: Language.localized("totalWaterComsumption"),
+                                               value: String(totalSumWater),
+                                               shouldHighlightTitle: true),
                  
                  AddressInfoViewCellViewModel(title: Language.localized("waterUnit"),
-                                              value: waterMoney.formatnumberWithDot() + " VND"),
+                                              value: waterMoneyText),
                  
                  AddressInfoViewCellViewModel(title: Language.localized("averageElectricComsumption"),
-                                              value: String(advElectric),
+                                              value: String(advElectric)),
+                 
+                 AddressInfoViewCellViewModel(title: Language.localized("totalElectricComsumption"),
+                                              value: String(totalSumElectric),
                                               shouldHighlightTitle: true),
                  
                  AddressInfoViewCellViewModel(title: Language.localized("electricUnit"),
-                                              value: electricMoney.formatnumberWithDot() + " VND"),
+                                              value: electricMoneyText),
                  
                  AddressInfoViewCellViewModel(title: Language.localized("averageIncome"),
                                               value: averageIncome.formatnumberWithDot() + " VND",

@@ -13,16 +13,18 @@ import RxCocoa
 class AddressInfoView : UIView {
     var baseVC : BaseViewController?
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var monthView: UIView!
+    @IBOutlet weak var monthLbl: UILabel!
     
     private var viewModel = AddressInfoViewViewModel()
     private let disposeBag = DisposeBag()
-    private var monthYearCellData = [AddressCollectionMonthYearViewModel]()
+    private var addressDataModel : AddressDataModel = AddressDataModel()
     private var currentMonthYear = MonthYear()
     private var monthYearView : MonthYearView!
-    init(frame: CGRect,currentMonthYear : MonthYear, data : [AddressCollectionMonthYearViewModel], baseVC: BaseViewController) {
+    init(frame: CGRect,currentMonthYear : MonthYear, data : AddressDataModel, baseVC: BaseViewController) {
         super.init(frame: frame)
         self.baseVC = baseVC
-        self.monthYearCellData = data
+        self.addressDataModel = data
         self.currentMonthYear = currentMonthYear
         commonInit()
     }
@@ -39,9 +41,9 @@ class AddressInfoView : UIView {
     
     func commonInit(){
         loadViewFromNib()
-        setup()
         setupMonthPicker()
         bindData()
+        setup()
     }
 
     override func willMove(toWindow newWindow: UIWindow?) {
@@ -53,23 +55,46 @@ class AddressInfoView : UIView {
     
     private func bindData(){
         self.viewModel = AddressInfoViewViewModel(rootViewModel: baseVC?.rootViewModel as! RootViewModel)
-        self.viewModel.monthYearCellData = monthYearCellData
+        self.viewModel.addressDataModel = addressDataModel
         self.viewModel.currentMonthYear = currentMonthYear
         self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.tblView.reloadData()
             
         }).disposed(by: disposeBag)
-        self.viewModel.getData(date: currentMonthYear)
+        
+        self.viewModel.addressDataMonthModel.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let self = self else {return}
+            self.viewModel.getData(date: self.currentMonthYear)
+            
+        }).disposed(by: disposeBag)
+        self.viewModel.setupData()
+    
     }
     
     private func setup(){
         self.tblView.register(UINib(nibName: String(describing: AddressInfoViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: AddressInfoViewCell.self))
         self.tblView.delegate = self
         self.tblView.dataSource = self
+        
+        monthView.backgroundColor = UIColor.white
+        monthView.layer.borderColor = UIColor.clear.cgColor
+        monthView.layer.borderWidth = 1.0
+        monthView.layer.cornerRadius = 10
+        monthView.layer.masksToBounds = true
 
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(monthInfoTapped))
+        monthView.addGestureRecognizer(gesture)
+        
+        updateMonthLbl()
     }
     
+    private func updateMonthLbl(){
+        let year = viewModel.currentMonthYear.year
+        let month = viewModel.currentMonthYear.month
+        let date = Date("\(year)-\(month)-01")
+        monthLbl.text = getDateLbl(date: date)
+    }
     private func setupMonthPicker(){
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -89,71 +114,17 @@ extension AddressInfoView : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return section == 0 ? 40 : 10
+        return section == 0 ? 10 : 10
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
         return 0
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let bg = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: section == 0 ? 40 : 10))
-        bg.backgroundColor = .clear
-        
-        if (section != 0){
-            return bg
-        }
-        else {
-            let contentView = UIView()
-            let shadowView = UIView()
-            let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 14)
-            
-            bg.addSubview(shadowView)
-            bg.addSubview(contentView)
-          
-            contentView.snp.makeConstraints { make in
-                make.centerX.equalToSuperview()
-                make.bottom.equalToSuperview().offset(-5)
-                make.top.equalToSuperview().offset(5)
-                make.right.equalToSuperview().offset(-30)
-            }
-            
-            shadowView.snp.makeConstraints { make in
-                make.centerX.equalToSuperview()
-                make.bottom.equalToSuperview().offset(-8)
-                make.top.equalToSuperview().offset(8)
-                make.right.equalToSuperview().offset(-33)
-            }
-            
-            let year = viewModel.currentMonthYear.year
-            let month = viewModel.currentMonthYear.month
-            let date = Date("\(year)-\(month)-01")
-            
-            label.text = getDateLbl(date: date)
-            
-            label.font = UIFont.systemFont(ofSize: 12)
-            contentView.addSubview(label)
-            label.snp.makeConstraints { make in
-                make.centerX.centerY.equalToSuperview()
-            }
-            
-//            shadowView.backgroundColor = UIColor.white
-//            shadowView.addBottomShadow(height: 3, alpha: 0.5,radius: 10)
-//            shadowView.layer.masksToBounds = false
     
-            contentView.backgroundColor = UIColor.white
-            contentView.layer.borderColor = UIColor.clear.cgColor
-            contentView.layer.borderWidth = 1.0
-            contentView.layer.cornerRadius = 10
-            contentView.layer.masksToBounds = true
-
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(monthInfoTapped))
-            contentView.addGestureRecognizer(gesture)
-            
-            return bg
-        }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let bg = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: section == 0 ? 10 : 10))
+        bg.backgroundColor = .clear
+        return bg
     }
     
     @objc func monthInfoTapped(){
@@ -191,11 +162,6 @@ extension AddressInfoView : UITableViewDataSource {
         cell.viewModel = viewModel.cellViewModels.value[indexPath.section].cellViewModels[indexPath.row]
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        rootViewModel.alertModel.accept(AlertModel(message: "123"))
-//        self.handlePressData(indexPath: indexPath)
-    }
 }
 
 
@@ -207,5 +173,6 @@ extension AddressInfoView : MonthYearViewDelegate {
         let year = calendar.component(.year, from: date)
         
         viewModel.getData(date: MonthYear(month: month, year: year))
+        updateMonthLbl()
     }
 }

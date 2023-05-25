@@ -15,6 +15,7 @@ pod 'FLEX'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'DropDown'
+pod 'OHHTTPStubs/Swift'
   # Pods for LongTester
 
 end

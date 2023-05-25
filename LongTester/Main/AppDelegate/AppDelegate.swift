@@ -7,7 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-
+import OHHTTPStubs
 import FLEX
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,8 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         configIQKeyboard()
-        
-       
+//        configStubData()
         return true
     }
     
@@ -52,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-
 extension AppDelegate {
     func configIQKeyboard() {
         IQKeyboardManager.shared.enable = true
@@ -61,5 +59,16 @@ extension AppDelegate {
         IQKeyboardManager.shared.previousNextDisplayMode = .alwaysHide
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 60
+    }
+    
+    func configStubData() {
+        let baseURl = "reqres.in"
+        stub(condition: isHost("\(baseURl)") &&  isPath("/api/getaddress")) { _ in
+
+          let stubPath = OHPathForFile("wsresponse.json", type(of: self))
+//          return fixture(JSONObject: stubPath!, headers: ["Content-Type":"application/json"])
+            let obj = ["key1":"value1", "key2":"123"]
+            return HTTPStubsResponse(jsonObject: obj, statusCode: 200, headers: nil)
+        }
     }
 }

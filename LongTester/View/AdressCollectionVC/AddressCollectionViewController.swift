@@ -122,8 +122,17 @@ class AddressCollectionViewController: BaseViewController {
            
         }).disposed(by: disposeBag)
         
+        self.viewModel.monthYearViewModel.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] viewModels in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.viewModel.getData(date: MonthYear())
+            }
+           
+        }).disposed(by: disposeBag)
+        
+        
         viewModel.getMonthYearData()
-        viewModel.getData(date: MonthYear())
+//        viewModel.getData(date: MonthYear())
         viewModel.getRadioData()
         viewModel.getDropdownData()
     }
@@ -336,7 +345,7 @@ extension AddressCollectionViewController {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             
-            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.monthYearViewModel, baseVC: self)
+            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.addressDataModel, baseVC: self)
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
             sheetView.title = Language.localized("addressCollectionMainTitle")
             sheetView.open()

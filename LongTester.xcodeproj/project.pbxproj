@@ -21,6 +21,10 @@
 		FD2015672A1DA30D006A4C2E /* MonthYearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015662A1DA30D006A4C2E /* MonthYearTests.swift */; };
 		FD20156A2A1DDECB006A4C2E /* IntTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015692A1DDECB006A4C2E /* IntTest.swift */; };
 		FD20156D2A1DE05C006A4C2E /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20156C2A1DE05C006A4C2E /* StringTests.swift */; };
+		FD2015722A1E7341006A4C2E /* AddressDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015712A1E7341006A4C2E /* AddressDataModel.swift */; };
+		FD2015742A1E75D7006A4C2E /* RoomDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015732A1E75D7006A4C2E /* RoomDataModel.swift */; };
+		FD2015762A1E77CF006A4C2E /* AddressDataMonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015752A1E77CF006A4C2E /* AddressDataMonthModel.swift */; };
+		FD2015782A1E8008006A4C2E /* AddressCollectionTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015772A1E8008006A4C2E /* AddressCollectionTarget.swift */; };
 		FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2184E129E8F21D00761826 /* BaseNavigationView.swift */; };
 		FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2184E329E8F22900761826 /* BaseNavigationView.xib */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
@@ -172,6 +176,10 @@
 		FD2015662A1DA30D006A4C2E /* MonthYearTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearTests.swift; sourceTree = "<group>"; };
 		FD2015692A1DDECB006A4C2E /* IntTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntTest.swift; sourceTree = "<group>"; };
 		FD20156C2A1DE05C006A4C2E /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		FD2015712A1E7341006A4C2E /* AddressDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDataModel.swift; sourceTree = "<group>"; };
+		FD2015732A1E75D7006A4C2E /* RoomDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDataModel.swift; sourceTree = "<group>"; };
+		FD2015752A1E77CF006A4C2E /* AddressDataMonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDataMonthModel.swift; sourceTree = "<group>"; };
+		FD2015772A1E8008006A4C2E /* AddressCollectionTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionTarget.swift; sourceTree = "<group>"; };
 		FD2184E129E8F21D00761826 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FD2184E329E8F22900761826 /* BaseNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseNavigationView.xib; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
@@ -393,6 +401,33 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		FD20156E2A1E72CC006A4C2E /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				FD5765A02963CE8B005969BE /* User.swift */,
+				FDA852C429EE7B2A00A6357F /* Pages.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		FD20156F2A1E730A006A4C2E /* AppConfig */ = {
+			isa = PBXGroup;
+			children = (
+				FDA852C629EE7B4100A6357F /* AppConfigModel.swift */,
+			);
+			path = AppConfig;
+			sourceTree = "<group>";
+		};
+		FD2015702A1E731D006A4C2E /* AddressCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FD2015732A1E75D7006A4C2E /* RoomDataModel.swift */,
+				FD2015752A1E77CF006A4C2E /* AddressDataMonthModel.swift */,
+				FD2015712A1E7341006A4C2E /* AddressDataModel.swift */,
+			);
+			path = AddressCollectionView;
+			sourceTree = "<group>";
+		};
 		FD2184E029E8F20300761826 /* BaseNavigationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,9 +569,9 @@
 		FD57659F2963CE78005969BE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FD5765A02963CE8B005969BE /* User.swift */,
-				FDA852C429EE7B2A00A6357F /* Pages.swift */,
-				FDA852C629EE7B4100A6357F /* AppConfigModel.swift */,
+				FD2015702A1E731D006A4C2E /* AddressCollectionView */,
+				FD20156F2A1E730A006A4C2E /* AppConfig */,
+				FD20156E2A1E72CC006A4C2E /* MainView */,
 			);
 			name = Models;
 			path = ../Resource/Models;
@@ -990,6 +1025,7 @@
 			isa = PBXGroup;
 			children = (
 				FDF300C029E3CB0E0084562A /* MainScreenTarget.swift */,
+				FD2015772A1E8008006A4C2E /* AddressCollectionTarget.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -1205,6 +1241,7 @@
 				FD2015622A1C7430006A4C2E /* AddressCollectionMonthYearViewModel.swift in Sources */,
 				FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */,
 				FDE9CD0A2A13F346004844AD /* BaseDropDownCellViewModel.swift in Sources */,
+				FD2015742A1E75D7006A4C2E /* RoomDataModel.swift in Sources */,
 				FD564B8729656B2000A527ED /* ProviderAPIWithAccessToken.swift in Sources */,
 				FD564B8929656C7900A527ED /* Prefs.swift in Sources */,
 				FDE9CD1D2A17E1EA004844AD /* AddressInfoViewCellViewModel.swift in Sources */,
@@ -1229,6 +1266,7 @@
 				FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */,
 				FD564B8529656A2A00A527ED /* APIErrorProcessPlugin.swift in Sources */,
 				FDA852C529EE7B2A00A6357F /* Pages.swift in Sources */,
+				FD2015762A1E77CF006A4C2E /* AddressDataMonthModel.swift in Sources */,
 				FD564B7B296567D700A527ED /* Provider.swift in Sources */,
 				FD5765AE2963D2A0005969BE /* Dictionary.swift in Sources */,
 				FD5765A12963CE8B005969BE /* User.swift in Sources */,
@@ -1236,12 +1274,14 @@
 				FDE9CD0F2A1549C3004844AD /* BaseSheetView.swift in Sources */,
 				FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */,
 				FDADC1C429F39FF200803536 /* AddressCollectionViewModel.swift in Sources */,
+				FD2015782A1E8008006A4C2E /* AddressCollectionTarget.swift in Sources */,
 				FDA852C129EE786900A6357F /* RealmCollectionModels.swift in Sources */,
 				FD738FA42A08A32900088BF0 /* DetailScreenViewController.swift in Sources */,
 				FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */,
 				FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */,
 				FD564B95296584A500A527ED /* AppConfig.swift in Sources */,
 				FDE9CCFE2A13E41D004844AD /* AddressCollectionDropDownCellViewModel.swift in Sources */,
+				FD2015722A1E7341006A4C2E /* AddressDataModel.swift in Sources */,
 				FDADC1A729F1230B00803536 /* MainScreenCellViewModel.swift in Sources */,
 				FDF300C529E3D0880084562A /* Decoder.swift in Sources */,
 				FD2015582A1BD680006A4C2E /* MonthYearView.swift in Sources */,

@@ -52,13 +52,20 @@
 "address" = "Address: ";
 "totalRoom" = "Total Rooms: ";
 "averageRenters" = "Average Renters: ";
+"globalWater" = "Common water price/(m3): ";
+"globalElectric" = "Common electric price/(kwh): ";
 
 "averageWaterComsumption" = "Average Water Coms: ";
 "waterUnit" = "Water price/(m3) :";
+"totalWaterComsumption" = "Total Water Coms: ";
 
 "averageElectricComsumption" = "Average Electric Coms: ";
 "electricUnit" = "Electric price/(kwh) :";
+"totalElectricComsumption" = "Total Electric Coms: ";
+
 "averageIncome" = "Average Income";
+"totalRent" = "Total Rent: ";
+
 "facilityInfo" = "Facility Info";
 "consumptionInfo" = "Consumption Info";
-"totalRent" = "Total Rent: ";
+

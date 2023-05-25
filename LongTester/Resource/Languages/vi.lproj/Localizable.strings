@@ -52,13 +52,20 @@
 "address" = "Địa chỉ: ";
 "totalRoom" = "Tổng phòng: ";
 "averageRenters" = "T/B người thuê: ";
+"globalWater" = "Giá nước chung/(m3): ";
+"globalElectric" = "Giá điện chung/(kwh): ";
 
 "averageWaterComsumption" = "T/B nước tiêu thụ: ";
 "waterUnit" = "Giá nước/(m3) :";
+"totalWaterComsumption" = "Tổng nước tiêu thụ ";
 
 "averageElectricComsumption" = "T/B điện tiêu thụ: ";
 "electricUnit" = "Giá điện/(kwh) :";
+"totalElectricComsumption" = "Tổng điện tiêu thụ ";
+
 "averageIncome" = "T/B thu nhập";
+"totalRent" = "Tổng tiền: ";
+
 "facilityInfo" = "Thông tin cơ sở";
 "consumptionInfo" = "Thông tin tiêu thụ";
-"totalRent" = "Tổng tiền: ";
+
