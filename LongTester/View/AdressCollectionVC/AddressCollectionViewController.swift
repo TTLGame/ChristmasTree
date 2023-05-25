@@ -194,7 +194,7 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelectItem(indexPath: indexPath)
+        editState ? openSheetEditCell() : didSelectItem(indexPath: indexPath)
     }
     
     func configureInactiveContextMenu(indexPath: IndexPath) -> UIContextMenuConfiguration{
@@ -202,6 +202,7 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
             let deleteAction = UIAction(title:"Edit product", image: UIImage(systemName:"pencil.line")){ _ in
                 self.editState = true
                 self.detailCollectionView.reloadData()
+                self.openSheetEditCell()
             }
             return UIMenu(title:"Option", children: [deleteAction])
         }
@@ -354,6 +355,18 @@ extension AddressCollectionViewController : DropDownViewDelegate {
 //MARK: Handle dropdown Selection
 extension AddressCollectionViewController {
     func openSheetViewInfo(){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.addressDataModel, baseVC: self)
+            let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
+            sheetView.title = Language.localized("addressCollectionMainTitle")
+            sheetView.open()
+        }
+    }
+    
+    func openSheetEditCell(){
+        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             

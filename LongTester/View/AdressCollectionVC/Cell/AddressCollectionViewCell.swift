@@ -47,7 +47,8 @@ class AddressCollectionViewCell: UICollectionViewCell {
 
     
     public func changeState(isChanged: Bool){
-        self.enableGesture = isChanged
+//        self.enableGesture = isChanged
+        self.enableGesture = false
         isChanged ? bgView.addBottomShadow(height: 3, alpha: 0.8,radius: 4,color: Color.darkGreen) :
                     bgView.addBottomShadow(height: 3, alpha: 0.2,radius: 4)
     }

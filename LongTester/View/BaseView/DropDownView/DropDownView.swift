@@ -31,49 +31,56 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
     
     weak var delegate : DropDownViewDelegate?
    
-    //Public variables
-
+    /// Custom CellView Model
     public var cellViewModels : [U] = [] {
         didSet{
             tblView.reloadData()
         }
     }
     
+    /// Width of the table
     public var tableWidth : CGFloat?  {
         didSet{
             updateTbleView()
         }
     }
     
+    /// Height of the cell table
     public var cellHeight : CGFloat? {
         didSet{
             tblView.reloadData()
         }
     }
     
+    /// Height of the table
     public var tableHeight : CGFloat = 250 {
         didSet{
             updateTbleView()
         }
     }
     
+    /// Horizonally direction for table View
     public var horizonalDirection : HozitonalDirection = .right {
         didSet{
             updateTbleView()
         }
     }
     
+    /// Vertically direction for table View
     public var verticalDirection : VerticalDirection = .bottom {
         didSet{
             updateTbleView()
         }
     }
+    
+    /// Addition height from anchor View
     public var heightOffset : CGFloat = 20 {
         didSet{
             updateTbleView()
         }
     }
     
+    /// Background color for tableView, default is white
     public var bgColor : UIColor = UIColor.white {
         didSet{
             _containView.backgroundColor = bgColor
@@ -81,12 +88,14 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
         }
     }
     
+    /// Background color for tableView when selected, default is grey
     public var highLightColor : UIColor = Color.selectTableView {
         didSet{
             tblView.reloadData()
         }
     }
     
+    /// Determine whether to close the dropdown when select data
     public var closeOnSelect : Bool = true
     
     
@@ -144,7 +153,7 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
         self.tblView.layer.borderWidth = 1.0
         self.tblView.layer.cornerRadius = 10
         self.tblView.layer.masksToBounds = true
-
+        self.tblView.bounces = false
     }
     private func updateTbleView(){
         var width = anchorView.frame.width

@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="monthLbl" destination="SRi-8f-OYR" id="led-xs-Oul"/>
                 <outlet property="monthView" destination="dtp-8L-zmU" id="omw-RH-88a"/>
+                <outlet property="segmentControl" destination="iu8-tF-tHd" id="8VW-t3-Vth"/>
                 <outlet property="tblView" destination="dMy-nd-tTK" id="XD3-D9-bDE"/>
             </connections>
         </placeholder>
@@ -22,11 +23,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="1" sectionFooterHeight="18" estimatedSectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="dMy-nd-tTK">
-                    <rect key="frame" x="0.0" y="109" width="393" height="505"/>
+                    <rect key="frame" x="0.0" y="139" width="393" height="475"/>
                     <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-8L-zmU" userLabel="monthView">
-                    <rect key="frame" x="30" y="64" width="333" height="40"/>
+                    <rect key="frame" x="30" y="94" width="333" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRi-8f-OYR" userLabel="monthLbl">
                             <rect key="frame" x="149" y="11.666666666666671" width="35.333333333333343" height="17"/>
@@ -42,6 +43,13 @@
                         <constraint firstItem="SRi-8f-OYR" firstAttribute="centerX" secondItem="dtp-8L-zmU" secondAttribute="centerX" id="jmi-R1-Dam"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iu8-tF-tHd" customClass="SegmentControl" customModule="LongTester" customModuleProvider="target">
+                    <rect key="frame" x="30" y="64" width="333" height="25"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="kFC-uU-Aou"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -49,10 +57,13 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dMy-nd-tTK" secondAttribute="bottom" id="DGA-dZ-7E3"/>
                 <constraint firstItem="dtp-8L-zmU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="PUE-sF-lFb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dMy-nd-tTK" secondAttribute="trailing" id="Rcj-fi-5bP"/>
-                <constraint firstItem="dtp-8L-zmU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="auP-tR-Egk"/>
+                <constraint firstItem="iu8-tF-tHd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="c17-To-zXv"/>
+                <constraint firstItem="dtp-8L-zmU" firstAttribute="top" secondItem="iu8-tF-tHd" secondAttribute="bottom" constant="5" id="kDr-dH-pFz"/>
+                <constraint firstItem="iu8-tF-tHd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="kW8-rR-kr5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dtp-8L-zmU" secondAttribute="trailing" constant="30" id="ksz-uI-Azj"/>
                 <constraint firstItem="dMy-nd-tTK" firstAttribute="top" secondItem="dtp-8L-zmU" secondAttribute="bottom" constant="5" id="qib-WX-mro"/>
                 <constraint firstItem="dMy-nd-tTK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="x9v-Ed-PGe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iu8-tF-tHd" secondAttribute="trailing" constant="30" id="y3H-MQ-5be"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-11.450381679389313" y="193.66197183098592"/>

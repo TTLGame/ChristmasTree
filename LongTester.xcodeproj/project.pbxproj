@@ -25,6 +25,13 @@
 		FD2015742A1E75D7006A4C2E /* RoomDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015732A1E75D7006A4C2E /* RoomDataModel.swift */; };
 		FD2015762A1E77CF006A4C2E /* AddressDataMonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015752A1E77CF006A4C2E /* AddressDataMonthModel.swift */; };
 		FD2015782A1E8008006A4C2E /* AddressCollectionTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015772A1E8008006A4C2E /* AddressCollectionTarget.swift */; };
+		FD20157B2A1FB011006A4C2E /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20157A2A1FB011006A4C2E /* SegmentControl.swift */; };
+		FD20157D2A1FB019006A4C2E /* SegmentControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD20157C2A1FB019006A4C2E /* SegmentControl.xib */; };
+		FD2015812A1FB6F9006A4C2E /* SegmentControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20157F2A1FB6F9006A4C2E /* SegmentControlCell.swift */; };
+		FD2015822A1FB6F9006A4C2E /* SegmentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2015802A1FB6F9006A4C2E /* SegmentControlCell.xib */; };
+		FD2015852A1FB961006A4C2E /* SegmentControlTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015832A1FB961006A4C2E /* SegmentControlTextCell.swift */; };
+		FD2015862A1FB961006A4C2E /* SegmentControlTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2015842A1FB961006A4C2E /* SegmentControlTextCell.xib */; };
+		FD2015882A1FB9AD006A4C2E /* SegmentControlCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015872A1FB9AC006A4C2E /* SegmentControlCellViewModel.swift */; };
 		FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2184E129E8F21D00761826 /* BaseNavigationView.swift */; };
 		FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2184E329E8F22900761826 /* BaseNavigationView.xib */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
@@ -180,6 +187,13 @@
 		FD2015732A1E75D7006A4C2E /* RoomDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDataModel.swift; sourceTree = "<group>"; };
 		FD2015752A1E77CF006A4C2E /* AddressDataMonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDataMonthModel.swift; sourceTree = "<group>"; };
 		FD2015772A1E8008006A4C2E /* AddressCollectionTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionTarget.swift; sourceTree = "<group>"; };
+		FD20157A2A1FB011006A4C2E /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegmentControl.swift; path = ../../../../../../Downloads/SegmentControl.swift; sourceTree = "<group>"; };
+		FD20157C2A1FB019006A4C2E /* SegmentControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControl.xib; sourceTree = "<group>"; };
+		FD20157F2A1FB6F9006A4C2E /* SegmentControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlCell.swift; sourceTree = "<group>"; };
+		FD2015802A1FB6F9006A4C2E /* SegmentControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControlCell.xib; sourceTree = "<group>"; };
+		FD2015832A1FB961006A4C2E /* SegmentControlTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlTextCell.swift; sourceTree = "<group>"; };
+		FD2015842A1FB961006A4C2E /* SegmentControlTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControlTextCell.xib; sourceTree = "<group>"; };
+		FD2015872A1FB9AC006A4C2E /* SegmentControlCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlCellViewModel.swift; sourceTree = "<group>"; };
 		FD2184E129E8F21D00761826 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FD2184E329E8F22900761826 /* BaseNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseNavigationView.xib; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
@@ -428,6 +442,28 @@
 			path = AddressCollectionView;
 			sourceTree = "<group>";
 		};
+		FD2015792A1FAFA8006A4C2E /* SegmentControl */ = {
+			isa = PBXGroup;
+			children = (
+				FD20157E2A1FB6D0006A4C2E /* SegmentControlCell */,
+				FD20157A2A1FB011006A4C2E /* SegmentControl.swift */,
+				FD20157C2A1FB019006A4C2E /* SegmentControl.xib */,
+			);
+			path = SegmentControl;
+			sourceTree = "<group>";
+		};
+		FD20157E2A1FB6D0006A4C2E /* SegmentControlCell */ = {
+			isa = PBXGroup;
+			children = (
+				FD20157F2A1FB6F9006A4C2E /* SegmentControlCell.swift */,
+				FD2015802A1FB6F9006A4C2E /* SegmentControlCell.xib */,
+				FD2015832A1FB961006A4C2E /* SegmentControlTextCell.swift */,
+				FD2015842A1FB961006A4C2E /* SegmentControlTextCell.xib */,
+				FD2015872A1FB9AC006A4C2E /* SegmentControlCellViewModel.swift */,
+			);
+			path = SegmentControlCell;
+			sourceTree = "<group>";
+		};
 		FD2184E029E8F20300761826 /* BaseNavigationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +494,7 @@
 		FD4DF3C229ED929300AB6A50 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				FD2015792A1FAFA8006A4C2E /* SegmentControl */,
 				FD2015562A1BD66F006A4C2E /* MonthYearView */,
 				FD2015552A1BD5A0006A4C2E /* DateSelectView */,
 				FDE9CD0D2A1549A9004844AD /* BaseSheetView */,
@@ -1121,11 +1158,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2015822A1FB6F9006A4C2E /* SegmentControlCell.xib in Resources */,
 				FDADC1C229F39FD400803536 /* AddressCollectionViewController.xib in Resources */,
 				FD738FA52A08A32900088BF0 /* DetailScreenViewController.xib in Resources */,
 				FD4DF3D129ED981800AB6A50 /* TextFieldView.xib in Resources */,
+				FD2015862A1FB961006A4C2E /* SegmentControlTextCell.xib in Resources */,
 				FDADC1C629F3A38C00803536 /* DateVC.xib in Resources */,
 				FD2015542A1BD123006A4C2E /* DateSelectView.xib in Resources */,
+				FD20157D2A1FB019006A4C2E /* SegmentControl.xib in Resources */,
 				FD8961A4295BF11D00C7BE20 /* LaunchScreen.storyboard in Resources */,
 				FD738FB82A0FD28700088BF0 /* UITableViewNoDataEx.xib in Resources */,
 				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
@@ -1237,6 +1277,7 @@
 				FD564B632965582200A527ED /* TableScreenViewModel.swift in Sources */,
 				FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */,
 				FDDB486A29EFD28E00D212A7 /* UIViewController.swift in Sources */,
+				FD20157B2A1FB011006A4C2E /* SegmentControl.swift in Sources */,
 				FD89619C295BF11A00C7BE20 /* MainScreenViewController.swift in Sources */,
 				FD2015622A1C7430006A4C2E /* AddressCollectionMonthYearViewModel.swift in Sources */,
 				FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */,
@@ -1255,6 +1296,8 @@
 				FD20155C2A1BE496006A4C2E /* MonthYearPickerView.swift in Sources */,
 				FD564B8C29656CFE00A527ED /* PrefsImp.swift in Sources */,
 				FD896198295BF11A00C7BE20 /* AppDelegate.swift in Sources */,
+				FD2015852A1FB961006A4C2E /* SegmentControlTextCell.swift in Sources */,
+				FD2015812A1FB6F9006A4C2E /* SegmentControlCell.swift in Sources */,
 				FDE9CCF52A1332AC004844AD /* AddressCollectionRadioViewCellViewModel.swift in Sources */,
 				FD738FBA2A0FD3F900088BF0 /* UITableViewNoDataEx.swift in Sources */,
 				FDF300C329E3CCEA0084562A /* Environment.swift in Sources */,
@@ -1278,6 +1321,7 @@
 				FDA852C129EE786900A6357F /* RealmCollectionModels.swift in Sources */,
 				FD738FA42A08A32900088BF0 /* DetailScreenViewController.swift in Sources */,
 				FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */,
+				FD2015882A1FB9AD006A4C2E /* SegmentControlCellViewModel.swift in Sources */,
 				FDCB9FCB2967DF2700FC0D68 /* Inline.swift in Sources */,
 				FD564B95296584A500A527ED /* AppConfig.swift in Sources */,
 				FDE9CCFE2A13E41D004844AD /* AddressCollectionDropDownCellViewModel.swift in Sources */,

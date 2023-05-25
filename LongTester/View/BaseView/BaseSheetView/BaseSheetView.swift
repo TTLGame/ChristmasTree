@@ -212,6 +212,7 @@ class BaseSheetView : UIView {
         
         self.sheetView.layer.cornerRadius = 30
         sheetView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
         sheetView.layer.masksToBounds = true
 //        DispatchQueue.main.async {
 //           self.sheetView.roundCorners([.topLeft, .topRight], radius: 30)
