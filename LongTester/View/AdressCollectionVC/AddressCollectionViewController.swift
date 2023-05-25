@@ -31,6 +31,7 @@ class AddressCollectionViewController: BaseViewController {
     
 //    private var dropdown : DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>!
     private var dropdown : DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>!
+    private var dropdownCellViewModel = [AddressCollectionDropDownCellViewModel]()
     private var monthYearView : MonthYearView!
     
     override func viewDidLoad() {
@@ -59,13 +60,14 @@ class AddressCollectionViewController: BaseViewController {
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.dropdown = DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>(frame: self.view.frame, anchorView: self.settingBtn)
+            self.dropdown = DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>(baseVC : self, anchorView: self.settingBtn)
             self.dropdown.tableWidth = 200
             self.dropdown.tableHeight = 100
             self.dropdown.cellHeight = 50
             self.dropdown.heightOffset = 8
             self.dropdown.highLightColor = .clear
-            self.dropdown.horizonalDirection = .left
+            self.dropdown.horizonalDirection = .auto
+            self.dropdown.verticalDirection = .auto
             self.dropdown.delegate = self
         }
     }
@@ -121,6 +123,15 @@ class AddressCollectionViewController: BaseViewController {
             }
            
         }).disposed(by: disposeBag)
+        
+        self.viewModel.collectionViewCellDropdownCellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] viewModels in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.dropdownCellViewModel = viewModels
+                self.detailCollectionView.reloadData()
+            }
+        }).disposed(by: disposeBag)
+        
         
         self.viewModel.monthYearViewModel.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] viewModels in
             guard let self = self else {return}
@@ -287,6 +298,7 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
             for: indexPath) as? AddressCollectionViewCell
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
         cell.changeState(isChanged: editState)
+        cell.setupDropdown(viewModels: dropdownCellViewModel, baseVC: self)
         return cell
     }
     

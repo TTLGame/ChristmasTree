@@ -34,6 +34,9 @@
 "water" = "Số nước: ";
 "electric" = "Số điện: ";
 "total" = "Tổng: ";
+"yesSymbolText" = "Đã trả";
+"pendingSymbolText" = "Chưa giải quyết";
+"vacancySymbolText" = "Trống phòng";
 
 //Detail Screen
 "roomDetailTitle" = "Chi tiết phòng";
@@ -54,6 +57,7 @@
 "averageRenters" = "T/B người thuê: ";
 "globalWater" = "Giá nước chung/(m3): ";
 "globalElectric" = "Giá điện chung/(kwh): ";
+"globalPrice" = "Common rent price: ";
 
 "averageWaterComsumption" = "T/B nước tiêu thụ: ";
 "waterUnit" = "Giá nước/(m3) :";

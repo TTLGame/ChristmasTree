@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 class AddressCollectionDropDownCellViewModel : BaseDropDownCellViewModel {
     var image : UIImage?
-    init(image: UIImage?, title: String?) {
+    var imageHeight : CGFloat?
+    init(image: UIImage?, title: String?, imageHeight : CGFloat? = 20) {
         super.init(title: title)
         self.image = image
+        self.imageHeight = imageHeight
     }
 }

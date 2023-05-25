@@ -14,6 +14,8 @@ class AddressCollectionDropDownCell: BaseCell<AddressCollectionDropDownCellViewM
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     
+    @IBOutlet weak var widthImageConstraint: NSLayoutConstraint!
+    
     override var viewModel: AddressCollectionDropDownCellViewModel? {
         didSet {
             bindData()
@@ -23,6 +25,7 @@ class AddressCollectionDropDownCell: BaseCell<AddressCollectionDropDownCellViewM
     private func bindData() {
         imgView.image = viewModel?.image
         titleLbl.text = viewModel?.title
+        widthImageConstraint.constant = viewModel?.imageHeight ?? 0
     }
     
     override func awakeFromNib() {

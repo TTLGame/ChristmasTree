@@ -114,7 +114,9 @@ class AddressInfoViewViewModel : NSObject {
                  AddressInfoViewCellViewModel(title: Language.localized("globalWater"),
                                               value: (monthYearData.globalWater?.formatnumberWithDot() ?? "0") + " VND"),
                  AddressInfoViewCellViewModel(title: Language.localized("globalElectric"),
-                                              value: (monthYearData.globalElectric?.formatnumberWithDot() ?? "0") + " VND")
+                                              value: (monthYearData.globalElectric?.formatnumberWithDot() ?? "0") + " VND"),
+                 AddressInfoViewCellViewModel(title: Language.localized("globalPrice"),
+                                              value: (monthYearData.globalRoomPrice?.formatnumberWithDot() ?? "0") + " VND")
                 ]
                 
                 let infoHeaderCell = AddressInfoViewTableHeaderViewModel(title: Language.localized("facilityInfo"),

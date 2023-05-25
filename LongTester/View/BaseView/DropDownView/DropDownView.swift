@@ -13,11 +13,13 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
     enum HozitonalDirection {
         case left
         case right
+        case auto
     }
     
     enum VerticalDirection {
         case top
         case bottom
+        case auto
     }
     //Private variables
     @IBOutlet weak var dismissView: UIView!
@@ -25,6 +27,7 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
     
     private var tblView: UITableView!
     private var _containView: UIView!
+    private var baseVC: UIViewController!
     
     weak var delegate : DropDownViewDelegate?
    
@@ -89,9 +92,11 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
     
     private var anchorView :UIView!
     //Variable
-    init(frame: CGRect, anchorView: UIView) {
-        super.init(frame: frame)
+    init(baseVC: UIViewController, anchorView: UIView) {
+    
+        super.init(frame: baseVC.view.frame)
         self.anchorView = anchorView
+        self.baseVC = baseVC
         setupUI()
         setupDismissView()
         DispatchQueue.main.async {
@@ -146,14 +151,20 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
         if let tableWidth = tableWidth{
             width = tableWidth
         }
-        var xPos = anchorView.frame.origin.x
-        var yPos = anchorView.frame.origin.y + anchorView.frame.height + heightOffset
-        if (horizonalDirection == .left){
-            xPos = anchorView.frame.origin.x - width + anchorView.frame.width
+  
+        // usage:
+        guard let frame = baseVC.view.getConvertedFrame(fromSubview: anchorView) else  { return }
+       
+        var xPos = frame.origin.x
+        var yPos = frame.origin.y + anchorView.frame.height + heightOffset
+        if (horizonalDirection == .left ||
+            (horizonalDirection == .auto && xPos > baseVC.view.frame.width / 2)){
+            xPos = frame.origin.x - width + anchorView.frame.width
         }
         
-        if (verticalDirection == .top){
-            yPos = anchorView.frame.origin.y - heightOffset - tableHeight
+        if (verticalDirection == .top ||
+            (verticalDirection == .auto && yPos > baseVC.view.frame.height / 2)){
+            yPos = frame.origin.y - heightOffset - tableHeight
         }
         
         _containView.frame = CGRect(x: xPos + 3, y: yPos + 3, width: width - 6, height: tableHeight - 6)
@@ -237,6 +248,8 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
         if (closeOnSelect) {
             self.hide()
         }
+        
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
 }
@@ -292,10 +305,14 @@ class DropDownView<T: BaseCell<U>, U>: UIView, UITableViewDelegate, UITableViewD
 
 extension DropDownView {
     func show() {
-        if let supperView = self.anchorView.superview {
-            self._contentView.tag = 6788
-            supperView.addSubview(self._contentView)
-        }
+//        if let supperView = self.anchorView.superview {
+//            self._contentView.tag = 6788
+//            supperView.addSubview(self._contentView)
+//        }
+        updateTbleView()
+        
+        self._contentView.tag = 6788
+        baseVC.view.addSubview(self._contentView)
         
         _contentView.alpha = 0
         UIView.animate(withDuration: 0.2) {
@@ -312,7 +329,10 @@ extension DropDownView {
             self.layoutIfNeeded()
         } completion: { _ in
             if let supperView = self.anchorView.superview {
-                if let tableView = supperView.viewWithTag(6788) {
+//                if let tableView = supperView.viewWithTag(6788) {
+//                    tableView.removeFromSuperview()
+//                }
+                if let tableView = self.baseVC.view.viewWithTag(6788) {
                     tableView.removeFromSuperview()
                 }
             }

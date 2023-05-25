@@ -25,6 +25,8 @@ class AddressCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var totalAmmountLbl: UILabel!
     @IBOutlet weak var statusImageUIView: UIView!
     
+    private var dropdown : DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>!
+    
     var viewModel: AddressCollectionViewCellViewModel? {
         didSet {
             bindData()
@@ -74,8 +76,26 @@ class AddressCollectionViewCell: UICollectionViewCell {
         statusImageUIView.addGestureRecognizer(tap)
     }
     
+    func setupDropdown(viewModels : [AddressCollectionDropDownCellViewModel], baseVC: BaseViewController){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.dropdown = DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>(baseVC : baseVC, anchorView: self.statusImgView)
+            
+            self.dropdown.cellViewModels = viewModels
+            
+            self.dropdown.tableWidth = 200
+            self.dropdown.tableHeight = 150
+            self.dropdown.cellHeight = 50
+            self.dropdown.heightOffset = 8
+//            self.dropdown.highLightColor = .clear
+            self.dropdown.horizonalDirection = .auto
+            self.dropdown.verticalDirection = .auto
+            self.dropdown.delegate = self
+        }
+    }
     @objc func pressedStatusImage(){
         print("pressedStatusImage")
+        self.dropdown.show()
     }
     private func bindData(){
         self.setStatusView()
@@ -86,9 +106,11 @@ class AddressCollectionViewCell: UICollectionViewCell {
         
        if let water = viewModel?.waterNum,
           let electric = viewModel?.electricNum,
+          let lastWater = viewModel?.lastWaterNum,
+          let lastElectric = viewModel?.lastElectricNum,
           let total = viewModel?.totalNum {
-           waterAmmountLbl.text =  String(water)
-           electricAmmountLbl.text =  String(electric)
+           waterAmmountLbl.text =  "\(water)(\(water - lastWater))"
+           electricAmmountLbl.text = "\(electric)(\(electric - lastElectric))"
            totalAmmountLbl.text =  total.formatnumberWithDot() + " VND"
        }
     }
@@ -117,5 +139,11 @@ class AddressCollectionViewCell: UICollectionViewCell {
             statusView.backgroundColor = Color.orangePrimary
             statusImgView.image = UIImage(named: "pendingSymbol")
         }
+    }
+}
+
+extension AddressCollectionViewCell : DropDownViewDelegate {
+    func didSelect(indexPath: IndexPath) {
+        print("Selected")
     }
 }

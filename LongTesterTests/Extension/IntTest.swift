@@ -29,6 +29,15 @@ final class IntTest: XCTestCase {
         XCTAssertEqual(converted, "2,000", "Fail format integer to string with comma")
     }
     
+    func testRoundNumber() throws {
+        let number = 12345
+        let convertedUp = number.roundNumber(numberOfZero: 3, type: .up)
+        let convertedDown = number.roundNumber(numberOfZero: 3, type: .down)
+        
+        XCTAssertEqual(convertedUp, 13000, "Fail to round number up")
+        XCTAssertEqual(convertedDown, 12000, "Fail to round number up")
+    }
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

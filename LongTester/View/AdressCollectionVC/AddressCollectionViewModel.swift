@@ -16,6 +16,7 @@ import OHHTTPStubs
 class AddressCollectionViewModel : NSObject {
     var radioViewModels : BehaviorRelay<AddressCollectionRadioViewModel> = BehaviorRelay(value: AddressCollectionRadioViewModel(cellViewModels: []))
     var dropdownCellViewModels : BehaviorRelay<[AddressCollectionDropDownCellViewModel]> = BehaviorRelay(value: [])
+    var collectionViewCellDropdownCellViewModels : BehaviorRelay<[AddressCollectionDropDownCellViewModel]> = BehaviorRelay(value: [])
     
     var cellViewModels : BehaviorRelay<[AddressCollectionViewCellViewModel]> = BehaviorRelay(value: [])
     
@@ -60,7 +61,9 @@ class AddressCollectionViewModel : NSObject {
                                                                   renters: cell.renters,
                                                                   status: cell.status,
                                                                   waterNum: cell.waterNum,
+                                                                  lastWaterNum: cell.lastWaterNum,
                                                                   electricNum: cell.electricNum,
+                                                                  lastElectricNum: cell.lastElectricNum,
                                                                   totalNum: cell.totalNum)
                     }
                 }
@@ -112,7 +115,19 @@ class AddressCollectionViewModel : NSObject {
                                                            title: Language.localized("addData")),
                     AddressCollectionDropDownCellViewModel(image: UIImage(systemName: "info.circle.fill"),
                                                            title:  Language.localized("getInfo"))]
+        
+        let cellData = [AddressCollectionDropDownCellViewModel(image: UIImage(named: "yesSymbol"),
+                                                               title: Language.localized("yesSymbolText"),
+                                                               imageHeight: 40),
+                        AddressCollectionDropDownCellViewModel(image: UIImage(named: "pendingSymbol"),
+                                                               title:  Language.localized("pendingSymbolText"),
+                                                               imageHeight: 40),
+                        AddressCollectionDropDownCellViewModel(image: UIImage(named: "vacancySymbol"),
+                                                               title:  Language.localized("vacancySymbolText"),
+                                                               imageHeight: 40)]
+        
         dropdownCellViewModels.accept(data)
+        collectionViewCellDropdownCellViewModels.accept(cellData)
     }
     
     func getRadioData(){
@@ -178,9 +193,9 @@ extension AddressCollectionViewModel {
                                        "globalWater" : 7000,
                                        "globalQuota" : 4,
                                        "globalQuotaPrice": 10000,
-                                       "globalRoomPrice": Int.random(in: 1500000..<2000000)]
+                                       "globalRoomPrice": Int.random(in: 1500000..<2000000).roundNumber(numberOfZero: 5, type: .toNearestOrEven)]
             
-            let status = ["Paid", "Short", "NotPaid","Vacancy"]
+            let status = ["Paid", "Pending", "NotPaid","Vacancy"]
 
             var roomDataTemp = [[String : Any]]()
             for roomNum in 0..<totalRoom {
