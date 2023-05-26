@@ -359,7 +359,14 @@ extension AddressCollectionViewController {
             guard let self = self else { return }
             
             let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.addressDataModel, baseVC: self)
-            let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
+            
+            let addressRoomView = AddressInfoRoomView(frame: self.view.frame, baseVC: self)
+            
+            let addressSheetView = AddressInfoSheetView(frame: self.view.frame,
+                                                        baseVC: self,
+                                                        pageViews: [addressView, addressRoomView])
+            
+            let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressSheetView)
             sheetView.title = Language.localized("addressCollectionMainTitle")
             sheetView.open()
         }

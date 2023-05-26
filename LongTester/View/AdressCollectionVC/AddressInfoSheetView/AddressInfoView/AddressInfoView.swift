@@ -15,7 +15,6 @@ class AddressInfoView : UIView {
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var monthView: UIView!
     @IBOutlet weak var monthLbl: UILabel!
-    @IBOutlet weak var segmentControl: SegmentControl!
     
     private var viewModel = AddressInfoViewViewModel()
     private let disposeBag = DisposeBag()
@@ -87,15 +86,6 @@ class AddressInfoView : UIView {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(monthInfoTapped))
         monthView.addGestureRecognizer(gesture)
         updateMonthLbl()
-        
-        self.segmentControl.layer.cornerRadius = 10
-        self.segmentControl.layer.masksToBounds = true
-        self.segmentControl.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        
-        self.segmentControl.cellViewModels = [SegmentControlCellViewModel(title: "long"),
-                                         SegmentControlCellViewModel(title: "Long123")]
-     
-        
     }
     
     private func updateMonthLbl(){

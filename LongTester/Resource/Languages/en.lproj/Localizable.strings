@@ -73,4 +73,6 @@
 "facilityInfo" = "Facility Info";
 "consumptionInfo" = "Consumption Info";
 
-
+//Address All Room Info
+"generalInfo" = "General Info";
+"roomsInfo" = "Room Info";
