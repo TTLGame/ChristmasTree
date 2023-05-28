@@ -65,9 +65,9 @@ class AddressCollectionViewCell: UICollectionViewCell {
         statusView.layer.cornerRadius = 10
         statusView.layer.masksToBounds = true
         
-        waterTitleLbl.text = Language.localized("water")
-        electricTitleLbl.text = Language.localized("electric")
-        totalTitleLbl.text = Language.localized("total")
+        waterTitleLbl.text = Language.localized("waterCell")
+        electricTitleLbl.text = Language.localized("electricCell")
+        totalTitleLbl.text = Language.localized("totalCell")
         
         addGesture()
     }

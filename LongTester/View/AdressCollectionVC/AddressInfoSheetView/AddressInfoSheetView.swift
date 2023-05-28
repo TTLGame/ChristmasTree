@@ -15,11 +15,14 @@ class AddressInfoSheetView : UIView {
     @IBOutlet weak var pageView: PageView!
     
     
-    private var pageViews : [UIView] = []
-    init(frame: CGRect, baseVC: BaseViewController, pageViews : [UIView]) {
+    private var currentMonthYear : MonthYear = MonthYear()
+    private var addressData : AddressDataModel = AddressDataModel()
+    
+    init(frame: CGRect, baseVC: BaseViewController, currentMonthYear : MonthYear, addressData : AddressDataModel) {
         super.init(frame: frame)
         self.baseVC = baseVC
-        self.pageViews = pageViews
+        self.currentMonthYear = currentMonthYear
+        self.addressData = addressData
         commonInit()
     }
     
@@ -52,7 +55,16 @@ class AddressInfoSheetView : UIView {
     }
     
     private func setupPageView(){
-        pageView.transitionViews = pageViews
+        guard let baseVC = baseVC  else { return }
+        let addressView = AddressInfoView(frame: baseVC.view.frame,
+                                          currentMonthYear: currentMonthYear,
+                                          data: addressData, baseVC: baseVC)
+        
+        let addressRoomView = AddressInfoRoomView(frame: baseVC.view.frame,
+                                                  addressDataModel: addressData,
+                                                  baseVC: baseVC)
+        
+        pageView.transitionViews = [addressView, addressRoomView]
         pageView.animeType = .faded
     }
 }

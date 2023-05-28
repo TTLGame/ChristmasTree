@@ -31,9 +31,9 @@
 "addressCollectionMainTitle" = "Address Detail";
 "roomNums" = "Room: ";
 "renters" = "Renters: ";
-"water" = "Water: ";
-"electric" = "Electric: ";
-"total" = "Total: ";
+"waterCell" = "Water: ";
+"electricCell" = "Electric: ";
+"totalCell" = "Total: ";
 "yesSymbolText" = "Paid";
 "pendingSymbolText" = "Pending";
 "vacancySymbolText" = "Vacancy";

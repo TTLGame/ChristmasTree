@@ -357,14 +357,10 @@ extension AddressCollectionViewController {
     func openSheetViewInfo(){
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            
-            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.addressDataModel, baseVC: self)
-            
-            let addressRoomView = AddressInfoRoomView(frame: self.view.frame, baseVC: self)
-            
             let addressSheetView = AddressInfoSheetView(frame: self.view.frame,
                                                         baseVC: self,
-                                                        pageViews: [addressView, addressRoomView])
+                                                        currentMonthYear: self.viewModel.currentMonthYear,
+                                                        addressData: self.viewModel.addressDataModel)
             
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressSheetView)
             sheetView.title = Language.localized("addressCollectionMainTitle")

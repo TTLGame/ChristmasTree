@@ -13,6 +13,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
     @IBOutlet weak var waterTextField: UITextField!
     @IBOutlet weak var electricTextField: UITextField!
     @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var statusImgView: UIImageView!
     
     @IBOutlet weak var waterTitle: UILabel!
     @IBOutlet weak var currentWaterLbl: UILabel!
@@ -57,7 +58,6 @@ class AddressInfoRoomViewCell: UITableViewCell {
     }
     
     private func setup(){
-        
         waterTitle.text = Language.localized("water")
         electricTitle.text = Language.localized("electric")
         trashTitle.text = Language.localized("trashFee")

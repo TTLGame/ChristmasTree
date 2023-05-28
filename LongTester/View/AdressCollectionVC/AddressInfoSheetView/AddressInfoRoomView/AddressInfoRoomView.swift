@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 class AddressInfoRoomView : UIView {
     var baseVC : BaseViewController?
-    
+    private var addressDataModel : AddressDataModel = AddressDataModel()
     @IBOutlet weak var detailTblView: UITableView!
-    init(frame: CGRect, baseVC: BaseViewController) {
+    init(frame: CGRect,addressDataModel: AddressDataModel, baseVC: BaseViewController) {
         super.init(frame: frame)
         self.baseVC = baseVC
+        self.addressDataModel = addressDataModel
         commonInit()
     }
     

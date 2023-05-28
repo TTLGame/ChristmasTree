@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="391" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcG-Sp-DjX" userLabel="roomNum">
-                                        <rect key="frame" x="10" y="21.666666666666668" width="7.3333333333333321" height="17.000000000000004"/>
+                                        <rect key="frame" x="60" y="21.666666666666668" width="7.3333333333333286" height="17.000000000000004"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -44,12 +44,21 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S9V-yW-umi">
+                                        <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="S9V-yW-umi" secondAttribute="height" id="Yxy-c0-38J"/>
+                                            <constraint firstAttribute="width" constant="40" id="mYU-bG-nT2"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="RcG-Sp-DjX" firstAttribute="leading" secondItem="BJI-hL-pAv" secondAttribute="leading" constant="10" id="JpJ-UL-7jg"/>
+                                    <constraint firstItem="S9V-yW-umi" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="Ahw-Ra-xZm"/>
+                                    <constraint firstItem="S9V-yW-umi" firstAttribute="leading" secondItem="BJI-hL-pAv" secondAttribute="leading" constant="10" id="Kqf-Bv-pFL"/>
                                     <constraint firstItem="Ah2-jf-SLQ" firstAttribute="leading" secondItem="q5t-0D-4YB" secondAttribute="trailing" constant="10" id="ORJ-z7-5HO"/>
                                     <constraint firstAttribute="trailing" secondItem="Ah2-jf-SLQ" secondAttribute="trailing" constant="10" id="hug-dA-B4h"/>
+                                    <constraint firstItem="RcG-Sp-DjX" firstAttribute="leading" secondItem="S9V-yW-umi" secondAttribute="trailing" constant="10" id="kCA-d4-lQn"/>
                                     <constraint firstItem="q5t-0D-4YB" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="kYH-0e-wBX"/>
                                     <constraint firstItem="Ah2-jf-SLQ" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="w0F-JS-gXq"/>
                                     <constraint firstItem="RcG-Sp-DjX" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="ycl-Cx-jug"/>
@@ -377,6 +386,7 @@
                 <outlet property="quotaUsedLbl" destination="WlY-wS-ddv" id="utr-Od-XQb"/>
                 <outlet property="roomPriceLbl" destination="UoS-t6-33g" id="Fhj-eg-DaH"/>
                 <outlet property="roomPriceTitle" destination="YIw-TF-ljT" id="pBi-sp-quw"/>
+                <outlet property="statusImgView" destination="S9V-yW-umi" id="WwU-2V-ThN"/>
                 <outlet property="totalLbl" destination="FHt-Sn-JAb" id="oVi-Um-1DY"/>
                 <outlet property="totalPriceElectricLbl" destination="uAN-Oq-trO" id="dOB-Gt-yoB"/>
                 <outlet property="totalPriceWaterLbl" destination="Udp-E3-XHu" id="IKB-lz-fpf"/>

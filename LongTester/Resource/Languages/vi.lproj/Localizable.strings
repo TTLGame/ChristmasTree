@@ -31,9 +31,9 @@
 "addressCollectionMainTitle" = "Thông tin cụ thể";
 "roomNums" = "Phòng: ";
 "renters" = "Người ở: ";
-"water" = "Số nước: ";
-"electric" = "Số điện: ";
-"total" = "Tổng: ";
+"waterCell" = "Số nước: ";
+"electricCell" = "Số điện: ";
+"totalCell" = "Tổng: ";
 "yesSymbolText" = "Đã trả";
 "pendingSymbolText" = "Chưa giải quyết";
 "vacancySymbolText" = "Trống phòng";
