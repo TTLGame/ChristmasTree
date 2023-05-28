@@ -192,7 +192,7 @@ extension AddressCollectionViewModel {
                                        "globalElectric" : 3000,
                                        "globalWater" : 7000,
                                        "globalQuota" : 4,
-                                       "globalQuotaPrice": 10000,
+                                       "globalQuotaPrice": 3000,
                                        "globalRoomPrice": Int.random(in: 1500000..<2000000).roundNumber(numberOfZero: 5, type: .toNearestOrEven)]
             
             let status = ["Paid", "Pending", "NotPaid","Vacancy"]
@@ -233,7 +233,8 @@ extension AddressCollectionViewModel {
                 
                 var water = 0
                 if (waterNum - lastElectricNum > quota){
-                    water = quota * quotaPrice + (waterNum - lastElectricNum - quota) * waterPrice
+                    let usedWater = waterNum - lastElectricNum
+                    water = (usedWater - quota) * quotaPrice + usedWater * waterPrice
                 }
                 else {
                     water = (waterNum - lastWaterNum) * waterPrice

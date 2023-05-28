@@ -76,3 +76,9 @@
 //Address All Room Info
 "generalInfo" = "General Info";
 "roomsInfo" = "Room Info";
+"water" = "Water";
+"electric" = "Electric";
+"trashFee" = "Trash fee";
+"internetFee" = "Internet fee";
+"roomPrice" = "Room price";
+"total" = "Total";

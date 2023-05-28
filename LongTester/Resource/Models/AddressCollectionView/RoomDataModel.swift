@@ -24,8 +24,12 @@ final class RoomDataModel : Codable, Model {
     var roomPrice : Int?
     var totalNum : Int?
     
+    var internetPrice : Int?
+    var trashPrice : Int?
+    
     init() { }
-    init(status: String? = nil, roomNums: Int? = nil, renters: Int? = nil, quota: Int? = nil, quotaPrice: Int? = nil, waterPrice: Int? = nil, waterNum: Int? = nil, lastWaterNum: Int? = nil, electricPrice: Int? = nil, electricNum: Int? = nil, lastElectricNum: Int? = nil,roomPrice : Int? = nil, totalNum: Int? = nil) {
+    
+    init(status: String? = nil, roomNums: Int? = nil, renters: Int? = nil, quota: Int? = nil, quotaPrice: Int? = nil, waterPrice: Int? = nil, waterNum: Int? = nil, lastWaterNum: Int? = nil, electricPrice: Int? = nil, electricNum: Int? = nil, lastElectricNum: Int? = nil, roomPrice: Int? = nil, totalNum: Int? = nil, internetPrice: Int? = nil, trashPrice: Int? = nil) {
         self.status = status
         self.roomNums = roomNums
         self.renters = renters
@@ -39,5 +43,7 @@ final class RoomDataModel : Codable, Model {
         self.lastElectricNum = lastElectricNum
         self.roomPrice = roomPrice
         self.totalNum = totalNum
+        self.internetPrice = internetPrice
+        self.trashPrice = trashPrice
     }
 }

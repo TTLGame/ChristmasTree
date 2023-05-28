@@ -57,7 +57,7 @@
 "averageRenters" = "T/B người thuê: ";
 "globalWater" = "Giá nước chung/(m3): ";
 "globalElectric" = "Giá điện chung/(kwh): ";
-"globalPrice" = "Common rent price: ";
+"globalPrice" = "Giá phòng chung: ";
 
 "averageWaterComsumption" = "T/B nước tiêu thụ: ";
 "waterUnit" = "Giá nước/(m3) :";
@@ -76,3 +76,9 @@
 //Address All Room Info
 "generalInfo" = "Thông tin chung";
 "roomsInfo" = "Thông tin phòng";
+"water" = "Nước";
+"electric" = "Điện";
+"trashFee" = "Tiền rác";
+"internetFee" = "Tiền internet";
+"roomPrice" = "Tiền phòng";
+"total" = "Tổng tiền";

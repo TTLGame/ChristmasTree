@@ -10,6 +10,7 @@ import UIKit
 class AddressInfoRoomView : UIView {
     var baseVC : BaseViewController?
     
+    @IBOutlet weak var detailTblView: UITableView!
     init(frame: CGRect, baseVC: BaseViewController) {
         super.init(frame: frame)
         self.baseVC = baseVC
@@ -28,6 +29,38 @@ class AddressInfoRoomView : UIView {
     
     func commonInit(){
         loadViewFromNib()
+        setup()
+    }
+    
+    private func setup(){
+        self.detailTblView.register(UINib(nibName: String(describing: AddressInfoRoomViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: AddressInfoRoomViewCell.self))
+        self.detailTblView.delegate = self
+        self.detailTblView.dataSource = self
     }
 }
+
+extension AddressInfoRoomView : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+
+extension AddressInfoRoomView : UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: AddressInfoRoomViewCell! = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: AddressInfoRoomViewCell.self),
+            for: indexPath) as? AddressInfoRoomViewCell
+        cell.selectionStyle = .none
+//        cell.viewModel = viewModel.cellViewModels.value[indexPath.section].cellViewModels[indexPath.row]
+        return cell
+    }
+}
+
 
