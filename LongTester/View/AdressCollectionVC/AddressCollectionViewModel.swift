@@ -219,7 +219,7 @@ extension AddressCollectionViewModel {
                 roomData["roomNums"] = roomNum + 1
                 roomData["renters"] = Int.random(in: 1..<5)
                 roomData["quota"] = data["globalQuota"]
-                roomData["quotaPrice"] = data["globalQuota"]
+                roomData["quotaPrice"] = data["globalQuotaPrice"]
                 
                 roomData["waterNum"] = waterNum
                 roomData["waterPrice"] = waterPrice

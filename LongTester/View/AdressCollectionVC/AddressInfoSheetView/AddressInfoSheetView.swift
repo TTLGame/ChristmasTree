@@ -18,6 +18,8 @@ class AddressInfoSheetView : UIView {
     private var currentMonthYear : MonthYear = MonthYear()
     private var addressData : AddressDataModel = AddressDataModel()
     
+    private var addressView : AddressInfoView!
+    private var addressRoomView : AddressInfoRoomView!
     init(frame: CGRect, baseVC: BaseViewController, currentMonthYear : MonthYear, addressData : AddressDataModel) {
         super.init(frame: frame)
         self.baseVC = baseVC
@@ -56,11 +58,12 @@ class AddressInfoSheetView : UIView {
     
     private func setupPageView(){
         guard let baseVC = baseVC  else { return }
-        let addressView = AddressInfoView(frame: baseVC.view.frame,
+        self.addressView = AddressInfoView(frame: baseVC.view.frame,
                                           currentMonthYear: currentMonthYear,
                                           data: addressData, baseVC: baseVC)
         
-        let addressRoomView = AddressInfoRoomView(frame: baseVC.view.frame,
+        addressView.delegate = self
+        self.addressRoomView = AddressInfoRoomView(frame: baseVC.view.frame,
                                                   addressDataModel: addressData,
                                                   baseVC: baseVC)
         
@@ -73,5 +76,13 @@ extension AddressInfoSheetView : SegmentControlDelegate {
     func didChangeSegment(indexPath: IndexPath, direction: SegmentControl.Direction) {
         pageView.animeType = .move(direction == .forward ? .reverse : .forward)
         pageView.presentView(interator: indexPath.row)
+    }
+}
+
+extension AddressInfoSheetView : AddressInfoViewDelegate {
+    func updateMonthYear(monthYear: MonthYear) {
+        self.currentMonthYear = monthYear
+        self.addressView.resetMonthYear(monthYear: currentMonthYear)
+        self.addressRoomView.resetMonthYear(monthYear: currentMonthYear)
     }
 }

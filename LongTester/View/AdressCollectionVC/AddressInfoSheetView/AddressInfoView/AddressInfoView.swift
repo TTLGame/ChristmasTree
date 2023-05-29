@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-
+protocol AddressInfoViewDelegate : AnyObject {
+    func updateMonthYear(monthYear : MonthYear)
+}
 class AddressInfoView : UIView {
     var baseVC : BaseViewController?
     @IBOutlet weak var tblView: UITableView!
@@ -21,6 +23,8 @@ class AddressInfoView : UIView {
     private var addressDataModel : AddressDataModel = AddressDataModel()
     private var currentMonthYear = MonthYear()
     private var monthYearView : MonthYearView!
+    
+    weak var delegate : AddressInfoViewDelegate?
     init(frame: CGRect,currentMonthYear : MonthYear, data : AddressDataModel, baseVC: BaseViewController) {
         super.init(frame: frame)
         self.baseVC = baseVC
@@ -170,8 +174,15 @@ extension AddressInfoView : MonthYearViewDelegate {
         let date = value
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
-        
-        viewModel.getData(date: MonthYear(month: month, year: year))
+        self.delegate?.updateMonthYear(monthYear: MonthYear(month: month, year: year))
+//        viewModel.getData(date: MonthYear(month: month, year: year))
+//        updateMonthLbl()
+    }
+}
+
+extension AddressInfoView {
+    func resetMonthYear(monthYear: MonthYear) {
+        viewModel.getData(date: monthYear)
         updateMonthLbl()
     }
 }

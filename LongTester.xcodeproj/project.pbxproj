@@ -41,6 +41,7 @@
 		FD20159C2A238765006A4C2E /* AddressInfoRoomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20159A2A238765006A4C2E /* AddressInfoRoomViewCell.swift */; };
 		FD20159D2A238765006A4C2E /* AddressInfoRoomViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD20159B2A238765006A4C2E /* AddressInfoRoomViewCell.xib */; };
 		FD20159F2A23B186006A4C2E /* AddressInfoRoomViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20159E2A23B186006A4C2E /* AddressInfoRoomViewCellViewModel.swift */; };
+		FD2015A12A244B8C006A4C2E /* AddressInfoRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015A02A244B8C006A4C2E /* AddressInfoRoomViewModel.swift */; };
 		FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2184E129E8F21D00761826 /* BaseNavigationView.swift */; };
 		FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2184E329E8F22900761826 /* BaseNavigationView.xib */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
@@ -212,6 +213,7 @@
 		FD20159A2A238765006A4C2E /* AddressInfoRoomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoRoomViewCell.swift; sourceTree = "<group>"; };
 		FD20159B2A238765006A4C2E /* AddressInfoRoomViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressInfoRoomViewCell.xib; sourceTree = "<group>"; };
 		FD20159E2A23B186006A4C2E /* AddressInfoRoomViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoRoomViewCellViewModel.swift; sourceTree = "<group>"; };
+		FD2015A02A244B8C006A4C2E /* AddressInfoRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoRoomViewModel.swift; sourceTree = "<group>"; };
 		FD2184E129E8F21D00761826 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FD2184E329E8F22900761826 /* BaseNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseNavigationView.xib; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 				FD2015992A23874C006A4C2E /* Cell */,
 				FD2015902A2065C5006A4C2E /* AddressInfoRoomView.swift */,
 				FD2015922A2065CE006A4C2E /* AddressInfoRoomView.xib */,
+				FD2015A02A244B8C006A4C2E /* AddressInfoRoomViewModel.swift */,
 			);
 			path = AddressInfoRoomView;
 			sourceTree = "<group>";
@@ -1402,6 +1405,7 @@
 				FD738FA72A08A34E00088BF0 /* DetailScreenViewModel.swift in Sources */,
 				FD5765AA2963D17F005969BE /* ProviderType.swift in Sources */,
 				FD564B752965648D00A527ED /* TableScreenCellViewModel.swift in Sources */,
+				FD2015A12A244B8C006A4C2E /* AddressInfoRoomViewModel.swift in Sources */,
 				FD89619A295BF11A00C7BE20 /* SceneDelegate.swift in Sources */,
 				FDADC1AD29F1815D00803536 /* RootViewModel.swift in Sources */,
 				FDDB486229EFB0CB00D212A7 /* SubSlideMenuView.swift in Sources */,
