@@ -28,22 +28,62 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ah2-jf-SLQ" userLabel="electric">
-                                        <rect key="frame" x="301" y="13" width="80" height="34"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-qd-VXT" userLabel="ElectricTFView">
+                                        <rect key="frame" x="281" y="12.666666666666664" width="100" height="35"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123451" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ah2-jf-SLQ" userLabel="electric">
+                                                <rect key="frame" x="12.666666666666686" y="0.0" width="50" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwR-K3-ghn" userLabel="electricOld">
+                                                <rect key="frame" x="64.666666666666686" y="9" width="35.333333333333343" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="S9O-Wc-O6c"/>
+                                            <constraint firstItem="CwR-K3-ghn" firstAttribute="centerY" secondItem="BaP-qd-VXT" secondAttribute="centerY" id="3yD-zo-ljn"/>
+                                            <constraint firstItem="Ah2-jf-SLQ" firstAttribute="width" secondItem="BaP-qd-VXT" secondAttribute="width" multiplier="0.5" id="7C3-fp-Kdv"/>
+                                            <constraint firstItem="Ah2-jf-SLQ" firstAttribute="top" secondItem="BaP-qd-VXT" secondAttribute="top" id="7Fq-Hp-JJH"/>
+                                            <constraint firstItem="Ah2-jf-SLQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BaP-qd-VXT" secondAttribute="leading" id="Fc0-AO-s3x"/>
+                                            <constraint firstItem="CwR-K3-ghn" firstAttribute="leading" secondItem="Ah2-jf-SLQ" secondAttribute="trailing" constant="2" id="PN9-Ag-wrq"/>
+                                            <constraint firstAttribute="height" constant="35" id="RhB-yr-reU"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ah2-jf-SLQ" secondAttribute="bottom" id="amJ-zB-TMb"/>
+                                            <constraint firstAttribute="trailing" secondItem="CwR-K3-ghn" secondAttribute="trailing" id="eBm-iy-uei"/>
+                                            <constraint firstAttribute="width" constant="100" id="wxH-95-NI4"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q5t-0D-4YB" userLabel="water">
-                                        <rect key="frame" x="211" y="13" width="80" height="34"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJJ-6Z-ekg" userLabel="WaterTFView">
+                                        <rect key="frame" x="171" y="12.666666666666664" width="100" height="35"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123451" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="rtq-NN-zGl" userLabel="water">
+                                                <rect key="frame" x="12.666666666666657" y="0.0" width="50" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdL-vh-ex8" userLabel="waterOld">
+                                                <rect key="frame" x="64.666666666666657" y="9" width="35.333333333333343" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="j3u-2C-cq7"/>
+                                            <constraint firstItem="rtq-NN-zGl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gJJ-6Z-ekg" secondAttribute="leading" id="1jG-hc-e2r"/>
+                                            <constraint firstAttribute="bottom" secondItem="rtq-NN-zGl" secondAttribute="bottom" id="86U-ck-YbC"/>
+                                            <constraint firstItem="JdL-vh-ex8" firstAttribute="centerY" secondItem="gJJ-6Z-ekg" secondAttribute="centerY" id="HKB-Xg-P9X"/>
+                                            <constraint firstItem="JdL-vh-ex8" firstAttribute="leading" secondItem="rtq-NN-zGl" secondAttribute="trailing" constant="2" id="NYf-CX-Zcp"/>
+                                            <constraint firstAttribute="trailing" secondItem="JdL-vh-ex8" secondAttribute="trailing" id="NuV-YH-qIT"/>
+                                            <constraint firstItem="rtq-NN-zGl" firstAttribute="width" secondItem="gJJ-6Z-ekg" secondAttribute="width" multiplier="0.5" id="rEX-DG-o8j"/>
+                                            <constraint firstItem="rtq-NN-zGl" firstAttribute="top" secondItem="gJJ-6Z-ekg" secondAttribute="top" id="sR8-O7-tL4"/>
+                                            <constraint firstAttribute="width" constant="100" id="v9k-zq-VVo"/>
+                                            <constraint firstAttribute="height" constant="35" id="yb0-IS-gK2"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S9V-yW-umi">
                                         <rect key="frame" x="10" y="15" width="30" height="30"/>
                                         <constraints>
@@ -56,12 +96,12 @@
                                 <constraints>
                                     <constraint firstItem="S9V-yW-umi" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="Ahw-Ra-xZm"/>
                                     <constraint firstItem="S9V-yW-umi" firstAttribute="leading" secondItem="BJI-hL-pAv" secondAttribute="leading" constant="10" id="Kqf-Bv-pFL"/>
-                                    <constraint firstItem="Ah2-jf-SLQ" firstAttribute="leading" secondItem="q5t-0D-4YB" secondAttribute="trailing" constant="10" id="ORJ-z7-5HO"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ah2-jf-SLQ" secondAttribute="trailing" constant="10" id="hug-dA-B4h"/>
+                                    <constraint firstItem="BaP-qd-VXT" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="hR6-W7-DC2"/>
+                                    <constraint firstItem="BaP-qd-VXT" firstAttribute="leading" secondItem="gJJ-6Z-ekg" secondAttribute="trailing" constant="10" id="hxN-po-yOM"/>
                                     <constraint firstItem="RcG-Sp-DjX" firstAttribute="leading" secondItem="S9V-yW-umi" secondAttribute="trailing" constant="10" id="kCA-d4-lQn"/>
-                                    <constraint firstItem="q5t-0D-4YB" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="kYH-0e-wBX"/>
-                                    <constraint firstItem="Ah2-jf-SLQ" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="w0F-JS-gXq"/>
+                                    <constraint firstAttribute="trailing" secondItem="BaP-qd-VXT" secondAttribute="trailing" constant="10" id="lpQ-hi-6Zg"/>
                                     <constraint firstItem="RcG-Sp-DjX" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="ycl-Cx-jug"/>
+                                    <constraint firstItem="gJJ-6Z-ekg" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="yun-RK-6ly"/>
                                     <constraint firstAttribute="height" constant="60" id="zJJ-Xp-hGt"/>
                                 </constraints>
                             </view>
@@ -378,6 +418,7 @@
             <connections>
                 <outlet property="currentElectricLbl" destination="gxq-kT-s9c" id="wA1-pN-X37"/>
                 <outlet property="currentWaterLbl" destination="in5-0T-3D2" id="79j-pg-vIC"/>
+                <outlet property="electricOldLbl" destination="CwR-K3-ghn" id="ZtB-aA-oab"/>
                 <outlet property="electricPriceLbl" destination="Rmu-5j-1G5" id="XUg-1r-QLB"/>
                 <outlet property="electricTextField" destination="Ah2-jf-SLQ" id="kel-8U-jOn"/>
                 <outlet property="electricTitle" destination="fR8-r2-bI0" id="VOd-OC-sXp"/>
@@ -402,8 +443,9 @@
                 <outlet property="trashPriceLbl" destination="T42-xM-btn" id="LVr-5p-jdK"/>
                 <outlet property="trashTitle" destination="ZZL-um-30s" id="pNu-Qe-fhZ"/>
                 <outlet property="trashView" destination="hJr-Rh-1UG" id="Nm7-gj-f3J"/>
+                <outlet property="waterOldLbl" destination="JdL-vh-ex8" id="uDB-pa-7YQ"/>
                 <outlet property="waterPriceLbl" destination="X0t-AP-yVz" id="m65-me-PZe"/>
-                <outlet property="waterTextField" destination="q5t-0D-4YB" id="g5m-V8-wmm"/>
+                <outlet property="waterTextField" destination="rtq-NN-zGl" id="C5j-4o-1Tq"/>
                 <outlet property="waterTitle" destination="frb-xS-pBI" id="E5o-83-lp5"/>
                 <outlet property="waterUsedLbl" destination="Kax-zp-cIE" id="9wP-PV-oT2"/>
             </connections>

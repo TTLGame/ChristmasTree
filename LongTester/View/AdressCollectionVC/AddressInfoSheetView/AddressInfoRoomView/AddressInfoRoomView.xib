@@ -28,13 +28,13 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvA-MH-RE2" userLabel="Room">
-                    <rect key="frame" x="20" y="5" width="36" height="17"/>
+                    <rect key="frame" x="20" y="10" width="36" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhd-Cn-maa" userLabel="Water">
-                    <rect key="frame" x="185" y="5" width="80" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhd-Cn-maa" userLabel="Water">
+                    <rect key="frame" x="165" y="10" width="80" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="HvP-H9-C8w"/>
                     </constraints>
@@ -42,10 +42,10 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sd-41-BPX" userLabel="Electric">
-                    <rect key="frame" x="275" y="5" width="60" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sd-41-BPX" userLabel="Electric">
+                    <rect key="frame" x="255" y="10" width="80" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="HdE-os-MCF"/>
+                        <constraint firstAttribute="width" constant="80" id="HdE-os-MCF"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
@@ -67,12 +67,12 @@
                 <constraint firstItem="6EZ-wK-TdN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LeA-4g-vMO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6EZ-wK-TdN" secondAttribute="bottom" id="YHd-Jl-sMl"/>
                 <constraint firstItem="6EZ-wK-TdN" firstAttribute="top" secondItem="Kft-si-Mp1" secondAttribute="bottom" constant="5" id="aPT-AS-l2p"/>
-                <constraint firstItem="Qhd-Cn-maa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="bYK-Ys-ZmM"/>
-                <constraint firstItem="7Sd-41-BPX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="h89-Eb-fcj"/>
+                <constraint firstItem="Qhd-Cn-maa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="bYK-Ys-ZmM"/>
+                <constraint firstItem="7Sd-41-BPX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="h89-Eb-fcj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6EZ-wK-TdN" secondAttribute="trailing" id="i0e-Hu-KYJ"/>
                 <constraint firstItem="HvA-MH-RE2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="kpo-Ve-Cai"/>
                 <constraint firstItem="Kft-si-Mp1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="upP-XL-Qgt"/>
-                <constraint firstItem="HvA-MH-RE2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="vgA-EC-doi"/>
+                <constraint firstItem="HvA-MH-RE2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="vgA-EC-doi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Kft-si-Mp1" secondAttribute="trailing" constant="5" id="xSe-Yh-njV"/>
             </constraints>
             <point key="canvasLocation" x="44" y="20.239880059970016"/>

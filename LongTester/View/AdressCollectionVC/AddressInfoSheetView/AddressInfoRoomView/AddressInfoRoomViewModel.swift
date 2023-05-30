@@ -15,6 +15,8 @@ class AddressInfoRoomViewModel : NSObject {
     var addressDataMonthModel : BehaviorRelay<[AddressDataMonthModel]> = BehaviorRelay(value: [])
     var roomDataModel : BehaviorRelay<[RoomDataModel]> = BehaviorRelay(value: [])
     
+    private var editMode = false
+    private var currentIndex : Int = -1
     let api: Provider<MultiTarget>
     private(set) var rootViewModel: RootViewModel
 
@@ -61,7 +63,6 @@ class AddressInfoRoomViewModel : NSObject {
         }.bind(to: cellViewModels).disposed(by: disposeBag)
     }
     
-    
     func setupData(){
         if let data = addressDataModel.data {
             self.addressDataMonthModel.accept(data)
@@ -97,5 +98,41 @@ class AddressInfoRoomViewModel : NSObject {
                 roomDataModel.accept(mainCellData)
             }
         }
+    }
+    
+    
+}
+
+//MARK: Public Function
+extension AddressInfoRoomViewModel {
+    func showPopUp(){
+        let closeModel = AlertModel.ActionModel(title: Language.localized("understand"), style: .default, handler: {_ in
+        })
+        rootViewModel.alertModel.accept(AlertModel(actionModels: [closeModel], title: "ChristmasTree", message: Language.localized("errorInvalidData"), prefferedStyle: .alert))
+    }
+    
+    func checkValidation() -> Bool{
+        var result = true
+        for cellViewModel in cellViewModels.value {
+            result = result && cellViewModel.checkValidation(type: .all)
+        }
+        
+        return result
+    }
+    
+    func changeEditMode(){
+        editMode = !editMode
+    }
+
+    func getEditMode() -> Bool{
+        return editMode
+    }
+
+    func changeCurrentIndex(index: Int){
+        currentIndex = index
+    }
+
+    func getCurrentIndex() -> Int{
+        return currentIndex
     }
 }

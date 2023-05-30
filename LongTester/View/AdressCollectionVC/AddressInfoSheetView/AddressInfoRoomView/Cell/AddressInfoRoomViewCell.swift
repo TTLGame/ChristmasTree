@@ -9,11 +9,18 @@ import UIKit
 
 class AddressInfoRoomViewCell: UITableViewCell {
 
+    enum roomValueType {
+        case water
+        case electric
+    }
     @IBOutlet weak var mainView: UIStackView!
     @IBOutlet weak var waterTextField: UITextField!
     @IBOutlet weak var electricTextField: UITextField!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var statusImgView: UIImageView!
+    @IBOutlet weak var waterOldLbl: UILabel!
+    @IBOutlet weak var electricOldLbl: UILabel!
+    
     
     @IBOutlet weak var waterTitle: UILabel!
     @IBOutlet weak var currentWaterLbl: UILabel!
@@ -72,7 +79,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
         waterUsedLbl.text = String(currentWater - lastWater)
         waterPriceLbl.text = "X   " + (viewModel.waterPrice?.formatnumberWithDot() ?? "0")
         totalPriceWaterLbl.text = (viewModel.totalWater?.formatnumberWithDot() ?? "0") + " VND"
-        waterTextField.text = String(currentWater)
+//        waterTextField.text = String(currentWater)
         
         let currentElectric = viewModel.currentElectric ?? 0
         let lastElectric = viewModel.lastElectric ?? 0
@@ -81,7 +88,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
         electricUsedLbl.text = String(currentElectric - lastElectric)
         electricPriceLbl.text = "X   " +  (viewModel.electricPrice?.formatnumberWithDot() ?? "0")
         totalPriceElectricLbl.text = (viewModel.totalElectric?.formatnumberWithDot() ?? "0") + " VND"
-        electricTextField.text = String(currentElectric)
+//        electricTextField.text = String(currentElectric)
         
         if let trashPrice = viewModel.trashPrice {
             trashPriceLbl.text = trashPrice.formatnumberWithDot() + " VND"
@@ -132,13 +139,31 @@ class AddressInfoRoomViewCell: UITableViewCell {
         mainView.layer.cornerRadius = 10
         mainView.layer.masksToBounds = true
         
+        electricOldLbl.textColor = Color.viewDefaultColor
+        waterOldLbl.textColor = Color.viewDefaultColor
+        
+        electricTextField.delegate = self
+        waterTextField.delegate = self
+        
+        waterTextField.keyboardType = .asciiCapableNumberPad
+        electricTextField.keyboardType = .asciiCapableNumberPad
+        
+        electricTextField.addTarget(self, action: #selector(AddressInfoRoomViewCell.textFieldDidChange(_:)), for: .editingChanged)
+        waterTextField.addTarget(self, action: #selector(AddressInfoRoomViewCell.textFieldDidChange(_:)), for: .editingChanged)
+        
         textFieldConfig(isDisable: true)
     }
     
     func textFieldConfig(isDisable: Bool){
+        electricTextField.text = String(viewModel?.currentElectric ?? 0)
+        waterTextField.text = String(viewModel?.currentWater ?? 0)
+        
+        waterOldLbl.text = isDisable  ? "" : String(viewModel?.currentWater ?? 0)
+        electricOldLbl.text = isDisable ? "" : String(viewModel?.currentElectric ?? 0)
+        
         electricTextField.isUserInteractionEnabled = !isDisable
         waterTextField.isUserInteractionEnabled = !isDisable
-        
+    
         electricTextField.backgroundColor = isDisable ? Color.viewDefaultColor : .white
         waterTextField.backgroundColor = isDisable ? Color.viewDefaultColor : .white
         
@@ -167,5 +192,48 @@ class AddressInfoRoomViewCell: UITableViewCell {
         self.infoView.isHidden = true
         self.mainView.backgroundColor = .white
         layoutIfNeeded()
+    }
+}
+
+extension AddressInfoRoomViewCell : UITextFieldDelegate{
+    
+    private func changeOldLabel(type: roomValueType){
+        switch type {
+        case .electric :
+            if let viewModel = viewModel,
+               let newElectricText = electricTextField.text,
+               let electricText = Int(newElectricText) {
+                viewModel.inputElectric = electricText
+                electricOldLbl.textColor = viewModel.checkValidation(type: .electric) ? Color.viewDefaultColor : Color.redPrimary
+            }
+            
+        case .water :
+            if let viewModel = viewModel,
+               let newWaterText = waterTextField.text,
+               let waterText = Int(newWaterText) {
+                viewModel.inputWater = waterText
+                waterOldLbl.textColor = viewModel.checkValidation(type: .water) ? Color.viewDefaultColor : Color.redPrimary
+            }
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if ( textField.text == ""){
+            textField.text = "0"
+        }
+        
+        //remove number 0
+        if let text = textField.text,
+           let convertInt = Int(text) {
+            textField.text = String(convertInt)
+        }
+      
+        changeOldLabel(type: textField == waterTextField ? .water : .electric)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
     }
 }

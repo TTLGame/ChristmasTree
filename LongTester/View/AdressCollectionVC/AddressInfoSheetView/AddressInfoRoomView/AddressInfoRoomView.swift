@@ -17,7 +17,6 @@ class AddressInfoRoomView : UIView {
     private var addressDataModel : AddressDataModel = AddressDataModel()
     private var currentMonthYear = MonthYear()
     private var currentIndex : Int = -1
-    private var editMode = false
     
     @IBOutlet weak var detailTblView: UITableView!
     
@@ -64,9 +63,21 @@ class AddressInfoRoomView : UIView {
     }
     
     @objc func editChangePressed(){
-        editMode = !editMode
-        self.currentIndex = -1
-        self.detailTblView.reloadData()
+        viewModel.changeEditMode()
+        viewModel.changeCurrentIndex(index: -1)
+        
+        if (viewModel.getEditMode()) {
+            self.detailTblView.reloadData()
+        }
+        else {
+            if (viewModel.checkValidation()){
+                self.detailTblView.reloadData()
+            }
+            else {
+                viewModel.showPopUp()
+                viewModel.changeEditMode()
+            }
+        }
     }
     private func bindData(){
         self.viewModel = AddressInfoRoomViewModel(rootViewModel: baseVC?.rootViewModel as! RootViewModel)
@@ -107,25 +118,24 @@ extension AddressInfoRoomView : UITableViewDataSource {
             for: indexPath) as? AddressInfoRoomViewCell
         cell.selectionStyle = .none
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
-        cell.textFieldConfig(isDisable: !editMode)
-//        DispatchQueue.main.async {
-//            indexPath.row == self.currentIndex ? cell.selectingCell() : cell.deselectingCell()
-//        }
-        
-        indexPath.row == self.currentIndex ? cell.selectingCell() : cell.deselectingCell()
+        cell.textFieldConfig(isDisable: !viewModel.getEditMode())
+
+        indexPath.row == self.viewModel.getCurrentIndex() ? cell.selectingCell() : cell.deselectingCell()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if editMode {
+        if viewModel.getEditMode() {
             return
         }
+        
+        let currentIndex = viewModel.getCurrentIndex()
         let oldIndex = currentIndex
         if (currentIndex == indexPath.row) {
-            currentIndex = -1
+            viewModel.changeCurrentIndex(index: -1)
         }
         else {
-            currentIndex = indexPath.row
+            viewModel.changeCurrentIndex(index: indexPath.row)
         }
         if oldIndex == -1 {
             tableView.reloadRows(at: [indexPath], with: .automatic)

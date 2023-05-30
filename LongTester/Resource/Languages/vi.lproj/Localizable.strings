@@ -83,3 +83,5 @@
 "roomPrice" = "Tiền phòng";
 "total" = "Tổng tiền";
 "room" = "Phòng";
+"errorInvalidData" = "Thông tin nhập sai. Vui lòng kiểm tra lại.";
+"understand" = "Đã hiểu";

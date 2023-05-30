@@ -7,6 +7,11 @@
 
 import Foundation
 class AddressInfoRoomViewCellViewModel {
+    enum CheckValidationType {
+        case water
+        case electric
+        case all
+    }
     let status : String?
     let roomNum : Int?
     
@@ -27,6 +32,8 @@ class AddressInfoRoomViewCellViewModel {
     let roomPrice : Int?
     let total : Int?
 
+    var inputWater : Int?
+    var inputElectric : Int?
     init(status: String?, roomNum: Int?, lastWater: Int?, currentWater: Int?, totalWater: Int?, waterPrice: Int?, quotaPrice: Int?, quota: Int?, lastElectric: Int?, currentElectric: Int?, electricPrice: Int?, totalElectric: Int?, trashPrice: Int?, internetPrice: Int?, roomPrice: Int?, total: Int?) {
         self.status = status
         self.roomNum = roomNum
@@ -44,5 +51,28 @@ class AddressInfoRoomViewCellViewModel {
         self.internetPrice = internetPrice
         self.roomPrice = roomPrice
         self.total = total
+        
+        //For validation
+        self.inputWater = currentWater
+        self.inputElectric = currentElectric
+    }
+    
+    func checkValidation(type : CheckValidationType) -> Bool{
+        if let inputWater = inputWater,
+           let currentWater = currentWater,
+           let inputElectric =  inputElectric,
+           let currentElectric = currentElectric {
+            switch type {
+            case .water :
+                return inputWater >= currentWater
+            case .electric :
+                return inputElectric >= currentElectric
+            case .all:
+                return inputWater >= currentWater && inputElectric >= currentElectric
+            }
+        }
+        else {
+            return false
+        }
     }
 }
