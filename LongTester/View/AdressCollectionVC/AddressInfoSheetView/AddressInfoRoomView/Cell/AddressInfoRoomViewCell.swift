@@ -7,20 +7,32 @@
 
 import UIKit
 
+protocol AddressInfoRoomViewCellDelegate: AnyObject {
+    func focusNextView(current: IndexPath)
+}
 class AddressInfoRoomViewCell: UITableViewCell {
 
     enum roomValueType {
         case water
         case electric
     }
+    
+    weak var delegate : AddressInfoRoomViewCellDelegate?
     @IBOutlet weak var mainView: UIStackView!
-    @IBOutlet weak var waterTextField: UITextField!
-    @IBOutlet weak var electricTextField: UITextField!
+    @IBOutlet weak var waterTextField: UITextField! {
+        didSet {
+            waterTextField.addDoneCancelToolbar(onDone: (target: self, action: #selector(waterTextFieldDoneBtnPressed)))
+        }
+    }
+    @IBOutlet weak var electricTextField: UITextField! {
+        didSet {
+            electricTextField.addDoneCancelToolbar(onDone: (target: self, action: #selector(electricTextFieldDoneBtnPressed)))
+        }
+    }
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var statusImgView: UIImageView!
     @IBOutlet weak var waterOldLbl: UILabel!
     @IBOutlet weak var electricOldLbl: UILabel!
-    
     
     @IBOutlet weak var waterTitle: UILabel!
     @IBOutlet weak var currentWaterLbl: UILabel!
@@ -59,6 +71,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
             bindData()
         }
     }
+    var indexPath : IndexPath!
     
     private func bindData(){
         guard let viewModel = viewModel else { return }
@@ -183,6 +196,10 @@ class AddressInfoRoomViewCell: UITableViewCell {
         }
     }
     
+    func focusWaterTextField(){
+        self.waterTextField.becomeFirstResponder()
+    }
+    
     func selectingCell(){
         infoView.isHidden = false
         mainView.backgroundColor = Color.viewDefaultColor
@@ -237,4 +254,16 @@ extension AddressInfoRoomViewCell : UITextFieldDelegate{
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }
+}
+
+extension AddressInfoRoomViewCell {
+    @objc func waterTextFieldDoneBtnPressed(){
+        electricTextField.becomeFirstResponder()
+    }
+    
+    @objc func electricTextFieldDoneBtnPressed(){
+        electricTextField.resignFirstResponder()
+        self.delegate?.focusNextView(current: indexPath)
+    }
+    
 }

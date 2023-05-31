@@ -32,6 +32,7 @@ class AddressCollectionViewModel : NSObject {
     private let rooms = Int.random(in: 1..<20)
     private var randomPic = [String]()
     private var defaultCellViewModels = [AddressCollectionViewCellViewModel]()
+    private var editState = false
     
     let disposeBag = DisposeBag()
     init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
@@ -161,6 +162,15 @@ class AddressCollectionViewModel : NSObject {
 }
 
 extension AddressCollectionViewModel {
+    func getState() -> Bool{
+        return editState
+    }
+    
+    func changeState(value : Bool){
+        editState = value
+    }
+}
+extension AddressCollectionViewModel {
     func sortData(interator: Int){
         switch radioViewModels.value.cellViewModels?[interator].type {
         case "ALL":
@@ -189,10 +199,10 @@ extension AddressCollectionViewModel {
 extension AddressCollectionViewModel{
     func updateAddressDataModel(roomData: [RoomDataModel], monthYear: MonthYear) {
         if let pos = self.addressDataModel.data?.firstIndex(where: { data in
-            var monthYearData = self.convertMonthYear(monthYear: data.monthYear)
+            let monthYearData = self.convertMonthYear(monthYear: data.monthYear)
             return monthYearData == monthYear
         }) {
-            var addressData = self.addressDataModel
+            let addressData = self.addressDataModel
             addressData.data?[pos].roomData = roomData
             self.addressDataModel = addressData
             if let data = addressDataModel.data {
@@ -206,7 +216,7 @@ extension AddressCollectionViewModel{
 extension AddressCollectionViewModel {
     func createStubData(){
         let monthYear = MonthYear()
-        let totalRoom = Int.random(in: 3..<20)
+        let totalRoom = Int.random(in: 6..<20)
         var roomData : [String:Any] = ["address" : "99/4A, KP2A, P. Dong Hung Thuan, Q12, TP.Ho Chi Minh",
                                        "totalRoom" : totalRoom]
         

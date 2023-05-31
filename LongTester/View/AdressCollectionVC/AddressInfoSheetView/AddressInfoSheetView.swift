@@ -97,7 +97,7 @@ extension AddressInfoSheetView : AddressInfoViewDelegate {
 }
 
 extension AddressInfoSheetView : AddressInfoRoomViewDelegate {
-    func didChangeData(roomData: [RoomDataModel], monthYear: MonthYear) {
+    func didChangeData(view: AddressInfoRoomView, roomData: [RoomDataModel], monthYear: MonthYear) {
         delegate?.didChangeData(view: self, roomData: roomData, monthYear: monthYear)
     }
 }

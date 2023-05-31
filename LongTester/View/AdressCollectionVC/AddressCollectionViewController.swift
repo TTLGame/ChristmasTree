@@ -27,7 +27,7 @@ class AddressCollectionViewController: BaseViewController {
     private var lastOffset : CGFloat = 0
     private var viewModel = AddressCollectionViewModel()
     private let sizeMax = CGFloat(40)
-    private var editState = false
+    private var contentSize : CGFloat = 0
     
 //    private var dropdown : DropDownView<BaseDropDownCell, BaseDropDownCellViewModel>!
     private var dropdown : DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>!
@@ -107,6 +107,10 @@ class AddressCollectionViewController: BaseViewController {
         self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.detailCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.contentSize = self.detailCollectionView.contentSize.height
+            }
+           
             
         }).disposed(by: disposeBag)
         
@@ -166,12 +170,12 @@ class AddressCollectionViewController: BaseViewController {
         formatter.dateFormat = AppConfig.shared.language == .english ? App.Format.englishMonthYear : App.Format.vietnamMonthYear
         monthLbl.text = AppConfig.shared.language == .english ? formatter.string(from: date) :
                                                                 "Tháng " + formatter.string(from: date)
-        
     }
     
     @objc func didDoubleTapForDismiss(){
-        if (editState){
-            editState = false
+        if (viewModel.getState()){
+            viewModel.changeState(value: false)
+            
             self.detailCollectionView.reloadData()
         }
     }
@@ -194,13 +198,13 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        editState ? openSheetEditCell() : didSelectItem(indexPath: indexPath)
+        viewModel.getState() ? openSheetEditCell() : didSelectItem(indexPath: indexPath)
     }
     
     func configureInactiveContextMenu(indexPath: IndexPath) -> UIContextMenuConfiguration{
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             let deleteAction = UIAction(title:"Edit product", image: UIImage(systemName:"pencil.line")){ _ in
-                self.editState = true
+                self.viewModel.changeState(value: true)
                 self.detailCollectionView.reloadData()
                 self.openSheetEditCell()
             }
@@ -211,7 +215,7 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
     func configureActiveContextMenu(indexPath: IndexPath) -> UIContextMenuConfiguration{
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             let deleteAction = UIAction(title:"Stop Editing", image: UIImage(systemName:"pencil.line")){ _ in
-                self.editState = false
+                self.viewModel.changeState(value: false)
                 self.detailCollectionView.reloadData()
             }
             return UIMenu(title:"Option", children: [deleteAction])
@@ -219,7 +223,7 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return editState ?  configureActiveContextMenu(indexPath: indexPath) :
+        return viewModel.getState() ?  configureActiveContextMenu(indexPath: indexPath) :
                             configureInactiveContextMenu(indexPath: indexPath)
     }
     
@@ -247,12 +251,10 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollPos = scrollView.contentOffset.y
         let contentSize = scrollView.contentSize.height - (scrollView.frame.size.height)
+        if (self.contentSize < detailCollectionView.frame.height + 50){
+            return
+        }
 
-//        if (contentSize < 0){
-//            return
-//        }
-//
-      
         if (lastOffset < scrollPos) { // scroll down
             radioViewHeightConstraint.constant = radioViewHeightConstraint.constant - 1 < 0 ? 0 : radioViewHeightConstraint.constant - 1
             radioView.alpha = CGFloat(radioViewHeightConstraint.constant / sizeMax)
@@ -298,7 +300,7 @@ extension AddressCollectionViewController: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: AddressCollectionViewCell.self),
             for: indexPath) as? AddressCollectionViewCell
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
-        cell.changeState(isChanged: editState)
+        cell.changeState(isChanged: viewModel.getState())
         cell.setupDropdown(viewModels: dropdownCellViewModel, baseVC: self)
         return cell
     }
@@ -369,11 +371,14 @@ extension AddressCollectionViewController {
     }
     
     func openSheetEditCell(){
-        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             
-            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.addressDataModel, baseVC: self)
+            let addressView = AddressInfoRoomView(frame: self.view.frame,
+                                                      addressDataModel: self.viewModel.addressDataModel,
+                                                      baseVC: self)
+            addressView.delegate = self
+//            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.addressDataModel, baseVC: self)
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
             sheetView.title = Language.localized("addressCollectionMainTitle")
             sheetView.open()
@@ -402,3 +407,10 @@ extension AddressCollectionViewController : AddressInfoSheetViewDelegate {
     }
 }
 
+
+extension AddressCollectionViewController : AddressInfoRoomViewDelegate {
+    func didChangeData(view: AddressInfoRoomView, roomData: [RoomDataModel], monthYear: MonthYear) {
+        viewModel.updateAddressDataModel(roomData: roomData, monthYear: monthYear)
+        view.updateAddressData(addressData: viewModel.addressDataModel)
+    }
+}

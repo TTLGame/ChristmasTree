@@ -52,6 +52,7 @@
 		FD4DF3CC29ED92E900AB6A50 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4DF3CA29ED92E900AB6A50 /* LoginViewController.xib */; };
 		FD4DF3CF29ED980E00AB6A50 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4DF3CE29ED980E00AB6A50 /* TextFieldView.swift */; };
 		FD4DF3D129ED981800AB6A50 /* TextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4DF3D029ED981800AB6A50 /* TextFieldView.xib */; };
+		FD51100D2A27AF7400D5E620 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51100C2A27AF7400D5E620 /* UITextField.swift */; };
 		FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD564B602965581300A527ED /* TableScreenViewController.swift */; };
 		FD564B632965582200A527ED /* TableScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD564B622965582200A527ED /* TableScreenViewModel.swift */; };
 		FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD564B642965584400A527ED /* TableScreenViewController.xib */; };
@@ -224,6 +225,7 @@
 		FD4DF3CA29ED92E900AB6A50 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		FD4DF3CE29ED980E00AB6A50 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		FD4DF3D029ED981800AB6A50 /* TextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldView.xib; sourceTree = "<group>"; };
+		FD51100C2A27AF7400D5E620 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		FD564B592963E09500A527ED /* VoVanTan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VoVanTan.gpx; sourceTree = "<group>"; };
 		FD564B5A2963E14800A527ED /* Pico.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pico.gpx; sourceTree = "<group>"; };
 		FD564B602965581300A527ED /* TableScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableScreenViewController.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 			children = (
 				FD738FBB2A0FD95200088BF0 /* UITableViewNoDataEx */,
 				FD5765AB2963D206005969BE /* Array.swift */,
+				FD51100C2A27AF7400D5E620 /* UITextField.swift */,
 				FD564B72296561FE00A527ED /* UITableView.swift */,
 				FD5765AD2963D2A0005969BE /* Dictionary.swift */,
 				FD564B8D29656F8B00A527ED /* UISwitch.swift */,
@@ -1345,6 +1348,7 @@
 				FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */,
 				FDDB486A29EFD28E00D212A7 /* UIViewController.swift in Sources */,
 				FD20157B2A1FB011006A4C2E /* SegmentControl.swift in Sources */,
+				FD51100D2A27AF7400D5E620 /* UITextField.swift in Sources */,
 				FD89619C295BF11A00C7BE20 /* MainScreenViewController.swift in Sources */,
 				FD2015622A1C7430006A4C2E /* AddressCollectionMonthYearViewModel.swift in Sources */,
 				FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */,

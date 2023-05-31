@@ -17,6 +17,7 @@ class AddressInfoRoomViewModel : NSObject {
     
     private var editMode = false
     private var currentIndex : Int = -1
+    private var focusIndex : Int = -1
     let api: Provider<MultiTarget>
     private(set) var rootViewModel: RootViewModel
 
@@ -140,6 +141,14 @@ extension AddressInfoRoomViewModel {
 
     func getCurrentIndex() -> Int{
         return currentIndex
+    }
+    
+    func changeFocusIndex(index: Int){
+        focusIndex = index
+    }
+
+    func getFocusIndex() -> Int{
+        return focusIndex
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 protocol AddressInfoRoomViewDelegate : AnyObject {
-    func didChangeData(roomData: [RoomDataModel] , monthYear: MonthYear)
+    func didChangeData(view: AddressInfoRoomView , roomData: [RoomDataModel] , monthYear: MonthYear)
 }
 class AddressInfoRoomView : UIView {
     var baseVC : BaseViewController?
@@ -18,7 +18,6 @@ class AddressInfoRoomView : UIView {
     private let disposeBag = DisposeBag()
     private var addressDataModel : AddressDataModel = AddressDataModel()
     private var currentMonthYear = MonthYear()
-    private var currentIndex : Int = -1
     
     weak var delegate : AddressInfoRoomViewDelegate?
     @IBOutlet weak var detailTblView: UITableView!
@@ -80,7 +79,7 @@ class AddressInfoRoomView : UIView {
         }
         else {
             if (viewModel.checkValidation()){
-                delegate?.didChangeData(roomData: viewModel.convertCellVMtoModels(),
+                delegate?.didChangeData(view: self, roomData: viewModel.convertCellVMtoModels(),
                                         monthYear: viewModel.currentMonthYear)
                 
 //                self.detailTblView.reloadData()
@@ -129,9 +128,18 @@ extension AddressInfoRoomView : UITableViewDataSource {
             withIdentifier: String(describing: AddressInfoRoomViewCell.self),
             for: indexPath) as? AddressInfoRoomViewCell
         cell.selectionStyle = .none
+        cell.delegate = self
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
         cell.textFieldConfig(isDisable: !viewModel.getEditMode())
-
+        cell.indexPath = indexPath
+        
+        if (indexPath.row == viewModel.getFocusIndex()) {
+            viewModel.changeFocusIndex(index: -1)
+            DispatchQueue.main.async {
+                cell.focusWaterTextField()
+            }
+        }
+        
         indexPath.row == self.viewModel.getCurrentIndex() ? cell.selectingCell() : cell.deselectingCell()
         return cell
     }
@@ -160,5 +168,14 @@ extension AddressInfoRoomView : UITableViewDataSource {
 extension AddressInfoRoomView {
     func resetMonthYear(monthYear: MonthYear) {
         self.viewModel.getData(date: monthYear)
+    }
+}
+
+extension AddressInfoRoomView : AddressInfoRoomViewCellDelegate {
+    func focusNextView(current: IndexPath) {
+        if (current.row + 1 < viewModel.cellViewModels.value.count) {
+            viewModel.changeFocusIndex(index: current.row + 1)
+            detailTblView.reloadRows(at: [IndexPath(row: current.row + 1, section: 0)], with: .none)
+        }
     }
 }
