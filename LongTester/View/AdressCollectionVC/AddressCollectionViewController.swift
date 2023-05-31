@@ -361,7 +361,7 @@ extension AddressCollectionViewController {
                                                         baseVC: self,
                                                         currentMonthYear: self.viewModel.currentMonthYear,
                                                         addressData: self.viewModel.addressDataModel)
-            
+            addressSheetView.delegate = self
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressSheetView)
             sheetView.title = Language.localized("addressCollectionMainTitle")
             sheetView.open()
@@ -392,6 +392,13 @@ extension AddressCollectionViewController : MonthYearViewDelegate {
         
         viewModel.getData(date: MonthYear(month: month, year: year))
         self.radioView.reloadRadioView()
+    }
+}
+
+extension AddressCollectionViewController : AddressInfoSheetViewDelegate {
+    func didChangeData(view: AddressInfoSheetView, roomData: [RoomDataModel], monthYear: MonthYear) {
+        viewModel.updateAddressDataModel(roomData: roomData, monthYear: monthYear)
+        view.updateAddressData(addressData: viewModel.addressDataModel)
     }
 }
 

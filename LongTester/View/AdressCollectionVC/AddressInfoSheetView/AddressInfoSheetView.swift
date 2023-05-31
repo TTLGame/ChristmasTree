@@ -8,15 +8,23 @@
 import Foundation
 import UIKit
 
+protocol AddressInfoSheetViewDelegate : AnyObject {
+    func didChangeData(view: AddressInfoSheetView, roomData: [RoomDataModel] , monthYear: MonthYear)
+}
 class AddressInfoSheetView : UIView {
     var baseVC : BaseViewController?
     
     @IBOutlet weak var segmentControl: SegmentControl!
     @IBOutlet weak var pageView: PageView!
     
-    
+    weak var delegate : AddressInfoSheetViewDelegate?
     private var currentMonthYear : MonthYear = MonthYear()
-    private var addressData : AddressDataModel = AddressDataModel()
+    private var addressData : AddressDataModel = AddressDataModel() {
+        didSet {
+            self.addressView.updateAddressData(addressData: self.addressData)
+            self.addressRoomView.updateAddressData(addressData: self.addressData)
+        }
+    }
     
     private var addressView : AddressInfoView!
     private var addressRoomView : AddressInfoRoomView!
@@ -38,12 +46,13 @@ class AddressInfoSheetView : UIView {
         commonInit()
     }
     
+    func updateAddressData(addressData: AddressDataModel){
+        self.addressData = addressData
+    }
     func commonInit(){
         loadViewFromNib()
         setup()
         setupPageView()
-        
-
     }
     
     private func setup(){
@@ -62,11 +71,11 @@ class AddressInfoSheetView : UIView {
                                           currentMonthYear: currentMonthYear,
                                           data: addressData, baseVC: baseVC)
         
-        addressView.delegate = self
         self.addressRoomView = AddressInfoRoomView(frame: baseVC.view.frame,
                                                   addressDataModel: addressData,
                                                   baseVC: baseVC)
-        
+        addressRoomView.delegate = self
+        addressView.delegate = self
         pageView.transitionViews = [addressView, addressRoomView]
         pageView.animeType = .faded
     }
@@ -84,5 +93,11 @@ extension AddressInfoSheetView : AddressInfoViewDelegate {
         self.currentMonthYear = monthYear
         self.addressView.resetMonthYear(monthYear: currentMonthYear)
         self.addressRoomView.resetMonthYear(monthYear: currentMonthYear)
+    }
+}
+
+extension AddressInfoSheetView : AddressInfoRoomViewDelegate {
+    func didChangeData(roomData: [RoomDataModel], monthYear: MonthYear) {
+        delegate?.didChangeData(view: self, roomData: roomData, monthYear: monthYear)
     }
 }

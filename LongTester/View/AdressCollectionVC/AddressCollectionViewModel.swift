@@ -41,20 +41,33 @@ class AddressCollectionViewModel : NSObject {
         bindToEvents()
     }
     
-   
+    private func convertMonthYear(monthYear: String?) -> MonthYear {
+        var monthYearData = MonthYear()
+        if let monthYear = monthYear?.split(separator: "/"),
+            monthYear.count > 1{
+            if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
+                monthYearData = MonthYear(month: month,
+                                          year: year)
+            }
+           
+        }
+        return monthYearData
+    }
     func bindToEvents() {
         addressDataMonthModel.map {data in
             data.map {cell in
-                var monthYearData = MonthYear()
-                if let monthYear = cell.monthYear?.split(separator: "/"),
-                    monthYear.count > 1{
-                    if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
-                        monthYearData = MonthYear(month: month,
-                                                  year: year)
-                    }
-                   
-                }
+//                var monthYearData = MonthYear()
+//                if let monthYear = cell.monthYear?.split(separator: "/"),
+//                    monthYear.count > 1{
+//                    if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
+//                        monthYearData = MonthYear(month: month,
+//                                                  year: year)
+//                    }
+//
+//                }
             
+                var monthYearData = self.convertMonthYear(monthYear: cell.monthYear)
+                
                 let roomData = cell.roomData.map { data in
                     data.map { cell in
                         return AddressCollectionViewCellViewModel(roomNums: cell.roomNums,
@@ -172,6 +185,22 @@ extension AddressCollectionViewModel {
     }
 }
 
+//Reload Data when RoomView Data Changed
+extension AddressCollectionViewModel{
+    func updateAddressDataModel(roomData: [RoomDataModel], monthYear: MonthYear) {
+        if let pos = self.addressDataModel.data?.firstIndex(where: { data in
+            var monthYearData = self.convertMonthYear(monthYear: data.monthYear)
+            return monthYearData == monthYear
+        }) {
+            var addressData = self.addressDataModel
+            addressData.data?[pos].roomData = roomData
+            self.addressDataModel = addressData
+            if let data = addressDataModel.data {
+                self.addressDataMonthModel.accept(data)
+            }
+        }
+    }
+}
 
 // Create Dummy data
 extension AddressCollectionViewModel {
@@ -232,15 +261,14 @@ extension AddressCollectionViewModel {
                 roomData["roomPrice"] = roomPrice
                 
                 var water = 0
-                if (waterNum - lastElectricNum > quota){
-                    let usedWater = waterNum - lastElectricNum
-                    water = (usedWater - quota) * quotaPrice + usedWater * waterPrice
+                if (waterNum - lastWaterNum > quota){
+                    let usedWater = waterNum - lastWaterNum
+                    water = ((usedWater - quota) * quotaPrice) + (usedWater * waterPrice)
                 }
                 else {
                     water = (waterNum - lastWaterNum) * waterPrice
                 }
-                let total = roomPrice + (electricNum - lastElectricNum)*electricPrice + water
-                
+                let total = roomPrice + ((electricNum - lastElectricNum)*electricPrice) + water
                 roomData["totalNum"] = total
                 
                 roomDataTemp.append(roomData)
@@ -255,7 +283,6 @@ extension AddressCollectionViewModel {
         stub(condition: isHost("\(baseURl)") &&  isPath("/api/getaddress")) { _ in
             return HTTPStubsResponse(jsonObject: roomData, statusCode: 200, headers: nil)
         }
-        
     }
 }
 

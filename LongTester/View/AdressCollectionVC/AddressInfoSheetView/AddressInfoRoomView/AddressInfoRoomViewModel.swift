@@ -32,32 +32,40 @@ class AddressInfoRoomViewModel : NSObject {
         
     }
     
+    private func calculateTotal(cell : RoomDataModel) -> [Int] {
+        var total = 0
+        let currentElectric = cell.electricNum ?? 0
+        let lastElectric = cell.lastElectricNum ?? 0
+        let totalElectric = (currentElectric - lastElectric) * (cell.electricPrice ?? 0)
+        
+        let currentWater = cell.waterNum ?? 0
+        let lastWater = cell.lastWaterNum ?? 0
+        let quota = cell.quota ?? 0
+        let qutotaPrice = cell.quotaPrice ?? 0
+        var totalWater = ((currentWater - lastWater) * (cell.waterPrice ?? 0))
+        
+        totalWater += currentWater - lastWater > quota ? (currentWater - lastWater - quota) * qutotaPrice : 0
+        total += totalWater + totalElectric
+        
+        if let trashPrice = cell.trashPrice {
+            total += trashPrice
+        }
+        
+        if let internetPrice = cell.internetPrice {
+            total += internetPrice
+        }
+        
+        total += cell.roomPrice ?? 0
+        
+        return [total, totalWater, totalElectric]
+    }
     func bindToEvents() {
         roomDataModel.map {data in
             data.map {cell in
-                var total = 0
-                let currentElectric = cell.electricNum ?? 0
-                let lastElectric = cell.lastElectricNum ?? 0
-                let totalElectric = (currentElectric - lastElectric) * (cell.electricPrice ?? 0)
-                
-                let currentWater = cell.waterNum ?? 0
-                let lastWater = cell.lastWaterNum ?? 0
-                let quota = cell.quota ?? 0
-                let qutotaPrice = cell.quotaPrice ?? 0
-                var totalWater = ((currentWater - lastWater) * (cell.waterPrice ?? 0))
-                
-                totalWater += currentWater - lastWater > quota ? (currentWater - lastWater - quota) * qutotaPrice : 0
-                total += totalWater + totalElectric
-                
-                if let trashPrice = cell.trashPrice {
-                    total += trashPrice
-                }
-                
-                if let internetPrice = cell.internetPrice {
-                    total += internetPrice
-                }
-                
-                total += cell.roomPrice ?? 0
+                let arrTotal = self.calculateTotal(cell: cell)
+                let total = arrTotal[0]
+                let totalWater = arrTotal[1]
+                let totalElectric = arrTotal[2]
                 return AddressInfoRoomViewCellViewModel(status: cell.status, roomNum: cell.roomNums, lastWater: cell.lastWaterNum, currentWater: cell.waterNum, totalWater: totalWater, waterPrice:  cell.waterPrice, quotaPrice: cell.quotaPrice, quota: cell.quota, lastElectric: cell.lastElectricNum, currentElectric: cell.electricNum, electricPrice: cell.electricPrice, totalElectric: totalElectric, trashPrice: cell.trashPrice, internetPrice: cell.internetPrice, roomPrice: cell.roomPrice, total: total)
             }
         }.bind(to: cellViewModels).disposed(by: disposeBag)
@@ -99,8 +107,6 @@ class AddressInfoRoomViewModel : NSObject {
             }
         }
     }
-    
-    
 }
 
 //MARK: Public Function
@@ -134,5 +140,25 @@ extension AddressInfoRoomViewModel {
 
     func getCurrentIndex() -> Int{
         return currentIndex
+    }
+}
+
+
+//Convert data back to Models -> Optimize views due to they don't have to call API second time to have updated value
+extension AddressInfoRoomViewModel {
+    
+    
+    func convertCellVMtoModels() -> [RoomDataModel] {
+        let roomData = roomDataModel.value
+        
+        for interator in 0..<cellViewModels.value.count {
+           
+            roomData[interator].waterNum = cellViewModels.value[interator].inputWater
+            roomData[interator].electricNum = cellViewModels.value[interator].inputElectric
+            
+            let arrTotal = self.calculateTotal(cell: roomData[interator])
+            roomData[interator].totalNum = arrTotal[0]
+        }
+        return roomData
     }
 }

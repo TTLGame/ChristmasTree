@@ -43,6 +43,12 @@ class AddressInfoView : UIView {
         commonInit()
     }
     
+    func updateAddressData(addressData: AddressDataModel){
+        self.addressDataModel = addressData
+        self.viewModel.addressDataModel = self.addressDataModel
+        self.viewModel.setupData()
+    }
+    
     func commonInit(){
         loadViewFromNib()
         setupMonthPicker()

@@ -62,7 +62,6 @@ class AddressInfoRoomViewCell: UITableViewCell {
     
     private func bindData(){
         guard let viewModel = viewModel else { return }
-        
         let currentWater = viewModel.currentWater ?? 0
         let lastWater = viewModel.lastWater ?? 0
         currentWaterLbl.text = String(currentWater)
@@ -110,6 +109,14 @@ class AddressInfoRoomViewCell: UITableViewCell {
         roomPriceLbl.text = (viewModel.roomPrice?.formatnumberWithDot() ?? "0") + " VND"
         
         roomNumLbl.text = String(viewModel.roomNum ?? 0)
+        electricOldLbl.textColor = Color.normalTextColor
+        waterOldLbl.textColor = Color.normalTextColor
+        
+        electricTextField.text = String(viewModel.inputElectric ?? 0)
+        waterTextField.text = String(viewModel.inputWater ?? 0)
+        
+        changeOldLabel(type: .electric)
+        changeOldLabel(type: .water)
         
         setStatusView()
     }
@@ -138,10 +145,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
         mainView.layer.borderColor = UIColor.clear.cgColor
         mainView.layer.cornerRadius = 10
         mainView.layer.masksToBounds = true
-        
-        electricOldLbl.textColor = Color.viewDefaultColor
-        waterOldLbl.textColor = Color.viewDefaultColor
-        
+            
         electricTextField.delegate = self
         waterTextField.delegate = self
         
@@ -155,11 +159,8 @@ class AddressInfoRoomViewCell: UITableViewCell {
     }
     
     func textFieldConfig(isDisable: Bool){
-        electricTextField.text = String(viewModel?.currentElectric ?? 0)
-        waterTextField.text = String(viewModel?.currentWater ?? 0)
-        
-        waterOldLbl.text = isDisable  ? "" : String(viewModel?.currentWater ?? 0)
-        electricOldLbl.text = isDisable ? "" : String(viewModel?.currentElectric ?? 0)
+        waterOldLbl.text = isDisable  ? "" : String(viewModel?.lastWater ?? 0)
+        electricOldLbl.text = isDisable ? "" : String(viewModel?.lastElectric ?? 0)
         
         electricTextField.isUserInteractionEnabled = !isDisable
         waterTextField.isUserInteractionEnabled = !isDisable
@@ -204,7 +205,7 @@ extension AddressInfoRoomViewCell : UITextFieldDelegate{
                let newElectricText = electricTextField.text,
                let electricText = Int(newElectricText) {
                 viewModel.inputElectric = electricText
-                electricOldLbl.textColor = viewModel.checkValidation(type: .electric) ? Color.viewDefaultColor : Color.redPrimary
+                electricOldLbl.textColor = viewModel.checkValidation(type: .electric) ? Color.normalTextColor : Color.redPrimary
             }
             
         case .water :
@@ -212,7 +213,7 @@ extension AddressInfoRoomViewCell : UITextFieldDelegate{
                let newWaterText = waterTextField.text,
                let waterText = Int(newWaterText) {
                 viewModel.inputWater = waterText
-                waterOldLbl.textColor = viewModel.checkValidation(type: .water) ? Color.viewDefaultColor : Color.redPrimary
+                waterOldLbl.textColor = viewModel.checkValidation(type: .water) ? Color.normalTextColor : Color.redPrimary
             }
         }
     }

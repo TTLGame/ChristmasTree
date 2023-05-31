@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-
+protocol AddressInfoRoomViewDelegate : AnyObject {
+    func didChangeData(roomData: [RoomDataModel] , monthYear: MonthYear)
+}
 class AddressInfoRoomView : UIView {
     var baseVC : BaseViewController?
     private var viewModel = AddressInfoRoomViewModel()
@@ -18,6 +20,7 @@ class AddressInfoRoomView : UIView {
     private var currentMonthYear = MonthYear()
     private var currentIndex : Int = -1
     
+    weak var delegate : AddressInfoRoomViewDelegate?
     @IBOutlet weak var detailTblView: UITableView!
     
     @IBOutlet weak var roomLbl: UILabel!
@@ -25,6 +28,12 @@ class AddressInfoRoomView : UIView {
     @IBOutlet weak var electricLbl: UILabel!
     @IBOutlet weak var editImgView: UIImageView!
     
+    func updateAddressData(addressData: AddressDataModel){
+        self.addressDataModel = addressData
+        self.viewModel.addressDataModel = addressDataModel
+        self.viewModel.setupData()
+        
+    }
     init(frame: CGRect,addressDataModel: AddressDataModel, baseVC: BaseViewController) {
         super.init(frame: frame)
         self.baseVC = baseVC
@@ -71,7 +80,10 @@ class AddressInfoRoomView : UIView {
         }
         else {
             if (viewModel.checkValidation()){
-                self.detailTblView.reloadData()
+                delegate?.didChangeData(roomData: viewModel.convertCellVMtoModels(),
+                                        monthYear: viewModel.currentMonthYear)
+                
+//                self.detailTblView.reloadData()
             }
             else {
                 viewModel.showPopUp()
@@ -91,7 +103,7 @@ class AddressInfoRoomView : UIView {
         
         self.viewModel.addressDataMonthModel.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
-            self.viewModel.getData(date: self.currentMonthYear)
+            self.viewModel.getData(date: self.viewModel.currentMonthYear)
             
         }).disposed(by: disposeBag)
         self.viewModel.setupData()

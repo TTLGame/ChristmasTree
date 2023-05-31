@@ -59,16 +59,16 @@ class AddressInfoRoomViewCellViewModel {
     
     func checkValidation(type : CheckValidationType) -> Bool{
         if let inputWater = inputWater,
-           let currentWater = currentWater,
+           let lastWater = lastWater,
            let inputElectric =  inputElectric,
-           let currentElectric = currentElectric {
+           let lastElectric = lastElectric {
             switch type {
             case .water :
-                return inputWater >= currentWater
+                return inputWater >= lastWater
             case .electric :
-                return inputElectric >= currentElectric
+                return inputElectric >= lastElectric
             case .all:
-                return inputWater >= currentWater && inputElectric >= currentElectric
+                return inputWater >= lastWater && inputElectric >= lastElectric
             }
         }
         else {
