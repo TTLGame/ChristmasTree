@@ -20,6 +20,8 @@ class AddressInfoRoomViewModel : NSObject {
     private var editMode = false
     private var currentIndex : Int = -1
     private var focusIndex : Int = -1
+    private var currentEditStatus : String = ""
+    
     let api: Provider<MultiTarget>
     private(set) var rootViewModel: RootViewModel
 
@@ -171,6 +173,14 @@ extension AddressInfoRoomViewModel {
     
     func changeEditStatusBtnState(state: Bool){
         self.statusBtnState.accept(state)
+    }
+    
+    func changeCurrentEditStatus(data: String){
+        currentEditStatus = data
+    }
+
+    func getCurrentEditStatus() -> String{
+        return currentEditStatus
     }
 }
 

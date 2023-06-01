@@ -185,6 +185,10 @@ extension AddressInfoRoomView : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if viewModel.getEditMode() {
+            if viewModel.statusBtnState.value {
+                viewModel.cellViewModels.value[indexPath.row].inputStatus = viewModel.getCurrentEditStatus()
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
             return
         }
         
@@ -220,13 +224,8 @@ extension AddressInfoRoomView : AddressInfoRoomViewCellDelegate {
 }
 
 extension AddressInfoRoomView : EditStatusButtonViewDelegate {
-    func didChangeData() {
-
-    }
-    
-    func didChangeStatusEditState(state: Bool) {
+    func didChangeStatusEditState(state: Bool, currentStatus: String) {
+        self.viewModel.changeCurrentEditStatus(data: currentStatus)
         self.viewModel.changeEditStatusBtnState(state: state)
     }
-    
-    
 }

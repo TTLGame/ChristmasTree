@@ -10,13 +10,11 @@ import UIKit
 import RxSwift
 
 protocol EditStatusButtonViewDelegate : AnyObject {
-    func didChangeData()
-    func didChangeStatusEditState(state: Bool)
+    func didChangeStatusEditState(state: Bool, currentStatus : String)
 }
 class EditStatusButtonView : UIView {
     
     @IBOutlet weak var statusImageView: UIImageView!
-    @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var editBtn: UIButton!
     
     weak var delegate : EditStatusButtonViewDelegate?
@@ -49,20 +47,16 @@ class EditStatusButtonView : UIView {
         self.viewModel.editingState.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.changeEditState()
-            self.delegate?.didChangeStatusEditState(state: self.viewModel.editingState.value)
+            self.delegate?.didChangeStatusEditState(state: self.viewModel.editingState.value,
+                                                    currentStatus: self.viewModel.getCurrentStatus())
             
         }).disposed(by: disposeBag)
     }
     
     private func setup(){
-        cancelBtn.backgroundColor = .white
-        cancelBtn.setTitle(Language.localized("cancelBtn"), for: .normal)
         editBtn.backgroundColor = .white
         editBtn.setTitle(Language.localized("editStatusBtn"), for: .normal)
 
-        cancelBtn.layer.cornerRadius = 10
-        cancelBtn.backgroundColor = .white
-        cancelBtn.layer.masksToBounds = true
         
         editBtn.layer.cornerRadius = 10
         editBtn.backgroundColor = .white
@@ -75,7 +69,6 @@ class EditStatusButtonView : UIView {
     @IBAction func editBtnPressed(_ sender: Any) {
         let change = viewModel.editingState.value
         if (change) {
-            delegate?.didChangeData()
             viewModel.changeEditState(change: false)
         }
         else {
@@ -83,14 +76,8 @@ class EditStatusButtonView : UIView {
         }
     }
     
-    @IBAction func cancelBtnPressed(_ sender: Any) {
-        viewModel.changeEditState(change: false)
-    }
-    
     private func changeEditState(){
         let change = viewModel.editingState.value
-        cancelBtn.isHidden = !change
-        cancelBtn.isUserInteractionEnabled = change
         statusImageView.isHidden = !change
         editBtn.setTitle(change ? Language.localized("doneBtn") : Language.localized("editStatusBtn"), for: .normal)
     }
