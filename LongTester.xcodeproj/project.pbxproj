@@ -53,6 +53,10 @@
 		FD4DF3CF29ED980E00AB6A50 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4DF3CE29ED980E00AB6A50 /* TextFieldView.swift */; };
 		FD4DF3D129ED981800AB6A50 /* TextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4DF3D029ED981800AB6A50 /* TextFieldView.xib */; };
 		FD51100D2A27AF7400D5E620 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51100C2A27AF7400D5E620 /* UITextField.swift */; };
+		FD5110102A284DB600D5E620 /* BasePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51100F2A284DB600D5E620 /* BasePickerView.swift */; };
+		FD5110122A284DC200D5E620 /* BasePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD5110112A284DC200D5E620 /* BasePickerView.xib */; };
+		FD5110162A284E8500D5E620 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5110152A284E8500D5E620 /* PickerView.swift */; };
+		FD5110192A28532000D5E620 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5110182A28532000D5E620 /* PickerViewModel.swift */; };
 		FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD564B602965581300A527ED /* TableScreenViewController.swift */; };
 		FD564B632965582200A527ED /* TableScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD564B622965582200A527ED /* TableScreenViewModel.swift */; };
 		FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD564B642965584400A527ED /* TableScreenViewController.xib */; };
@@ -226,6 +230,10 @@
 		FD4DF3CE29ED980E00AB6A50 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		FD4DF3D029ED981800AB6A50 /* TextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldView.xib; sourceTree = "<group>"; };
 		FD51100C2A27AF7400D5E620 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		FD51100F2A284DB600D5E620 /* BasePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePickerView.swift; sourceTree = "<group>"; };
+		FD5110112A284DC200D5E620 /* BasePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasePickerView.xib; sourceTree = "<group>"; };
+		FD5110152A284E8500D5E620 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		FD5110182A28532000D5E620 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
 		FD564B592963E09500A527ED /* VoVanTan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VoVanTan.gpx; sourceTree = "<group>"; };
 		FD564B5A2963E14800A527ED /* Pico.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pico.gpx; sourceTree = "<group>"; };
 		FD564B602965581300A527ED /* TableScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableScreenViewController.swift; sourceTree = "<group>"; };
@@ -557,6 +565,7 @@
 		FD4DF3C229ED929300AB6A50 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				FD51100E2A284D9000D5E620 /* BasePickerView */,
 				FD20158E2A2059AA006A4C2E /* PageView */,
 				FD2015792A1FAFA8006A4C2E /* SegmentControl */,
 				FD2015562A1BD66F006A4C2E /* MonthYearView */,
@@ -580,6 +589,25 @@
 				FD4DF3D029ED981800AB6A50 /* TextFieldView.xib */,
 			);
 			path = TextFieldView;
+			sourceTree = "<group>";
+		};
+		FD51100E2A284D9000D5E620 /* BasePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				FD5110172A28530F00D5E620 /* PickerView */,
+				FD51100F2A284DB600D5E620 /* BasePickerView.swift */,
+				FD5110112A284DC200D5E620 /* BasePickerView.xib */,
+			);
+			path = BasePickerView;
+			sourceTree = "<group>";
+		};
+		FD5110172A28530F00D5E620 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				FD5110152A284E8500D5E620 /* PickerView.swift */,
+				FD5110182A28532000D5E620 /* PickerViewModel.swift */,
+			);
+			path = PickerView;
 			sourceTree = "<group>";
 		};
 		FD564B582963E08400A527ED /* FakeIP */ = {
@@ -1251,6 +1279,7 @@
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
 				FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */,
 				FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */,
+				FD5110122A284DC200D5E620 /* BasePickerView.xib in Resources */,
 				FDE9CD112A1549CF004844AD /* BaseSheetView.xib in Resources */,
 				FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */,
 				FDE9CCF32A1331BC004844AD /* AddressCollectionRadioViewCell.xib in Resources */,
@@ -1325,6 +1354,7 @@
 				FD48DBE729E68FC800264497 /* UIView.swift in Sources */,
 				FDE9CD142A16269E004844AD /* AddressInfoView.swift in Sources */,
 				FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */,
+				FD5110102A284DB600D5E620 /* BasePickerView.swift in Sources */,
 				FDADC1D029F3FD9A00803536 /* AddressCollectionViewCellViewModel.swift in Sources */,
 				FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */,
 				FD564B972965855200A527ED /* String.swift in Sources */,
@@ -1389,6 +1419,7 @@
 				FDE9CD0C2A14844C004844AD /* DropDownViewDelegate.swift in Sources */,
 				FDE9CD0F2A1549C3004844AD /* BaseSheetView.swift in Sources */,
 				FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */,
+				FD5110162A284E8500D5E620 /* PickerView.swift in Sources */,
 				FDADC1C429F39FF200803536 /* AddressCollectionViewModel.swift in Sources */,
 				FD2015782A1E8008006A4C2E /* AddressCollectionTarget.swift in Sources */,
 				FDA852C129EE786900A6357F /* RealmCollectionModels.swift in Sources */,
@@ -1407,6 +1438,7 @@
 				FDADC1C129F39FD400803536 /* AddressCollectionViewController.swift in Sources */,
 				FD5765AC2963D206005969BE /* Array.swift in Sources */,
 				FD738FA72A08A34E00088BF0 /* DetailScreenViewModel.swift in Sources */,
+				FD5110192A28532000D5E620 /* PickerViewModel.swift in Sources */,
 				FD5765AA2963D17F005969BE /* ProviderType.swift in Sources */,
 				FD564B752965648D00A527ED /* TableScreenCellViewModel.swift in Sources */,
 				FD2015A12A244B8C006A4C2E /* AddressInfoRoomViewModel.swift in Sources */,

@@ -35,6 +35,7 @@
 "electricCell" = "Số điện: ";
 "totalCell" = "Tổng: ";
 "yesSymbolText" = "Đã trả";
+"noSymbolText" = "Chưa trả";
 "pendingSymbolText" = "Chưa giải quyết";
 "vacancySymbolText" = "Trống phòng";
 

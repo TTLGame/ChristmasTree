@@ -105,7 +105,16 @@ class AddressInfoRoomView : UIView {
             self.viewModel.getData(date: self.viewModel.currentMonthYear)
             
         }).disposed(by: disposeBag)
+        
+        self.viewModel.pickerViewModel.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.detailTblView.reloadData()
+            }
+        }).disposed(by: disposeBag)
+        
         self.viewModel.setupData()
+        self.viewModel.getPickerData()
     }
 }
 
@@ -132,7 +141,7 @@ extension AddressInfoRoomView : UITableViewDataSource {
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
         cell.textFieldConfig(isDisable: !viewModel.getEditMode())
         cell.indexPath = indexPath
-        
+        cell.setupPicker(viewModel: self.viewModel.pickerViewModel.value, baseVC: baseVC)
         if (indexPath.row == viewModel.getFocusIndex()) {
             viewModel.changeFocusIndex(index: -1)
             DispatchQueue.main.async {

@@ -35,6 +35,7 @@
 "electricCell" = "Electric: ";
 "totalCell" = "Total: ";
 "yesSymbolText" = "Paid";
+"noSymbolText" = "Not Paid";
 "pendingSymbolText" = "Pending";
 "vacancySymbolText" = "Vacancy";
 

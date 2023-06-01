@@ -14,6 +14,7 @@ class AddressInfoRoomViewModel : NSObject {
     var cellViewModels : BehaviorRelay<[AddressInfoRoomViewCellViewModel]> = BehaviorRelay(value: [])
     var addressDataMonthModel : BehaviorRelay<[AddressDataMonthModel]> = BehaviorRelay(value: [])
     var roomDataModel : BehaviorRelay<[RoomDataModel]> = BehaviorRelay(value: [])
+    var pickerViewModel : BehaviorRelay<[PickerViewModel]> = BehaviorRelay(value: [])
     
     private var editMode = false
     private var currentIndex : Int = -1
@@ -108,6 +109,22 @@ class AddressInfoRoomViewModel : NSObject {
             }
         }
     }
+    
+    func getPickerData(){
+        let cellData = [PickerViewModel(title: Language.localized("yesSymbolText"),
+                                        image: UIImage(named: "yesSymbol"),
+                                        id: "Paid"),
+                        PickerViewModel(title:  Language.localized("pendingSymbolText"),
+                                        image: UIImage(named: "pendingSymbol"),
+                                        id: "Pending"),
+                        PickerViewModel(title: Language.localized("vacancySymbolText"),
+                                        image: UIImage(named: "vacancySymbol"),
+                                        id : "Vacancy"),
+                        PickerViewModel(title: Language.localized("noSymbolText"),
+                                        image: UIImage(named: "noSymbol"),
+                                        id : "NotPaid")]
+        self.pickerViewModel.accept(cellData)
+    }
 }
 
 //MARK: Public Function
@@ -164,6 +181,7 @@ extension AddressInfoRoomViewModel {
            
             roomData[interator].waterNum = cellViewModels.value[interator].inputWater
             roomData[interator].electricNum = cellViewModels.value[interator].inputElectric
+            roomData[interator].status = cellViewModels.value[interator].inputStatus
             
             let arrTotal = self.calculateTotal(cell: roomData[interator])
             roomData[interator].totalNum = arrTotal[0]

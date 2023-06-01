@@ -65,6 +65,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
     @IBOutlet weak var totalLbl: UILabel!
     @IBOutlet weak var roomNumLbl: UILabel!
     
+   
     
     var viewModel : AddressInfoRoomViewCellViewModel? {
         didSet{
@@ -72,6 +73,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
         }
     }
     var indexPath : IndexPath!
+    private var pickerView : BasePickerView!
     
     private func bindData(){
         guard let viewModel = viewModel else { return }
@@ -138,12 +140,35 @@ class AddressInfoRoomViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         setup()
+        addGesture()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupPicker(viewModel: [PickerViewModel], baseVC : UIViewController?){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self, let baseVC = baseVC else { return }
+            self.pickerView = BasePickerView(frame: baseVC.view.frame, size: .fixed(300), baseVC: baseVC)
+            self.pickerView.delegate = self
+            self.pickerView.viewModel = viewModel
+//            self.pickerView.pickerType = .withoutImage
+            self.pickerView.setupPicker()
+        }
+    }
+    
+    private func addGesture(){
+        statusImgView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(pressedStatusImage))
+        statusImgView.addGestureRecognizer(tap)
+    }
+    
+    @objc func pressedStatusImage(){
+        
+        pickerView.open()
     }
     
     private func setup(){
@@ -183,7 +208,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
         
     }
     private func setStatusView(){
-        guard let status = viewModel?.status else { return }
+        guard let status = viewModel?.inputStatus else { return }
         switch AddressCollectionViewCellViewModel.roomStatus(rawValue: status)  {
         case .paid :
             statusImgView.image = UIImage(named: "yesSymbol")
@@ -266,4 +291,13 @@ extension AddressInfoRoomViewCell {
         self.delegate?.focusNextView(current: indexPath)
     }
     
+}
+
+extension AddressInfoRoomViewCell : BasePickerViewDelegate {
+    func didSelectIndex(index: Int, id: String?) {
+        print(index)
+        viewModel?.inputStatus = id
+        self.setStatusView()
+        
+    }
 }

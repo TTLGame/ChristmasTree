@@ -34,6 +34,7 @@ class AddressInfoRoomViewCellViewModel {
 
     var inputWater : Int?
     var inputElectric : Int?
+    var inputStatus : String?
     init(status: String?, roomNum: Int?, lastWater: Int?, currentWater: Int?, totalWater: Int?, waterPrice: Int?, quotaPrice: Int?, quota: Int?, lastElectric: Int?, currentElectric: Int?, electricPrice: Int?, totalElectric: Int?, trashPrice: Int?, internetPrice: Int?, roomPrice: Int?, total: Int?) {
         self.status = status
         self.roomNum = roomNum
@@ -55,6 +56,7 @@ class AddressInfoRoomViewCellViewModel {
         //For validation
         self.inputWater = currentWater
         self.inputElectric = currentElectric
+        self.inputStatus = status
     }
     
     func checkValidation(type : CheckValidationType) -> Bool{
