@@ -12,6 +12,7 @@
 "noData" = "Không có dữ liệu";
 "doneBtn" = "Xong";
 "cancelBtn" = "Hủy bỏ";
+"editStatusBtn"  = "Sửa tr/thái";
 
 //Login View
 "username" = "Tên đăng nhập";

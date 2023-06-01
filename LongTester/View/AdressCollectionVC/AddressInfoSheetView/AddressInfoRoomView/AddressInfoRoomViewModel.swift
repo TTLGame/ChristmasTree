@@ -15,6 +15,7 @@ class AddressInfoRoomViewModel : NSObject {
     var addressDataMonthModel : BehaviorRelay<[AddressDataMonthModel]> = BehaviorRelay(value: [])
     var roomDataModel : BehaviorRelay<[RoomDataModel]> = BehaviorRelay(value: [])
     var pickerViewModel : BehaviorRelay<[PickerViewModel]> = BehaviorRelay(value: [])
+    var statusBtnState : BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
     private var editMode = false
     private var currentIndex : Int = -1
@@ -167,13 +168,15 @@ extension AddressInfoRoomViewModel {
     func getFocusIndex() -> Int{
         return focusIndex
     }
+    
+    func changeEditStatusBtnState(state: Bool){
+        self.statusBtnState.accept(state)
+    }
 }
 
 
 //Convert data back to Models -> Optimize views due to they don't have to call API second time to have updated value
 extension AddressInfoRoomViewModel {
-    
-    
     func convertCellVMtoModels() -> [RoomDataModel] {
         let roomData = roomDataModel.value
         

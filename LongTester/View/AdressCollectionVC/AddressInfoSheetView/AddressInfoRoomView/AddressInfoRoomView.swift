@@ -27,6 +27,8 @@ class AddressInfoRoomView : UIView {
     @IBOutlet weak var electricLbl: UILabel!
     @IBOutlet weak var editImgView: UIImageView!
     
+    @IBOutlet weak var editBtnView: EditStatusButtonView!
+    @IBOutlet weak var editBtnHeightConstraint: NSLayoutConstraint!
     func updateAddressData(addressData: AddressDataModel){
         self.addressDataModel = addressData
         self.viewModel.addressDataModel = addressDataModel
@@ -65,7 +67,13 @@ class AddressInfoRoomView : UIView {
         self.electricLbl.text = Language.localized("electric")
         self.waterLbl.text = Language.localized("water")
         
+        self.editBtnView.alpha = 0
+        self.editBtnHeightConstraint.constant = 0
         editImgView.isUserInteractionEnabled = true
+        
+        editBtnView.baseVC = self.baseVC
+        editBtnView.delegate = self
+        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(editChangePressed))
         editImgView.addGestureRecognizer(gesture)
     }
@@ -76,9 +84,21 @@ class AddressInfoRoomView : UIView {
         
         if (viewModel.getEditMode()) {
             self.detailTblView.reloadData()
+            UIView.animate(withDuration: 0.2) {
+                self.editBtnView.alpha = 1
+                self.editBtnHeightConstraint.constant = 40
+                
+                self.layoutIfNeeded()
+            }
         }
         else {
             if (viewModel.checkValidation()){
+                UIView.animate(withDuration: 0.2) {
+                    self.editBtnView.alpha = 0
+                    self.editBtnHeightConstraint.constant = 0
+                    self.layoutIfNeeded()
+                }
+                editBtnView.resetData()
                 delegate?.didChangeData(view: self, roomData: viewModel.convertCellVMtoModels(),
                                         monthYear: viewModel.currentMonthYear)
                 
@@ -107,6 +127,14 @@ class AddressInfoRoomView : UIView {
         }).disposed(by: disposeBag)
         
         self.viewModel.pickerViewModel.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.detailTblView.reloadData()
+                self.editBtnView.setupPicker(viewModel: self.viewModel.pickerViewModel.value)
+            }
+        }).disposed(by: disposeBag)
+        
+        self.viewModel.statusBtnState.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             DispatchQueue.main.async {
                 self.detailTblView.reloadData()
@@ -139,7 +167,9 @@ extension AddressInfoRoomView : UITableViewDataSource {
         cell.selectionStyle = .none
         cell.delegate = self
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
-        cell.textFieldConfig(isDisable: !viewModel.getEditMode())
+        cell.editState(isDisable: !viewModel.getEditMode())
+        cell.editStatusState(editState: viewModel.getEditMode(),
+                             isDisable: viewModel.statusBtnState.value)
         cell.indexPath = indexPath
         cell.setupPicker(viewModel: self.viewModel.pickerViewModel.value, baseVC: baseVC)
         if (indexPath.row == viewModel.getFocusIndex()) {
@@ -187,4 +217,16 @@ extension AddressInfoRoomView : AddressInfoRoomViewCellDelegate {
             detailTblView.reloadRows(at: [IndexPath(row: current.row + 1, section: 0)], with: .none)
         }
     }
+}
+
+extension AddressInfoRoomView : EditStatusButtonViewDelegate {
+    func didChangeData() {
+
+    }
+    
+    func didChangeStatusEditState(state: Bool) {
+        self.viewModel.changeEditStatusBtnState(state: state)
+    }
+    
+    
 }

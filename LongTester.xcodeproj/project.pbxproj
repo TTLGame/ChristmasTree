@@ -57,6 +57,9 @@
 		FD5110122A284DC200D5E620 /* BasePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD5110112A284DC200D5E620 /* BasePickerView.xib */; };
 		FD5110162A284E8500D5E620 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5110152A284E8500D5E620 /* PickerView.swift */; };
 		FD5110192A28532000D5E620 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5110182A28532000D5E620 /* PickerViewModel.swift */; };
+		FD51101C2A28940F00D5E620 /* EditStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51101B2A28940F00D5E620 /* EditStatusButtonView.swift */; };
+		FD51101E2A28941600D5E620 /* EditStatusButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD51101D2A28941600D5E620 /* EditStatusButtonView.xib */; };
+		FD5110202A289F9600D5E620 /* EditStatusButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51101F2A289F9600D5E620 /* EditStatusButtonViewModel.swift */; };
 		FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD564B602965581300A527ED /* TableScreenViewController.swift */; };
 		FD564B632965582200A527ED /* TableScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD564B622965582200A527ED /* TableScreenViewModel.swift */; };
 		FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD564B642965584400A527ED /* TableScreenViewController.xib */; };
@@ -234,6 +237,9 @@
 		FD5110112A284DC200D5E620 /* BasePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasePickerView.xib; sourceTree = "<group>"; };
 		FD5110152A284E8500D5E620 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		FD5110182A28532000D5E620 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
+		FD51101B2A28940F00D5E620 /* EditStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStatusButtonView.swift; sourceTree = "<group>"; };
+		FD51101D2A28941600D5E620 /* EditStatusButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditStatusButtonView.xib; sourceTree = "<group>"; };
+		FD51101F2A289F9600D5E620 /* EditStatusButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStatusButtonViewModel.swift; sourceTree = "<group>"; };
 		FD564B592963E09500A527ED /* VoVanTan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VoVanTan.gpx; sourceTree = "<group>"; };
 		FD564B5A2963E14800A527ED /* Pico.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pico.gpx; sourceTree = "<group>"; };
 		FD564B602965581300A527ED /* TableScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableScreenViewController.swift; sourceTree = "<group>"; };
@@ -517,6 +523,7 @@
 		FD20158F2A2065A8006A4C2E /* AddressInfoRoomView */ = {
 			isa = PBXGroup;
 			children = (
+				FD51101A2A2893F500D5E620 /* EditStatusButtonView */,
 				FD2015992A23874C006A4C2E /* Cell */,
 				FD2015902A2065C5006A4C2E /* AddressInfoRoomView.swift */,
 				FD2015922A2065CE006A4C2E /* AddressInfoRoomView.xib */,
@@ -608,6 +615,16 @@
 				FD5110182A28532000D5E620 /* PickerViewModel.swift */,
 			);
 			path = PickerView;
+			sourceTree = "<group>";
+		};
+		FD51101A2A2893F500D5E620 /* EditStatusButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				FD51101B2A28940F00D5E620 /* EditStatusButtonView.swift */,
+				FD51101D2A28941600D5E620 /* EditStatusButtonView.xib */,
+				FD51101F2A289F9600D5E620 /* EditStatusButtonViewModel.swift */,
+			);
+			path = EditStatusButtonView;
 			sourceTree = "<group>";
 		};
 		FD564B582963E08400A527ED /* FakeIP */ = {
@@ -1271,6 +1288,7 @@
 				FD20155A2A1BD688006A4C2E /* MonthYearView.xib in Resources */,
 				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
+				FD51101E2A28941600D5E620 /* EditStatusButtonView.xib in Resources */,
 				FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */,
 				FDE9CD082A13F2FD004844AD /* BaseDropDownCell.xib in Resources */,
 				FD20159D2A238765006A4C2E /* AddressInfoRoomViewCell.xib in Resources */,
@@ -1373,6 +1391,7 @@
 				FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */,
 				FDE9CD1A2A17DDD5004844AD /* AddressInfoViewCell.swift in Sources */,
 				FD5765A62963CF0A005969BE /* Model.swift in Sources */,
+				FD51101C2A28940F00D5E620 /* EditStatusButtonView.swift in Sources */,
 				FD564B632965582200A527ED /* TableScreenViewModel.swift in Sources */,
 				FD20159C2A238765006A4C2E /* AddressInfoRoomViewCell.swift in Sources */,
 				FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */,
@@ -1410,6 +1429,7 @@
 				FDE9CCF72A139252004844AD /* Int.swift in Sources */,
 				FD4DF3C829ED92CD00AB6A50 /* LoginViewModel.swift in Sources */,
 				FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */,
+				FD5110202A289F9600D5E620 /* EditStatusButtonViewModel.swift in Sources */,
 				FD564B8529656A2A00A527ED /* APIErrorProcessPlugin.swift in Sources */,
 				FDA852C529EE7B2A00A6357F /* Pages.swift in Sources */,
 				FD2015762A1E77CF006A4C2E /* AddressDataMonthModel.swift in Sources */,

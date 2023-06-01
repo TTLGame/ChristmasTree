@@ -193,12 +193,17 @@ class AddressInfoRoomViewCell: UITableViewCell {
         electricTextField.addTarget(self, action: #selector(AddressInfoRoomViewCell.textFieldDidChange(_:)), for: .editingChanged)
         waterTextField.addTarget(self, action: #selector(AddressInfoRoomViewCell.textFieldDidChange(_:)), for: .editingChanged)
         
-        textFieldConfig(isDisable: true)
+        editState(isDisable: true)
     }
     
-    func textFieldConfig(isDisable: Bool){
-        waterOldLbl.text = isDisable  ? "" : String(viewModel?.lastWater ?? 0)
-        electricOldLbl.text = isDisable ? "" : String(viewModel?.lastElectric ?? 0)
+    func editState(isDisable: Bool){
+        UIView.animate(withDuration: 0.2) {
+            self.waterOldLbl.text = isDisable  ? "" : String(self.viewModel?.lastWater ?? 0)
+            self.electricOldLbl.text = isDisable ? "" : String(self.viewModel?.lastElectric ?? 0)
+            self.layoutIfNeeded()
+        }
+//        waterOldLbl.text = isDisable  ? "" : String(viewModel?.lastWater ?? 0)
+//        electricOldLbl.text = isDisable ? "" : String(viewModel?.lastElectric ?? 0)
         
         electricTextField.isUserInteractionEnabled = !isDisable
         waterTextField.isUserInteractionEnabled = !isDisable
@@ -206,6 +211,14 @@ class AddressInfoRoomViewCell: UITableViewCell {
         electricTextField.backgroundColor = isDisable ? Color.viewDefaultColor : .white
         waterTextField.backgroundColor = isDisable ? Color.viewDefaultColor : .white
         
+        statusImgView.isUserInteractionEnabled = !isDisable
+    }
+    
+    func editStatusState(editState: Bool, isDisable : Bool){
+        if (!editState){
+            return
+        }
+        statusImgView.isUserInteractionEnabled = !isDisable
     }
     private func setStatusView(){
         guard let status = viewModel?.inputStatus else { return }
@@ -295,7 +308,6 @@ extension AddressInfoRoomViewCell {
 
 extension AddressInfoRoomViewCell : BasePickerViewDelegate {
     func didSelectIndex(index: Int, id: String?) {
-        print(index)
         viewModel?.inputStatus = id
         self.setStatusView()
         

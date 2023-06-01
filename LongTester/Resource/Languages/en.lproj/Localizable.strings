@@ -12,6 +12,7 @@
 "noData" = "No Data Found";
 "doneBtn" = "Done";
 "cancelBtn" = "Cancel";
+"editStatusBtn"  = "Edit Status";
 
 //Login View
 "username" = "Username";
