@@ -42,4 +42,8 @@ class MonthYear : Equatable{
     static func ==(lhs: MonthYear, rhs: MonthYear) -> Bool {
         return (lhs.year == rhs.year) && (rhs.month == lhs.month)
     }
+    
+    static func !=(lhs: MonthYear, rhs: MonthYear) -> Bool {
+        return (lhs.year != rhs.year) && (rhs.month != lhs.month)
+    }
 }

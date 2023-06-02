@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol AddressInfoSheetViewDelegate : AnyObject {
-    func didChangeData(view: AddressInfoSheetView, roomData: [RoomDataModel] , monthYear: MonthYear)
+    func didChangeData(view: AddressInfoSheetView , roomData: [RoomDataModel] , monthYear: MonthYear, nextRoom : [RoomDataModel]?)
 }
 class AddressInfoSheetView : UIView {
     var baseVC : BaseViewController?
@@ -72,8 +72,9 @@ class AddressInfoSheetView : UIView {
                                           data: addressData, baseVC: baseVC)
         
         self.addressRoomView = AddressInfoRoomView(frame: baseVC.view.frame,
-                                                  addressDataModel: addressData,
-                                                  baseVC: baseVC)
+                                                   addressDataModel: addressData,
+                                                   currentMonthYear: currentMonthYear,
+                                                   baseVC: baseVC)
         addressRoomView.delegate = self
         addressView.delegate = self
         pageView.transitionViews = [addressView, addressRoomView]
@@ -97,7 +98,7 @@ extension AddressInfoSheetView : AddressInfoViewDelegate {
 }
 
 extension AddressInfoSheetView : AddressInfoRoomViewDelegate {
-    func didChangeData(view: AddressInfoRoomView, roomData: [RoomDataModel], monthYear: MonthYear) {
-        delegate?.didChangeData(view: self, roomData: roomData, monthYear: monthYear)
+    func didChangeData(view: AddressInfoRoomView, roomData: [RoomDataModel], monthYear: MonthYear, nextRoom: [RoomDataModel]?) {
+        delegate?.didChangeData(view: self, roomData: roomData, monthYear: monthYear,nextRoom: nextRoom)
     }
 }

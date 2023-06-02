@@ -33,6 +33,8 @@ class AddressInfoRoomViewCell: UITableViewCell {
     @IBOutlet weak var statusImgView: UIImageView!
     @IBOutlet weak var waterOldLbl: UILabel!
     @IBOutlet weak var electricOldLbl: UILabel!
+    @IBOutlet weak var waterNewLbl: UILabel!
+    @IBOutlet weak var electricNewLbl: UILabel!
     
     @IBOutlet weak var waterTitle: UILabel!
     @IBOutlet weak var currentWaterLbl: UILabel!
@@ -127,6 +129,10 @@ class AddressInfoRoomViewCell: UITableViewCell {
         electricOldLbl.textColor = Color.normalTextColor
         waterOldLbl.textColor = Color.normalTextColor
         
+        
+        electricNewLbl.textColor = Color.normalTextColor
+        waterNewLbl.textColor = Color.normalTextColor
+        
         electricTextField.text = String(viewModel.inputElectric ?? 0)
         waterTextField.text = String(viewModel.inputWater ?? 0)
         
@@ -194,12 +200,21 @@ class AddressInfoRoomViewCell: UITableViewCell {
         waterTextField.addTarget(self, action: #selector(AddressInfoRoomViewCell.textFieldDidChange(_:)), for: .editingChanged)
         
         editState(isDisable: true)
+        waterNewLbl.text = ""
+        electricNewLbl.text = ""
     }
     
     func editState(isDisable: Bool){
         UIView.animate(withDuration: 0.2) {
-            self.waterOldLbl.text = isDisable  ? "" : String(self.viewModel?.lastWater ?? 0)
+            self.waterOldLbl.text = isDisable  ? "     " : String(self.viewModel?.lastWater ?? 0)
             self.electricOldLbl.text = isDisable ? "" : String(self.viewModel?.lastElectric ?? 0)
+            
+            self.waterNewLbl.text = isDisable  ? "" :
+                                                (self.viewModel?.nextWater != nil ?
+                                                 String(self.viewModel?.nextWater ?? 0) : "")
+            self.electricNewLbl.text = isDisable  ? "" :
+                                                (self.viewModel?.nextElectric != nil ?
+                                                 String(self.viewModel?.nextElectric ?? 0) : "")
             self.layoutIfNeeded()
         }
 //        waterOldLbl.text = isDisable  ? "" : String(viewModel?.lastWater ?? 0)
@@ -220,6 +235,12 @@ class AddressInfoRoomViewCell: UITableViewCell {
         }
         statusImgView.isUserInteractionEnabled = !isDisable
     }
+    
+    func updateNextValue(value: [Int?]){
+        viewModel?.nextWater = value[0]
+        viewModel?.nextElectric = value[1]
+    }
+    
     private func setStatusView(){
         guard let status = viewModel?.inputStatus else { return }
         switch AddressCollectionViewCellViewModel.roomStatus(rawValue: status)  {
@@ -261,6 +282,8 @@ extension AddressInfoRoomViewCell : UITextFieldDelegate{
                let electricText = Int(newElectricText) {
                 viewModel.inputElectric = electricText
                 electricOldLbl.textColor = viewModel.checkValidation(type: .electric) ? Color.normalTextColor : Color.redPrimary
+                
+                electricNewLbl.textColor = viewModel.checkValidationNext(type: .electric) ? Color.normalTextColor : Color.redPrimary
             }
             
         case .water :
@@ -269,6 +292,8 @@ extension AddressInfoRoomViewCell : UITextFieldDelegate{
                let waterText = Int(newWaterText) {
                 viewModel.inputWater = waterText
                 waterOldLbl.textColor = viewModel.checkValidation(type: .water) ? Color.normalTextColor : Color.redPrimary
+                
+                waterNewLbl.textColor = viewModel.checkValidationNext(type: .water) ? Color.normalTextColor : Color.redPrimary
             }
         }
     }

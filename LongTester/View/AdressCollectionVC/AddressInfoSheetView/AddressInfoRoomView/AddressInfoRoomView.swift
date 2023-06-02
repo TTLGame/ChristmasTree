@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 protocol AddressInfoRoomViewDelegate : AnyObject {
-    func didChangeData(view: AddressInfoRoomView , roomData: [RoomDataModel] , monthYear: MonthYear)
+    func didChangeData(view: AddressInfoRoomView , roomData: [RoomDataModel] , monthYear: MonthYear, nextRoom : [RoomDataModel]?)
 }
 class AddressInfoRoomView : UIView {
     var baseVC : BaseViewController?
@@ -35,9 +35,10 @@ class AddressInfoRoomView : UIView {
         self.viewModel.setupData()
         
     }
-    init(frame: CGRect,addressDataModel: AddressDataModel, baseVC: BaseViewController) {
+    init(frame: CGRect,addressDataModel: AddressDataModel, currentMonthYear : MonthYear, baseVC: BaseViewController) {
         super.init(frame: frame)
         self.baseVC = baseVC
+        self.currentMonthYear = currentMonthYear
         self.addressDataModel = addressDataModel
         commonInit()
     }
@@ -83,7 +84,9 @@ class AddressInfoRoomView : UIView {
         viewModel.changeCurrentIndex(index: -1)
         
         if (viewModel.getEditMode()) {
-            self.detailTblView.reloadData()
+            DispatchQueue.main.async {
+                self.detailTblView.reloadData()
+            }
             UIView.animate(withDuration: 0.2) {
                 self.editBtnView.alpha = 1
                 self.editBtnHeightConstraint.constant = 40
@@ -99,8 +102,10 @@ class AddressInfoRoomView : UIView {
                     self.layoutIfNeeded()
                 }
                 editBtnView.resetData()
-                delegate?.didChangeData(view: self, roomData: viewModel.convertCellVMtoModels(),
-                                        monthYear: viewModel.currentMonthYear)
+                delegate?.didChangeData(view: self,
+                                        roomData: viewModel.convertCellVMtoModels(),
+                                        monthYear: viewModel.currentMonthYear,
+                                        nextRoom: viewModel.convertNextMonthDatatoModels())
                 
 //                self.detailTblView.reloadData()
             }
@@ -167,6 +172,7 @@ extension AddressInfoRoomView : UITableViewDataSource {
         cell.selectionStyle = .none
         cell.delegate = self
         cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
+        cell.updateNextValue(value: viewModel.getNextMonthData(index: indexPath.row))
         cell.editState(isDisable: !viewModel.getEditMode())
         cell.editStatusState(editState: viewModel.getEditMode(),
                              isDisable: viewModel.statusBtnState.value)

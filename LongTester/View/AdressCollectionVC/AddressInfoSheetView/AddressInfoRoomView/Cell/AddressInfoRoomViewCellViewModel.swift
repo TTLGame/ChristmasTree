@@ -35,6 +35,10 @@ class AddressInfoRoomViewCellViewModel {
     var inputWater : Int?
     var inputElectric : Int?
     var inputStatus : String?
+    
+    var nextWater : Int?
+    var nextElectric : Int?
+    
     init(status: String?, roomNum: Int?, lastWater: Int?, currentWater: Int?, totalWater: Int?, waterPrice: Int?, quotaPrice: Int?, quota: Int?, lastElectric: Int?, currentElectric: Int?, electricPrice: Int?, totalElectric: Int?, trashPrice: Int?, internetPrice: Int?, roomPrice: Int?, total: Int?) {
         self.status = status
         self.roomNum = roomNum
@@ -75,6 +79,28 @@ class AddressInfoRoomViewCellViewModel {
         }
         else {
             return false
+        }
+    }
+    
+    func checkValidationNext(type : CheckValidationType) -> Bool{
+        if let inputWater = inputWater,
+           let nextWater = nextWater,
+           let inputElectric =  inputElectric,
+           let nextElectric = nextElectric {
+            var result = false
+            switch type {
+            case .water :
+                result =  inputWater <= nextWater
+            case .electric :
+                result = inputElectric <= nextElectric
+            case .all:
+                result = inputWater <= nextWater && inputElectric <= nextElectric
+            }
+            
+            return result
+        }
+        else {
+            return true
         }
     }
 }

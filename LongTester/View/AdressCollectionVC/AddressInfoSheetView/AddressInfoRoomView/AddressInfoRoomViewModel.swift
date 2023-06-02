@@ -36,7 +36,7 @@ class AddressInfoRoomViewModel : NSObject {
         bindToEvents()
         
     }
-    
+
     private func calculateTotal(cell : RoomDataModel) -> [Int] {
         var total = 0
         let currentElectric = cell.electricNum ?? 0
@@ -64,7 +64,7 @@ class AddressInfoRoomViewModel : NSObject {
         
         return [total, totalWater, totalElectric]
     }
-    func bindToEvents() {
+    private func bindToEvents() {
         roomDataModel.map {data in
             data.map {cell in
                 let arrTotal = self.calculateTotal(cell: cell)
@@ -76,14 +76,7 @@ class AddressInfoRoomViewModel : NSObject {
         }.bind(to: cellViewModels).disposed(by: disposeBag)
     }
     
-    func setupData(){
-        if let data = addressDataModel.data {
-            self.addressDataMonthModel.accept(data)
-        }
-    }
-    func getData(date: MonthYear){
-        currentMonthYear = date
-
+    private func getRoomDataModel(date: MonthYear) -> [RoomDataModel] {
         let checkData = addressDataMonthModel.value.contains(where: { cell in
             var monthYearData = MonthYear()
             if let monthYear = cell.monthYear?.split(separator: "/"),
@@ -108,9 +101,23 @@ class AddressInfoRoomViewModel : NSObject {
                 }
                 return monthYearData == date
             }).first , let mainCellData = monthYearData.roomData {
-                roomDataModel.accept(mainCellData)
+                return mainCellData
             }
         }
+        return []
+    }
+}
+
+//MARK: Public Function
+extension AddressInfoRoomViewModel {
+    func setupData(){
+        if let data = addressDataModel.data {
+            self.addressDataMonthModel.accept(data)
+        }
+    }
+    func getData(date: MonthYear){
+        currentMonthYear = date
+        roomDataModel.accept(getRoomDataModel(date: date))
     }
     
     func getPickerData(){
@@ -128,10 +135,18 @@ class AddressInfoRoomViewModel : NSObject {
                                         id : "NotPaid")]
         self.pickerViewModel.accept(cellData)
     }
-}
-
-//MARK: Public Function
-extension AddressInfoRoomViewModel {
+    
+    func getNextMonthData(index: Int) -> [Int?]{
+        if (currentMonthYear == MonthYear()){
+            return [nil,nil] }
+    
+        let roomData  = getRoomDataModel(date: currentMonthYear + 1)
+        if roomData.count > index {
+            return [roomData[index].waterNum, roomData[index].electricNum]
+        }
+        return [nil,nil]
+    }
+    
     func showPopUp(){
         let closeModel = AlertModel.ActionModel(title: Language.localized("understand"), style: .default, handler: {_ in
         })
@@ -141,7 +156,9 @@ extension AddressInfoRoomViewModel {
     func checkValidation() -> Bool{
         var result = true
         for cellViewModel in cellViewModels.value {
-            result = result && cellViewModel.checkValidation(type: .all)
+            result = result
+            && cellViewModel.checkValidation(type: .all)
+            && cellViewModel.checkValidationNext(type: .all)
         }
         
         return result
@@ -195,6 +212,21 @@ extension AddressInfoRoomViewModel {
             roomData[interator].waterNum = cellViewModels.value[interator].inputWater
             roomData[interator].electricNum = cellViewModels.value[interator].inputElectric
             roomData[interator].status = cellViewModels.value[interator].inputStatus
+            
+            let arrTotal = self.calculateTotal(cell: roomData[interator])
+            roomData[interator].totalNum = arrTotal[0]
+        }
+        return roomData
+    }
+    
+    func convertNextMonthDatatoModels() -> [RoomDataModel]? {
+        if (currentMonthYear == MonthYear()){
+            return nil
+        }
+        let roomData  = getRoomDataModel(date: currentMonthYear + 1)
+        for interator in 0..<roomData.count {
+            roomData[interator].lastWaterNum = cellViewModels.value[interator].inputWater
+            roomData[interator].lastElectricNum = cellViewModels.value[interator].inputElectric
             
             let arrTotal = self.calculateTotal(cell: roomData[interator])
             roomData[interator].totalNum = arrTotal[0]

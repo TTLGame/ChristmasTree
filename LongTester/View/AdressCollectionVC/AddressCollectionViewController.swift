@@ -140,7 +140,7 @@ class AddressCollectionViewController: BaseViewController {
         self.viewModel.monthYearViewModel.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] viewModels in
             guard let self = self else {return}
             DispatchQueue.main.async {
-                self.viewModel.getData(date: MonthYear())
+                self.viewModel.getData(date: self.viewModel.currentMonthYear)
             }
            
         }).disposed(by: disposeBag)
@@ -375,9 +375,10 @@ extension AddressCollectionViewController {
             guard let self = self else { return }
             
             let addressView = AddressInfoRoomView(frame: self.view.frame,
-                                                      addressDataModel: self.viewModel.addressDataModel,
+                                                  addressDataModel: self.viewModel.addressDataModel, currentMonthYear: self.viewModel.currentMonthYear,
                                                       baseVC: self)
             addressView.delegate = self
+            addressView.resetMonthYear(monthYear: self.viewModel.currentMonthYear)
 //            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.addressDataModel, baseVC: self)
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
             sheetView.title = Language.localized("addressCollectionMainTitle")
@@ -401,16 +402,17 @@ extension AddressCollectionViewController : MonthYearViewDelegate {
 }
 
 extension AddressCollectionViewController : AddressInfoSheetViewDelegate {
-    func didChangeData(view: AddressInfoSheetView, roomData: [RoomDataModel], monthYear: MonthYear) {
-        viewModel.updateAddressDataModel(roomData: roomData, monthYear: monthYear)
+    func didChangeData(view: AddressInfoSheetView, roomData: [RoomDataModel], monthYear: MonthYear, nextRoom: [RoomDataModel]?) {
+        viewModel.updateAddressDataModel(roomData: roomData, monthYear: monthYear,nextRoom: nextRoom)
         view.updateAddressData(addressData: viewModel.addressDataModel)
     }
 }
 
 
 extension AddressCollectionViewController : AddressInfoRoomViewDelegate {
-    func didChangeData(view: AddressInfoRoomView, roomData: [RoomDataModel], monthYear: MonthYear) {
-        viewModel.updateAddressDataModel(roomData: roomData, monthYear: monthYear)
+    func didChangeData(view: AddressInfoRoomView, roomData: [RoomDataModel], monthYear: MonthYear, nextRoom: [RoomDataModel]?) {
+        print("MonthYear \(monthYear.month)")
+        viewModel.updateAddressDataModel(roomData: roomData, monthYear: monthYear,nextRoom: nextRoom)
         view.updateAddressData(addressData: viewModel.addressDataModel)
     }
 }
