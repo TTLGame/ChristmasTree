@@ -27,7 +27,6 @@ class MainScreenViewController: BaseViewController {
     }
     
     private func setup(){
-        //        headerView.addBottomShadow()
         headerBackGround.addBottomShadow()
         headerBackGround.backgroundColor = Color.redPrimary
         headerLbl.text = Language.localized("mainTitle")
@@ -61,6 +60,9 @@ class MainScreenViewController: BaseViewController {
     
     private func setupTableView(){
         self.addressTblView.register(UINib(nibName: String(describing: MainScreenCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MainScreenCell.self))
+        
+        self.addressTblView.register(UINib(nibName: String(describing: MainScreenAddMoreCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MainScreenAddMoreCell.self))
+        
         self.addressTblView.delegate = self
         self.addressTblView.dataSource = self        
     }
@@ -93,31 +95,43 @@ extension MainScreenViewController : UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (viewModel.cellViewModels.value.count == 0) {
-            tableView.setEmptyData()
-        }
-        else {
-            tableView.restoreNewProduct()
-        }
-        return viewModel.cellViewModels.value.count
+//        if (viewModel.cellViewModels.value.count == 0) {
+//            tableView.setEmptyData()
+//        }
+//        else {
+//            tableView.restoreNewProduct()
+//        }
+        return viewModel.cellViewModels.value.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MainScreenCell! = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: MainScreenCell.self),
-            for: indexPath) as? MainScreenCell
+        if indexPath.row == viewModel.cellViewModels.value.count {
+            let cell: MainScreenAddMoreCell! = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: MainScreenAddMoreCell.self),
+                for: indexPath) as? MainScreenAddMoreCell
 
-        cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
-        
-        // Highlighted color
-        let myCustomSelectionColorView = UIView()
-        myCustomSelectionColorView.backgroundColor = .clear
-        cell.selectedBackgroundView = myCustomSelectionColorView
-        cell.handlePress = {
-            self.handlePressData(indexPath: indexPath)
+            // Highlighted color
+            let myCustomSelectionColorView = UIView()
+            myCustomSelectionColorView.backgroundColor = .clear
+            cell.selectedBackgroundView = myCustomSelectionColorView
+            return cell
         }
-        
-        return cell
+        else {
+            let cell: MainScreenCell! = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: MainScreenCell.self),
+                for: indexPath) as? MainScreenCell
+
+            cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
+            
+            // Highlighted color
+            let myCustomSelectionColorView = UIView()
+            myCustomSelectionColorView.backgroundColor = .clear
+            cell.selectedBackgroundView = myCustomSelectionColorView
+            cell.handlePress = {
+                self.handlePressData(indexPath: indexPath)
+            }
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

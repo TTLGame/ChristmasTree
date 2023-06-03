@@ -36,8 +36,8 @@ class TableScreenCell: UITableViewCell {
     
     func renderColor(color: UIColor, pressed : Bool){
         renderColor.backgroundColor = color
-        borderView.addDashedBorder()
-            borderView.isHidden = pressed
+        borderView.addDashedBorder(color: Color.redPrimary, radius: 10)
+//            borderView.isHidden = pressed
         
     }
 }

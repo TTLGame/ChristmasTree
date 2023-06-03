@@ -25,7 +25,6 @@
 		FD2015742A1E75D7006A4C2E /* RoomDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015732A1E75D7006A4C2E /* RoomDataModel.swift */; };
 		FD2015762A1E77CF006A4C2E /* AddressDataMonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015752A1E77CF006A4C2E /* AddressDataMonthModel.swift */; };
 		FD2015782A1E8008006A4C2E /* AddressCollectionTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015772A1E8008006A4C2E /* AddressCollectionTarget.swift */; };
-		FD20157B2A1FB011006A4C2E /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20157A2A1FB011006A4C2E /* SegmentControl.swift */; };
 		FD20157D2A1FB019006A4C2E /* SegmentControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD20157C2A1FB019006A4C2E /* SegmentControl.xib */; };
 		FD2015812A1FB6F9006A4C2E /* SegmentControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20157F2A1FB6F9006A4C2E /* SegmentControlCell.swift */; };
 		FD2015822A1FB6F9006A4C2E /* SegmentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2015802A1FB6F9006A4C2E /* SegmentControlCell.xib */; };
@@ -44,6 +43,7 @@
 		FD2015A12A244B8C006A4C2E /* AddressInfoRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015A02A244B8C006A4C2E /* AddressInfoRoomViewModel.swift */; };
 		FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2184E129E8F21D00761826 /* BaseNavigationView.swift */; };
 		FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2184E329E8F22900761826 /* BaseNavigationView.xib */; };
+		FD3719272A2B0D6F00CF6FA5 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3719262A2B0D6F00CF6FA5 /* SegmentControl.swift */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
 		FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD929DAAC0200448F99 /* CropImageVC.swift */; };
 		FD48DBE729E68FC800264497 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD48DBE629E68FC800264497 /* UIView.swift */; };
@@ -110,7 +110,6 @@
 		FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC19E29EFFFDE00803536 /* SlideMenuView.xib */; };
 		FDADC1A729F1230B00803536 /* MainScreenCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1A629F1230B00803536 /* MainScreenCellViewModel.swift */; };
 		FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1A829F1319900803536 /* MainScreenCell.swift */; };
-		FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDADC1A929F1319900803536 /* MainScreenCell.xib */; };
 		FDADC1AD29F1815D00803536 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1AC29F1815D00803536 /* RootViewModel.swift */; };
 		FDADC1B129F25FA300803536 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1B029F25FA300803536 /* AlertView.swift */; };
 		FDADC1B329F2608500803536 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC1B229F2608500803536 /* AlertViewModel.swift */; };
@@ -166,6 +165,9 @@
 		FDF300C129E3CB0E0084562A /* MainScreenTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300C029E3CB0E0084562A /* MainScreenTarget.swift */; };
 		FDF300C329E3CCEA0084562A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300C229E3CCEA0084562A /* Environment.swift */; };
 		FDF300C529E3D0880084562A /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF300C429E3D0880084562A /* Decoder.swift */; };
+		FDFDFD8F2A29F91B009FD96C /* MainScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDFDFD8E2A29F91B009FD96C /* MainScreenCell.xib */; };
+		FDFDFD932A29F9A3009FD96C /* MainScreenAddMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFDFD912A29F9A3009FD96C /* MainScreenAddMoreCell.swift */; };
+		FDFDFD942A29F9A3009FD96C /* MainScreenAddMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDFDFD922A29F9A3009FD96C /* MainScreenAddMoreCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,7 +207,6 @@
 		FD2015732A1E75D7006A4C2E /* RoomDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDataModel.swift; sourceTree = "<group>"; };
 		FD2015752A1E77CF006A4C2E /* AddressDataMonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDataMonthModel.swift; sourceTree = "<group>"; };
 		FD2015772A1E8008006A4C2E /* AddressCollectionTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionTarget.swift; sourceTree = "<group>"; };
-		FD20157A2A1FB011006A4C2E /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegmentControl.swift; path = ../../../../../../Downloads/SegmentControl.swift; sourceTree = "<group>"; };
 		FD20157C2A1FB019006A4C2E /* SegmentControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControl.xib; sourceTree = "<group>"; };
 		FD20157F2A1FB6F9006A4C2E /* SegmentControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlCell.swift; sourceTree = "<group>"; };
 		FD2015802A1FB6F9006A4C2E /* SegmentControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControlCell.xib; sourceTree = "<group>"; };
@@ -224,6 +225,7 @@
 		FD2015A02A244B8C006A4C2E /* AddressInfoRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoRoomViewModel.swift; sourceTree = "<group>"; };
 		FD2184E129E8F21D00761826 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FD2184E329E8F22900761826 /* BaseNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseNavigationView.xib; sourceTree = "<group>"; };
+		FD3719262A2B0D6F00CF6FA5 /* SegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
 		FD3B1DD929DAAC0200448F99 /* CropImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageVC.swift; sourceTree = "<group>"; };
 		FD48DBE629E68FC800264497 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -295,7 +297,6 @@
 		FDADC19E29EFFFDE00803536 /* SlideMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideMenuView.xib; sourceTree = "<group>"; };
 		FDADC1A629F1230B00803536 /* MainScreenCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCellViewModel.swift; sourceTree = "<group>"; };
 		FDADC1A829F1319900803536 /* MainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCell.swift; sourceTree = "<group>"; };
-		FDADC1A929F1319900803536 /* MainScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenCell.xib; sourceTree = "<group>"; };
 		FDADC1AC29F1815D00803536 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		FDADC1B029F25FA300803536 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		FDADC1B229F2608500803536 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
@@ -353,6 +354,9 @@
 		FDF300C029E3CB0E0084562A /* MainScreenTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTarget.swift; sourceTree = "<group>"; };
 		FDF300C229E3CCEA0084562A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		FDF300C429E3D0880084562A /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		FDFDFD8E2A29F91B009FD96C /* MainScreenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenCell.xib; sourceTree = "<group>"; };
+		FDFDFD912A29F9A3009FD96C /* MainScreenAddMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenAddMoreCell.swift; sourceTree = "<group>"; };
+		FDFDFD922A29F9A3009FD96C /* MainScreenAddMoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenAddMoreCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -482,7 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				FD20157E2A1FB6D0006A4C2E /* SegmentControlCell */,
-				FD20157A2A1FB011006A4C2E /* SegmentControl.swift */,
+				FD3719262A2B0D6F00CF6FA5 /* SegmentControl.swift */,
 				FD20157C2A1FB019006A4C2E /* SegmentControl.xib */,
 			);
 			path = SegmentControl;
@@ -625,6 +629,16 @@
 				FD51101F2A289F9600D5E620 /* EditStatusButtonViewModel.swift */,
 			);
 			path = EditStatusButtonView;
+			sourceTree = "<group>";
+		};
+		FD5110212A29F89700D5E620 /* MainScreenCell */ = {
+			isa = PBXGroup;
+			children = (
+				FDFDFD8E2A29F91B009FD96C /* MainScreenCell.xib */,
+				FDADC1A629F1230B00803536 /* MainScreenCellViewModel.swift */,
+				FDADC1A829F1319900803536 /* MainScreenCell.swift */,
+			);
+			path = MainScreenCell;
 			sourceTree = "<group>";
 		};
 		FD564B582963E08400A527ED /* FakeIP */ = {
@@ -935,9 +949,8 @@
 		FDADC1A029F122D800803536 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				FDADC1A629F1230B00803536 /* MainScreenCellViewModel.swift */,
-				FDADC1A829F1319900803536 /* MainScreenCell.swift */,
-				FDADC1A929F1319900803536 /* MainScreenCell.xib */,
+				FDFDFD902A29F934009FD96C /* MainScreenAddMoreCell */,
+				FD5110212A29F89700D5E620 /* MainScreenCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1177,6 +1190,15 @@
 			path = Target;
 			sourceTree = "<group>";
 		};
+		FDFDFD902A29F934009FD96C /* MainScreenAddMoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				FDFDFD912A29F9A3009FD96C /* MainScreenAddMoreCell.swift */,
+				FDFDFD922A29F9A3009FD96C /* MainScreenAddMoreCell.xib */,
+			);
+			path = MainScreenAddMoreCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1282,6 +1304,8 @@
 				FD2015932A2065CE006A4C2E /* AddressInfoRoomView.xib in Resources */,
 				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
 				FDE9CD032A13F0E3004844AD /* DropDownView.xib in Resources */,
+				FDFDFD942A29F9A3009FD96C /* MainScreenAddMoreCell.xib in Resources */,
+				FDFDFD8F2A29F91B009FD96C /* MainScreenCell.xib in Resources */,
 				FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */,
 				FD20158D2A205616006A4C2E /* AddressInfoSheetView.xib in Resources */,
 				FD564B652965584400A527ED /* TableScreenViewController.xib in Resources */,
@@ -1295,7 +1319,6 @@
 				FDADC1CB29F3B75700803536 /* AddressCollectionViewCell.xib in Resources */,
 				FDE9CCFC2A13E414004844AD /* AddressCollectionDropDownCell.xib in Resources */,
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
-				FDADC1AB29F1319900803536 /* MainScreenCell.xib in Resources */,
 				FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */,
 				FD5110122A284DC200D5E620 /* BasePickerView.xib in Resources */,
 				FDE9CD112A1549CF004844AD /* BaseSheetView.xib in Resources */,
@@ -1396,7 +1419,6 @@
 				FD20159C2A238765006A4C2E /* AddressInfoRoomViewCell.swift in Sources */,
 				FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */,
 				FDDB486A29EFD28E00D212A7 /* UIViewController.swift in Sources */,
-				FD20157B2A1FB011006A4C2E /* SegmentControl.swift in Sources */,
 				FD51100D2A27AF7400D5E620 /* UITextField.swift in Sources */,
 				FD89619C295BF11A00C7BE20 /* MainScreenViewController.swift in Sources */,
 				FD2015622A1C7430006A4C2E /* AddressCollectionMonthYearViewModel.swift in Sources */,
@@ -1432,6 +1454,7 @@
 				FD5110202A289F9600D5E620 /* EditStatusButtonViewModel.swift in Sources */,
 				FD564B8529656A2A00A527ED /* APIErrorProcessPlugin.swift in Sources */,
 				FDA852C529EE7B2A00A6357F /* Pages.swift in Sources */,
+				FD3719272A2B0D6F00CF6FA5 /* SegmentControl.swift in Sources */,
 				FD2015762A1E77CF006A4C2E /* AddressDataMonthModel.swift in Sources */,
 				FD564B7B296567D700A527ED /* Provider.swift in Sources */,
 				FD5765AE2963D2A0005969BE /* Dictionary.swift in Sources */,
@@ -1441,6 +1464,7 @@
 				FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */,
 				FD5110162A284E8500D5E620 /* PickerView.swift in Sources */,
 				FDADC1C429F39FF200803536 /* AddressCollectionViewModel.swift in Sources */,
+				FDFDFD932A29F9A3009FD96C /* MainScreenAddMoreCell.swift in Sources */,
 				FD2015782A1E8008006A4C2E /* AddressCollectionTarget.swift in Sources */,
 				FDA852C129EE786900A6357F /* RealmCollectionModels.swift in Sources */,
 				FD738FA42A08A32900088BF0 /* DetailScreenViewController.swift in Sources */,

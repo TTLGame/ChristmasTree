@@ -63,27 +63,8 @@ class MainScreenViewModel : NSObject {
                 case .success(let value):
                     if let value = value.data {
                         tempUser.append(contentsOf: value)
-                        self.api.request(MultiTarget(MainScreenTarget.getUser(page: 2)))
-                            .map(Pages.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
-                            .subscribe {[weak self] event in
-                                guard let self = self else { return }
-                                switch event {
-                                case .success(let value):
-                                    if let value = value.data {
-                                        tempUser.append(contentsOf: value)
-                                        self.users.accept(tempUser)
-                                        self.rootViewModel.handleProgress(false)
-                                        SVProgressHUD.dismiss()
-                                    }
-                                case .failure(_):
-                                    SVProgressHUD.dismiss()
-                                    break
-                                }
-                            }.disposed(by: self.disposeBag)
-                        
-//                        self.users.accept(value)
-//                        self.rootViewModel.handleProgress(false)
-//                        SVProgressHUD.dismiss()
+                        self.users.accept(tempUser)
+                        self.rootViewModel.handleProgress(false)
                     }
                 case .failure(_):
                     SVProgressHUD.dismiss()
