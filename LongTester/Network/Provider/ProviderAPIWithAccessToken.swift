@@ -65,11 +65,22 @@ class ProviderAPIWithAccessToken<Target>: Provider<Target> where Target: Moya.Ta
 
     override func request(_ token: Target) -> Single<Moya.Response> {
         let request = provider.rx.request(token)
+        
+        print("API CALLER ----------------------")
+        let url = token.baseURL.absoluteString + token.path
+        print("API >>> URL : \(url)")
+        print("API >>> METHOD : \(token.method.rawValue)")
+        switch token.task {
+        case let .requestParameters(parameters,_):
+            print("API >>> PARAMS : \(parameters)")
+        default:
+            break
+        }
         return request
-            .catchError({ (error) in
+            .catch({ (error) in
                 if case MoyaError.underlying(let underlyingError, let response) = error,
                    case APIError.serverError(let detail) = underlyingError {
-                    let accessTokenExpired: Bool = (detail.code == "401003")
+                    let accessTokenExpired: Bool = (detail.statusCode == 401003)
                     if accessTokenExpired == true {
                         return Single.error(MoyaError.underlying(APIError.accessTokenExpired(error), response))
                     } else {
@@ -79,7 +90,7 @@ class ProviderAPIWithAccessToken<Target>: Provider<Target> where Target: Moya.Ta
                     return Single.error(error)
                 }
             })
-            .catchError({ (error) in
+                .catch({ (error) in
                 // Handle access token expired
                 if case MoyaError.underlying(APIError.accessTokenExpired(_), _) = error,
                    self.autoHandleAccessTokenExpired == true {

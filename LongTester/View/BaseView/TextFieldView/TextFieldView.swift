@@ -39,17 +39,28 @@ class TextFieldView : UIView {
 
 ///FUNCTION ACCESSABLE
 extension TextFieldView {
-    func setup(text : String = "Label", color: UIColor = Color.greyPrimary) {
+    func setup(text : String = "Label", color: UIColor = Color.greyPrimary, isSecure: Bool = false) {
         titleLbl.text = text
         textFieldView.attributedPlaceholder = NSAttributedString(
             string: titleLbl.text ?? "",
             attributes: [NSAttributedString.Key.foregroundColor: Color.greyPrimary]
         )
+        textFieldView.isSecureTextEntry = isSecure
         separatorView.backgroundColor = color
     }
     
-    func getData() -> String? {
-        return textFieldView.text
+    func getData() -> String {
+        return textFieldView.text ?? ""
+    }
+    
+    func addDefaultData(defaultValue: String) {
+        textFieldView.text = defaultValue
+        if (textFieldView.text == "") {
+            changePlaceholder(disable: true)
+        }
+        else {
+            changePlaceholder(disable: false)
+        }
     }
     
     

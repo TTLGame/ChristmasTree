@@ -5,6 +5,9 @@
   Created by Long on 12/29/22.
   
 */
+//Error
+"systemError" = "There is something wrong with the system. Please try again later.";
+"internetError" = "Please check your internet connection and try again";
 
 "welcome" = "Welcome";
 "vietnamese" = "Vietnamese";
@@ -15,7 +18,7 @@
 "editStatusBtn"  = "Edit Status";
 
 //Login View
-"username" = "Username";
+"username" = "Email";
 "password" = "Password";
 "login" = "Login";
 

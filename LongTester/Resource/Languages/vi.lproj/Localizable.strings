@@ -6,6 +6,10 @@
   
 */
 
+//Error
+"systemError" = "Hệ thống hiện tại đang gặp trở ngại. Vui lòng thử lại sau";
+"internetError" = "Vui lòng kiểm tra lại đường truyền mạng của bạn";
+
 "welcome" = "Xin chào";
 "vietnamese" = "Việt Nam";
 "english" = "Tiếng Anh";
@@ -15,7 +19,7 @@
 "editStatusBtn"  = "Sửa tr/thái";
 
 //Login View
-"username" = "Tên đăng nhập";
+"username" = "Email";
 "password" = "Mật khẩu";
 "login" = "Đăng nhập";
 

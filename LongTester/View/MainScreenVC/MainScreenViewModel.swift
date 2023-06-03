@@ -15,13 +15,13 @@ class MainScreenViewModel : NSObject {
     private(set) var users : BehaviorRelay<[User]> = BehaviorRelay(value: [])
     var cellViewModels : BehaviorRelay<[MainScreenCellViewModel]> = BehaviorRelay(value: [])
     
-    let api: Provider<MultiTarget>
+    let api: Provider <MultiTarget>
     private(set) var rootViewModel: RootViewModel
     let limit: Int = 50
     
     private var randomPic = [String]()
     let disposeBag = DisposeBag()
-    init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
+    init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIWithAccessToken<MultiTarget>()) {
         self.api = api
         self.rootViewModel = rootViewModel
         super.init()

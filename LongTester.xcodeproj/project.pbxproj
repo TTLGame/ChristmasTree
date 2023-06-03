@@ -44,6 +44,8 @@
 		FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2184E129E8F21D00761826 /* BaseNavigationView.swift */; };
 		FD2184E429E8F22900761826 /* BaseNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2184E329E8F22900761826 /* BaseNavigationView.xib */; };
 		FD3719272A2B0D6F00CF6FA5 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3719262A2B0D6F00CF6FA5 /* SegmentControl.swift */; };
+		FD3719292A2B94B100CF6FA5 /* LoginTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3719282A2B94B100CF6FA5 /* LoginTarget.swift */; };
+		FD37192C2A2B987E00CF6FA5 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37192B2A2B987E00CF6FA5 /* LoginModel.swift */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
 		FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD929DAAC0200448F99 /* CropImageVC.swift */; };
 		FD48DBE729E68FC800264497 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD48DBE629E68FC800264497 /* UIView.swift */; };
@@ -226,6 +228,8 @@
 		FD2184E129E8F21D00761826 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FD2184E329E8F22900761826 /* BaseNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseNavigationView.xib; sourceTree = "<group>"; };
 		FD3719262A2B0D6F00CF6FA5 /* SegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
+		FD3719282A2B94B100CF6FA5 /* LoginTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTarget.swift; sourceTree = "<group>"; };
+		FD37192B2A2B987E00CF6FA5 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
 		FD3B1DD929DAAC0200448F99 /* CropImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageVC.swift; sourceTree = "<group>"; };
 		FD48DBE629E68FC800264497 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -458,7 +462,6 @@
 		FD20156E2A1E72CC006A4C2E /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				FD5765A02963CE8B005969BE /* User.swift */,
 				FDA852C429EE7B2A00A6357F /* Pages.swift */,
 			);
 			path = MainView;
@@ -553,6 +556,15 @@
 				FD2184E329E8F22900761826 /* BaseNavigationView.xib */,
 			);
 			path = BaseNavigationView;
+			sourceTree = "<group>";
+		};
+		FD37192A2A2B981D00CF6FA5 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				FD5765A02963CE8B005969BE /* User.swift */,
+				FD37192B2A2B987E00CF6FA5 /* LoginModel.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		FD3B1DD829DAABDF00448F99 /* CropImage */ = {
@@ -729,6 +741,7 @@
 		FD57659F2963CE78005969BE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FD37192A2A2B981D00CF6FA5 /* LoginView */,
 				FD2015702A1E731D006A4C2E /* AddressCollectionView */,
 				FD20156F2A1E730A006A4C2E /* AppConfig */,
 				FD20156E2A1E72CC006A4C2E /* MainView */,
@@ -1186,6 +1199,7 @@
 			children = (
 				FDF300C029E3CB0E0084562A /* MainScreenTarget.swift */,
 				FD2015772A1E8008006A4C2E /* AddressCollectionTarget.swift */,
+				FD3719282A2B94B100CF6FA5 /* LoginTarget.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -1400,6 +1414,7 @@
 				FDA852BB29EE780B00A6357F /* CustomSwitch.swift in Sources */,
 				FD564B972965855200A527ED /* String.swift in Sources */,
 				FDA852C229EE786900A6357F /* AppConfigRealmModel.swift in Sources */,
+				FD37192C2A2B987E00CF6FA5 /* LoginModel.swift in Sources */,
 				FDADC1B129F25FA300803536 /* AlertView.swift in Sources */,
 				FDADC1B529F2610700803536 /* AlertModel.swift in Sources */,
 				FDADC1CA29F3B75700803536 /* AddressCollectionViewCell.swift in Sources */,
@@ -1448,6 +1463,7 @@
 				FDA852C329EE786900A6357F /* StoreManager.swift in Sources */,
 				FD564B79296567AB00A527ED /* DefaultAlamofireManager.swift in Sources */,
 				FDE9CCFB2A13E414004844AD /* AddressCollectionDropDownCell.swift in Sources */,
+				FD3719292A2B94B100CF6FA5 /* LoginTarget.swift in Sources */,
 				FDE9CCF72A139252004844AD /* Int.swift in Sources */,
 				FD4DF3C829ED92CD00AB6A50 /* LoginViewModel.swift in Sources */,
 				FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */,
@@ -2161,8 +2177,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				apiHost = "https://reqres.in/";
-				apiPath = api/;
+				apiHost = "http://localhost:5001/";
 			};
 			name = "Debug-UAT";
 		};

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     @IBOutlet weak var userNameView: TextFieldView!
     @IBOutlet weak var passwordView: TextFieldView!
     
@@ -15,17 +15,26 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var customSwitch: CustomSwitch!
     @IBOutlet weak var loginBtn: UIButton!
     
-    let viewModel = LoginViewModel()
+    var viewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        // Do any additional setup after loading the view.
+        bindToViewModel()
+    }
+    
+    private func bindToViewModel() {
+        self.viewModel = LoginViewModel(rootViewModel: rootViewModel as! RootViewModel)
+        
     }
     
     private func setup(){
         viewModel.setupLanguage()
         userNameView.setup(text: Language.localized("username"))
-        passwordView.setup(text: Language.localized("password"))
+        passwordView.setup(text: Language.localized("password"),isSecure: true)
+        #if DEBUG
+        userNameView.addDefaultData(defaultValue: "ttlgame123@gmail.com")
+        passwordView.addDefaultData(defaultValue: "tlong123")
+        #endif
         customSwitch.delegate = self
         loginBtn.setTitle(Language.localized("login"), for: .normal)
         setSwitchChange()
@@ -38,7 +47,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginBtnPressed(_ sender: Any) {
-        AppDelegate.shared.rootViewController.show(.main)
+        viewModel.logIn(email: userNameView.getData(),
+                        pasword: passwordView.getData())
+//        AppDelegate.shared.rootViewController.show(.main)
     }
     
     override func viewWillAppear(_ animated: Bool) {

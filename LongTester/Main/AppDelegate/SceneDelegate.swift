@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             #if DEBUG
             FLEXManager.shared.isNetworkDebuggingEnabled = true
-            FLEXManager.shared.showExplorer()
+//            FLEXManager.shared.showExplorer()
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                      action: #selector(handleFingerQuadrupleTap(_:)))
             tap.numberOfTapsRequired = 2

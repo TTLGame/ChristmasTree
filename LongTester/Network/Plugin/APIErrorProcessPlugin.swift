@@ -25,7 +25,7 @@ struct APIErrorProcessPlugin: PluginType {
             if let detail = try error.response?.map(APIErrorDetail.self,
                                                     atKeyPath: "error",
                                                     using: JSONDecoder(),
-                                                    failsOnEmptyData: true) {
+                                                    failsOnEmptyData: false) {
                 print("Error content: \(String(describing: detail))")
                 return MoyaError.underlying(APIError.serverError(detail), error.response)
             } else {

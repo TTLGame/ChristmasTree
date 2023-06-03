@@ -23,7 +23,52 @@ class RootViewModel : NSObject, BasicViewModel {
         }
     }
 
+    func setUpObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAccessTokenExpired),
+                                               name: .AutoHandleAccessTokenExpired, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAPIError(_:)),
+                                               name: .AutoHandleAPIError, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNoInternetConnectionError(_:)),
+                                               name: .AutoHandleNoInternetConnectionError, object: nil)
+    }
+    
     override init() {
         super.init()
+        setUpObserver()
+    }
+    
+    @objc func handleAccessTokenExpired() {
+//        isAccessTokenExpired.accept(true)
+    }
+
+    @objc func handleAPIError(_ notification: Notification) {
+        if let error: Error = notification.object as? Error {
+            if case APIError.ignore(_) = error {
+                return
+            }
+
+            print("error as? LocalizedAppError \(error as? LocalizedAppError)")
+            if let localizedError: LocalizedAppError = error as? LocalizedAppError,
+               let message = localizedError.appErrorDescription {
+                self.alertModel.accept(AlertModel(message: message))
+            } else {
+                self.alertModel.accept(AlertModel(message: Language.localized("systemError")))
+            }
+        } else {
+            self.alertModel.accept(AlertModel(message: Language.localized("systemError")))
+        }
+    }
+
+    @objc func handleNoInternetConnectionError(_ notification: Notification) {
+        let alert = AlertModel(actionModels:
+                                [AlertModel.ActionModel(title: "OK", style: .default, handler: nil)],
+                               title: nil,
+                               message: Language.localized("internetError"),
+                               prefferedStyle: .alert)
+        self.alertModel.accept(alert)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

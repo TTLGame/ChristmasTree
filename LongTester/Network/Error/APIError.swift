@@ -30,11 +30,13 @@ enum APIError: Error {
 }
 
 struct APIErrorDetail: Error, Codable {
-    let code: String
-    let message: String?
+    let statusCode: Int
+    let messageVN: String?
+    let messageEN: String?
 
     var localizedDescription: String {
-        return message ?? ""
+        let string = AppConfig.shared.language == .vietnamese ? messageVN : messageEN
+        return string ?? ""
     }
 }
 
@@ -46,7 +48,7 @@ extension APIError: LocalizedAppError {
         case .jtiError(let message):
             return message
         case .systemError:
-            return "接続に失敗しました。"
+            return "System error"
         default:
             return nil
         }
@@ -55,7 +57,7 @@ extension APIError: LocalizedAppError {
 
 extension APIErrorDetail: LocalizedAppError {
     var appErrorDescription: String? {
-        message
+        AppConfig.shared.language == .vietnamese ? messageVN : messageEN
     }
 }
 

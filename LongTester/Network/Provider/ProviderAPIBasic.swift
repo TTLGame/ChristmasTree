@@ -53,6 +53,12 @@ class ProviderAPIBasic<Target>: Provider<Target> where Target: Moya.TargetType {
         let url = token.baseURL.absoluteString + token.path
         print("API >>> URL : \(url)")
         print("API >>> METHOD : \(token.method.rawValue)")
+        switch token.task {
+        case let .requestParameters(parameters,_):
+            print("API >>> PARAMS : \(parameters)")
+        default:
+            break
+        }
         
         return provider.rx.request(token)
             .catchCommonError(autoHandleNoInternetConnection: autoHandleNoInternetConnection,

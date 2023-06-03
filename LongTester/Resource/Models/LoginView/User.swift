@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 final class User : Codable, Model {
-    var id : Int?
+    var id : String?
     var email : String?
     var firstName : String?
     var lastName : String?
