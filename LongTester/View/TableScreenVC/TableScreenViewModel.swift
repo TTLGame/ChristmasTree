@@ -49,5 +49,4 @@ class TableScreenViewModel : NSObject {
                 }
             }.disposed(by: disposeBag)
     }
-//    
 }

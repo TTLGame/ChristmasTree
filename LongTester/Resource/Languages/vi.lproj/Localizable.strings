@@ -27,6 +27,16 @@
 "mainTitle" = "Quản lí địa điểm";
 "shortRoom" = "phòng chưa thu";
 "fullRoom" = "Đủ phòng";
+"popupCreateAddressTitle" = "Form địa chỉ";
+"addressPopup" = "Địa chỉ";
+"totalRoomPopUp" = "Số phòng";
+"quota" = "Định mức";
+"quotaPrice" = "Giá định mức";
+"waterPrice" = "Giá nước";
+"electricPrice" = "Giá điện";
+"roomPrice" = "Giá phòng";
+"addressName" = "Tên cơ sở";
+"fillError" = "Vui lòng nhập đủ các trường cần thiết.";
 
 //Hamburger Menu
 "logout" = "Đăng xuất";

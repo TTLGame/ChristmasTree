@@ -373,9 +373,17 @@ extension AddressCollectionViewModel {
         
         roomData["data"] = dataTemp
         
-        let baseURl = "reqres.in"
-        stub(condition: isHost("\(baseURl)") &&  isPath("/api/getaddress")) { _ in
-            return HTTPStubsResponse(jsonObject: roomData, statusCode: 200, headers: nil)
+        var host: String = Environment.shared.configuration(.apiHost)
+        let path: String = Environment.shared.configuration(.apiPath)
+        
+        host = host.deletingPrefix("https://")
+        host = host.deletingPrefix("http://")
+        host = host.replacingOccurrences(of: "/", with: "")
+       
+//        stub(condition: isHost("\(baseURl)") &&  isPath("/api/getaddress")) { _ in
+        stub(condition: isPath("/\(path)getaddress")) { _ in
+            
+            return HTTPStubsResponse(jsonObject: roomData, statusCode: 200, headers: ["Authorization": "Bearer \(PrefsImpl.default.getAccessToken() ?? "")"])
         }
     }
 }

@@ -26,6 +26,16 @@
 "mainTitle" = "Manage Location";
 "shortRoom" = "room(s) left";
 "fullRoom" = "Full room";
+"popupCreateAddressTitle" = "Address Form";
+"addressPopup" = "Address";
+"totalRoomPopUp" = "Rooms";
+"quota" = "Quota";
+"quotaPrice" = "Quota price";
+"waterPrice" = "Water price";
+"electricPrice" = "Electric price";
+"roomPrice" = "Room price";
+"addressName" = "Address Name";
+"fillError" = "Please fill out all required fields.";
 
 //Hamburger Menu
 "logout" = "Log out";

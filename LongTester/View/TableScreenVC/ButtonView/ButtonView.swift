@@ -25,5 +25,12 @@ class ButtonView : UIView {
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(view)
+        
+//                let alertModel = AlertModel.ActionModel(title: "Open", style: .default, handler: {_ in
+//                    self.rootViewModel.pushViewModel.accept(PushModel(viewController: AddressCollectionViewController(),title: Language.localized("addressCollectionMainTitle")))
+//                })
+//                let closeModel = AlertModel.ActionModel(title: "Close", style: .default, handler: {_ in
+//                })
+//                rootViewModel.alertModel.accept(AlertModel(actionModels: [alertModel,closeModel], title: "ChristmasTree", message: "Pressed in \(index.row)", prefferedStyle: .alert))
     }
 }

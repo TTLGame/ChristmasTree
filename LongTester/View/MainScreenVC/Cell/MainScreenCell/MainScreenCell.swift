@@ -17,6 +17,10 @@ class MainScreenCell: UITableViewCell {
     @IBOutlet weak var ammountLbl: UILabel!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var addressLbl: UILabel!
+    @IBOutlet weak var addressTitle: UILabel!
+    
+    @IBOutlet weak var roomPriceTitle: UILabel!
+    @IBOutlet weak var roomPriceLbl: UILabel!
     @IBOutlet weak var backgroundImgView: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
@@ -36,20 +40,21 @@ class MainScreenCell: UITableViewCell {
     
     private func bindData(){
         self.backgroundImgView.image = UIImage(named: viewModel?.background?.rawValue ?? "PyramidBG")
+        
         self.nameLbl.textColor = viewModel?.background?.fontColor
         self.nameLbl.text = viewModel?.name
         self.addressLbl.text = viewModel?.address
-    
+        self.roomPriceLbl.text = viewModel?.globalPrice?.formatnumberWithDot() ?? "0" + "VND"
         self.setupFullRoom()
-//        self.logoImgView.image = UIImage(named: viewModel?.logo ?? "NoImage")
         
-        do {
-            let imageURL = try loadImgViewURL(with: viewModel?.logo)
-            logoImgView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "NoImage"))
-        } catch ReadError.invalidURL {
-            print("Cannot read URL")}
-        catch {
-            print("Error data")}
+        self.logoImgView.image = UIImage(named: viewModel?.logo ?? "PyramidBG")
+//        do {
+//            let imageURL = try loadImgViewURL(with: viewModel?.logo)
+//            logoImgView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "NoImage"))
+//        } catch ReadError.invalidURL {
+//            print("Cannot read URL")}
+//        catch {
+//            print("Error data")}
     }
     
     private func setupFullRoom(){
@@ -119,6 +124,8 @@ class MainScreenCell: UITableViewCell {
         circleView.layer.cornerRadius = circleView.frame.size.width/2
         circleView.clipsToBounds = true
         
+        addressTitle.text = Language.localized("address")
+        roomPriceTitle.text = Language.localized("globalPrice")
         addTapGesture()
         
     }

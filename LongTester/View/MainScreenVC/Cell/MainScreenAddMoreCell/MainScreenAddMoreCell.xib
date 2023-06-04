@@ -20,12 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRU-Mf-wiM" userLabel="clickView">
                         <rect key="frame" x="10" y="10" width="355" height="120"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Keu-Lq-KJV">
-                                <rect key="frame" x="0.0" y="0.0" width="355" height="120"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.square.dashed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="S9c-yY-n7u">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.square.dashed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="S9c-yY-n7u">
                                 <rect key="frame" x="157.66666666666666" y="41.666666666666664" width="40" height="36.999999999999993"/>
                                 <color key="tintColor" red="0.79215686269999996" green="0.2156862745" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -38,10 +33,6 @@
                         <constraints>
                             <constraint firstItem="S9c-yY-n7u" firstAttribute="centerY" secondItem="cRU-Mf-wiM" secondAttribute="centerY" id="3Ty-d7-OGf"/>
                             <constraint firstItem="S9c-yY-n7u" firstAttribute="centerX" secondItem="cRU-Mf-wiM" secondAttribute="centerX" id="9pp-If-BWP"/>
-                            <constraint firstAttribute="trailing" secondItem="Keu-Lq-KJV" secondAttribute="trailing" id="JzU-eR-Vkd"/>
-                            <constraint firstItem="Keu-Lq-KJV" firstAttribute="leading" secondItem="cRU-Mf-wiM" secondAttribute="leading" id="OUQ-NQ-1x5"/>
-                            <constraint firstAttribute="bottom" secondItem="Keu-Lq-KJV" secondAttribute="bottom" id="VrK-kc-jtR"/>
-                            <constraint firstItem="Keu-Lq-KJV" firstAttribute="top" secondItem="cRU-Mf-wiM" secondAttribute="top" id="e1S-Ny-adn"/>
                             <constraint firstAttribute="height" constant="120" id="fLy-x4-4gG"/>
                         </constraints>
                     </view>

@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import Moya
 import Alamofire
+import OHHTTPStubs
 
 class LoginViewModel : NSObject {
     let api: Provider <MultiTarget>
@@ -50,6 +51,9 @@ class LoginViewModel : NSObject {
     }
     
     func logIn(email: String, pasword: String) {
+        #if STG
+        snub()
+        #endif
         rootViewModel.handleProgress(true)
         api.request(MultiTarget(LoginTarget.login(email: email, password: pasword)))
             .map(LoginModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
@@ -68,7 +72,29 @@ class LoginViewModel : NSObject {
                     self.rootViewModel.handleProgress(false)
                     break
                 }
+                self.rootViewModel.handleProgress(false)
             }.disposed(by: disposeBag)
     }
     
+    func snub(){
+        let roomData : [String:Any] =
+        ["statusCode" : 200,
+         "data" : ["user" : ["id" : "da1f2aa1-fbda-4c66-8f5d-a00e37846126",
+                             "email" : "ttlgame123@gmail.com"],
+                   "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRhMWYyYWExLWZiZGEtNGM2Ni04ZjVkLWEwMGUzNzg0NjEyNiIsImVtYWlsIjoidHRsZ2FtZTEyM0BnbWFpbC5jb20iLCJpYXQiOjE2ODU4MTMxNjUsImV4cCI6MTcxNzM0OTE2NX0.07fECokojExAswpSTYshiV6BbUrYUJ-cejXUerP6JMg"],
+         "messageVN": "Login sucessfully!",
+         "messageEN": "Đăng nhập thành công!"]
+        
+        var host: String = Environment.shared.configuration(.apiHost)
+        let path: String = Environment.shared.configuration(.apiPath)
+        
+        host = host.deletingPrefix("https://")
+        host = host.deletingPrefix("http://")
+        host = host.replacingOccurrences(of: "/", with: "")
+        
+        stub(condition: isHost("\(host)") &&  isPath("/\(path)auth/login") && isScheme("https")) { _ in
+            
+            return HTTPStubsResponse(jsonObject: roomData, statusCode: 200, headers: nil)
+        }
+    }
 }

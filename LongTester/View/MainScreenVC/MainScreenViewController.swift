@@ -42,13 +42,21 @@ class MainScreenViewController: BaseViewController {
     
     private func bindToViewModel() {
         self.viewModel = MainScreenViewModel(rootViewModel: rootViewModel as! RootViewModel)
+        self.viewModel.baseVC = self
         self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.addressTblView.reloadData()
             
         }).disposed(by: disposeBag)
         
-        viewModel.getUserData()
+        self.viewModel.willAddMore.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let self = self else {return}
+            self.addressTblView.reloadData()
+            
+        }).disposed(by: disposeBag)
+        
+        
+        viewModel.getMainScreenData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,13 +103,13 @@ extension MainScreenViewController : UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if (viewModel.cellViewModels.value.count == 0) {
-//            tableView.setEmptyData()
-//        }
-//        else {
-//            tableView.restoreNewProduct()
-//        }
-        return viewModel.cellViewModels.value.count + 1
+        if (viewModel.cellViewModels.value.count + viewModel.willAddMore.value == 0) {
+            tableView.setEmptyData()
+        }
+        else {
+            tableView.restoreNewProduct()
+        }
+        return viewModel.cellViewModels.value.count + viewModel.willAddMore.value
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -136,10 +144,21 @@ extension MainScreenViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        rootViewModel.alertModel.accept(AlertModel(message: "123"))
-        self.handlePressData(indexPath: indexPath)
+        
+        indexPath.row == viewModel.cellViewModels.value.count ?
+            viewModel.handleOpenCreatePopup() :
+            viewModel.handlePressData(index: indexPath)
     }
     
     private func handlePressData(indexPath: IndexPath){
         viewModel.handlePressData(index: indexPath)
+    }
+    
+}
+
+extension MainScreenViewController : CustomPopUpDelegate {
+    func didPressAction() {
+        
+        viewModel.createAddress()
     }
 }

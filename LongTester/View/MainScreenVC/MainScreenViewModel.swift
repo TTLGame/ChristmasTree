@@ -10,10 +10,21 @@ import RxSwift
 import RxCocoa
 import Moya
 import SVProgressHUD
+import OHHTTPStubs
 
 class MainScreenViewModel : NSObject {
-    private(set) var users : BehaviorRelay<[User]> = BehaviorRelay(value: [])
+    private(set) var mainViewDataModel : BehaviorRelay<[MainViewDataModel]> = BehaviorRelay(value: [])
     var cellViewModels : BehaviorRelay<[MainScreenCellViewModel]> = BehaviorRelay(value: [])
+    
+    var willAddMore : BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    
+    var baseVC : BaseViewController? {
+        didSet {
+            resetPopup()
+        }
+    }
+    var mainScreenPopUp : MainScreenAddMorePopUp!
+    var customPopUp : CustomPopUp!
     
     let api: Provider <MultiTarget>
     private(set) var rootViewModel: RootViewModel
@@ -29,63 +40,143 @@ class MainScreenViewModel : NSObject {
         bindToEvents()
     }
     
+    private func resetPopup(){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self,
+                  let baseVC = self.baseVC else { return }
+            self.mainScreenPopUp = MainScreenAddMorePopUp(frame: baseVC.view.frame)
+            self.customPopUp = CustomPopUp(frame: baseVC.view.frame, baseVC: baseVC, view: self.mainScreenPopUp)
+            self.customPopUp.width = baseVC.view.frame.width * 0.9
+            self.customPopUp.delegate = baseVC as? MainScreenViewController
+        }
+    }
+    
     func addAllEnumType(){
         for type in backbroundType.allCases {
             randomPic.append(type.rawValue)
         }
     }
     func bindToEvents() {
-        users.map {users in
-            users.map {user in
-                let current = Int.random(in: 0..<5)
-                var total = Int.random(in: 1..<5)
-                if (current > total){
-                    total = current
-                }
-                return MainScreenCellViewModel(logo: user.avatar,
+        mainViewDataModel.map {models in
+            models.map {model in
+                return MainScreenCellViewModel(logo: self.randomPic[Int.random(in: 0..<self.randomPic.count)],
                                                background: backbroundType(rawValue: self.randomPic[Int.random(in: 0..<self.randomPic.count)]),
-                                               name: (user.firstName ?? "") + " " + (user.lastName ?? ""),
-                                               address: user.email,
-                                               currentRooms: current,
-                                               totalRooms: total)
+                                               name: model.name,
+                                               address: model.address,
+                                               globalPrice: model.globalPrice,
+                                               currentRooms: model.currentRooms,
+                                               totalRooms: model.totalRooms)
             }
         }.bind(to: cellViewModels).disposed(by: disposeBag)
     }
     
-    func getUserData() {
-        var tempUser = [User]()
+    func getMainScreenData() {
+        #if STG
+        snub()
+        #endif
         rootViewModel.handleProgress(true)
-        api.request(MultiTarget(MainScreenTarget.getUser(page: 1)))
-            .map(Pages.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
+        api.request(MultiTarget(MainScreenTarget.getAddress))
+            .map(MainViewModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
             .subscribe {[weak self] event in
                 guard let self = self else { return }
                 switch event {
                 case .success(let value):
                     if let value = value.data {
-                        tempUser.append(contentsOf: value)
-                        self.users.accept(tempUser)
+                        self.mainViewDataModel.accept(value)
                         self.rootViewModel.handleProgress(false)
+                        self.willAddMore.accept(1)
                     }
                 case .failure(_):
-                    SVProgressHUD.dismiss()
                     break
                 }
+                self.rootViewModel.handleProgress(false)
             }.disposed(by: disposeBag)
+    }
+
+    func handleOpenCreatePopup(){
+        customPopUp.open()
     }
     
     func handlePressData(index : IndexPath){
-        self.rootViewModel.pushViewModel.accept(PushModel(viewController: AddressCollectionViewController(),
-                                                          title: Language.localized("addressCollectionMainTitle")))
-        return
-//        rootViewModel.alertModel.accept(AlertModel(message: "Fail"))
-        let alertModel = AlertModel.ActionModel(title: "Open", style: .default, handler: {_ in
-//            self.rootViewModel.pushView.accept(AddressCollectionViewController())
-            self.rootViewModel.pushViewModel.accept(PushModel(viewController: AddressCollectionViewController(),
-                                                              title: Language.localized("addressCollectionMainTitle")))
-        })
-        let closeModel = AlertModel.ActionModel(title: "Close", style: .default, handler: {_ in
-        })
-        rootViewModel.alertModel.accept(AlertModel(actionModels: [alertModel,closeModel], title: "ChristmasTree", message: "Pressed in \(index.row)", prefferedStyle: .alert))
+        self.rootViewModel.pushViewModel.accept(PushModel(
+            viewController: AddressCollectionViewController(),
+            title: Language.localized("addressCollectionMainTitle")))
     }
 }
 
+extension MainScreenViewModel {
+    private func convertCellModel(data : MainScreenAddMorePopUpViewModel){
+        var currentCellModel = cellViewModels.value
+        currentCellModel.append(
+            MainScreenCellViewModel(logo: self.randomPic[Int.random(in: 0..<self.randomPic.count)],
+                                    background: backbroundType(rawValue: self.randomPic[Int.random(in: 0..<self.randomPic.count)]),
+                                    name: data.inputName,
+                                    address: data.inputAddress,
+                                    globalPrice: data.inputRoomPrice,
+                                    currentRooms: 0,
+                                    totalRooms: data.inputRooms))
+        
+        cellViewModels.accept(currentCellModel)
+    }
+    func createAddress(){
+        if let data = mainScreenPopUp.returnViewModel() {
+            rootViewModel.handleProgress(true)
+            api.request(MultiTarget(MainScreenTarget
+                .createAddress(quota: data.inputQuota,
+                               quotaPrice: data.inputQuotaPrice,
+                               roomPrice: data.inputRoomPrice,
+                               waterPrice: data.inputWater,
+                               electricPrice: data.inputElectric,
+                               roomsNum: data.inputRooms,
+                               address: data.inputAddress,
+                               name: data.inputName)))
+                .map(CreateAddressModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
+                .subscribe {[weak self] event in
+                    guard let self = self else { return }
+                    switch event {
+                    case .success(let value):
+                        if let messageVN = value.messageVN,
+                           let messageEN = value.messageEN{
+                            self.rootViewModel.alertModel.accept(AlertModel(message: AppConfig.shared.language == .vietnamese ? messageVN : messageEN))
+                            self.rootViewModel.handleProgress(false)
+                            self.customPopUp.close()
+                            self.convertCellModel(data: data)
+                            self.resetPopup()
+                        }
+                    case .failure(_):
+                        SVProgressHUD.dismiss()
+                        break
+                    }
+                }.disposed(by: disposeBag)
+        }
+        else {
+            self.rootViewModel.alertModel.accept(AlertModel(message: Language.localized("fillError")))
+        }
+    }
+}
+
+extension MainScreenViewModel {
+    func snub(){
+        let roomData : [String:Any] =
+        ["statusCode" : 200,
+         "data" : [["name": "Long Trinh",
+                   "address": "99/4A",
+                   "globalPrice": 1000000,
+                   "currentRooms": 1,
+                   "totalRooms": 10]],
+         "messageVN": "Login sucessfully!",
+         "messageEN": "Đăng nhập thành công!"]
+        
+        var host: String = Environment.shared.configuration(.apiHost)
+        let path: String = Environment.shared.configuration(.apiPath)
+        
+        host = host.deletingPrefix("https://")
+        host = host.deletingPrefix("http://")
+        host = host.replacingOccurrences(of: "/", with: "")
+        
+        stub(condition: isHost("\(host)") &&  isPath("/\(path)address/get") && isScheme("https")) { _ in
+    
+            return HTTPStubsResponse(jsonObject: roomData, statusCode: 200, headers: ["Authorization": "Bearer \(PrefsImpl.default.getAccessToken() ?? "")"])
+        }
+    }
+}

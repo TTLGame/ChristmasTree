@@ -10,6 +10,16 @@ import Moya
 
 public enum MainScreenTarget {
     case getUser(page: Int)
+    case getAddress
+    case createAddress(quota: Int,
+                       quotaPrice: Int,
+                       roomPrice: Int,
+                       waterPrice: Int,
+                       electricPrice: Int,
+                       roomsNum : Int,
+                       address: String,
+                       name: String)
+      
 }
 
 extension MainScreenTarget: TargetType {
@@ -17,6 +27,10 @@ extension MainScreenTarget: TargetType {
         switch self {
         case .getUser:
             return .get
+        case .getAddress:
+            return .get
+        case .createAddress :
+            return .post
         }
     }
     
@@ -25,6 +39,18 @@ extension MainScreenTarget: TargetType {
         case .getUser(let page):
             return .requestParameters(parameters: ["page":page],
                                       encoding: URLEncoding.default)
+        case .getAddress :
+            return .requestPlain
+        case let .createAddress(quota, quotaPrice, roomPrice, waterPrice, electricPrice, roomsNum, address, name) :
+            return .requestParameters(parameters:["inputQuotaPrice": quotaPrice,
+                                                  "inputElectric": electricPrice,
+                                                  "inputRoomPrice": roomPrice,
+                                                  "inputWater": waterPrice,
+                                                  "inputRooms": roomsNum,
+                                                  "inputAddress": address,
+                                                  "inputQuota": quota,
+                                                  "inputName": name],
+                                      encoding: JSONEncoding.default)
         }
     }
     
@@ -43,7 +69,12 @@ extension MainScreenTarget: TargetType {
         switch self {
         case .getUser:
             return "users"
+        case .getAddress:
+            return "address/get"
+        case .createAddress :
+            return "address/create"
         }
+    
     }
 
     private func dataFromResource(name: String) -> Data {

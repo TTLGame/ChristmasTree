@@ -38,18 +38,21 @@ class MainScreenCellViewModel {
     let background: backbroundType?
     let name : String?
     let address : String?
+    let globalPrice : Int?
     let currentRooms : Int?
     let totalRooms : Int?
     init(logo: String?,
          background: backbroundType?,
          name : String?,
          address : String?,
+         globalPrice : Int?,
          currentRooms : Int?,
          totalRooms : Int?){
         self.logo = logo
         self.background = background
         self.name = name
         self.address = address
+        self.globalPrice = globalPrice
         self.currentRooms = currentRooms
         self.totalRooms = totalRooms
     }
