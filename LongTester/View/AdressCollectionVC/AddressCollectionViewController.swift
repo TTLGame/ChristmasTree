@@ -34,6 +34,18 @@ class AddressCollectionViewController: BaseViewController {
     private var dropdownCellViewModel = [AddressCollectionDropDownCellViewModel]()
     private var monthYearView : MonthYearView!
     
+    
+    init(id: String, rootViewModel: BasicViewModel = RootViewModel()) {
+        super.init(rootViewModel: rootViewModel)
+        
+        self.viewModel.setAddresId(id: id)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -103,7 +115,7 @@ class AddressCollectionViewController: BaseViewController {
     }
     
     private func bindToViewModel() {
-        self.viewModel = AddressCollectionViewModel(rootViewModel: rootViewModel as! RootViewModel)
+        self.viewModel.setRootViewModel(rootViewModel: rootViewModel as! RootViewModel)
         self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.detailCollectionView.reloadData()

@@ -22,7 +22,7 @@ extension AddressCollectionTarget: TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .getAddressData(let id):
+        case .getAddressData:
             return .requestPlain
         }
     }
@@ -40,8 +40,8 @@ extension AddressCollectionTarget: TargetType {
 
     public var path: String {
         switch self {
-        case .getAddressData:
-            return "getaddress"
+        case .getAddressData(let id):
+            return "address/\(id)/get"
         }
     }
 

@@ -42,7 +42,7 @@ class AddressInfoViewViewModel : NSObject {
 
         let checkData = addressDataMonthModel.value.contains(where: { cell in
             var monthYearData = MonthYear()
-            if let monthYear = cell.monthYear?.split(separator: "/"),
+            if let monthYear = cell.monthYear?.split(separator: "-"),
                 monthYear.count > 1{
                 if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
                     monthYearData = MonthYear(month: month,
@@ -55,7 +55,7 @@ class AddressInfoViewViewModel : NSObject {
         if (checkData){
             if let monthYearData = addressDataMonthModel.value.filter({ cell in
                 var monthYearData = MonthYear()
-                if let monthYear = cell.monthYear?.split(separator: "/"),
+                if let monthYear = cell.monthYear?.split(separator: "-"),
                     monthYear.count > 1{
                     if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
                         monthYearData = MonthYear(month: month,

@@ -44,7 +44,7 @@ class MainScreenCell: UITableViewCell {
         self.nameLbl.textColor = viewModel?.background?.fontColor
         self.nameLbl.text = viewModel?.name
         self.addressLbl.text = viewModel?.address
-        self.roomPriceLbl.text = viewModel?.globalPrice?.formatnumberWithDot() ?? "0" + "VND"
+        self.roomPriceLbl.text = (viewModel?.globalPrice?.formatnumberWithDot() ?? "0") + "VND"
         self.setupFullRoom()
         
         self.logoImgView.image = UIImage(named: viewModel?.logo ?? "PyramidBG")

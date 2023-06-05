@@ -33,18 +33,19 @@ class AddressCollectionViewModel : NSObject {
     private var randomPic = [String]()
     private var defaultCellViewModels = [AddressCollectionViewCellViewModel]()
     private var editState = false
+    private var addressId = ""
     
     let disposeBag = DisposeBag()
-    init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
+    init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIWithAccessToken<MultiTarget>()) {
         self.api = api
         self.rootViewModel = rootViewModel
         super.init()
         bindToEvents()
     }
-    
+
     private func convertMonthYear(monthYear: String?) -> MonthYear {
         var monthYearData = MonthYear()
-        if let monthYear = monthYear?.split(separator: "/"),
+        if let monthYear = monthYear?.split(separator: "-"),
             monthYear.count > 1{
             if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
                 monthYearData = MonthYear(month: month,
@@ -77,21 +78,37 @@ class AddressCollectionViewModel : NSObject {
         }.bind(to: monthYearViewModel).disposed(by: disposeBag)
     }
     
+    func setRootViewModel(rootViewModel : RootViewModel = RootViewModel()){
+        self.rootViewModel = rootViewModel
+    }
+    func setAddresId(id: String){
+        addressId = id
+    }
+    
     func getMonthYearData() {
+        #if STG
         createStubData()
+        #endif
+        
         rootViewModel.handleProgress(true)
-        api.request(MultiTarget(AddressCollectionTarget.getAddressData(id: "123")))
-            .map(AddressDataModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
+        api.request(MultiTarget(AddressCollectionTarget.getAddressData(id: self.addressId)))
+            .map(AddressModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
             .subscribe {[weak self] event in
                 guard let self = self else { return }
+                print("data123 \(event)")
                 switch event {
                 case .success(let value):
-                    self.addressDataModel = value
-                    if let data = value.data {
-                        self.addressDataMonthModel.accept(data)
+                    print("data123 \(value)")
+                    if let addressData = value.data {
+                        self.addressDataModel = addressData
+                        if let data = addressData.data {
+                            self.addressDataMonthModel.accept(data)
+                        }
                     }
+                    
                     SVProgressHUD.dismiss()
-                case .failure(_):
+                case .failure(let error):
+                    self.rootViewModel.alertModel.accept(AlertModel(message: error.localizedDescription))
                     SVProgressHUD.dismiss()
                     break
                 }
@@ -250,35 +267,38 @@ extension AddressCollectionViewModel {
             let lastData = cellViewModel.roomData {
             var currentData = [RoomDataModel]()
             for roomData in lastData {
-                let newRoomData = RoomDataModel(status: roomData.status == "Vacancy" ?
-                                                roomData.status : "NotPaid",
-                                             roomNums: roomData.roomNums,
-                                             renters: roomData.renters,
-                                             quota: roomData.quota,
-                                             quotaPrice: roomData.quotaPrice,
-                                             waterPrice: roomData.waterPrice,
-                                             waterNum: roomData.waterNum,
-                                             lastWaterNum: roomData.waterNum,
-                                             electricPrice: roomData.electricPrice,
-                                             electricNum: roomData.electricNum,
-                                             lastElectricNum: roomData.electricNum,
-                                             roomPrice: roomData.roomPrice,
-                                             totalNum: 0,
-                                             internetPrice: roomData.internetPrice,
-                                             trashPrice: roomData.trashPrice)
+                let newRoomData = RoomDataModel(
+                    status: roomData.status == "Vacancy" ?
+                    roomData.status : "NotPaid",
+                    roomNums: roomData.roomNums,
+                    renters: roomData.renters,
+                    quota: roomData.quota,
+                    quotaPrice: roomData.quotaPrice,
+                    waterPrice: roomData.waterPrice,
+                    waterNum: roomData.waterNum,
+                    lastWaterNum: roomData.waterNum,
+                    electricPrice: roomData.electricPrice,
+                    electricNum: roomData.electricNum,
+                    lastElectricNum: roomData.electricNum,
+                    roomPrice: roomData.roomPrice,
+                    totalNum: 0,
+                    internetPrice: roomData.internetPrice,
+                    trashPrice: roomData.trashPrice)
                 
                 let total = calculateTotal(cell: newRoomData)
                 newRoomData.totalNum = total[0]
                 currentData.append(newRoomData)
             }
             let monthString = "\(date.month)/\(date.year)"
-            addressDataModel.data?.append(AddressDataMonthModel(monthYear: monthString,
-                                                                globalElectric: cellViewModel.globalElectric,
-                                                                globalWater: cellViewModel.globalWater,
-                                                                globalQuotaPrice: cellViewModel.globalQuotaPrice,
-                                                                globalQuota: cellViewModel.globalQuota,
-                                                                globalRoomPrice: cellViewModel.globalRoomPrice,
-                                                                roomData: currentData))
+            addressDataModel.data?
+                .append(AddressDataMonthModel(
+                    monthYear: monthString,
+                    globalElectric: cellViewModel.globalElectric,
+                    globalWater: cellViewModel.globalWater,
+                    globalQuotaPrice: cellViewModel.globalQuotaPrice,
+                    globalQuota: cellViewModel.globalQuota,
+                    globalRoomPrice: cellViewModel.globalRoomPrice,
+                    roomData: currentData))
             
             if let data = addressDataModel.data {
                 self.addressDataMonthModel.accept(data)
@@ -300,7 +320,7 @@ extension AddressCollectionViewModel {
         var dataTemp = [[String : Any]]()
         for interator in 0...12 {
             let currentMonth = monthYear - 12 + interator
-            let monthString = "\(currentMonth.month)/\(currentMonth.year)"
+            let monthString = "\(currentMonth.month)-\(currentMonth.year)"
             var data : [String:Any] = ["monthYear" : monthString,
                                        "globalElectric" : 3000,
                                        "globalWater" : 7000,
@@ -370,8 +390,14 @@ extension AddressCollectionViewModel {
             data["roomData"] = roomDataTemp
             dataTemp.append(data)
         }
-        
+
         roomData["data"] = dataTemp
+        
+        let response : [String:Any] =
+        ["statusCode" : 200,
+         "data" : roomData,
+         "messageVN": "Login sucessfully!",
+         "messageEN": "Đăng nhập thành công!"]
         
         var host: String = Environment.shared.configuration(.apiHost)
         let path: String = Environment.shared.configuration(.apiPath)
@@ -380,10 +406,11 @@ extension AddressCollectionViewModel {
         host = host.deletingPrefix("http://")
         host = host.replacingOccurrences(of: "/", with: "")
        
+        print("/\(path)/address/\(addressId)/get")
 //        stub(condition: isHost("\(baseURl)") &&  isPath("/api/getaddress")) { _ in
-        stub(condition: isPath("/\(path)getaddress")) { _ in
+        stub(condition: isPath("/\(path)address/\(addressId)/get")) { _ in
             
-            return HTTPStubsResponse(jsonObject: roomData, statusCode: 200, headers: ["Authorization": "Bearer \(PrefsImpl.default.getAccessToken() ?? "")"])
+            return HTTPStubsResponse(jsonObject: response, statusCode: 200, headers: ["Authorization": "Bearer \(PrefsImpl.default.getAccessToken() ?? "")"])
         }
     }
 }

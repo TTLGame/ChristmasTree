@@ -17,10 +17,20 @@ final class MainViewModel : Codable, Model {
 }
 
 final class MainViewDataModel : Codable, Model {
+    var id : String?
     var name : String?
     var address : String?
     var globalPrice : Int?
     var currentRooms : Int?
     var totalRooms : Int?
+    
     init() { }
-}
+    
+    init(id: String? = nil, name: String? = nil, address: String? = nil, globalPrice: Int? = nil, currentRooms: Int? = nil, totalRooms: Int? = nil) {
+        self.id = id
+        self.name = name
+        self.address = address
+        self.globalPrice = globalPrice
+        self.currentRooms = currentRooms
+        self.totalRooms = totalRooms
+    }}

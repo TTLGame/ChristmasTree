@@ -7,6 +7,7 @@
 
 import Foundation
 final class RoomDataModel : Codable, Model {
+    var id : String?
     var status : String?
     var roomNums : Int?
     var renters : Int?
@@ -29,7 +30,8 @@ final class RoomDataModel : Codable, Model {
     
     init() { }
     
-    init(status: String? = nil, roomNums: Int? = nil, renters: Int? = nil, quota: Int? = nil, quotaPrice: Int? = nil, waterPrice: Int? = nil, waterNum: Int? = nil, lastWaterNum: Int? = nil, electricPrice: Int? = nil, electricNum: Int? = nil, lastElectricNum: Int? = nil, roomPrice: Int? = nil, totalNum: Int? = nil, internetPrice: Int? = nil, trashPrice: Int? = nil) {
+    init(id: String? = nil, status: String? = nil, roomNums: Int? = nil, renters: Int? = nil, quota: Int? = nil, quotaPrice: Int? = nil, waterPrice: Int? = nil, waterNum: Int? = nil, lastWaterNum: Int? = nil, electricPrice: Int? = nil, electricNum: Int? = nil, lastElectricNum: Int? = nil, roomPrice: Int? = nil, totalNum: Int? = nil, internetPrice: Int? = nil, trashPrice: Int? = nil) {
+        self.id = id
         self.status = status
         self.roomNums = roomNums
         self.renters = renters

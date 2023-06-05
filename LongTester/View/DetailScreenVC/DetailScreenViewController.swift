@@ -24,6 +24,6 @@ class DetailScreenViewController: BaseViewController {
     
     
     @IBAction func buttonPressed(_ sender: Any) {
-        self.pushNavigationView(AddressCollectionViewController(), Language.localized("addressCollectionMainTitle"))
+//        self.pushNavigationView(AddressCollectionViewController(), Language.localized("addressCollectionMainTitle"))
     }
 }

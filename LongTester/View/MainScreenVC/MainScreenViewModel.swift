@@ -98,26 +98,17 @@ class MainScreenViewModel : NSObject {
     }
     
     func handlePressData(index : IndexPath){
-        self.rootViewModel.pushViewModel.accept(PushModel(
-            viewController: AddressCollectionViewController(),
-            title: Language.localized("addressCollectionMainTitle")))
+        if let addressId = mainViewDataModel.value[index.row].id {
+            self.rootViewModel.pushViewModel.accept(PushModel(
+                viewController: AddressCollectionViewController(id: addressId),
+                title: Language.localized("addressCollectionMainTitle")))
+        }
+        
     }
 }
 
 extension MainScreenViewModel {
-    private func convertCellModel(data : MainScreenAddMorePopUpViewModel){
-        var currentCellModel = cellViewModels.value
-        currentCellModel.append(
-            MainScreenCellViewModel(logo: self.randomPic[Int.random(in: 0..<self.randomPic.count)],
-                                    background: backbroundType(rawValue: self.randomPic[Int.random(in: 0..<self.randomPic.count)]),
-                                    name: data.inputName,
-                                    address: data.inputAddress,
-                                    globalPrice: data.inputRoomPrice,
-                                    currentRooms: 0,
-                                    totalRooms: data.inputRooms))
-        
-        cellViewModels.accept(currentCellModel)
-    }
+    
     func createAddress(){
         if let data = mainScreenPopUp.returnViewModel() {
             rootViewModel.handleProgress(true)
@@ -140,7 +131,9 @@ extension MainScreenViewModel {
                             self.rootViewModel.alertModel.accept(AlertModel(message: AppConfig.shared.language == .vietnamese ? messageVN : messageEN))
                             self.rootViewModel.handleProgress(false)
                             self.customPopUp.close()
-                            self.convertCellModel(data: data)
+                            
+                            self.getMainScreenData()
+//                            self.convertCellModel(data: data)
                             self.resetPopup()
                         }
                     case .failure(_):
@@ -159,11 +152,13 @@ extension MainScreenViewModel {
     func snub(){
         let roomData : [String:Any] =
         ["statusCode" : 200,
-         "data" : [["name": "Long Trinh",
-                   "address": "99/4A",
-                   "globalPrice": 1000000,
-                   "currentRooms": 1,
-                   "totalRooms": 10]],
+         "data" : [[
+            "id": "33d80a7a-dabb-4eb7-9fb0-3d75a9c5ef07",
+            "name": "Long Trinh",
+            "address": "99/4A",
+            "globalPrice": 1000000,
+            "currentRooms": 1,
+            "totalRooms": 10]],
          "messageVN": "Login sucessfully!",
          "messageEN": "Đăng nhập thành công!"]
         
