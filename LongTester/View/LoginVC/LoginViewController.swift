@@ -20,10 +20,12 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
         setup()
         bindToViewModel()
+        viewModel.checkLocalUser()
+        
     }
     
     private func bindToViewModel() {
-        self.viewModel = LoginViewModel(rootViewModel: rootViewModel as! RootViewModel)
+        self.viewModel = LoginViewModel(rootViewModel: rootViewModel)
         
     }
     

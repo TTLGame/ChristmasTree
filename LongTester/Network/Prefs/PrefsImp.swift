@@ -45,12 +45,25 @@ class PrefsImpl: NSObject {
 
 extension PrefsImpl: PrefsUserInfo {
     func getUserInfo() -> User? {
-        let userInfo: User? = loadCodableCustomObjectWithKey(key: "user", class: User.self)
-        return userInfo
+        let newQuery = ["id" : "-1"]
+        let userData = StoreManager.shared.find(User.self, queryParts: newQuery, in: .user)
+        return userData?.first
     }
 
     func saveUserInfo(_ user: User?) {
-        saveCodableCustomObject(object: user, key: "user")
+        let data = user
+        if var tmpJson = data?.json(){
+            tmpJson["id"] = "-1"
+            do {
+                try StoreManager.shared.save(data: tmpJson, in: .user)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        else {
+            let newQuery = ["id" : "-1"]
+            StoreManager.shared.remove(queryParts: newQuery, in: .user)
+        }
     }
 }
 

@@ -35,7 +35,7 @@ class AddressCollectionViewController: BaseViewController {
     private var monthYearView : MonthYearView!
     
     
-    init(id: String, rootViewModel: BasicViewModel = RootViewModel()) {
+    init(id: String, rootViewModel: RootViewModel = RootViewModel()) {
         super.init(rootViewModel: rootViewModel)
         
         self.viewModel.setAddresId(id: id)

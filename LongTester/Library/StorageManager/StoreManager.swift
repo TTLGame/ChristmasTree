@@ -76,15 +76,16 @@ final class StoreManager {
     
     enum CollectionName: String, CaseIterable {
         case appConfig  = "AppConfig"
+        case user = "User"
         var searchFields: [String] {
             switch self {
-            case .appConfig : return ["id"]
+            case .appConfig, .user : return ["id"]
             }
         }
         
         var fieldModels : RealmCollectionModels.Type {
             switch self {
-            case .appConfig : return AppConfigRealmModel.self
+            case .appConfig, .user : return AppConfigRealmModel.self
             }
         }
     }

@@ -8,12 +8,12 @@
 import UIKit
 import RxSwift
 class BaseViewController: UIViewController, BasicViewPresentableView {
-    var rootViewModel: BasicViewModel
+    var rootViewModel: RootViewModel
     var alertViewModel: AlertPresentableViewModel
     
     
     let disposeBag: DisposeBag = DisposeBag()
-    init(rootViewModel: BasicViewModel = RootViewModel()) {
+    init(rootViewModel: RootViewModel = RootViewModel()) {
         self.rootViewModel = rootViewModel
         alertViewModel = rootViewModel
         super.init(nibName: nil, bundle: nil)
@@ -27,6 +27,7 @@ class BaseViewController: UIViewController, BasicViewPresentableView {
         super.viewDidLoad()
         bindAlertViewModel(alertViewModel)
         bindRootViewModel()
+        bindExpireToken()
         // Do any additional setup after loading the view.
     }
     
@@ -46,6 +47,23 @@ class BaseViewController: UIViewController, BasicViewPresentableView {
     }
     
     @discardableResult
+    func bindExpireToken() -> Disposable {
+        let disposable = rootViewModel.isAccessTokenExpired.distinctUntilChanged().observe(on: MainScheduler.instance)
+            .filter({ (value: Bool) -> Bool in
+                return (value == true)
+            }).subscribe(onNext: {[weak self] (_: Bool) in
+                self?.rootViewModel.clearLocalData()
+                let alert = UIAlertController(title: nil, message: "Access token expired", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    // Log out using coordinator
+                    AppDelegate.shared.rootViewController.show(.login)
+                }))                
+            })
+        disposable.disposed(by: disposeBag)
+        return disposable
+    }
+    
+    @discardableResult
     func bindRootViewModel() -> Disposable {
         let disposable = rootViewModel.pushViewModel.observe(on: MainScheduler.instance)
             .subscribe(onNext: {[weak self] (model: PushModel?) in
@@ -58,6 +76,8 @@ class BaseViewController: UIViewController, BasicViewPresentableView {
         return disposable
     }
 
+    
+    
     /*
     // MARK: - Navigation
 

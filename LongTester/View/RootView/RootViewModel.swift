@@ -14,7 +14,7 @@ import SVProgressHUD
 class RootViewModel : NSObject, BasicViewModel {
     var pushViewModel: BehaviorRelay<PushModel?> = BehaviorRelay(value: nil)
     var alertModel: BehaviorRelay<AlertModel?> = BehaviorRelay(value: nil)
-    
+    var isAccessTokenExpired : BehaviorRelay<Bool> = BehaviorRelay(value: false)
     func handleProgress(_ value : Bool){
         if (value){
             SVProgressHUD.show(withStatus: "Loading ....")
@@ -37,8 +37,12 @@ class RootViewModel : NSObject, BasicViewModel {
         setUpObserver()
     }
     
+    func clearLocalData (){
+        PrefsImpl.default.saveUserInfo(nil)
+        PrefsImpl.default.saveAccessToken(nil)
+    }
     @objc func handleAccessTokenExpired() {
-//        isAccessTokenExpired.accept(true)
+        isAccessTokenExpired.accept(true)
     }
 
     @objc func handleAPIError(_ notification: Notification) {

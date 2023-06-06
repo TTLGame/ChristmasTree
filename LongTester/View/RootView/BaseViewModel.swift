@@ -14,5 +14,5 @@ protocol BasicViewModel: AlertPresentableViewModel {
 }
 
 protocol BasicViewPresentableView: AlertPresentableView {
-    var rootViewModel: BasicViewModel { get }
+    var rootViewModel: RootViewModel { get }
 }

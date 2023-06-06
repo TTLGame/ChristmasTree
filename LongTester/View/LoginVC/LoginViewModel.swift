@@ -50,6 +50,13 @@ class LoginViewModel : NSObject {
         }
     }
     
+    func checkLocalUser(){
+        if let data = PrefsImpl.default.getUserInfo()?.json() {
+            DispatchQueue.main.async {
+                AppDelegate.shared.rootViewController.show(.main)
+            }
+        }
+    }
     func logIn(email: String, pasword: String) {
         #if STG
         snub()
@@ -64,6 +71,7 @@ class LoginViewModel : NSObject {
                     if let value = value.data,
                        let token = value.token {
                         PrefsImpl.default.saveAccessToken(token)
+                        PrefsImpl.default.saveUserInfo(value.user)
                         AppDelegate.shared.rootViewController.show(.main)
                         self.rootViewModel.handleProgress(false)
                     }

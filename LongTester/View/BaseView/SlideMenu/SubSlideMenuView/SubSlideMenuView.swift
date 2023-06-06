@@ -104,6 +104,8 @@ class SubSlideMenuView : UIView {
     
     private func logout(){
         self.delegate?.selectedCell(-1)
+        PrefsImpl.default.saveUserInfo(nil)
+        PrefsImpl.default.saveAccessToken(nil)
         AppDelegate.shared.rootViewController.show(.login)
     }
     @objc func pressLogout() {
