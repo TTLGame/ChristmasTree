@@ -24,7 +24,7 @@
 
 //Main View
 "mainTitle" = "Manage Location";
-"shortRoom" = "room(s) left";
+"shortRoom" = "room(s) paid";
 "fullRoom" = "Full room";
 "popupCreateAddressTitle" = "Address Form";
 "addressPopup" = "Address";

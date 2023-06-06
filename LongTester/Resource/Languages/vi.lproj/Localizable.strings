@@ -25,7 +25,7 @@
 
 //Main View
 "mainTitle" = "Quản lí địa điểm";
-"shortRoom" = "phòng chưa thu";
+"shortRoom" = "phòng đã thu";
 "fullRoom" = "Đủ phòng";
 "popupCreateAddressTitle" = "Form địa chỉ";
 "addressPopup" = "Địa chỉ";
