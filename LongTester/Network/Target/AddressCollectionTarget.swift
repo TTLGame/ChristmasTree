@@ -10,6 +10,7 @@ import Moya
 
 public enum AddressCollectionTarget {
     case getAddressData(id: String)
+    case updateAddressData(id :String, data: [[String:Any]])
 }
 
 extension AddressCollectionTarget: TargetType {
@@ -17,6 +18,8 @@ extension AddressCollectionTarget: TargetType {
         switch self {
         case .getAddressData:
             return .get
+        case .updateAddressData:
+            return .put
         }
     }
     
@@ -24,6 +27,9 @@ extension AddressCollectionTarget: TargetType {
         switch self {
         case .getAddressData:
             return .requestPlain
+        case let .updateAddressData(_, data) :
+            return .requestParameters(parameters: ["data" : data],
+                                      encoding: JSONEncoding.default)
         }
     }
     
@@ -42,6 +48,8 @@ extension AddressCollectionTarget: TargetType {
         switch self {
         case .getAddressData(let id):
             return "address/\(id)/get"
+        case let .updateAddressData(id,_):
+            return "address/\(id)/update"
         }
     }
 

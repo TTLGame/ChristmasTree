@@ -121,7 +121,7 @@ extension MainScreenViewModel {
                                roomsNum: data.inputRooms,
                                address: data.inputAddress,
                                name: data.inputName)))
-                .map(CreateAddressModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
+                .map(ReturnBlankModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
                 .subscribe {[weak self] event in
                     guard let self = self else { return }
                     switch event {

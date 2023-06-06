@@ -95,10 +95,8 @@ class AddressCollectionViewModel : NSObject {
             .map(AddressModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
             .subscribe {[weak self] event in
                 guard let self = self else { return }
-                print("data123 \(event)")
                 switch event {
                 case .success(let value):
-                    print("data123 \(value)")
                     if let addressData = value.data {
                         self.addressDataModel = addressData
                         if let data = addressData.data {
@@ -131,6 +129,29 @@ class AddressCollectionViewModel : NSObject {
         
         defaultCellViewModels = data
         cellViewModels.accept(data)
+    }
+    
+    func updateAddressData(roomReqData: [[String:Any]]){
+        rootViewModel.handleProgress(true)
+        api.request(MultiTarget(
+            AddressCollectionTarget.updateAddressData(id: self.addressId,
+                                                      data: roomReqData)))
+        .map(ReturnBlankModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
+            .subscribe {[weak self] event in
+                guard let self = self else { return }
+                switch event {
+                case .success(_):
+                    if let data = self.addressDataModel.data {
+                        self.addressDataMonthModel.accept(data)
+                    }
+                    
+                    SVProgressHUD.dismiss()
+                case .failure(let error):
+                    self.rootViewModel.alertModel.accept(AlertModel(message: error.localizedDescription))
+                    SVProgressHUD.dismiss()
+                    break
+                }
+            }.disposed(by: disposeBag)
     }
     
     func getDropdownData(){
@@ -207,23 +228,32 @@ extension AddressCollectionViewModel {
 //Reload Data when RoomView Data Changed
 extension AddressCollectionViewModel{
     func updateAddressDataModel(roomData: [RoomDataModel], monthYear: MonthYear, nextRoom : [RoomDataModel]?) {
+        var returnData = [[String:Any]]()
         if let pos = self.addressDataModel.data?.firstIndex(where: { data in
             let monthYearData = self.convertMonthYear(monthYear: data.monthYear)
             return monthYearData == monthYear
         }) {
             let addressData = self.addressDataModel
+            
             addressData.data?[pos].roomData = roomData
+    
+            returnData.append(RoomDataReqModel(
+                monthYear: "\(monthYear.month)-\(monthYear.year)",
+                roomData: roomData).json() ?? [:])
             if let nextRoom = nextRoom,
                let nextPos = self.addressDataModel.data?.firstIndex(where: { data in
                 let monthYearData = self.convertMonthYear(monthYear: data.monthYear)
                 return monthYearData == monthYear + 1
             }){
                 addressData.data?[nextPos].roomData = nextRoom
+                let nextMonth = monthYear + 1
+                
+                returnData.append(RoomDataReqModel(
+                    monthYear: "\(nextMonth.month)-\(nextMonth.year)",
+                    roomData: roomData).json() ?? [:])
             }
             self.addressDataModel = addressData
-            if let data = addressDataModel.data {
-                self.addressDataMonthModel.accept(data)
-            }
+            self.updateAddressData(roomReqData: returnData)
         }
     }
 }
@@ -406,7 +436,6 @@ extension AddressCollectionViewModel {
         host = host.deletingPrefix("http://")
         host = host.replacingOccurrences(of: "/", with: "")
        
-        print("/\(path)/address/\(addressId)/get")
 //        stub(condition: isHost("\(baseURl)") &&  isPath("/api/getaddress")) { _ in
         stub(condition: isPath("/\(path)address/\(addressId)/get")) { _ in
             

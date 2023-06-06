@@ -109,6 +109,7 @@
                                 <constraints>
                                     <constraint firstItem="S9V-yW-umi" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="Ahw-Ra-xZm"/>
                                     <constraint firstItem="S9V-yW-umi" firstAttribute="leading" secondItem="BJI-hL-pAv" secondAttribute="leading" constant="10" id="Kqf-Bv-pFL"/>
+                                    <constraint firstItem="gJJ-6Z-ekg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RcG-Sp-DjX" secondAttribute="trailing" constant="10" id="MsK-yx-cOg"/>
                                     <constraint firstItem="BaP-qd-VXT" firstAttribute="centerY" secondItem="BJI-hL-pAv" secondAttribute="centerY" id="hR6-W7-DC2"/>
                                     <constraint firstItem="BaP-qd-VXT" firstAttribute="leading" secondItem="gJJ-6Z-ekg" secondAttribute="trailing" constant="20" id="hxN-po-yOM"/>
                                     <constraint firstItem="RcG-Sp-DjX" firstAttribute="leading" secondItem="S9V-yW-umi" secondAttribute="trailing" constant="10" id="kCA-d4-lQn"/>
