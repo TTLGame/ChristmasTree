@@ -14,9 +14,24 @@ import OHHTTPStubs
 
 class LoginViewModel : NSObject {
     let api: Provider <MultiTarget>
-    private(set) var rootViewModel: RootViewModel
     let disposeBag = DisposeBag()
+    private(set) var rootViewModel: RootViewModel
     
+    var sheetView : BaseSheetView!
+    var registerView : RegisterView!
+    var baseVC : BaseViewController? {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self,
+                      let baseVC = self.baseVC else { return }
+                self.registerView = RegisterView(frame: baseVC.view.frame,baseVC: baseVC)
+                self.sheetView = BaseSheetView(frame: baseVC.view.frame, size: .fullscreen, baseVC: baseVC, view: self.registerView)
+                self.sheetView.title = Language.localized("registerForm")
+                self.sheetView.open()
+                self.sheetView.close()
+            }
+        }
+    }
     init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
         self.api = api
         self.rootViewModel = rootViewModel
@@ -51,7 +66,7 @@ class LoginViewModel : NSObject {
     }
     
     func checkLocalUser(){
-        if let data = PrefsImpl.default.getUserInfo()?.json() {
+        if let _ = PrefsImpl.default.getUserInfo()?.json() {
             DispatchQueue.main.async {
                 AppDelegate.shared.rootViewController.show(.main)
             }
@@ -84,6 +99,12 @@ class LoginViewModel : NSObject {
             }.disposed(by: disposeBag)
     }
     
+    func openSheetViewRegister(){
+        sheetView.open()
+    }
+}
+
+extension LoginViewModel {
     func snub(){
         let roomData : [String:Any] =
         ["statusCode" : 200,

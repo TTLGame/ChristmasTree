@@ -37,6 +37,12 @@ extension String {
         guard self.hasPrefix(prefix) else { return self }
         return String(self.dropFirst(prefix.count))
     }
+    
+    func matches(pattern: String) -> Bool {
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return false }
+                let range = NSRange(location: 0, length: self.utf16.count)
+                return regex.firstMatch(in: self, options: [], range: range) != nil
+    }
 }
 
 

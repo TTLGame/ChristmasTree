@@ -21,7 +21,16 @@
 //Login View
 "username" = "Email";
 "password" = "Mật khẩu";
+"confirmPass" = "Xác nhận mật khẩu";
+"fullname" = "Họ tên";
+"phone" = "Điện thoại";
+"birthday" = "Ngày sinh";
 "login" = "Đăng nhập";
+"registerAccount" = "Tạo tài khoản";
+"registerForm" = "Register Form";
+"male" = "Nam";
+"female" = "Nữ";
+"isRequired" = "Thông tin bắt buộc";
 
 //Main View
 "mainTitle" = "Quản lí địa điểm";

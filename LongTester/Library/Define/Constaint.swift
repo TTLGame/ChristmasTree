@@ -21,6 +21,7 @@ extension App {
         static let serverDateTime = "yyyy-MM-dd"
         static let serverCurrentDateTime = "yyyy-MM-dd HH:mm:ss"
         static let headerDateTime = "dd/MM/yyyy"
+        static let reponseDateTime = "dd-MM-yyyy"
         static let imageName = "yyyy-MM-dd_HH:mm:ss"
         static let defaultFieldTime = "HH:mm:ss"
         static let fieldTime = "HH:mm"

@@ -20,7 +20,16 @@
 //Login View
 "username" = "Email";
 "password" = "Password";
+"confirmPass" = "Confirm password";
+"fullname" = "Full name";
+"phone" = "Phone";
+"birthday" = "Birthday";
 "login" = "Login";
+"registerAccount" = "Register account";
+"registerForm" = "Register Form";
+"male" = "Male";
+"female" = "Female";
+"isRequired" = "this field is required";
 
 //Main View
 "mainTitle" = "Manage Location";

@@ -122,6 +122,10 @@ extension MainScreenViewController : UITableViewDataSource {
             let myCustomSelectionColorView = UIView()
             myCustomSelectionColorView.backgroundColor = .clear
             cell.selectedBackgroundView = myCustomSelectionColorView
+            cell.handlePress = {
+                self.viewModel.handleOpenCreatePopup()
+            }
+            
             return cell
         }
         else {

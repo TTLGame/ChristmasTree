@@ -14,6 +14,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var languageLbl: UILabel!
     @IBOutlet weak var customSwitch: CustomSwitch!
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
     
     var viewModel = LoginViewModel()
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class LoginViewController: BaseViewController {
     
     private func bindToViewModel() {
         self.viewModel = LoginViewModel(rootViewModel: rootViewModel)
+        self.viewModel.baseVC = self
         
     }
     
@@ -39,6 +41,7 @@ class LoginViewController: BaseViewController {
         #endif
         customSwitch.delegate = self
         loginBtn.setTitle(Language.localized("login"), for: .normal)
+        registerBtn.setTitle(Language.localized("registerAccount"), for: . normal)
         setSwitchChange()
         
         circleView.layer.cornerRadius = circleView.frame.size.width/2
@@ -52,6 +55,10 @@ class LoginViewController: BaseViewController {
         viewModel.logIn(email: userNameView.getData(),
                         pasword: passwordView.getData())
 //        AppDelegate.shared.rootViewController.show(.main)
+    }
+    
+    @IBAction func registerBtnPressed(_ sender: Any) {
+        viewModel.openSheetViewRegister()
     }
     
     override func viewWillAppear(_ animated: Bool) {

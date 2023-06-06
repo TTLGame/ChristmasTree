@@ -54,6 +54,10 @@
 		FD37193C2A2CCEBF00CF6FA5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37193B2A2CCEBF00CF6FA5 /* MainViewModel.swift */; };
 		FD37193E2A2CD1EF00CF6FA5 /* ReturnBlankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37193D2A2CD1EF00CF6FA5 /* ReturnBlankModel.swift */; };
 		FD3719402A2E3A9400CF6FA5 /* AddressDataReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37193F2A2E3A9400CF6FA5 /* AddressDataReqModel.swift */; };
+		FD3719502A2F758700CF6FA5 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37194F2A2F758700CF6FA5 /* RegisterView.swift */; };
+		FD3719522A2F759100CF6FA5 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3719512A2F759100CF6FA5 /* RegisterView.xib */; };
+		FD3719542A2F759F00CF6FA5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3719532A2F759F00CF6FA5 /* RegisterViewModel.swift */; };
+		FD3719562A2F9FA900CF6FA5 /* ValidationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3719552A2F9FA900CF6FA5 /* ValidationModel.swift */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
 		FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD929DAAC0200448F99 /* CropImageVC.swift */; };
 		FD48DBE729E68FC800264497 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD48DBE629E68FC800264497 /* UIView.swift */; };
@@ -244,6 +248,10 @@
 		FD37193B2A2CCEBF00CF6FA5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FD37193D2A2CD1EF00CF6FA5 /* ReturnBlankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnBlankModel.swift; sourceTree = "<group>"; };
 		FD37193F2A2E3A9400CF6FA5 /* AddressDataReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDataReqModel.swift; sourceTree = "<group>"; };
+		FD37194F2A2F758700CF6FA5 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		FD3719512A2F759100CF6FA5 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
+		FD3719532A2F759F00CF6FA5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		FD3719552A2F9FA900CF6FA5 /* ValidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationModel.swift; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
 		FD3B1DD929DAAC0200448F99 /* CropImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageVC.swift; sourceTree = "<group>"; };
 		FD48DBE629E68FC800264497 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -578,6 +586,7 @@
 			children = (
 				FD5765A02963CE8B005969BE /* User.swift */,
 				FD37192B2A2B987E00CF6FA5 /* LoginModel.swift */,
+				FD3719552A2F9FA900CF6FA5 /* ValidationModel.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -601,6 +610,16 @@
 			path = MainScreenAddMorePopUp;
 			sourceTree = "<group>";
 		};
+		FD37194E2A2F757300CF6FA5 /* RegisterView */ = {
+			isa = PBXGroup;
+			children = (
+				FD37194F2A2F758700CF6FA5 /* RegisterView.swift */,
+				FD3719512A2F759100CF6FA5 /* RegisterView.xib */,
+				FD3719532A2F759F00CF6FA5 /* RegisterViewModel.swift */,
+			);
+			path = RegisterView;
+			sourceTree = "<group>";
+		};
 		FD3B1DD829DAABDF00448F99 /* CropImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +631,7 @@
 		FD4DF3C129ED927D00AB6A50 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
+				FD37194E2A2F757300CF6FA5 /* RegisterView */,
 				FD4DF3C729ED92CD00AB6A50 /* LoginViewModel.swift */,
 				FD4DF3C929ED92E900AB6A50 /* LoginViewController.swift */,
 				FD4DF3CA29ED92E900AB6A50 /* LoginViewController.xib */,
@@ -1365,6 +1385,7 @@
 				FD51101E2A28941600D5E620 /* EditStatusButtonView.xib in Resources */,
 				FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */,
 				FDE9CD082A13F2FD004844AD /* BaseDropDownCell.xib in Resources */,
+				FD3719522A2F759100CF6FA5 /* RegisterView.xib in Resources */,
 				FD20159D2A238765006A4C2E /* AddressInfoRoomViewCell.xib in Resources */,
 				FDADC1CB29F3B75700803536 /* AddressCollectionViewCell.xib in Resources */,
 				FDE9CCFC2A13E414004844AD /* AddressCollectionDropDownCell.xib in Resources */,
@@ -1465,6 +1486,7 @@
 				FD0B1FCF29AB38730069F98F /* ButtonView.swift in Sources */,
 				FD3719402A2E3A9400CF6FA5 /* AddressDataReqModel.swift in Sources */,
 				FD2015602A1C71C2006A4C2E /* Date.swift in Sources */,
+				FD3719542A2F759F00CF6FA5 /* RegisterViewModel.swift in Sources */,
 				FD564B8E29656F8B00A527ED /* UISwitch.swift in Sources */,
 				FD2184E229E8F21D00761826 /* BaseNavigationView.swift in Sources */,
 				FDE9CD1A2A17DDD5004844AD /* AddressInfoViewCell.swift in Sources */,
@@ -1489,6 +1511,7 @@
 				FD4DF3CF29ED980E00AB6A50 /* TextFieldView.swift in Sources */,
 				FDADC19D29EFFFD600803536 /* SlideMenuView.swift in Sources */,
 				FDE9CCEE2A132D87004844AD /* AddressCollectionRadioViewModel.swift in Sources */,
+				FD3719502A2F758700CF6FA5 /* RegisterView.swift in Sources */,
 				FDF14B30295C311500BF079F /* RootViewController.swift in Sources */,
 				FDDB486629EFC80F00D212A7 /* SlideMenuViewModel.swift in Sources */,
 				FDDB485F29EFB01000D212A7 /* SlideMenuViewCell.swift in Sources */,
@@ -1550,6 +1573,7 @@
 				FDADC1AD29F1815D00803536 /* RootViewModel.swift in Sources */,
 				FDDB486229EFB0CB00D212A7 /* SubSlideMenuView.swift in Sources */,
 				FD564B902965769100A527ED /* Language.swift in Sources */,
+				FD3719562A2F9FA900CF6FA5 /* ValidationModel.swift in Sources */,
 				FD4DF3CB29ED92E900AB6A50 /* LoginViewController.swift in Sources */,
 				FD564B73296561FE00A527ED /* UITableView.swift in Sources */,
 				FD20155E2A1BE4C7006A4C2E /* MonthYearModel.swift in Sources */,

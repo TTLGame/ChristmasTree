@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 class DateSelectView : UIView {
+    @IBOutlet weak var labelTextField: UITextField!
+    private var returnData = ""
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
@@ -22,9 +24,8 @@ class DateSelectView : UIView {
         datePicker.addTarget(self, action: #selector(didScrollValueDate), for: .valueChanged)
         return datePicker
     }()
-    var labelTextField = UITextField()
     var formatDate : String = App.Format.headerDateTime
-    var dateHeight : CGFloat = 420
+    var dateHeight : CGFloat = 200
     var visibleTextField  = false
     
     override init(frame: CGRect) {
@@ -38,9 +39,21 @@ class DateSelectView : UIView {
     }
 
     func commonInit(){
-//        loadViewFromNib()
+        loadViewFromNib()
         setupDate()
+        setup()
     }
+    
+    func setup(){
+        self.layer.cornerRadius = 10
+        self.layer.borderWidth = 1
+        self.layer.borderColor = Color.normalTextColor.cgColor
+        self.layer.masksToBounds = true
+        
+        labelTextField.textColor = Color.greyPrimary
+        labelTextField.layer.borderWidth = 0
+    }
+    
     @objc func didScrollValueDate() {
         let formatter = DateFormatter()
         formatter.dateFormat = self.formatDate
@@ -48,17 +61,9 @@ class DateSelectView : UIView {
         print("selected date :\(selectedDate)")
     }
     
-    func setupDate(height : CGFloat = 420){
+    func setupDate(height : CGFloat = 200){
         self.dateHeight = height
-        
-        let labelTextField = UITextField()
-        self.addSubview(labelTextField)
-        labelTextField.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        self.labelTextField = labelTextField
-        
+    
         // Big enough frame
         let rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.dateHeight)
         let pickerWrapperView = UIView(frame: rect)
@@ -97,13 +102,29 @@ class DateSelectView : UIView {
     
     @objc func handleDoneButton(_ textField: UITextField) {
         let formatter = DateFormatter()
-        formatter.dateFormat = App.Format.responseTime
-        let selectedDate = formatter.string(from: datePicker.date)
-        print("Done \(selectedDate)")
+        formatter.dateFormat = self.formatDate
+        labelTextField.text = formatter.string(from: datePicker.date)
+        
+        formatter.dateFormat = App.Format.reponseDateTime
+        returnData = formatter.string(from: datePicker.date)
         labelTextField.endEditing(true)
+   
     }
     
     @objc func handleCancelButton(_ textField: UITextField) {
         labelTextField.endEditing(true)
+    }
+}
+
+extension DateSelectView {
+    func addPlaceHolder(text: String){
+        labelTextField.attributedPlaceholder = NSAttributedString(
+            string: text,
+            attributes: [NSAttributedString.Key.foregroundColor: Color.greyPrimary]
+        )
+    }
+    
+    func getData() -> String {
+        return returnData
     }
 }

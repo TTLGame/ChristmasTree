@@ -16,6 +16,7 @@
                 <outlet property="languageLbl" destination="oUN-bf-ff4" id="yC7-hk-Ofy"/>
                 <outlet property="loginBtn" destination="h1k-UT-dle" id="hrN-fA-FvY"/>
                 <outlet property="passwordView" destination="fmg-fl-Yu6" id="Ip5-Zb-YFf"/>
+                <outlet property="registerBtn" destination="Upm-MB-uEV" id="VU1-cS-kwY"/>
                 <outlet property="userNameView" destination="P9w-1T-irl" id="ESu-sS-Ufy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,7 +33,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-T6-k2I" userLabel="ContentScrollView">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="603"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="648"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginHeader" translatesAutoresizingMaskIntoConstraints="NO" id="Zil-c0-uoX">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="240"/>
@@ -137,12 +138,24 @@
                                                 <constraint firstItem="KWa-Mq-5D1" firstAttribute="centerY" secondItem="xjO-8Z-Tyf" secondAttribute="centerY" id="nJO-r0-PC0"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upm-MB-uEV" userLabel="RegisterBtn">
+                                            <rect key="frame" x="141.66666666666666" y="563" width="110" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="KeY-Da-1UK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Register account"/>
+                                            <connections>
+                                                <action selector="registerBtnPressed:" destination="-1" eventType="touchUpInside" id="Se7-QH-hIY"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="h1k-UT-dle" secondAttribute="bottom" constant="50" id="7dF-5l-Nxl"/>
                                         <constraint firstItem="fmg-fl-Yu6" firstAttribute="leading" secondItem="WEf-T6-k2I" secondAttribute="leading" constant="30" id="9UU-if-s9d"/>
                                         <constraint firstItem="P9w-1T-irl" firstAttribute="top" secondItem="jM5-fR-JIa" secondAttribute="bottom" constant="20" id="9fb-AQ-weA"/>
+                                        <constraint firstItem="Upm-MB-uEV" firstAttribute="top" secondItem="h1k-UT-dle" secondAttribute="bottom" constant="10" id="GZu-78-5CS"/>
                                         <constraint firstItem="h1k-UT-dle" firstAttribute="leading" secondItem="WEf-T6-k2I" secondAttribute="leading" constant="30" id="IBi-Lg-O1l"/>
                                         <constraint firstAttribute="trailing" secondItem="Zil-c0-uoX" secondAttribute="trailing" id="K6H-2B-379"/>
                                         <constraint firstAttribute="trailing" secondItem="c40-SG-spu" secondAttribute="trailing" constant="30" id="KVA-4G-7e2"/>
@@ -159,6 +172,7 @@
                                         <constraint firstItem="Zil-c0-uoX" firstAttribute="leading" secondItem="WEf-T6-k2I" secondAttribute="leading" id="h1a-tY-gtG"/>
                                         <constraint firstItem="jM5-fR-JIa" firstAttribute="centerX" secondItem="WEf-T6-k2I" secondAttribute="centerX" id="kLd-32-igz"/>
                                         <constraint firstItem="oUN-bf-ff4" firstAttribute="centerY" secondItem="c40-SG-spu" secondAttribute="centerY" id="mnq-wo-E2Y"/>
+                                        <constraint firstAttribute="bottom" secondItem="Upm-MB-uEV" secondAttribute="bottom" constant="50" id="o1t-V3-Azk"/>
                                         <constraint firstAttribute="trailing" secondItem="h1k-UT-dle" secondAttribute="trailing" constant="30" id="ohU-b6-ZVw"/>
                                         <constraint firstItem="xjO-8Z-Tyf" firstAttribute="top" secondItem="Zil-c0-uoX" secondAttribute="bottom" constant="-70" id="r0C-Jq-rkn"/>
                                         <constraint firstItem="h1k-UT-dle" firstAttribute="top" secondItem="fmg-fl-Yu6" secondAttribute="bottom" constant="20" id="uZ7-Fo-35S"/>
@@ -182,6 +196,7 @@
                         <constraint firstItem="MNO-4f-43p" firstAttribute="top" secondItem="NQF-Ak-daj" secondAttribute="top" id="0vg-NC-p6m"/>
                         <constraint firstAttribute="bottom" secondItem="MNO-4f-43p" secondAttribute="bottom" id="1W0-U4-hWL"/>
                         <constraint firstItem="MNO-4f-43p" firstAttribute="leading" secondItem="NQF-Ak-daj" secondAttribute="leading" id="WTa-O8-yab"/>
+                        <constraint firstItem="Upm-MB-uEV" firstAttribute="centerX" secondItem="NQF-Ak-daj" secondAttribute="centerX" id="Xoa-VW-eDR"/>
                         <constraint firstAttribute="trailing" secondItem="MNO-4f-43p" secondAttribute="trailing" id="zZt-mc-ESy"/>
                     </constraints>
                 </view>
