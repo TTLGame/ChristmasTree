@@ -25,16 +25,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="97"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ua5-ce-rju" userLabel="TextView">
-                            <rect key="frame" x="0.0" y="0.0" width="344.66666666666669" height="97"/>
+                            <rect key="frame" x="0.0" y="0.0" width="364" height="97"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKJ-mk-Si9">
-                                    <rect key="frame" x="10" y="0.0" width="324.66666666666669" height="17"/>
+                                    <rect key="frame" x="10" y="0.0" width="344" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NcK-17-PqO">
-                                    <rect key="frame" x="10" y="17" width="324.66666666666669" height="80"/>
+                                    <rect key="frame" x="10" y="17" width="344" height="80"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -51,10 +51,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igL-2g-o0W">
-                            <rect key="frame" x="344.66666666666669" y="0.0" width="48.333333333333314" height="97"/>
+                            <rect key="frame" x="364" y="0.0" width="29" height="97"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCi-aw-Zgc">
-                                    <rect key="frame" x="0.0" y="24.333333333333332" width="48.333333333333336" height="48.333333333333343"/>
+                                    <rect key="frame" x="0.0" y="34" width="29" height="29"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="SCi-aw-Zgc" secondAttribute="height" id="U2t-YN-gmW"/>
                                     </constraints>
@@ -76,7 +76,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="SCi-aw-Zgc" firstAttribute="height" secondItem="Y38-xa-2QP" secondAttribute="height" multiplier="0.5" id="PWA-8h-BN0"/>
+                        <constraint firstItem="SCi-aw-Zgc" firstAttribute="height" secondItem="Y38-xa-2QP" secondAttribute="height" multiplier="0.3" id="PWA-8h-BN0"/>
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfA-8a-eQy" userLabel="Separator">

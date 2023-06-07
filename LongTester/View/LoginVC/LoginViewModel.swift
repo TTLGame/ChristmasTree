@@ -25,8 +25,9 @@ class LoginViewModel : NSObject {
                 guard let self = self,
                       let baseVC = self.baseVC else { return }
                 self.registerView = RegisterView(frame: baseVC.view.frame,baseVC: baseVC)
+                self.registerView.delegate = self
                 self.sheetView = BaseSheetView(frame: baseVC.view.frame, size: .fullscreen, baseVC: baseVC, view: self.registerView)
-                self.sheetView.title = Language.localized("registerForm")
+                self.sheetView.title = ""
                 self.sheetView.open()
                 self.sheetView.close()
             }
@@ -125,5 +126,11 @@ extension LoginViewModel {
             
             return HTTPStubsResponse(jsonObject: roomData, statusCode: 200, headers: nil)
         }
+    }
+}
+
+extension LoginViewModel : RegisterViewDelegate {
+    func didSuccessRegister() {
+        self.sheetView.close()
     }
 }

@@ -20,8 +20,8 @@ class TextFieldView : UIView {
     weak var delegate : TextFieldViewDelegate?
     var isCompulsory : Bool = false
     var colorTheme : UIColor = Color.greyPrimary
-    var errorMessage = ""
-    var validations : [ValidationModel]?
+    private var errorMessage = ""
+    private var validations : [ValidationModel]?
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -90,6 +90,9 @@ extension TextFieldView {
         }
     }
     
+    func addValidation(validation : [ValidationModel]?) {
+        self.validations = validation
+    }
     func checkValidation() ->Bool{
         if (isCompulsory && textFieldView.text == ""){
             changeColorBaseOnValidation(validated: false)
@@ -97,7 +100,7 @@ extension TextFieldView {
             return false
         }
         if let validations = validations {
-            var isHasError: Bool = false // HAO-LQ 20200901
+            var isHasError: Bool = false
             for validation in validations {
                 let regex = validation.regex
                 let message = validation.errorMessage

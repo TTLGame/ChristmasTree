@@ -32,6 +32,11 @@
 "female" = "Nữ";
 "isRequired" = "Thông tin bắt buộc";
 
+//Regex
+"regexMail" = "Không đúng định dạng mail";
+"regexPhone" = "Không đúng định dạng điện thoại";
+"errorValidation" = "Xảy ra lỗi xác thực, vui lòng kiểm tra lại";
+
 //Main View
 "mainTitle" = "Quản lí địa điểm";
 "shortRoom" = "phòng đã thu";

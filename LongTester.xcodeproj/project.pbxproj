@@ -58,6 +58,7 @@
 		FD3719522A2F759100CF6FA5 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3719512A2F759100CF6FA5 /* RegisterView.xib */; };
 		FD3719542A2F759F00CF6FA5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3719532A2F759F00CF6FA5 /* RegisterViewModel.swift */; };
 		FD3719562A2F9FA900CF6FA5 /* ValidationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3719552A2F9FA900CF6FA5 /* ValidationModel.swift */; };
+		FD3719582A308B8E00CF6FA5 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3719572A308B8E00CF6FA5 /* RegisterModel.swift */; };
 		FD3B1DD729DAA97D00448F99 /* DateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD629DAA97D00448F99 /* DateVC.swift */; };
 		FD3B1DDA29DAAC0200448F99 /* CropImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B1DD929DAAC0200448F99 /* CropImageVC.swift */; };
 		FD48DBE729E68FC800264497 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD48DBE629E68FC800264497 /* UIView.swift */; };
@@ -252,6 +253,7 @@
 		FD3719512A2F759100CF6FA5 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		FD3719532A2F759F00CF6FA5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		FD3719552A2F9FA900CF6FA5 /* ValidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationModel.swift; sourceTree = "<group>"; };
+		FD3719572A308B8E00CF6FA5 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		FD3B1DD629DAA97D00448F99 /* DateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVC.swift; sourceTree = "<group>"; };
 		FD3B1DD929DAAC0200448F99 /* CropImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageVC.swift; sourceTree = "<group>"; };
 		FD48DBE629E68FC800264497 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				FD5765A02963CE8B005969BE /* User.swift */,
 				FD37192B2A2B987E00CF6FA5 /* LoginModel.swift */,
 				FD3719552A2F9FA900CF6FA5 /* ValidationModel.swift */,
+				FD3719572A308B8E00CF6FA5 /* RegisterModel.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -1578,6 +1581,7 @@
 				FD564B73296561FE00A527ED /* UITableView.swift in Sources */,
 				FD20155E2A1BE4C7006A4C2E /* MonthYearModel.swift in Sources */,
 				FDADC1CE29F3BCE300803536 /* PushModel.swift in Sources */,
+				FD3719582A308B8E00CF6FA5 /* RegisterModel.swift in Sources */,
 				FDE9CD072A13F2FD004844AD /* BaseDropDownCell.swift in Sources */,
 				FDADC1B729F2615A00803536 /* AlertBuilder.swift in Sources */,
 				FD20159F2A23B186006A4C2E /* AddressInfoRoomViewCellViewModel.swift in Sources */,

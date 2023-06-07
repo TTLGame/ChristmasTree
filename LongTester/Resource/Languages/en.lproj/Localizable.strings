@@ -31,6 +31,11 @@
 "female" = "Female";
 "isRequired" = "this field is required";
 
+//Regex
+"regexMail" = "Not correct email format";
+"regexPhone" = "Not correct phone format";
+"errorValidation" = "There is some error in field validations, please try again.";
+
 //Main View
 "mainTitle" = "Manage Location";
 "shortRoom" = "room(s) paid";

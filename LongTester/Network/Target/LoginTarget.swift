@@ -10,12 +10,15 @@ import Moya
 
 public enum LoginTarget {
     case login(email: String, password: String)
+    case register(request: RegisterReqModel)
 }
 
 extension LoginTarget: TargetType {
     public var method: Moya.Method {
         switch self {
         case .login:
+            return .post
+        case .register:
             return .post
         }
     }
@@ -26,6 +29,9 @@ extension LoginTarget: TargetType {
             return .requestParameters(parameters: ["email":email,
                                                    "password" : password],
                                       encoding: JSONEncoding.default)
+        case let .register(request):
+            let requestDict = request.json() ?? [:]
+            return .requestParameters(parameters: requestDict, encoding: JSONEncoding.default)
         }
     }
     
@@ -44,6 +50,8 @@ extension LoginTarget: TargetType {
         switch self {
         case .login:
             return "auth/login"
+        case .register:
+            return "auth/register"
         }
     }
 
@@ -54,9 +62,7 @@ extension LoginTarget: TargetType {
         }
         return data
     }
-
     
-
     public var validationType: ValidationType {
         return .successCodes
     }

@@ -11,9 +11,13 @@ import SnapKit
 import RealmSwift
 import RxSwift
 
+protocol RegisterViewDelegate : AnyObject {
+    func didSuccessRegister()
+}
 class RegisterView : UIView {
     @IBOutlet weak var maleLbl: UILabel!
 
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var femaleBtn: UIButton!
     @IBOutlet weak var maleBtn: UIButton!
     @IBOutlet weak var emailTextField: TextFieldView!
@@ -24,8 +28,10 @@ class RegisterView : UIView {
     @IBOutlet weak var dobView: UIView!
     @IBOutlet weak var femaleLbl: UILabel!
     @IBOutlet weak var dobTextField: DateSelectView!
-    
     @IBOutlet weak var registerBtn: UIButton!
+    
+    weak var delegate : RegisterViewDelegate?
+    var textFieldArray : [TextFieldView] = []
     var baseVC : BaseViewController!
     var viewModel = RegisterViewModel()
     let disposeBag = DisposeBag()
@@ -60,9 +66,20 @@ class RegisterView : UIView {
             self.updateRadio()
             
         }).disposed(by: disposeBag)
+        
+        self.viewModel.didRegisterSuccess.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] success in
+            guard let self = self else {return}
+            if (success){
+                self.delegate?.didSuccessRegister()
+            }
+            
+        }).disposed(by: disposeBag)
+        
     }
     
     private func setup(){
+        textFieldArray = [emailTextField,passwordTextField,confirmPassTextField,nameTextField,phoneTextField]
+        titleLbl.text = Language.localized("registerForm")
         femaleLbl.text = Language.localized("female")
         maleLbl.text = Language.localized("male")
         emailTextField.setup(text: Language.localized("username"),isCompulsory: true)
@@ -75,6 +92,12 @@ class RegisterView : UIView {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPassTextField.delegate = self
+        phoneTextField.delegate = self
+        
+        emailTextField.addValidation(validation: [ValidationModel(regex: "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", errorMessage: Language.localized("regexMail"))])
+        
+        phoneTextField.addValidation(validation: [ValidationModel(regex: "^0[0-9]{9}$|^$", errorMessage: Language.localized("regexPhone"))])
+        
         
         registerBtn.setTitle(Language.localized("registerAccount"), for: .normal)
         registerBtn.layer.cornerRadius = 5
@@ -98,13 +121,22 @@ class RegisterView : UIView {
         viewModel.setMaleData(isMale: true)
     }
     @IBAction func registerBtnPressed(_ sender: Any) {
-        let textFieldValidation = emailTextField.checkValidation() &&
-            passwordTextField.checkValidation() &&
-            confirmPassTextField.checkValidation()
-            
+        var textFieldValidation = true
+        for textField in textFieldArray {
+            let error = textField.checkValidation()
+            textFieldValidation = textFieldValidation && error
+        }
+        
         if (!textFieldValidation || passwordTextField.getData() != confirmPassTextField.getData()) {
+            self.baseVC.rootViewModel.alertModel.accept(AlertModel(message: Language.localized("errorValidation")))
             return
         }
+        viewModel.register(data: RegisterReqModel(email: emailTextField.getData(),
+                                                  password: passwordTextField.getData(),
+                                                  fullname: nameTextField.getData(),
+                                                  dob: dobTextField.getData(),
+                                                  gender: viewModel.isMale.value,
+                                                  phone: phoneTextField.getData()))
     }
 }
 
