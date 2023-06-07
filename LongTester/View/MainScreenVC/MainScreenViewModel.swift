@@ -47,6 +47,7 @@ class MainScreenViewModel : NSObject {
             self.mainScreenPopUp = MainScreenAddMorePopUp(frame: baseVC.view.frame)
             self.customPopUp = CustomPopUp(frame: baseVC.view.frame, baseVC: baseVC, view: self.mainScreenPopUp)
             self.customPopUp.width = baseVC.view.frame.width * 0.9
+            self.customPopUp.height =  500
             self.customPopUp.delegate = baseVC as? MainScreenViewController
         }
     }

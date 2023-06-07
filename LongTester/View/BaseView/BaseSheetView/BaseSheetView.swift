@@ -26,6 +26,7 @@ class BaseSheetView : UIView {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var infoViewHeight: NSLayoutConstraint!
     @IBOutlet weak var dragView: UIView!
+    @IBOutlet weak var sheetViewLeadingConstraint: NSLayoutConstraint!
     
     private var isExpand = false
     private var isBaseView = false
@@ -35,6 +36,11 @@ class BaseSheetView : UIView {
         }
     }
     
+    public var leadingConstraint : CGFloat = 0 {
+        didSet {
+            sheetViewLeadingConstraint.constant = leadingConstraint
+        }
+    }
     public var useDefaultCloseBtn : Bool = true {
         didSet{
             changeExitBtnLayout()

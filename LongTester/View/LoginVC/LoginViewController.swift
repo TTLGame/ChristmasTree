@@ -10,6 +10,8 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var userNameView: TextFieldView!
     @IBOutlet weak var passwordView: TextFieldView!
     
+    @IBOutlet weak var appTitleLbl: UILabel!
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var languageLbl: UILabel!
     @IBOutlet weak var customSwitch: CustomSwitch!
@@ -32,6 +34,7 @@ class LoginViewController: BaseViewController {
     }
     
     private func setup(){
+        mainView.backgroundColor = Color.viewDefaultColor
         viewModel.setupLanguage()
         userNameView.setup(text: Language.localized("username"))
         passwordView.setup(text: Language.localized("password"),isSecure: true)
@@ -40,15 +43,34 @@ class LoginViewController: BaseViewController {
         passwordView.addDefaultData(defaultValue: "tlong123")
         #endif
         customSwitch.delegate = self
-        loginBtn.setTitle(Language.localized("login"), for: .normal)
-        registerBtn.setTitle(Language.localized("registerAccount"), for: . normal)
+      
         setSwitchChange()
         
-        circleView.layer.cornerRadius = circleView.frame.size.width/2
+        circleView.layer.cornerRadius = 10
         circleView.clipsToBounds = true
 
-        circleView.layer.borderColor = Color.darkGreen.cgColor
-        circleView.layer.borderWidth = 5.0
+        circleView.layer.borderColor = UIColor.clear.cgColor
+        
+        setupBtn()
+        
+        appTitleLbl.layer.shadowColor = UIColor.black.cgColor
+        appTitleLbl.layer.shadowRadius = 2.0
+        appTitleLbl.layer.shadowOpacity = 1.0
+        appTitleLbl.layer.shadowOffset = CGSize(width: 4, height: 4)
+        appTitleLbl.layer.masksToBounds = false
+        
+    }
+    
+    private func setupBtn(){
+        loginBtn.setTitle(Language.localized("login"), for: .normal)
+        registerBtn.setTitle(Language.localized("registerAccount"), for: . normal)
+        
+        registerBtn.setTitleColor(Color.redPrimary, for: .normal)
+        loginBtn.backgroundColor = Color.redPrimary
+        loginBtn.setTitleColor(.white, for: .normal)
+        loginBtn.layer.cornerRadius = 5
+        loginBtn.layer.borderColor = UIColor.clear.cgColor
+        loginBtn.layer.masksToBounds = true
     }
     
     @IBAction func loginBtnPressed(_ sender: Any) {

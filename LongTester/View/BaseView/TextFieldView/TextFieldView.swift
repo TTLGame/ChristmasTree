@@ -16,12 +16,19 @@ class TextFieldView : UIView {
     @IBOutlet weak var textFieldView: UITextField!
     @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var invalidView: UIView!
+    @IBOutlet weak var labelView: UIView!
     
     weak var delegate : TextFieldViewDelegate?
     var isCompulsory : Bool = false
     var colorTheme : UIColor = Color.greyPrimary
     private var errorMessage = ""
     private var validations : [ValidationModel]?
+    
+    public var bgColor : UIColor = .white {
+        didSet {
+            updateBackgroundColor()
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -34,13 +41,24 @@ class TextFieldView : UIView {
     
     private func commonInit(){
         loadViewFromNib()
-        titleLbl.isHidden = true
+        
+        setupInit()
         setup()
-        textFieldView.delegate = self
+        
     }
     
+    private func setupInit(){
+        changePlaceholder(disable: true)
+        textFieldView.layer.borderWidth = 2
+        textFieldView.layer.borderColor = Color.textViewBorder.cgColor
+        textFieldView.layer.cornerRadius = 5
+        textFieldView.layer.masksToBounds = true
+        textFieldView.delegate = self
+        
+    }
     private func changePlaceholder(disable: Bool){
         titleLbl.isHidden = disable
+        labelView.isHidden = disable
         textFieldView.placeholder = disable ?  titleLbl.text : ""
     }
     
@@ -58,6 +76,11 @@ class TextFieldView : UIView {
         titleLbl.textColor = color
     }
     
+    private func updateBackgroundColor(){
+        labelView.backgroundColor = bgColor
+        textFieldView.backgroundColor = bgColor
+    }
+    
     @IBAction func invalidBtnPressed(_ sender: Any) {
         self.delegate?.handleErrorMessage(text: errorMessage)
     }
@@ -71,9 +94,7 @@ extension TextFieldView {
         self.colorTheme = color
         
         changeColorBaseOnValidation(validated: true)
-        
         textFieldView.isSecureTextEntry = isSecure
-        separatorView.backgroundColor = colorTheme
     }
     
     func getData() -> String {
@@ -130,9 +151,14 @@ extension TextFieldView : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         changeColorBaseOnValidation(validated: true)
         changePlaceholder(disable: false)
+        textFieldView.layer.borderWidth = 2
+        textFieldView.layer.borderColor = Color.selectedTextView.cgColor
         
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
+        textFieldView.layer.borderWidth = 2
+        textFieldView.layer.borderColor = Color.textViewBorder.cgColor
+        
         if (textField.text == "") {
             changePlaceholder(disable: true)
         }

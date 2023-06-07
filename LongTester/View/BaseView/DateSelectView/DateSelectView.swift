@@ -45,13 +45,11 @@ class DateSelectView : UIView {
     }
     
     func setup(){
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
-        self.layer.borderColor = Color.normalTextColor.cgColor
-        self.layer.masksToBounds = true
-        
+        labelTextField.layer.cornerRadius = 5
+        labelTextField.layer.borderWidth = 2
+        labelTextField.layer.borderColor = Color.textViewBorder.cgColor
+        labelTextField.layer.masksToBounds = true
         labelTextField.textColor = Color.greyPrimary
-        labelTextField.layer.borderWidth = 0
     }
     
     @objc func didScrollValueDate() {

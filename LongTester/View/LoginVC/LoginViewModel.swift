@@ -26,8 +26,9 @@ class LoginViewModel : NSObject {
                       let baseVC = self.baseVC else { return }
                 self.registerView = RegisterView(frame: baseVC.view.frame,baseVC: baseVC)
                 self.registerView.delegate = self
-                self.sheetView = BaseSheetView(frame: baseVC.view.frame, size: .fullscreen, baseVC: baseVC, view: self.registerView)
+                self.sheetView = BaseSheetView(frame: baseVC.view.frame, size: .percent(0.9), baseVC: baseVC, view: self.registerView)
                 self.sheetView.title = ""
+                self.sheetView.isHidden = true
                 self.sheetView.open()
                 self.sheetView.close()
             }
@@ -101,6 +102,7 @@ class LoginViewModel : NSObject {
     }
     
     func openSheetViewRegister(){
+        self.sheetView.isHidden = false
         sheetView.open()
     }
 }

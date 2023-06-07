@@ -15,6 +15,7 @@
                 <outlet property="headerBackGround" destination="ztI-BZ-YO8" id="cOo-Vf-RiJ"/>
                 <outlet property="headerLbl" destination="Qb4-Ti-gsu" id="4tW-70-Gxf"/>
                 <outlet property="headerView" destination="uuB-48-iTa" id="jdC-Av-x4s"/>
+                <outlet property="mainView" destination="8y9-jB-euk" id="wur-hX-s47"/>
                 <outlet property="menuBtn" destination="fEa-BT-1Lp" id="iyi-QD-KtU"/>
                 <outlet property="view" destination="8y9-jB-euk" id="7rP-IO-G93"/>
             </connections>
@@ -87,7 +88,7 @@
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="gKN-ch-fOj"/>
-            <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.86274509803921573" green="0.8784313725490196" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ztI-BZ-YO8" firstAttribute="leading" secondItem="8y9-jB-euk" secondAttribute="leading" id="8IG-s7-ZOA"/>
                 <constraint firstItem="uuB-48-iTa" firstAttribute="top" secondItem="gKN-ch-fOj" secondAttribute="top" id="9Qr-OJ-TqR"/>

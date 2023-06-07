@@ -10,6 +10,7 @@ import RealmSwift
 import RxSwift
 class MainScreenViewController: BaseViewController {
     
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var addressTblView: UITableView!
     @IBOutlet weak var headerBackGround: UIView!
     @IBOutlet weak var headerLbl: UILabel!
@@ -27,6 +28,7 @@ class MainScreenViewController: BaseViewController {
     }
     
     private func setup(){
+        mainView.backgroundColor = Color.viewDefaultColor
         headerBackGround.addBottomShadow()
         headerBackGround.backgroundColor = Color.redPrimary
         headerLbl.text = Language.localized("mainTitle")

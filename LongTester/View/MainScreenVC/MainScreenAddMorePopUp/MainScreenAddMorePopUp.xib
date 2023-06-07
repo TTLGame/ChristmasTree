@@ -38,16 +38,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="711"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lk-6Y-JcK" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="419.33333333333331"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="421.66666666666669"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avc-fO-Krg" userLabel="Title">
-                                    <rect key="frame" x="0.0" y="9.9999999999999982" width="393" height="19.333333333333329"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <rect key="frame" x="0.0" y="10.000000000000002" width="393" height="21.666666666666671"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nC6-cG-BXh" userLabel="AddressView">
-                                    <rect key="frame" x="10" y="89.333333333333329" width="373" height="59.999999999999986"/>
+                                    <rect key="frame" x="10" y="91.666666666666671" width="373" height="60.000000000000014"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvW-tk-dZ5" userLabel="TitleAddress">
                                             <rect key="frame" x="10" y="0.0" width="31" height="14.333333333333334"/>
@@ -75,7 +75,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FL7-vX-IrV" userLabel="NumRoom">
-                                    <rect key="frame" x="10" y="159.33333333333334" width="177" height="40"/>
+                                    <rect key="frame" x="10" y="161.66666666666666" width="177" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgg-9R-of4" userLabel="numRoomTile">
                                             <rect key="frame" x="10" y="13" width="31" height="14.333333333333336"/>
@@ -100,7 +100,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-jP-nW5" userLabel="Quota">
-                                    <rect key="frame" x="197" y="159.33333333333334" width="186" height="40"/>
+                                    <rect key="frame" x="197" y="161.66666666666666" width="186" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wl-kf-9PC" userLabel="QutaTtitle">
                                             <rect key="frame" x="10" y="13" width="31" height="14.333333333333336"/>
@@ -125,7 +125,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8Z-7V-TYs" userLabel="QuotaPrice">
-                                    <rect key="frame" x="10" y="209.33333333333334" width="373" height="40"/>
+                                    <rect key="frame" x="10" y="211.66666666666666" width="373" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiO-xE-AdM" userLabel="QPriceTitle">
                                             <rect key="frame" x="10" y="13" width="31" height="14.333333333333336"/>
@@ -150,7 +150,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eau-Dd-RQI" userLabel="WaterPrice">
-                                    <rect key="frame" x="10" y="259.33333333333331" width="373" height="40"/>
+                                    <rect key="frame" x="10" y="261.66666666666669" width="373" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZvH-vp-tYL" userLabel="WPriceTitle">
                                             <rect key="frame" x="10" y="13" width="31" height="14.333333333333336"/>
@@ -175,7 +175,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhq-CV-ddE" userLabel="ElectricPrice">
-                                    <rect key="frame" x="10" y="309.33333333333331" width="373" height="40"/>
+                                    <rect key="frame" x="10" y="311.66666666666669" width="373" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0k6-d9-erA" userLabel="EPriceTitle">
                                             <rect key="frame" x="10" y="13" width="31" height="14.333333333333336"/>
@@ -200,7 +200,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSV-un-SNB" userLabel="RoomPrice">
-                                    <rect key="frame" x="10" y="359.33333333333331" width="373" height="40"/>
+                                    <rect key="frame" x="10" y="361.66666666666669" width="373" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfH-9F-jHr" userLabel="RPriceTitle">
                                             <rect key="frame" x="10" y="13" width="31" height="14.333333333333336"/>
@@ -225,7 +225,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TO3-xy-9GY" userLabel="NameView">
-                                    <rect key="frame" x="10" y="39.333333333333336" width="373" height="40.000000000000007"/>
+                                    <rect key="frame" x="10" y="41.666666666666664" width="373" height="39.999999999999993"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bG-uN-bve" userLabel="NameTitle">
                                             <rect key="frame" x="10" y="13" width="31" height="14.333333333333336"/>

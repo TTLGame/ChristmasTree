@@ -101,9 +101,13 @@ class RegisterView : UIView {
         
         registerBtn.setTitle(Language.localized("registerAccount"), for: .normal)
         registerBtn.layer.cornerRadius = 5
-        registerBtn.layer.borderWidth = 1
-        registerBtn.layer.borderColor = Color.normalTextColor.cgColor
+        registerBtn.layer.borderWidth = 2
+        registerBtn.layer.borderColor = UIColor.clear.cgColor
         registerBtn.layer.masksToBounds = true
+        
+        registerBtn.backgroundColor = Color.redPrimary
+        registerBtn.setTitleColor(.white, for: .normal)
+        
         self.layoutIfNeeded()
     }
     
