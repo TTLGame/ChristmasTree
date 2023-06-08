@@ -24,7 +24,11 @@ class MainScreenCell: UITableViewCell {
     @IBOutlet weak var backgroundImgView: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
+    @IBOutlet weak var settingBtn: UIButton!
+    private var dropdown : DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>!
+    
     var handlePress: () -> () = { }
+    var handlePressDropdown: (IndexPath) -> () = {_ in }
     var viewModel: MainScreenCellViewModel? {
         didSet {
             bindData()
@@ -55,6 +59,24 @@ class MainScreenCell: UITableViewCell {
 //            print("Cannot read URL")}
 //        catch {
 //            print("Error data")}
+    }
+    
+    func setupDropdown(viewModels : [AddressCollectionDropDownCellViewModel], baseVC: BaseViewController){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.dropdown = DropDownView<AddressCollectionDropDownCell, AddressCollectionDropDownCellViewModel>(baseVC : baseVC, anchorView: self.settingBtn)
+            
+            self.dropdown.cellViewModels = viewModels
+            
+            self.dropdown.tableWidth = 200
+            self.dropdown.tableHeight = 50
+            self.dropdown.cellHeight = 50
+            self.dropdown.heightOffset = -3
+//            self.dropdown.highLightColor = .clear
+            self.dropdown.horizonalDirection = .auto
+            self.dropdown.verticalDirection = .auto
+            self.dropdown.delegate = self
+        }
     }
     
     private func setupFullRoom(){
@@ -133,6 +155,28 @@ class MainScreenCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func settingBtnPressed(_ sender: Any) {
+        dropdown.show()
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions(), animations: {
+            [weak self] in
+            self?.settingBtn.transform = CGAffineTransform(rotationAngle: .pi)
+        }) { (animated) in }
+    }
+}
+
+extension MainScreenCell : DropDownViewDelegate{
+    func didSelect(indexPath: IndexPath) {
+        print("Pressed")
+        self.handlePressDropdown(indexPath)
+    }
+    
+    func didCloseDropdown(){
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions(), animations: {
+            [weak self] in
+            self?.settingBtn.transform = CGAffineTransform.identity
+        }) { (animated) in }
     }
     
 }

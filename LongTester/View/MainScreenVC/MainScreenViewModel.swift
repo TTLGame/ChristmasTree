@@ -15,7 +15,7 @@ import OHHTTPStubs
 class MainScreenViewModel : NSObject {
     private(set) var mainViewDataModel : BehaviorRelay<[MainViewDataModel]> = BehaviorRelay(value: [])
     var cellViewModels : BehaviorRelay<[MainScreenCellViewModel]> = BehaviorRelay(value: [])
-    
+    var dropdownCellVM : BehaviorRelay<[AddressCollectionDropDownCellViewModel]> = BehaviorRelay(value: [])
     var willAddMore : BehaviorRelay<Int> = BehaviorRelay(value: 0)
     
     var baseVC : BaseViewController? {
@@ -27,6 +27,7 @@ class MainScreenViewModel : NSObject {
     var customPopUp : CustomPopUp!
     
     let api: Provider <MultiTarget>
+    let maxAddress = 5
     private(set) var rootViewModel: RootViewModel
     let limit: Int = 50
     
@@ -52,6 +53,19 @@ class MainScreenViewModel : NSObject {
         }
     }
     
+    private func deleteMainViewModel(addressId: String){
+        var data = mainViewDataModel.value
+        if let index = data.firstIndex(where: { $0.id == addressId
+        }) {
+            data.remove(at: index)
+            self.mainViewDataModel.accept(data)
+        }
+    }
+    
+    func updateCurrentAddressNumber(){
+        self.mainViewDataModel.value.count < self.maxAddress ? self.willAddMore.accept(1) : self.willAddMore.accept(0)
+    }
+    
     func addAllEnumType(){
         for type in backbroundType.allCases {
             randomPic.append(type.rawValue)
@@ -71,6 +85,51 @@ class MainScreenViewModel : NSObject {
         }.bind(to: cellViewModels).disposed(by: disposeBag)
     }
     
+    func getDropdownData(){
+        let data = [AddressCollectionDropDownCellViewModel(
+            image: UIImage(systemName: "trash"),
+            title: Language.localized("delete"))]
+        dropdownCellVM.accept(data)
+    }
+    
+
+    func handleOpenCreatePopup(){
+        customPopUp.open()
+    }
+    
+    func handlePressData(index : IndexPath){
+        if let addressId = mainViewDataModel.value[index.row].id {
+            self.rootViewModel.pushViewModel.accept(PushModel(
+                viewController: AddressCollectionViewController(id: addressId),
+                title: Language.localized("addressCollectionMainTitle")))
+        }
+    }
+    
+    func handleDropdown(selectDropdownIndex: IndexPath, selectcellIndex : IndexPath){
+        switch selectDropdownIndex.row {
+        case 0:
+            let alertModel = AlertModel.ActionModel(
+                title: Language.localized("delete"),
+                style: .default, handler: {_ in
+                    self.deleteAddress(index: selectcellIndex)
+                })
+            let closeModel = AlertModel.ActionModel(
+                title: Language.localized("cancelBtn"),
+                style: .default, handler: {_ in
+                })
+            rootViewModel.alertModel.accept(AlertModel(
+                actionModels: [closeModel,alertModel],
+                title: "",
+                message: Language.localized("deleteContent"),
+                prefferedStyle: .alert))
+            
+        default :
+            break
+        }
+    }
+}
+
+extension MainScreenViewModel {
     func getMainScreenData() {
         #if STG
         snub()
@@ -85,30 +144,14 @@ class MainScreenViewModel : NSObject {
                     if let value = value.data {
                         self.mainViewDataModel.accept(value)
                         self.rootViewModel.handleProgress(false)
-                        self.willAddMore.accept(1)
                     }
-                case .failure(_):
+                case .failure(let error):
+                    self.rootViewModel.alertModel.accept(AlertModel(message: error.localizedDescription))
                     break
                 }
                 self.rootViewModel.handleProgress(false)
             }.disposed(by: disposeBag)
     }
-
-    func handleOpenCreatePopup(){
-        customPopUp.open()
-    }
-    
-    func handlePressData(index : IndexPath){
-        if let addressId = mainViewDataModel.value[index.row].id {
-            self.rootViewModel.pushViewModel.accept(PushModel(
-                viewController: AddressCollectionViewController(id: addressId),
-                title: Language.localized("addressCollectionMainTitle")))
-        }
-        
-    }
-}
-
-extension MainScreenViewModel {
     
     func createAddress(){
         if let data = mainScreenPopUp.returnViewModel() {
@@ -137,7 +180,8 @@ extension MainScreenViewModel {
 //                            self.convertCellModel(data: data)
                             self.resetPopup()
                         }
-                    case .failure(_):
+                    case .failure(let error):
+                        self.rootViewModel.alertModel.accept(AlertModel(message: error.localizedDescription))
                         SVProgressHUD.dismiss()
                         break
                     }
@@ -146,6 +190,29 @@ extension MainScreenViewModel {
         else {
             self.rootViewModel.alertModel.accept(AlertModel(message: Language.localized("fillError")))
         }
+    }
+    
+    func deleteAddress(index: IndexPath) {
+        guard let addressId = mainViewDataModel.value[index.row].id  else { return}
+        rootViewModel.handleProgress(true)
+        api.request(MultiTarget(MainScreenTarget.deleteAddress(id: addressId)))
+            .map(ReturnBlankModel.self, using: JSONDecoder.decoderAPI(), failsOnEmptyData: false)
+            .subscribe {[weak self] event in
+                guard let self = self else { return }
+                switch event {
+                case .success(let value):
+                    if let messageVN = value.messageVN,
+                       let messageEN = value.messageEN{
+                        self.rootViewModel.alertModel.accept(AlertModel(message: AppConfig.shared.language == .vietnamese ? messageVN : messageEN))
+                        self.rootViewModel.handleProgress(false)
+                        self.deleteMainViewModel(addressId: addressId)
+                    }
+                case .failure(let error):
+                    self.rootViewModel.alertModel.accept(AlertModel(message: error.localizedDescription))
+                    break
+                }
+                self.rootViewModel.handleProgress(false)
+            }.disposed(by: disposeBag)
     }
 }
 

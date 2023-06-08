@@ -27,8 +27,7 @@ class TableScreenViewModel : NSObject {
         users.map {users in
             users.map {user in
                 return TableScreenCellViewModel(avatar: user.avatar,
-                                                firstName: user.firstName,
-                                                lastName: user.lastName)
+                                                fullName: user.fullname)
             }
         }.bind(to: cellViewModels).disposed(by: disposeBag)
         

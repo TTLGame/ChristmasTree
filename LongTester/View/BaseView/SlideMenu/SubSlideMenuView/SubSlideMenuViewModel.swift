@@ -36,7 +36,11 @@ class SubSlideMenuViewModel : NSObject {
     }
     
     func getNameData(){
-        self.userName.accept("Long anh")
+        if let user = PrefsImpl.default.getUserInfo(),
+           let name = user.fullname{
+            self.userName.accept(name)
+            
+        }
     }
-//
+    //
 }

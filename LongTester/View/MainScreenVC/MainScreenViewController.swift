@@ -17,6 +17,7 @@ class MainScreenViewController: BaseViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var menuBtn: UIButton!
     
+    @IBOutlet weak var remainLbl: UILabel!
     private var viewModel = MainScreenViewModel()
     private var slideMenu = SlideMenuView()
     
@@ -43,22 +44,31 @@ class MainScreenViewController: BaseViewController {
     }
     
     private func bindToViewModel() {
-        self.viewModel = MainScreenViewModel(rootViewModel: rootViewModel as! RootViewModel)
+        self.viewModel = MainScreenViewModel(rootViewModel: rootViewModel )
         self.viewModel.baseVC = self
         self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.addressTblView.reloadData()
+            self.viewModel.updateCurrentAddressNumber()
             
         }).disposed(by: disposeBag)
         
         self.viewModel.willAddMore.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
+            
+            self.remainLbl.text = "\(self.viewModel.cellViewModels.value.count) / \(self.viewModel.maxAddress)"
             self.addressTblView.reloadData()
             
         }).disposed(by: disposeBag)
         
+        self.viewModel.dropdownCellVM.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let self = self else {return}
+            self.addressTblView.reloadData()
+            
+        }).disposed(by: disposeBag)
         
         viewModel.getMainScreenData()
+        viewModel.getDropdownData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,13 +146,18 @@ extension MainScreenViewController : UITableViewDataSource {
                 for: indexPath) as? MainScreenCell
 
             cell.viewModel = viewModel.cellViewModels.value[indexPath.row]
-            
+            cell.setupDropdown(viewModels: viewModel.dropdownCellVM.value, baseVC: self)
             // Highlighted color
             let myCustomSelectionColorView = UIView()
             myCustomSelectionColorView.backgroundColor = .clear
             cell.selectedBackgroundView = myCustomSelectionColorView
             cell.handlePress = {
                 self.handlePressData(indexPath: indexPath)
+            }
+            
+            cell.handlePressDropdown = { index in
+                self.viewModel.handleDropdown(selectDropdownIndex: index,
+                                              selectcellIndex: indexPath)
             }
             return cell
         }

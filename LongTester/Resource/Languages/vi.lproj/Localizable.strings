@@ -51,7 +51,8 @@
 "roomPrice" = "Giá phòng";
 "addressName" = "Tên cơ sở";
 "fillError" = "Vui lòng nhập đủ các trường cần thiết.";
-
+"delete" = "Xóa";
+"deleteContent" = "Bạn có chắc chắc muốn xóa địa chỉ này không?";
 //Hamburger Menu
 "logout" = "Đăng xuất";
 "hello" = "Xin chào, ";

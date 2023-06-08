@@ -11,15 +11,8 @@ class TableScreenCellViewModel {
     let avatar: String?
     let fullName: String?
     init(avatar: String?,
-         firstName: String?,
-         lastName: String?) {
+         fullName: String?) {
         self.avatar = avatar
-        
-        if let firstName = firstName, let lastName = lastName {
-            self.fullName = firstName + " " + lastName
-        }
-        else {
-            self.fullName = ""
-        }
+        self.fullName = fullName
     }
 }

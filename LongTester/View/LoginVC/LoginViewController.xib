@@ -40,7 +40,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginHeader" translatesAutoresizingMaskIntoConstraints="NO" id="8AA-do-LyV">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="350"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="350" id="i6h-Me-D2k"/>
+                                                <constraint firstAttribute="width" secondItem="8AA-do-LyV" secondAttribute="height" multiplier="393:350" id="ZmC-12-alH"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUN-bf-ff4">

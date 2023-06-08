@@ -350,7 +350,7 @@ extension AddressCollectionViewController : DropDownViewDelegate {
     func didSelect(indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            print("Selected at \(indexPath.row)")
+            openSheetEditCell()
         case 1:
             openSheetViewInfo()
         default:

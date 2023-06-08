@@ -17,6 +17,7 @@
                 <outlet property="headerView" destination="uuB-48-iTa" id="jdC-Av-x4s"/>
                 <outlet property="mainView" destination="8y9-jB-euk" id="wur-hX-s47"/>
                 <outlet property="menuBtn" destination="fEa-BT-1Lp" id="iyi-QD-KtU"/>
+                <outlet property="remainLbl" destination="PhL-78-hwO" id="rII-b8-4hR"/>
                 <outlet property="view" destination="8y9-jB-euk" id="7rP-IO-G93"/>
             </connections>
         </placeholder>
@@ -40,7 +41,7 @@
                                 <constraint firstAttribute="width" constant="30" id="veg-bM-I7T"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qb4-Ti-gsu">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qb4-Ti-gsu" userLabel="Ttitle">
                             <rect key="frame" x="176.66666666666666" y="22.666666666666671" width="39.666666666666657" height="19.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,12 +66,20 @@
                                 <constraint firstAttribute="height" constant="1" id="7kh-Wj-xuz"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhL-78-hwO" userLabel="Remain">
+                            <rect key="frame" x="343.33333333333331" y="22.666666666666671" width="39.666666666666686" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Dcw-LP-bR8" secondAttribute="trailing" id="96d-cf-9Od"/>
+                        <constraint firstItem="PhL-78-hwO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qb4-Ti-gsu" secondAttribute="trailing" constant="5" id="DMW-70-y5S"/>
                         <constraint firstItem="Dcw-LP-bR8" firstAttribute="top" secondItem="Qb4-Ti-gsu" secondAttribute="bottom" constant="3" id="HTL-sZ-3jJ"/>
                         <constraint firstItem="Qb4-Ti-gsu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KFN-03-vVR" secondAttribute="trailing" constant="20" id="I3a-vg-dW1"/>
+                        <constraint firstItem="Dcw-LP-bR8" firstAttribute="top" secondItem="PhL-78-hwO" secondAttribute="bottom" constant="3" id="Itp-Ob-Cqy"/>
                         <constraint firstItem="KFN-03-vVR" firstAttribute="leading" secondItem="uuB-48-iTa" secondAttribute="leading" constant="10" id="WUf-IP-CEj"/>
                         <constraint firstItem="fEa-BT-1Lp" firstAttribute="leading" secondItem="uuB-48-iTa" secondAttribute="leading" constant="10" id="eUQ-fe-jHk"/>
                         <constraint firstItem="Qb4-Ti-gsu" firstAttribute="centerX" secondItem="uuB-48-iTa" secondAttribute="centerX" id="fCQ-kU-tYJ"/>
@@ -79,9 +88,10 @@
                         <constraint firstItem="Dcw-LP-bR8" firstAttribute="top" secondItem="KFN-03-vVR" secondAttribute="bottom" id="ogu-uB-uFd"/>
                         <constraint firstItem="Dcw-LP-bR8" firstAttribute="leading" secondItem="uuB-48-iTa" secondAttribute="leading" id="qG0-Kg-Sgq"/>
                         <constraint firstAttribute="height" constant="60" id="t8U-sb-FUj"/>
+                        <constraint firstAttribute="trailing" secondItem="PhL-78-hwO" secondAttribute="trailing" constant="10" id="yfP-m4-V79"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LQ6-Lz-s9w">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LQ6-Lz-s9w">
                     <rect key="frame" x="10" y="119" width="373" height="699"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

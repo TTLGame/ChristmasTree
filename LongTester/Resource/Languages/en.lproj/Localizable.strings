@@ -50,7 +50,8 @@
 "roomPrice" = "Room price";
 "addressName" = "Address Name";
 "fillError" = "Please fill out all required fields.";
-
+"delete" = "Delete";
+"deleteContent" = "You sure you want to delete this address?";
 //Hamburger Menu
 "logout" = "Log out";
 "hello" = "Hello, ";

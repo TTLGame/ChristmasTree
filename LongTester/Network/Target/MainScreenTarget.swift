@@ -11,6 +11,7 @@ import Moya
 public enum MainScreenTarget {
     case getUser(page: Int)
     case getAddress
+    case deleteAddress(id: String)
     case createAddress(quota: Int,
                        quotaPrice: Int,
                        roomPrice: Int,
@@ -31,6 +32,8 @@ extension MainScreenTarget: TargetType {
             return .get
         case .createAddress :
             return .post
+        case .deleteAddress :
+            return .delete
         }
     }
     
@@ -40,6 +43,8 @@ extension MainScreenTarget: TargetType {
             return .requestParameters(parameters: ["page":page],
                                       encoding: URLEncoding.default)
         case .getAddress :
+            return .requestPlain
+        case .deleteAddress :
             return .requestPlain
         case let .createAddress(quota, quotaPrice, roomPrice, waterPrice, electricPrice, roomsNum, address, name) :
             return .requestParameters(parameters:["inputQuotaPrice": quotaPrice,
@@ -71,6 +76,8 @@ extension MainScreenTarget: TargetType {
             return "users"
         case .getAddress:
             return "address/get"
+        case .deleteAddress(let id) :
+            return "address/\(id)/delete"
         case .createAddress :
             return "address/create"
         }
