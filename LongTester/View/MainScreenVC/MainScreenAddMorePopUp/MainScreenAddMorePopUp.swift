@@ -31,6 +31,7 @@ class MainScreenAddMorePopUp : UIView {
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     
+    private var arrTextfield : [UITextField] = []
     var viewModel = MainScreenAddMorePopUpViewModel()
 //    init(frame: CGRect, baseVC : UIViewController, view : UIView) {
 //        super.init(frame: frame)
@@ -52,7 +53,23 @@ class MainScreenAddMorePopUp : UIView {
         setup()
     }
     
+    private func setupTextField(){
+        for textfield in arrTextfield {
+            textfield.layer.borderWidth = 2
+            textfield.layer.borderColor = Color.textViewBorder.cgColor
+            textfield.layer.cornerRadius = 5
+            textfield.layer.masksToBounds = true
+            textfield.delegate = self
+            
+            textfield.addTarget(self,
+                                         action: #selector(MainScreenAddMorePopUp.textFieldDidChange(_:)), for: .editingChanged)
+        }
+    }
     private func setup(){
+        arrTextfield = [roomPriceTextField,electricPriceTextField,waterPriceTextField,QuotaTextField,roomNumTextField,nameTextField,QuotaPriceTextField]
+        
+        setupTextField()
+        
         roomPriceLbl.text = Language.localized("roomPrice") + "(*)"
         electricPriceLbl.text = Language.localized("electricPrice") + "(*)"
         waterPriceLbl.text = Language.localized("waterPrice") + "(*)"
@@ -68,30 +85,10 @@ class MainScreenAddMorePopUp : UIView {
         waterPriceTextField.text = " VND"
         QuotaPriceTextField.text = " VND"
         
-        roomPriceTextField.delegate = self
-        electricPriceTextField.delegate = self
-        waterPriceTextField.delegate = self
-        QuotaPriceTextField.delegate = self
-        
-        roomPriceTextField.addTarget(self,
-                                     action: #selector(MainScreenAddMorePopUp.textFieldDidChange(_:)), for: .editingChanged)
-        electricPriceTextField.addTarget(self,
-                                     action: #selector(MainScreenAddMorePopUp.textFieldDidChange(_:)), for: .editingChanged)
-        waterPriceTextField.addTarget(self,
-                                     action: #selector(MainScreenAddMorePopUp.textFieldDidChange(_:)), for: .editingChanged)
-        QuotaTextField.addTarget(self,
-                                     action: #selector(MainScreenAddMorePopUp.textFieldDidChange(_:)), for: .editingChanged)
-        QuotaPriceTextField.addTarget(self,
-                                     action: #selector(MainScreenAddMorePopUp.textFieldDidChange(_:)), for: .editingChanged)
-        roomNumTextField.addTarget(self,
-                                     action: #selector(MainScreenAddMorePopUp.textFieldDidChange(_:)), for: .editingChanged)
-        nameTextField.addTarget(self,
-                                     action: #selector(MainScreenAddMorePopUp.textFieldDidChange(_:)), for: .editingChanged)
-
         addressTextView.delegate = self
         addressTextView.layer.cornerRadius = 5
         addressTextView.layer.borderColor = Color.viewDefaultColor.cgColor
-        addressTextView.layer.borderWidth = 1
+        addressTextView.layer.borderWidth = 2
         addressTextView.layer.masksToBounds = true
     }
     
@@ -102,6 +99,9 @@ class MainScreenAddMorePopUp : UIView {
 
 extension MainScreenAddMorePopUp : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 2
+        textField.layer.borderColor = Color.selectedTextView.cgColor
+        
         if (textField == QuotaTextField || textField == roomNumTextField){
             return
         }
@@ -115,6 +115,12 @@ extension MainScreenAddMorePopUp : UITextFieldDelegate {
             }
         }
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 2
+        textField.layer.borderColor = Color.textViewBorder.cgColor
+    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         if (textField == QuotaTextField ||
             textField == roomNumTextField ||
@@ -199,6 +205,14 @@ extension MainScreenAddMorePopUp : UITextFieldDelegate {
 }
 
 extension MainScreenAddMorePopUp : UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.layer.borderWidth = 2
+        textView.layer.borderColor = Color.selectedTextView.cgColor
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.layer.borderWidth = 2
+        textView.layer.borderColor = Color.textViewBorder.cgColor
+    }
     func textViewDidChange(_ textView: UITextView) {
         viewModel.inputAddress = textView.text
     }

@@ -106,7 +106,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
         totalPriceElectricLbl.text = (viewModel.totalElectric?.formatnumberWithDot() ?? "0") + " VND"
 //        electricTextField.text = String(currentElectric)
         
-        if let trashPrice = viewModel.trashPrice {
+        if let trashPrice = viewModel.trashPrice, trashPrice != 0 {
             trashPriceLbl.text = trashPrice.formatnumberWithDot() + " VND"
             trashView.isHidden = false
         }
@@ -114,7 +114,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
             trashView.isHidden = true
         }
         
-        if let internetPrice = viewModel.internetPrice {
+        if let internetPrice = viewModel.internetPrice, internetPrice != 0 {
             internetPriceLbl.text = internetPrice.formatnumberWithDot() + " VND"
             internetView.isHidden = false
         }
