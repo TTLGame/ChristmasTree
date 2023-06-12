@@ -12,6 +12,7 @@ import DropDown
 
 class AddressCollectionViewController: BaseViewController {
 
+    @IBOutlet weak var backGroundImgView: UIImageView!
     @IBOutlet weak var radioViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailCollectionView: UICollectionView!
     @IBOutlet weak var radioView: AddressCollectionRadioView!
@@ -35,9 +36,9 @@ class AddressCollectionViewController: BaseViewController {
     private var monthYearView : MonthYearView!
     
     
-    init(id: String, rootViewModel: RootViewModel = RootViewModel()) {
+    init(id: String, background : String = "PyramidBG" ,rootViewModel: RootViewModel = RootViewModel()) {
         super.init(rootViewModel: rootViewModel)
-        
+        loadBackground(image: background)
         self.viewModel.setAddresId(id: id)
         
     }
@@ -57,6 +58,12 @@ class AddressCollectionViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    private func loadBackground(image: String){
+        DispatchQueue.main.async {
+            self.backGroundImgView.image = UIImage(named: image)
+        }
+       
+    }
     private func setup(){
         monthInfoView.addBottomShadow(height: 0, alpha: 0.4,radius: 5)
         setupCollectionView()
@@ -115,7 +122,7 @@ class AddressCollectionViewController: BaseViewController {
     }
     
     private func bindToViewModel() {
-        self.viewModel.setRootViewModel(rootViewModel: rootViewModel as! RootViewModel)
+        self.viewModel.setRootViewModel(rootViewModel: rootViewModel )
         self.viewModel.cellViewModels.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let self = self else {return}
             self.detailCollectionView.reloadData()
@@ -210,7 +217,7 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.getState() ? openSheetEditCell() : didSelectItem(indexPath: indexPath)
+        viewModel.getState() ? openSheetEditOneRoom(index: indexPath) : didSelectItem(indexPath: indexPath)
     }
     
     func configureInactiveContextMenu(indexPath: IndexPath) -> UIContextMenuConfiguration{
@@ -218,7 +225,7 @@ extension AddressCollectionViewController: UICollectionViewDelegate {
             let deleteAction = UIAction(title:"Edit product", image: UIImage(systemName:"pencil.line")){ _ in
                 self.viewModel.changeState(value: true)
                 self.detailCollectionView.reloadData()
-                self.openSheetEditCell()
+                self.openSheetEditOneRoom(index: indexPath)
             }
             return UIMenu(title:"Option", children: [deleteAction])
         }
@@ -386,17 +393,37 @@ extension AddressCollectionViewController {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             
-            let addressView = AddressInfoRoomView(frame: self.view.frame,
-                                                  addressDataModel: self.viewModel.addressDataModel, currentMonthYear: self.viewModel.currentMonthYear,
-                                                      baseVC: self)
+            let addressView = AddressInfoRoomView(
+                frame: self.view.frame,
+                addressDataModel: self.viewModel.addressDataModel,
+                currentMonthYear: self.viewModel.currentMonthYear,
+                baseVC: self)
             addressView.delegate = self
             addressView.resetMonthYear(monthYear: self.viewModel.currentMonthYear)
-//            let addressView = AddressInfoView(frame: self.view.frame, currentMonthYear: self.viewModel.currentMonthYear, data: self.viewModel.addressDataModel, baseVC: self)
             let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
             sheetView.title = Language.localized("addressCollectionMainTitle")
             sheetView.open()
         }
     }
+    
+    func openSheetEditOneRoom(index : IndexPath){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            let addressView = OneRoomEditView(
+                frame: self.view.frame,
+                addressDataModel: self.viewModel.addressDataModel,
+                currentMonthYear: self.viewModel.currentMonthYear,
+                roomId: self.viewModel.cellViewModels.value[index.row].id ?? "",
+                baseVC: self)
+
+            addressView.delegate = self
+            let sheetView = BaseSheetView(frame: self.view.frame, size: .percent(0.8), baseVC: self, view: addressView)
+            sheetView.title = Language.localized("addressCollectionMainTitle")
+            sheetView.open()
+        }
+    }
+    
 }
 
 extension AddressCollectionViewController : MonthYearViewDelegate {
@@ -420,6 +447,13 @@ extension AddressCollectionViewController : AddressInfoSheetViewDelegate {
     }
 }
 
+extension AddressCollectionViewController : OneRoomEditViewDelegate {
+    func didChangeData(view: OneRoomEditView, roomData: [RoomDataModel], monthYear: MonthYear, nextRoom: [RoomDataModel]?) {
+        
+        viewModel.updateAddressDataModel(roomData: roomData, monthYear: monthYear,nextRoom: nextRoom)
+//        view.updateAddressData(addressData: viewModel.addressDataModel)
+    }
+}
 
 extension AddressCollectionViewController : AddressInfoRoomViewDelegate {
     func didChangeData(view: AddressInfoRoomView, roomData: [RoomDataModel], monthYear: MonthYear, nextRoom: [RoomDataModel]?) {

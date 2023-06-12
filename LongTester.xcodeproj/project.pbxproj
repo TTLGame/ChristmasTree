@@ -152,6 +152,9 @@
 		FDDB486629EFC80F00D212A7 /* SlideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486529EFC80F00D212A7 /* SlideMenuViewModel.swift */; };
 		FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486729EFC8CE00D212A7 /* SubSlideMenuViewModel.swift */; };
 		FDDB486A29EFD28E00D212A7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB486929EFD28E00D212A7 /* UIViewController.swift */; };
+		FDE116212A36F0CA003A24B3 /* TextFieldMoneyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE116202A36F0CA003A24B3 /* TextFieldMoneyView.xib */; };
+		FDE116232A36F250003A24B3 /* TextFieldMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE116222A36F250003A24B3 /* TextFieldMoneyView.swift */; };
+		FDE116252A370402003A24B3 /* OneRoomEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE116242A370402003A24B3 /* OneRoomEditViewModel.swift */; };
 		FDE9CCEA2A132AED004844AD /* AddressCollectionRadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCE92A132AED004844AD /* AddressCollectionRadioView.swift */; };
 		FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CCEB2A132BD9004844AD /* AddressCollectionRadioView.xib */; };
 		FDE9CCEE2A132D87004844AD /* AddressCollectionRadioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCED2A132D87004844AD /* AddressCollectionRadioViewModel.swift */; };
@@ -354,6 +357,9 @@
 		FDDB486529EFC80F00D212A7 /* SlideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewModel.swift; sourceTree = "<group>"; };
 		FDDB486729EFC8CE00D212A7 /* SubSlideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSlideMenuViewModel.swift; sourceTree = "<group>"; };
 		FDDB486929EFD28E00D212A7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		FDE116202A36F0CA003A24B3 /* TextFieldMoneyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldMoneyView.xib; sourceTree = "<group>"; };
+		FDE116222A36F250003A24B3 /* TextFieldMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMoneyView.swift; sourceTree = "<group>"; };
+		FDE116242A370402003A24B3 /* OneRoomEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRoomEditViewModel.swift; sourceTree = "<group>"; };
 		FDE9CCE92A132AED004844AD /* AddressCollectionRadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioView.swift; sourceTree = "<group>"; };
 		FDE9CCEB2A132BD9004844AD /* AddressCollectionRadioView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionRadioView.xib; sourceTree = "<group>"; };
 		FDE9CCED2A132D87004844AD /* AddressCollectionRadioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioViewModel.swift; sourceTree = "<group>"; };
@@ -632,6 +638,7 @@
 			children = (
 				FD37195A2A32244F00CF6FA5 /* OneRoomEditView.swift */,
 				FD37195C2A32253400CF6FA5 /* OneRoomEditView.xib */,
+				FDE116242A370402003A24B3 /* OneRoomEditViewModel.swift */,
 			);
 			path = OneRoomEditView;
 			sourceTree = "<group>";
@@ -671,6 +678,7 @@
 				FDDB485129EFAF7C00D212A7 /* SlideMenu */,
 				FDA852B929EE780B00A6357F /* CustomSwitch */,
 				FD4DF3CD29ED97F000AB6A50 /* TextFieldView */,
+				FDE1161D2A36F099003A24B3 /* TextFieldMoneyView */,
 				FD2184E029E8F20300761826 /* BaseNavigationView */,
 			);
 			path = BaseView;
@@ -1145,6 +1153,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		FDE1161D2A36F099003A24B3 /* TextFieldMoneyView */ = {
+			isa = PBXGroup;
+			children = (
+				FDE116202A36F0CA003A24B3 /* TextFieldMoneyView.xib */,
+				FDE116222A36F250003A24B3 /* TextFieldMoneyView.swift */,
+			);
+			path = TextFieldMoneyView;
+			sourceTree = "<group>";
+		};
 		FDE9CCEF2A13318B004844AD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1408,6 +1425,7 @@
 				FDE9CCFC2A13E414004844AD /* AddressCollectionDropDownCell.xib in Resources */,
 				FDF14B39295D861300BF079F /* Localizable.strings in Resources */,
 				FDADC19F29EFFFDE00803536 /* SlideMenuView.xib in Resources */,
+				FDE116212A36F0CA003A24B3 /* TextFieldMoneyView.xib in Resources */,
 				FD3719382A2C4C3500CF6FA5 /* MainScreenAddMorePopUp.xib in Resources */,
 				FD5110122A284DC200D5E620 /* BasePickerView.xib in Resources */,
 				FDE9CD112A1549CF004844AD /* BaseSheetView.xib in Resources */,
@@ -1537,6 +1555,7 @@
 				FD20155C2A1BE496006A4C2E /* MonthYearPickerView.swift in Sources */,
 				FD564B8C29656CFE00A527ED /* PrefsImp.swift in Sources */,
 				FD2015912A2065C5006A4C2E /* AddressInfoRoomView.swift in Sources */,
+				FDE116252A370402003A24B3 /* OneRoomEditViewModel.swift in Sources */,
 				FD896198295BF11A00C7BE20 /* AppDelegate.swift in Sources */,
 				FD2015852A1FB961006A4C2E /* SegmentControlTextCell.swift in Sources */,
 				FD2015812A1FB6F9006A4C2E /* SegmentControlCell.swift in Sources */,
@@ -1561,6 +1580,7 @@
 				FD5765AE2963D2A0005969BE /* Dictionary.swift in Sources */,
 				FD5765A12963CE8B005969BE /* User.swift in Sources */,
 				FDE9CD0C2A14844C004844AD /* DropDownViewDelegate.swift in Sources */,
+				FDE116232A36F250003A24B3 /* TextFieldMoneyView.swift in Sources */,
 				FDE9CD0F2A1549C3004844AD /* BaseSheetView.swift in Sources */,
 				FD564B612965581300A527ED /* TableScreenViewController.swift in Sources */,
 				FD5110162A284E8500D5E620 /* PickerView.swift in Sources */,

@@ -31,15 +31,26 @@ class AddressInfoRoomViewCellViewModel {
     let internetPrice : Int?
     let roomPrice : Int?
     let total : Int?
-
+    let paid : Int?
+    let renters: Int?
+    
     var inputWater : Int?
     var inputElectric : Int?
     var inputStatus : String?
+    var inputQuota : Int?
+    var inputQuotaPrice: Int?
+    var inputWaterPrice : Int?
+    var inputElectricPrice : Int?
+    var inputTrashPrice : Int?
+    var inputInternetPrice : Int?
+    var inputRoomPrice : Int?
+    var inputPaid : Int?
+    var inputRenters : Int?
     
     var nextWater : Int?
     var nextElectric : Int?
     
-    init(status: String?, roomNum: Int?, lastWater: Int?, currentWater: Int?, totalWater: Int?, waterPrice: Int?, quotaPrice: Int?, quota: Int?, lastElectric: Int?, currentElectric: Int?, electricPrice: Int?, totalElectric: Int?, trashPrice: Int?, internetPrice: Int?, roomPrice: Int?, total: Int?) {
+    init(status: String?, roomNum: Int?, lastWater: Int?, currentWater: Int?, totalWater: Int?, waterPrice: Int?, quotaPrice: Int?, quota: Int?, lastElectric: Int?, currentElectric: Int?, electricPrice: Int?, totalElectric: Int?, trashPrice: Int?, internetPrice: Int?, roomPrice: Int?, paid: Int?, total: Int?, renters: Int?) {
         self.status = status
         self.roomNum = roomNum
         self.lastWater = lastWater
@@ -55,12 +66,23 @@ class AddressInfoRoomViewCellViewModel {
         self.trashPrice = trashPrice
         self.internetPrice = internetPrice
         self.roomPrice = roomPrice
+        self.paid = paid
         self.total = total
+        self.renters = renters
         
         //For validation
         self.inputWater = currentWater
         self.inputElectric = currentElectric
         self.inputStatus = status
+        self.inputQuota = quota
+        self.inputQuotaPrice = quotaPrice
+        self.inputWaterPrice = waterPrice
+        self.inputElectricPrice = electricPrice
+        self.inputTrashPrice = trashPrice
+        self.inputInternetPrice = internetPrice
+        self.inputRoomPrice = roomPrice
+        self.inputPaid = paid
+        self.inputRenters = renters
     }
     
     func checkValidation(type : CheckValidationType) -> Bool{

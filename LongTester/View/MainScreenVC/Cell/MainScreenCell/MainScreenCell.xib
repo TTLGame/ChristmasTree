@@ -32,13 +32,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="60"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingMainCell" translatesAutoresizingMaskIntoConstraints="NO" id="kFB-Qe-ido">
-                                        <rect key="frame" x="215" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="185" y="0.0" width="90" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="EnU-k2-j7T"/>
+                                            <constraint firstAttribute="width" constant="90" id="EnU-k2-j7T"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNK-K3-1Zs">
-                                        <rect key="frame" x="230" y="0.0" width="45" height="55"/>
+                                        <rect key="frame" x="235" y="0.0" width="40" height="55"/>
                                         <color key="tintColor" red="0.79215686269999996" green="0.2156862745" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system"/>
@@ -64,7 +64,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cek-N7-Ukx">
-                                        <rect key="frame" x="127.66666666666666" y="12" width="82.333333333333343" height="36.333333333333336"/>
+                                        <rect key="frame" x="102.66666666666669" y="12" width="82.333333333333314" height="36.333333333333336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmf-6Z-PLD" userLabel="TextLbl">
                                                 <rect key="frame" x="0.0" y="0.0" width="82.333333333333329" height="19.333333333333332"/>
@@ -96,12 +96,12 @@
                                     <constraint firstAttribute="bottom" secondItem="kFB-Qe-ido" secondAttribute="bottom" id="3RI-8j-UKO"/>
                                     <constraint firstItem="GNK-K3-1Zs" firstAttribute="top" secondItem="kFB-Qe-ido" secondAttribute="top" id="3dy-UF-rtU"/>
                                     <constraint firstAttribute="trailing" secondItem="kFB-Qe-ido" secondAttribute="trailing" id="79R-9m-ZT8"/>
-                                    <constraint firstItem="GNK-K3-1Zs" firstAttribute="leading" secondItem="kFB-Qe-ido" secondAttribute="leading" constant="15" id="8eW-ol-LXf"/>
+                                    <constraint firstItem="GNK-K3-1Zs" firstAttribute="leading" secondItem="kFB-Qe-ido" secondAttribute="leading" constant="50" id="8eW-ol-LXf"/>
                                     <constraint firstItem="E9X-Dh-XPx" firstAttribute="height" secondItem="V6c-8w-Qan" secondAttribute="height" multiplier="0.7" id="DG4-xe-PqX"/>
                                     <constraint firstItem="Xqp-Se-NWp" firstAttribute="leading" secondItem="V6c-8w-Qan" secondAttribute="leading" id="I2n-3F-3r9"/>
                                     <constraint firstItem="GNK-K3-1Zs" firstAttribute="bottom" secondItem="kFB-Qe-ido" secondAttribute="bottom" constant="-5" id="JOj-Wk-nx5"/>
                                     <constraint firstItem="cek-N7-Ukx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="E9X-Dh-XPx" secondAttribute="trailing" constant="10" id="NcG-2H-7zE"/>
-                                    <constraint firstItem="kFB-Qe-ido" firstAttribute="leading" secondItem="cek-N7-Ukx" secondAttribute="trailing" constant="5" id="QyO-tf-pgi"/>
+                                    <constraint firstItem="kFB-Qe-ido" firstAttribute="leading" secondItem="cek-N7-Ukx" secondAttribute="trailing" id="QyO-tf-pgi"/>
                                     <constraint firstItem="kFB-Qe-ido" firstAttribute="top" secondItem="V6c-8w-Qan" secondAttribute="top" id="UOf-5G-i7e"/>
                                     <constraint firstItem="GNK-K3-1Zs" firstAttribute="trailing" secondItem="kFB-Qe-ido" secondAttribute="trailing" id="Zut-WF-jgB"/>
                                     <constraint firstAttribute="height" constant="60" id="bQw-ki-9Mf"/>
@@ -242,7 +242,7 @@
         <image name="NatureBG" width="533.33331298828125" height="266.66665649414062"/>
         <image name="PyramidBG" width="171.33332824707031" height="107"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
-        <image name="settingMainCell" width="238" height="196.33332824707031"/>
+        <image name="settingMainCell" width="404.66665649414062" height="242.33332824707031"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

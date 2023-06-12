@@ -1,8 +1,8 @@
 //
-//  AddressInfoRoomViewModel.swift
+//  OneRoomEditViewModel.swift
 //  LongTester
 //
-//  Created by Long on 5/29/23.
+//  Created by Long on 6/12/23.
 //
 
 import Foundation
@@ -10,23 +10,21 @@ import RxSwift
 import RxCocoa
 import Moya
 
-class AddressInfoRoomViewModel : NSObject {
+class OneRoomEditViewModel : NSObject {
     var cellViewModels : BehaviorRelay<[AddressInfoRoomViewCellViewModel]> = BehaviorRelay(value: [])
     var addressDataMonthModel : BehaviorRelay<[AddressDataMonthModel]> = BehaviorRelay(value: [])
     var roomDataModel : BehaviorRelay<[RoomDataModel]> = BehaviorRelay(value: [])
     var pickerViewModel : BehaviorRelay<[PickerViewModel]> = BehaviorRelay(value: [])
     var statusBtnState : BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    
-    private var editMode = false
-    private var currentIndex : Int = -1
-    private var focusIndex : Int = -1
-    private var currentEditStatus : String = ""
+
+    private var currentIndex : Int = 0
     
     let api: Provider<MultiTarget>
     private(set) var rootViewModel: RootViewModel
 
     var addressDataModel : AddressDataModel = AddressDataModel()
     var currentMonthYear = MonthYear()
+    var roomId = ""
     
     let disposeBag = DisposeBag()
     init(rootViewModel : RootViewModel = RootViewModel(), api: Provider<MultiTarget> = ProviderAPIBasic<MultiTarget>()) {
@@ -34,9 +32,7 @@ class AddressInfoRoomViewModel : NSObject {
         self.rootViewModel = rootViewModel
         super.init()
         bindToEvents()
-        
     }
-
     private func calculateTotal(cell : RoomDataModel) -> [Int] {
         var total = 0
         let currentElectric = cell.electricNum ?? 0
@@ -48,7 +44,6 @@ class AddressInfoRoomViewModel : NSObject {
         let quota = cell.quota ?? 0
         let qutotaPrice = cell.quotaPrice ?? 0
         var totalWater = ((currentWater - lastWater) * (cell.waterPrice ?? 0))
-        
         totalWater += currentWater - lastWater > quota ? (currentWater - lastWater - quota) * qutotaPrice : 0
         total += totalWater + totalElectric
         
@@ -61,9 +56,9 @@ class AddressInfoRoomViewModel : NSObject {
         }
         
         total += cell.roomPrice ?? 0
-        
         return [total, totalWater, totalElectric]
     }
+    
     private func bindToEvents() {
         roomDataModel.map {data in
             data.map {cell in
@@ -71,12 +66,11 @@ class AddressInfoRoomViewModel : NSObject {
                 let total = arrTotal[0]
                 let totalWater = arrTotal[1]
                 let totalElectric = arrTotal[2]
-                
                 return AddressInfoRoomViewCellViewModel(status: cell.status, roomNum: cell.roomNums, lastWater: cell.lastWaterNum, currentWater: cell.waterNum, totalWater: totalWater, waterPrice:  cell.waterPrice, quotaPrice: cell.quotaPrice, quota: cell.quota, lastElectric: cell.lastElectricNum, currentElectric: cell.electricNum, electricPrice: cell.electricPrice, totalElectric: totalElectric, trashPrice: cell.trashPrice, internetPrice: cell.internetPrice, roomPrice: cell.roomPrice, paid: cell.paidNum, total: total,renters: cell.renters)
             }
         }.bind(to: cellViewModels).disposed(by: disposeBag)
     }
-    
+
     private func getRoomDataModel(date: MonthYear) -> [RoomDataModel] {
         let checkData = addressDataMonthModel.value.contains(where: { cell in
             var monthYearData = MonthYear()
@@ -89,62 +83,33 @@ class AddressInfoRoomViewModel : NSObject {
             }
             return monthYearData == date
         })
-        
+ 
         if (checkData){
             if let monthYearData = addressDataMonthModel.value.filter({ cell in
                 var monthYearData = MonthYear()
                 if let monthYear = cell.monthYear?.split(separator: "-"),
-                    monthYear.count > 1{
+                   monthYear.count > 1{
+                    print(monthYear)
+                    
                     if let month = Int(monthYear[0]), let year = Int(monthYear[1]) {
                         monthYearData = MonthYear(month: month,
                                                   year: year)
                     }
                 }
                 return monthYearData == date
-            }).first , let mainCellData = monthYearData.roomData {
+            }).first,
+            let mainCellData = monthYearData.roomData,
+            let roomDataIndex = mainCellData.firstIndex(where: {$0.id == roomId}){
+                self.currentIndex = roomDataIndex
                 return mainCellData
             }
         }
         return []
     }
+    
 }
 
-//MARK: Public Function
-extension AddressInfoRoomViewModel {
-    func setupData(){
-        if let data = addressDataModel.data {
-            self.addressDataMonthModel.accept(data)
-        }
-    }
-    func getData(date: MonthYear){
-        currentMonthYear = date
-        roomDataModel.accept(getRoomDataModel(date: date))
-    }
-    
-    func getPickerData(){
-        let cellData = [PickerViewModel(title: Language.localized("yesSymbolText"),
-                                        image: UIImage(named: "yesSymbol"),
-                                        id: "Paid"),
-                        PickerViewModel(title: Language.localized("vacancySymbolText"),
-                                        image: UIImage(named: "vacancySymbol"),
-                                        id : "Vacancy"),
-                        PickerViewModel(title: Language.localized("noSymbolText"),
-                                        image: UIImage(named: "noSymbol"),
-                                        id : "NotPaid")]
-        self.pickerViewModel.accept(cellData)
-    }
-    
-    func getNextMonthData(index: Int) -> [Int?]{
-        if (currentMonthYear == MonthYear()){
-            return [nil,nil] }
-    
-        let roomData  = getRoomDataModel(date: currentMonthYear + 1)
-        if roomData.count > index {
-            return [roomData[index].waterNum, roomData[index].electricNum]
-        }
-        return [nil,nil]
-    }
-    
+extension OneRoomEditViewModel {
     func showPopUp(){
         let closeModel = AlertModel.ActionModel(title: Language.localized("understand"), style: .default, handler: {_ in
         })
@@ -162,46 +127,80 @@ extension AddressInfoRoomViewModel {
         return result
     }
     
-    func changeEditMode(){
-        editMode = !editMode
+    func getNextMonthData(index: Int) -> [Int?]{
+        if (currentMonthYear == MonthYear()){
+            return [nil,nil] }
+    
+        let roomData  = getRoomDataModel(date: currentMonthYear + 1)
+        if roomData.count > index {
+            return [roomData[index].waterNum, roomData[index].electricNum]
+        }
+        return [nil,nil]
     }
-
-    func getEditMode() -> Bool{
-        return editMode
+    
+    func changeTotal(cell : AddressInfoRoomViewCellViewModel) -> [Int] {
+        var total = 0
+        let currentElectric = cell.inputElectric ?? 0
+        let lastElectric = cell.lastElectric ?? 0
+        let totalElectric = (currentElectric - lastElectric) * (cell.inputElectricPrice ?? 0)
+        
+        let currentWater = cell.inputWater ?? 0
+        let lastWater = cell.lastWater ?? 0
+        let quota = cell.inputQuota ?? 0
+        let qutotaPrice = cell.inputQuotaPrice ?? 0
+        var totalWater = ((currentWater - lastWater) * (cell.inputWaterPrice ?? 0))
+        totalWater += currentWater - lastWater > quota ? (currentWater - lastWater - quota) * qutotaPrice : 0
+        total += totalWater + totalElectric
+        
+        if let trashPrice = cell.inputTrashPrice {
+            total += trashPrice
+        }
+        
+        if let internetPrice = cell.inputInternetPrice {
+            total += internetPrice
+        }
+        
+        total += cell.inputRoomPrice ?? 0
+        return [total, totalWater, totalElectric]
     }
-
-    func changeCurrentIndex(index: Int){
-        currentIndex = index
-    }
-
-    func getCurrentIndex() -> Int{
+    
+    func getIndex() -> Int {
         return currentIndex
     }
-    
-    func changeFocusIndex(index: Int){
-        focusIndex = index
+    func setupData(){
+        if let data = addressDataModel.data {
+            self.addressDataMonthModel.accept(data)
+        }
     }
-
-    func getFocusIndex() -> Int{
-        return focusIndex
-    }
-    
-    func changeEditStatusBtnState(state: Bool){
-        self.statusBtnState.accept(state)
+    func getData(date: MonthYear){
+        currentMonthYear = date
+        roomDataModel.accept(getRoomDataModel(date: date))
     }
     
-    func changeCurrentEditStatus(data: String){
-        currentEditStatus = data
+    func changeState() {
+        let state = statusBtnState.value
+        statusBtnState.accept(!state)
     }
-
-    func getCurrentEditStatus() -> String{
-        return currentEditStatus
+    
+    func getPickerData(){
+        let cellData = [PickerViewModel(title: Language.localized("yesSymbolText"),
+                                        image: UIImage(named: "yesSymbol"),
+                                        id: "Paid"),
+                        PickerViewModel(title:  Language.localized("pendingSymbolText"),
+                                        image: UIImage(named: "pendingSymbol"),
+                                        id: "Pending"),
+                        PickerViewModel(title: Language.localized("vacancySymbolText"),
+                                        image: UIImage(named: "vacancySymbol"),
+                                        id : "Vacancy"),
+                        PickerViewModel(title: Language.localized("noSymbolText"),
+                                        image: UIImage(named: "noSymbol"),
+                                        id : "NotPaid")]
+        self.pickerViewModel.accept(cellData)
     }
 }
 
-
 //Convert data back to Models -> Optimize views due to they don't have to call API second time to have updated value
-extension AddressInfoRoomViewModel {
+extension OneRoomEditViewModel {
     func convertCellVMtoModels() -> [RoomDataModel] {
         let roomData = roomDataModel.value
         
@@ -210,6 +209,16 @@ extension AddressInfoRoomViewModel {
             roomData[interator].waterNum = cellViewModels.value[interator].inputWater
             roomData[interator].electricNum = cellViewModels.value[interator].inputElectric
             roomData[interator].status = cellViewModels.value[interator].inputStatus
+            
+            roomData[interator].renters = cellViewModels.value[interator].inputRenters
+            roomData[interator].quota = cellViewModels.value[interator].inputQuota
+            roomData[interator].quotaPrice = cellViewModels.value[interator].inputQuotaPrice
+            roomData[interator].waterPrice = cellViewModels.value[interator].inputWaterPrice
+            roomData[interator].electricPrice = cellViewModels.value[interator].inputElectricPrice
+            roomData[interator].trashPrice = cellViewModels.value[interator].inputTrashPrice
+            roomData[interator].internetPrice = cellViewModels.value[interator].inputInternetPrice
+            roomData[interator].roomPrice = cellViewModels.value[interator].inputRoomPrice
+            roomData[interator].paidNum = cellViewModels.value[interator].inputPaid
             
             let arrTotal = self.calculateTotal(cell: roomData[interator])
             

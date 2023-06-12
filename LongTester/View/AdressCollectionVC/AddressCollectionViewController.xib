@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressCollectionViewController" customModule="LongTester" customModuleProvider="target">
             <connections>
+                <outlet property="backGroundImgView" destination="14T-Fy-pJX" id="KES-5g-jxf"/>
                 <outlet property="detailCollectionView" destination="u5u-S9-bwx" id="ttb-FK-ouU"/>
                 <outlet property="monthInfoView" destination="s2d-Ea-7j3" id="Jas-Or-ycb"/>
                 <outlet property="monthLbl" destination="dIe-9n-qLc" id="MFe-A8-le0"/>
@@ -30,6 +31,9 @@
                     <rect key="frame" x="0.0" y="47" width="375" height="765"/>
                     <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachBG" translatesAutoresizingMaskIntoConstraints="NO" id="14T-Fy-pJX">
+                    <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-S9-bwx">
                     <rect key="frame" x="10" y="117" width="355" height="661"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,6 +106,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="u5u-S9-bwx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="5fI-vF-KQ9"/>
+                <constraint firstItem="14T-Fy-pJX" firstAttribute="top" secondItem="s2d-Ea-7j3" secondAttribute="top" id="6Ao-qd-LM8"/>
                 <constraint firstItem="l73-Dr-5Z4" firstAttribute="top" secondItem="s2d-Ea-7j3" secondAttribute="bottom" id="6e3-rj-ItD"/>
                 <constraint firstItem="bCJ-pf-FTt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AJK-6L-OMd"/>
                 <constraint firstItem="u5u-S9-bwx" firstAttribute="top" secondItem="9Q9-dR-d3b" secondAttribute="bottom" id="Aaj-2z-yAr"/>
@@ -112,13 +117,16 @@
                 <constraint firstItem="l73-Dr-5Z4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Mwd-ej-wkH"/>
                 <constraint firstItem="9Q9-dR-d3b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="RMK-OR-tB3"/>
                 <constraint firstItem="s2d-Ea-7j3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="WFd-dq-wsX"/>
+                <constraint firstItem="14T-Fy-pJX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WS6-nz-y3r"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rih-Xc-p2o" secondAttribute="trailing" id="XHe-Xm-a6m"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u5u-S9-bwx" secondAttribute="trailing" constant="10" id="XpG-AS-FGn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bCJ-pf-FTt" secondAttribute="trailing" id="Zi3-cx-SqD"/>
+                <constraint firstAttribute="bottom" secondItem="14T-Fy-pJX" secondAttribute="bottom" id="anW-eC-zmQ"/>
                 <constraint firstItem="PX7-ye-o1i" firstAttribute="centerY" secondItem="9Q9-dR-d3b" secondAttribute="centerY" id="bqh-GC-BZg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PX7-ye-o1i" secondAttribute="trailing" constant="10" id="brR-pc-8iD"/>
                 <constraint firstItem="s2d-Ea-7j3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ejg-s6-5wR"/>
                 <constraint firstItem="s2d-Ea-7j3" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fdJ-RU-H6u"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="14T-Fy-pJX" secondAttribute="trailing" id="flZ-0b-raQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u5u-S9-bwx" secondAttribute="bottom" id="jEV-kn-7Uq"/>
                 <constraint firstItem="bCJ-pf-FTt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mrd-PW-zxg"/>
                 <constraint firstItem="l73-Dr-5Z4" firstAttribute="top" secondItem="bCJ-pf-FTt" secondAttribute="bottom" id="nWA-9c-cNK"/>
@@ -129,6 +137,7 @@
         </view>
     </objects>
     <resources>
+        <image name="BeachBG" width="213.33332824707031" height="133.33332824707031"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="triangle.fill" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">

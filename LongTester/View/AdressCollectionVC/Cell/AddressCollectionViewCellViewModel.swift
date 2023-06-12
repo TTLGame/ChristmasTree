@@ -14,6 +14,7 @@ class AddressCollectionViewCellViewModel {
         case pending = "Pending"
         case vacancy = "Vacancy"
     }
+    let id : String?
     let roomNums : Int?
     let renters : Int?
     let status : String?
@@ -24,7 +25,8 @@ class AddressCollectionViewCellViewModel {
     let lastElectricNum : Int?
     
     let totalNum : Int?
-    init(roomNums: Int?, renters: Int?, status: String?, waterNum: Int?, lastWaterNum: Int?, electricNum: Int?, lastElectricNum: Int?, totalNum: Int?) {
+    init(id: String?, roomNums: Int?, renters: Int?, status: String?, waterNum: Int?, lastWaterNum: Int?, electricNum: Int?, lastElectricNum: Int?, totalNum: Int?) {
+        self.id = id
         self.roomNums = roomNums
         self.renters = renters
         self.status = status

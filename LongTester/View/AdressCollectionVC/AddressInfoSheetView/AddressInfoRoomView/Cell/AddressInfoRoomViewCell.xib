@@ -143,7 +143,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="391" height="432"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojD-W3-nWv" userLabel="WaterView">
-                                                <rect key="frame" x="0.0" y="0.0" width="391" height="77"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="391" height="67"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền nước" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frb-xS-pBI" userLabel="Title">
                                                         <rect key="frame" x="10" y="5.0000000000000009" width="70" height="14.333333333333336"/>
@@ -173,31 +173,31 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X   10,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0t-AP-yVz" userLabel="WaterMoney">
-                                                        <rect key="frame" x="324" y="36.333333333333329" width="57" height="14.333333333333336"/>
+                                                        <rect key="frame" x="324" y="26.333333333333325" width="57" height="14.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kax-zp-cIE" userLabel="WaterPrice">
-                                                        <rect key="frame" x="272.33333333333331" y="36.333333333333329" width="38.666666666666686" height="14.333333333333336"/>
+                                                        <rect key="frame" x="272.33333333333331" y="26.333333333333325" width="38.666666666666686" height="14.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X   10,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEU-9F-nG1" userLabel="QuotaMoney">
-                                                        <rect key="frame" x="324" y="57.666666666666679" width="57" height="14.333333333333336"/>
+                                                        <rect key="frame" x="324" y="47.666666666666671" width="57" height="14.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlY-wS-ddv" userLabel="QuotaPrice">
-                                                        <rect key="frame" x="272.33333333333331" y="57.666666666666679" width="38.666666666666686" height="14.333333333333336"/>
+                                                        <rect key="frame" x="272.33333333333331" y="47.666666666666671" width="38.666666666666686" height="14.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000,000 VND" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udp-E3-XHu" userLabel="Total">
-                                                        <rect key="frame" x="240" y="4.9999999999999982" width="141" height="24.333333333333329"/>
+                                                        <rect key="frame" x="240" y="5.0000000000000009" width="141" height="14.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -227,7 +227,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="el5-d1-dS8" userLabel="ElectricView">
-                                                <rect key="frame" x="0.0" y="77" width="391" height="50.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="67" width="391" height="48.333333333333343"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền điện" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR8-r2-bI0" userLabel="Title">
                                                         <rect key="frame" x="10" y="5.0000000000000009" width="70" height="14.333333333333336"/>
@@ -257,19 +257,19 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X   10,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmu-5j-1G5" userLabel="ElectricMoney">
-                                                        <rect key="frame" x="324" y="31.333333333333339" width="57" height="14.333333333333332"/>
+                                                        <rect key="frame" x="324" y="28.999999999999996" width="57" height="14.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0S-dA-dlD" userLabel="ElectricPrice">
-                                                        <rect key="frame" x="272.33333333333331" y="31.333333333333339" width="38.666666666666686" height="14.333333333333332"/>
+                                                        <rect key="frame" x="272.33333333333331" y="28.999999999999996" width="38.666666666666686" height="14.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000,000 VND" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAN-Oq-trO" userLabel="Total">
-                                                        <rect key="frame" x="240" y="5" width="141" height="19.333333333333332"/>
+                                                        <rect key="frame" x="240" y="5" width="141" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -295,7 +295,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJr-Rh-1UG" userLabel="TrashView">
-                                                <rect key="frame" x="0.0" y="127.66666666666666" width="391" height="50"/>
+                                                <rect key="frame" x="0.0" y="115.33333333333334" width="391" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền rác" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZL-um-30s" userLabel="Title">
                                                         <rect key="frame" x="9.9999999999999964" y="5.0000000000000009" width="45.666666666666657" height="14.333333333333336"/>
@@ -321,7 +321,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3U-oo-mLS" userLabel="InternetView">
-                                                <rect key="frame" x="0.0" y="177.66666666666666" width="391" height="50"/>
+                                                <rect key="frame" x="0.0" y="165.33333333333334" width="391" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền internet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPF-Dj-aA4" userLabel="Title">
                                                         <rect key="frame" x="10" y="5.0000000000000009" width="72" height="14.333333333333336"/>
@@ -347,7 +347,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gct-ax-1bP" userLabel="RoomView">
-                                                <rect key="frame" x="0.0" y="227.66666666666669" width="391" height="62"/>
+                                                <rect key="frame" x="0.0" y="215.33333333333331" width="391" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền phòng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIw-TF-ljT" userLabel="Title">
                                                         <rect key="frame" x="9.9999999999999964" y="5.0000000000000009" width="63.666666666666657" height="14.333333333333336"/>
@@ -356,7 +356,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000,000 VND" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoS-t6-33g" userLabel="Total">
-                                                        <rect key="frame" x="295.33333333333331" y="5" width="85.666666666666686" height="52"/>
+                                                        <rect key="frame" x="295.33333333333331" y="5" width="85.666666666666686" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -370,6 +370,32 @@
                                                     <constraint firstAttribute="trailing" secondItem="UoS-t6-33g" secondAttribute="trailing" constant="10" id="Fyo-8a-eRC"/>
                                                     <constraint firstItem="YIw-TF-ljT" firstAttribute="top" secondItem="gct-ax-1bP" secondAttribute="top" constant="5" id="VMA-gA-8Tw"/>
                                                     <constraint firstAttribute="trailing" secondItem="UoS-t6-33g" secondAttribute="trailing" constant="10" id="jrv-hC-EFt"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoA-ru-2mV" userLabel="DueView">
+                                                <rect key="frame" x="0.0" y="265.33333333333331" width="391" height="24.333333333333314"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiền đã trả" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCU-fR-i9A" userLabel="Title">
+                                                        <rect key="frame" x="10" y="5.0000000000000009" width="61" height="14.333333333333336"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000,000 VND" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eV-g9-aGW" userLabel="DueMoney">
+                                                        <rect key="frame" x="295.33333333333331" y="5.0000000000000009" width="85.666666666666686" height="14.333333333333336"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="tCU-fR-i9A" firstAttribute="leading" secondItem="VoA-ru-2mV" secondAttribute="leading" constant="10" id="4IF-yz-5UA"/>
+                                                    <constraint firstItem="0eV-g9-aGW" firstAttribute="top" secondItem="VoA-ru-2mV" secondAttribute="top" constant="5" id="9Zu-5L-6IX"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0eV-g9-aGW" secondAttribute="trailing" constant="10" id="Dhw-iu-ksm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0eV-g9-aGW" secondAttribute="trailing" constant="10" id="Hce-AV-TpJ"/>
+                                                    <constraint firstItem="tCU-fR-i9A" firstAttribute="top" secondItem="VoA-ru-2mV" secondAttribute="top" constant="5" id="PQK-Pf-n4K"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0eV-g9-aGW" secondAttribute="bottom" constant="5" id="YVZ-S4-U6N"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1HN-Hs-gdU" userLabel="TotalView">
@@ -432,6 +458,8 @@
             <connections>
                 <outlet property="currentElectricLbl" destination="gxq-kT-s9c" id="wA1-pN-X37"/>
                 <outlet property="currentWaterLbl" destination="in5-0T-3D2" id="79j-pg-vIC"/>
+                <outlet property="duePriceLbl" destination="0eV-g9-aGW" id="53K-nD-OLY"/>
+                <outlet property="dueTitleLbl" destination="tCU-fR-i9A" id="BlE-Fm-V28"/>
                 <outlet property="electricNewLbl" destination="777-9N-78V" id="KCM-Tb-vXU"/>
                 <outlet property="electricOldLbl" destination="CwR-K3-ghn" id="ZtB-aA-oab"/>
                 <outlet property="electricPriceLbl" destination="Rmu-5j-1G5" id="XUg-1r-QLB"/>

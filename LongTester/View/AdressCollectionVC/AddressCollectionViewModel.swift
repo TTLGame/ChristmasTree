@@ -62,14 +62,16 @@ class AddressCollectionViewModel : NSObject {
                 
                 let roomData = cell.roomData.map { data in
                     data.map { cell in
-                        return AddressCollectionViewCellViewModel(roomNums: cell.roomNums,
-                                                                  renters: cell.renters,
-                                                                  status: cell.status,
-                                                                  waterNum: cell.waterNum,
-                                                                  lastWaterNum: cell.lastWaterNum,
-                                                                  electricNum: cell.electricNum,
-                                                                  lastElectricNum: cell.lastElectricNum,
-                                                                  totalNum: cell.totalNum)
+                        return AddressCollectionViewCellViewModel(
+                            id: cell.id,
+                            roomNums: cell.roomNums,
+                            renters: cell.renters,
+                            status: cell.status,
+                            waterNum: cell.waterNum,
+                            lastWaterNum: cell.lastWaterNum,
+                            electricNum: cell.electricNum,
+                            lastElectricNum: cell.lastElectricNum,
+                            totalNum: cell.totalNum)
                     }
                 }
                 return AddressCollectionMonthYearViewModel(monthYear: monthYearData,
@@ -298,6 +300,7 @@ extension AddressCollectionViewModel {
             var currentData = [RoomDataModel]()
             for roomData in lastData {
                 let newRoomData = RoomDataModel(
+                    id : roomData.id,
                     status: roomData.status == "Vacancy" ?
                     roomData.status : "NotPaid",
                     roomNums: roomData.roomNums,
@@ -319,7 +322,7 @@ extension AddressCollectionViewModel {
                 newRoomData.totalNum = total[0]
                 currentData.append(newRoomData)
             }
-            let monthString = "\(date.month)/\(date.year)"
+            let monthString = "\(date.month)-\(date.year)"
             addressDataModel.data?
                 .append(AddressDataMonthModel(
                     monthYear: monthString,
@@ -382,6 +385,7 @@ extension AddressCollectionViewModel {
                 let internetOdd = Int.random(in: 0...1)
                 roomData["status"] = status[Int.random(in: 0..<status.count)]
                 roomData["roomNums"] = roomNum + 1
+                roomData["id"] = String(roomNum + 1)
                 roomData["renters"] = Int.random(in: 1..<5)
                 roomData["quota"] = data["globalQuota"]
                 roomData["quotaPrice"] = data["globalQuotaPrice"]

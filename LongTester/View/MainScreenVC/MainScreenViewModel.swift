@@ -100,7 +100,9 @@ class MainScreenViewModel : NSObject {
     func handlePressData(index : IndexPath){
         if let addressId = mainViewDataModel.value[index.row].id {
             self.rootViewModel.pushViewModel.accept(PushModel(
-                viewController: AddressCollectionViewController(id: addressId),
+                viewController: AddressCollectionViewController(
+                    id: addressId,
+                    background: cellViewModels.value[index.row].background?.rawValue ?? "PyramidBG"),
                 title: Language.localized("addressCollectionMainTitle")))
         }
     }

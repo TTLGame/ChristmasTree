@@ -29,6 +29,9 @@ class AddressInfoRoomViewCell: UITableViewCell {
             electricTextField.addDoneCancelToolbar(onDone: (target: self, action: #selector(electricTextFieldDoneBtnPressed)))
         }
     }
+    
+    @IBOutlet weak var duePriceLbl: UILabel!
+    @IBOutlet weak var dueTitleLbl: UILabel!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var statusImgView: UIImageView!
     @IBOutlet weak var waterOldLbl: UILabel!
@@ -136,6 +139,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
         electricTextField.text = String(viewModel.inputElectric ?? 0)
         waterTextField.text = String(viewModel.inputWater ?? 0)
         
+        duePriceLbl.text = (viewModel.paid?.formatnumberWithDot() ?? "0") + " VND"
         changeOldLabel(type: .electric)
         changeOldLabel(type: .water)
         
@@ -178,6 +182,7 @@ class AddressInfoRoomViewCell: UITableViewCell {
     }
     
     private func setup(){
+        dueTitleLbl.text = Language.localized("Paid")
         waterTitle.text = Language.localized("water")
         electricTitle.text = Language.localized("electric")
         trashTitle.text = Language.localized("trashFee")

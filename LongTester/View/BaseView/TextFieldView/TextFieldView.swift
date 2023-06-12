@@ -9,7 +9,15 @@ import Foundation
 import UIKit
 protocol TextFieldViewDelegate : AnyObject {
     func handleErrorMessage(text: String)
+    func textFieldDidChange(_ textField: TextFieldView, value: String)
 }
+
+extension TextFieldViewDelegate {
+    func textFieldDidChange(_ textField: TextFieldView, value: String) {
+        
+    }
+}
+
 class TextFieldView : UIView {
     
     @IBOutlet weak var titleLbl: UILabel!
@@ -27,6 +35,25 @@ class TextFieldView : UIView {
     public var bgColor : UIColor = .white {
         didSet {
             updateBackgroundColor()
+        }
+    }
+    
+    public var includeTitle : Bool = true {
+        didSet {
+            if (textFieldView.text == "") {
+                changePlaceholder(disable: true)
+            }
+            else {
+                changePlaceholder(disable: false)
+            }
+        }
+    }
+    
+    public override var isUserInteractionEnabled: Bool {
+        didSet {
+            super.isUserInteractionEnabled = isUserInteractionEnabled
+            textFieldView.isUserInteractionEnabled = isUserInteractionEnabled
+            textFieldView.backgroundColor = isUserInteractionEnabled ? bgColor : Color.viewDefaultColor
         }
     }
     override init(frame: CGRect) {
@@ -54,12 +81,22 @@ class TextFieldView : UIView {
         textFieldView.layer.cornerRadius = 5
         textFieldView.layer.masksToBounds = true
         textFieldView.delegate = self
+        textFieldView.addTarget(self,
+                            action: #selector(TextFieldView.textFieldDidChange(_:)), for: .editingChanged)
         
     }
     private func changePlaceholder(disable: Bool){
-        titleLbl.isHidden = disable
-        labelView.isHidden = disable
-        textFieldView.placeholder = disable ?  titleLbl.text : ""
+        if (includeTitle) {
+            titleLbl.isHidden = disable
+            labelView.isHidden = disable
+            textFieldView.placeholder = disable ?  titleLbl.text : ""
+        }
+        else {
+            titleLbl.isHidden = true
+            labelView.isHidden = true
+            textFieldView.placeholder = ""
+        }
+        
     }
     
     private func changeColorBaseOnValidation(validated: Bool) {
@@ -88,13 +125,16 @@ class TextFieldView : UIView {
 
 ///FUNCTION ACCESSABLE
 extension TextFieldView {
-    func setup(text : String = "Label", color: UIColor = Color.greyPrimary, isSecure: Bool = false, isCompulsory : Bool = false) {
+    func setup(text : String = "Label", color: UIColor = Color.greyPrimary, isSecure: Bool = false, isCompulsory : Bool = false, isDigit : Bool = false) {
         titleLbl.text = text + (isCompulsory ? "(*)" : "")
         self.isCompulsory = isCompulsory
         self.colorTheme = color
         
         changeColorBaseOnValidation(validated: true)
         textFieldView.isSecureTextEntry = isSecure
+        if isDigit {
+            textFieldView.keyboardType = .asciiCapableNumberPad
+        }
     }
     
     func getData() -> String {
@@ -144,6 +184,10 @@ extension TextFieldView {
     }
 }
 extension TextFieldView : UITextFieldDelegate {
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        delegate?.textFieldDidChange(self, value: text)
+    }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         textFieldView.resignFirstResponder()
     }
