@@ -226,7 +226,7 @@ extension AddressInfoRoomViewModel {
     }
     
     func convertNextMonthDatatoModels() -> [RoomDataModel]? {
-        if (currentMonthYear == MonthYear()){
+        if (currentMonthYear == MonthYear() || cellViewModels.value.count == 0){
             return nil
         }
         let roomData  = getRoomDataModel(date: currentMonthYear + 1)

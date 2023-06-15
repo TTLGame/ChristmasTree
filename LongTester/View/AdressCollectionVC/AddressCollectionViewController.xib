@@ -38,6 +38,7 @@
                     <rect key="frame" x="275" y="77" width="100" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="cOM-XG-xQF"/>
+                        <constraint firstAttribute="height" constant="40" id="n30-3a-Zaa"/>
                     </constraints>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-S9-bwx">
@@ -136,7 +137,6 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u5u-S9-bwx" secondAttribute="bottom" id="jEV-kn-7Uq"/>
                 <constraint firstItem="bCJ-pf-FTt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mrd-PW-zxg"/>
                 <constraint firstItem="l73-Dr-5Z4" firstAttribute="top" secondItem="bCJ-pf-FTt" secondAttribute="bottom" id="nWA-9c-cNK"/>
-                <constraint firstItem="bGn-xO-29O" firstAttribute="top" secondItem="bCJ-pf-FTt" secondAttribute="bottom" id="uOj-uJ-e7C"/>
                 <constraint firstItem="u5u-S9-bwx" firstAttribute="top" secondItem="bGn-xO-29O" secondAttribute="bottom" id="whe-CR-NW1"/>
                 <constraint firstItem="PX7-ye-o1i" firstAttribute="leading" secondItem="l73-Dr-5Z4" secondAttribute="trailing" constant="10" id="x0F-Zf-kw9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bGn-xO-29O" secondAttribute="trailing" id="ykz-C3-iRR"/>
