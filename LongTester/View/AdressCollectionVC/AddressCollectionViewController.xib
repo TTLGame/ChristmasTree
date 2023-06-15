@@ -29,10 +29,16 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rih-Xc-p2o" userLabel="Content">
                     <rect key="frame" x="0.0" y="47" width="375" height="765"/>
-                    <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.61150170268027437" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachBG" translatesAutoresizingMaskIntoConstraints="NO" id="14T-Fy-pJX">
                     <rect key="frame" x="0.0" y="47" width="375" height="765"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingMainCell" translatesAutoresizingMaskIntoConstraints="NO" id="bGn-xO-29O">
+                    <rect key="frame" x="275" y="77" width="100" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="cOM-XG-xQF"/>
+                    </constraints>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-S9-bwx">
                     <rect key="frame" x="10" y="117" width="355" height="661"/>
@@ -130,7 +136,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u5u-S9-bwx" secondAttribute="bottom" id="jEV-kn-7Uq"/>
                 <constraint firstItem="bCJ-pf-FTt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mrd-PW-zxg"/>
                 <constraint firstItem="l73-Dr-5Z4" firstAttribute="top" secondItem="bCJ-pf-FTt" secondAttribute="bottom" id="nWA-9c-cNK"/>
+                <constraint firstItem="bGn-xO-29O" firstAttribute="top" secondItem="bCJ-pf-FTt" secondAttribute="bottom" id="uOj-uJ-e7C"/>
+                <constraint firstItem="u5u-S9-bwx" firstAttribute="top" secondItem="bGn-xO-29O" secondAttribute="bottom" id="whe-CR-NW1"/>
                 <constraint firstItem="PX7-ye-o1i" firstAttribute="leading" secondItem="l73-Dr-5Z4" secondAttribute="trailing" constant="10" id="x0F-Zf-kw9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bGn-xO-29O" secondAttribute="trailing" id="ykz-C3-iRR"/>
                 <constraint firstItem="Rih-Xc-p2o" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="zNX-Uc-4vQ"/>
             </constraints>
             <point key="canvasLocation" x="-32.799999999999997" y="19.211822660098523"/>
@@ -139,6 +148,7 @@
     <resources>
         <image name="BeachBG" width="213.33332824707031" height="133.33332824707031"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="settingMainCell" width="215.33332824707031" height="128.66667175292969"/>
         <image name="triangle.fill" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

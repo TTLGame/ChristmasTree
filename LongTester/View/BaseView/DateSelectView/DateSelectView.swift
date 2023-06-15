@@ -50,6 +50,7 @@ class DateSelectView : UIView {
         labelTextField.layer.borderColor = Color.textViewBorder.cgColor
         labelTextField.layer.masksToBounds = true
         labelTextField.textColor = Color.greyPrimary
+        labelTextField.delegate = self
     }
     
     @objc func didScrollValueDate() {
@@ -124,5 +125,15 @@ extension DateSelectView {
     
     func getData() -> String {
         return returnData
+    }
+}
+
+extension DateSelectView : UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        labelTextField.layer.borderColor = Color.selectedTextView.cgColor
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        labelTextField.layer.borderColor = Color.textViewBorder.cgColor
     }
 }

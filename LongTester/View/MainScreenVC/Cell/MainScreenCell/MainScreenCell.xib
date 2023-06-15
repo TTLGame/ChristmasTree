@@ -242,7 +242,7 @@
         <image name="NatureBG" width="533.33331298828125" height="266.66665649414062"/>
         <image name="PyramidBG" width="171.33332824707031" height="107"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
-        <image name="settingMainCell" width="404.66665649414062" height="242.33332824707031"/>
+        <image name="settingMainCell" width="215.33332824707031" height="128.66667175292969"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

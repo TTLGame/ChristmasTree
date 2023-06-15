@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "7638746.png",
+      "filename" : "VacancyBtn.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "7638746 1.png",
+      "filename" : "VacancyBtn 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "7638746 2.png",
+      "filename" : "VacancyBtn 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

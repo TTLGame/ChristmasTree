@@ -27,6 +27,8 @@ struct Color {
     static let selectLogout = #colorLiteral(red: 0.5147323608, green: 0.1563093662, blue: 0.257383287, alpha: 1)
     static let viewDefaultColor = #colorLiteral(red: 0.862745098, green: 0.8784313725, blue: 0.9215686275, alpha: 1)
     static let defaultShadow = #colorLiteral(red: 0.1176470588, green: 0.2549019608, blue: 0.6078431373, alpha: 1)
+    static let risingArrow = #colorLiteral(red: 0.1490196078, green: 0.3333333333, blue: 0.8117647059, alpha: 1)
+    static let fallingArrow = #colorLiteral(red: 0.8784313725, green: 0.137254902, blue: 0.137254902, alpha: 1)
     
     static let purpleVacancy = #colorLiteral(red: 0.3725490196, green: 0.2078431373, blue: 0.5803921569, alpha: 1)
     

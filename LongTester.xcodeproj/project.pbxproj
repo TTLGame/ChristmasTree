@@ -155,6 +155,15 @@
 		FDE116212A36F0CA003A24B3 /* TextFieldMoneyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE116202A36F0CA003A24B3 /* TextFieldMoneyView.xib */; };
 		FDE116232A36F250003A24B3 /* TextFieldMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE116222A36F250003A24B3 /* TextFieldMoneyView.swift */; };
 		FDE116252A370402003A24B3 /* OneRoomEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE116242A370402003A24B3 /* OneRoomEditViewModel.swift */; };
+		FDE1162A2A38D94B003A24B3 /* RoomStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE116282A38D94A003A24B3 /* RoomStatusCell.swift */; };
+		FDE1162B2A38D94B003A24B3 /* RoomStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE116292A38D94A003A24B3 /* RoomStatusCell.xib */; };
+		FDE1162E2A38E19A003A24B3 /* OneCategoryRoomInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE1162D2A38E19A003A24B3 /* OneCategoryRoomInfoView.xib */; };
+		FDE116302A38E1A1003A24B3 /* OneCategoryRoomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE1162F2A38E1A1003A24B3 /* OneCategoryRoomInfoView.swift */; };
+		FDE116342A3966DF003A24B3 /* RoomDetailStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE116322A3966DF003A24B3 /* RoomDetailStatusCell.swift */; };
+		FDE116352A3966DF003A24B3 /* RoomDetailStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE116332A3966DF003A24B3 /* RoomDetailStatusCell.xib */; };
+		FDE116372A39C574003A24B3 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE116362A39C574003A24B3 /* CGPoint.swift */; };
+		FDE1163B2A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE116392A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.swift */; };
+		FDE1163C2A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE1163A2A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.xib */; };
 		FDE9CCEA2A132AED004844AD /* AddressCollectionRadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCE92A132AED004844AD /* AddressCollectionRadioView.swift */; };
 		FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDE9CCEB2A132BD9004844AD /* AddressCollectionRadioView.xib */; };
 		FDE9CCEE2A132D87004844AD /* AddressCollectionRadioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9CCED2A132D87004844AD /* AddressCollectionRadioViewModel.swift */; };
@@ -360,6 +369,15 @@
 		FDE116202A36F0CA003A24B3 /* TextFieldMoneyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldMoneyView.xib; sourceTree = "<group>"; };
 		FDE116222A36F250003A24B3 /* TextFieldMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMoneyView.swift; sourceTree = "<group>"; };
 		FDE116242A370402003A24B3 /* OneRoomEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRoomEditViewModel.swift; sourceTree = "<group>"; };
+		FDE116282A38D94A003A24B3 /* RoomStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomStatusCell.swift; sourceTree = "<group>"; };
+		FDE116292A38D94A003A24B3 /* RoomStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomStatusCell.xib; sourceTree = "<group>"; };
+		FDE1162D2A38E19A003A24B3 /* OneCategoryRoomInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneCategoryRoomInfoView.xib; sourceTree = "<group>"; };
+		FDE1162F2A38E1A1003A24B3 /* OneCategoryRoomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCategoryRoomInfoView.swift; sourceTree = "<group>"; };
+		FDE116322A3966DF003A24B3 /* RoomDetailStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailStatusCell.swift; sourceTree = "<group>"; };
+		FDE116332A3966DF003A24B3 /* RoomDetailStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomDetailStatusCell.xib; sourceTree = "<group>"; };
+		FDE116362A39C574003A24B3 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		FDE116392A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailStatusHeaderCell.swift; sourceTree = "<group>"; };
+		FDE1163A2A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomDetailStatusHeaderCell.xib; sourceTree = "<group>"; };
 		FDE9CCE92A132AED004844AD /* AddressCollectionRadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioView.swift; sourceTree = "<group>"; };
 		FDE9CCEB2A132BD9004844AD /* AddressCollectionRadioView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionRadioView.xib; sourceTree = "<group>"; };
 		FDE9CCED2A132D87004844AD /* AddressCollectionRadioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionRadioViewModel.swift; sourceTree = "<group>"; };
@@ -866,6 +884,7 @@
 				FD738FBC2A0FD9ED00088BF0 /* UICollectionView.swift */,
 				FDE9CCF62A139252004844AD /* Int.swift */,
 				FD20155F2A1C71C1006A4C2E /* Date.swift */,
+				FDE116362A39C574003A24B3 /* CGPoint.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -898,6 +917,7 @@
 		FD738F9D2A08A2BE00088BF0 /* DetailScreenVC */ = {
 			isa = PBXGroup;
 			children = (
+				FDE116262A38D90A003A24B3 /* Cell */,
 				FD738FA22A08A32900088BF0 /* DetailScreenViewController.swift */,
 				FD738FA32A08A32900088BF0 /* DetailScreenViewController.xib */,
 				FD738FA62A08A34D00088BF0 /* DetailScreenViewModel.swift */,
@@ -1162,6 +1182,53 @@
 			path = TextFieldMoneyView;
 			sourceTree = "<group>";
 		};
+		FDE116262A38D90A003A24B3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FDE116382A39CE9C003A24B3 /* RoomDetailStatusHeaderCell */,
+				FDE116312A3966B8003A24B3 /* RoomDetailStatusCell */,
+				FDE116272A38D924003A24B3 /* RoomStatusCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FDE116272A38D924003A24B3 /* RoomStatusCell */ = {
+			isa = PBXGroup;
+			children = (
+				FDE1162C2A38E02D003A24B3 /* OneCategoryRoomInfoView */,
+				FDE116282A38D94A003A24B3 /* RoomStatusCell.swift */,
+				FDE116292A38D94A003A24B3 /* RoomStatusCell.xib */,
+			);
+			path = RoomStatusCell;
+			sourceTree = "<group>";
+		};
+		FDE1162C2A38E02D003A24B3 /* OneCategoryRoomInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				FDE1162D2A38E19A003A24B3 /* OneCategoryRoomInfoView.xib */,
+				FDE1162F2A38E1A1003A24B3 /* OneCategoryRoomInfoView.swift */,
+			);
+			path = OneCategoryRoomInfoView;
+			sourceTree = "<group>";
+		};
+		FDE116312A3966B8003A24B3 /* RoomDetailStatusCell */ = {
+			isa = PBXGroup;
+			children = (
+				FDE116322A3966DF003A24B3 /* RoomDetailStatusCell.swift */,
+				FDE116332A3966DF003A24B3 /* RoomDetailStatusCell.xib */,
+			);
+			path = RoomDetailStatusCell;
+			sourceTree = "<group>";
+		};
+		FDE116382A39CE9C003A24B3 /* RoomDetailStatusHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				FDE116392A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.swift */,
+				FDE1163A2A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.xib */,
+			);
+			path = RoomDetailStatusHeaderCell;
+			sourceTree = "<group>";
+		};
 		FDE9CCEF2A13318B004844AD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1396,8 +1463,10 @@
 			files = (
 				FD2015822A1FB6F9006A4C2E /* SegmentControlCell.xib in Resources */,
 				FDADC1C229F39FD400803536 /* AddressCollectionViewController.xib in Resources */,
+				FDE1162E2A38E19A003A24B3 /* OneCategoryRoomInfoView.xib in Resources */,
 				FD738FA52A08A32900088BF0 /* DetailScreenViewController.xib in Resources */,
 				FD4DF3D129ED981800AB6A50 /* TextFieldView.xib in Resources */,
+				FDE1162B2A38D94B003A24B3 /* RoomStatusCell.xib in Resources */,
 				FD2015862A1FB961006A4C2E /* SegmentControlTextCell.xib in Resources */,
 				FDADC1C629F3A38C00803536 /* DateVC.xib in Resources */,
 				FD2015542A1BD123006A4C2E /* DateSelectView.xib in Resources */,
@@ -1406,6 +1475,7 @@
 				FD2015982A206C2E006A4C2E /* PageView.xib in Resources */,
 				FD738FB82A0FD28700088BF0 /* UITableViewNoDataEx.xib in Resources */,
 				FD2015932A2065CE006A4C2E /* AddressInfoRoomView.xib in Resources */,
+				FDE116352A3966DF003A24B3 /* RoomDetailStatusCell.xib in Resources */,
 				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
 				FDE9CD032A13F0E3004844AD /* DropDownView.xib in Resources */,
 				FDFDFD942A29F9A3009FD96C /* MainScreenAddMoreCell.xib in Resources */,
@@ -1419,6 +1489,7 @@
 				FD51101E2A28941600D5E620 /* EditStatusButtonView.xib in Resources */,
 				FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */,
 				FDE9CD082A13F2FD004844AD /* BaseDropDownCell.xib in Resources */,
+				FDE1163C2A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.xib in Resources */,
 				FD3719522A2F759100CF6FA5 /* RegisterView.xib in Resources */,
 				FD20159D2A238765006A4C2E /* AddressInfoRoomViewCell.xib in Resources */,
 				FDADC1CB29F3B75700803536 /* AddressCollectionViewCell.xib in Resources */,
@@ -1540,12 +1611,14 @@
 				FD8961B0295C1E6900C7BE20 /* MainScreenViewModel.swift in Sources */,
 				FDE9CD0A2A13F346004844AD /* BaseDropDownCellViewModel.swift in Sources */,
 				FD2015742A1E75D7006A4C2E /* RoomDataModel.swift in Sources */,
+				FDE1163B2A39CEBD003A24B3 /* RoomDetailStatusHeaderCell.swift in Sources */,
 				FD37193A2A2C622C00CF6FA5 /* MainScreenAddMorePopUpViewModel.swift in Sources */,
 				FD564B8729656B2000A527ED /* ProviderAPIWithAccessToken.swift in Sources */,
 				FD564B8929656C7900A527ED /* Prefs.swift in Sources */,
 				FDE9CD1D2A17E1EA004844AD /* AddressInfoViewCellViewModel.swift in Sources */,
 				FDE9CCF22A1331BC004844AD /* AddressCollectionRadioViewCell.swift in Sources */,
 				FD4DF3CF29ED980E00AB6A50 /* TextFieldView.swift in Sources */,
+				FDE116342A3966DF003A24B3 /* RoomDetailStatusCell.swift in Sources */,
 				FDADC19D29EFFFD600803536 /* SlideMenuView.swift in Sources */,
 				FDE9CCEE2A132D87004844AD /* AddressCollectionRadioViewModel.swift in Sources */,
 				FD3719502A2F758700CF6FA5 /* RegisterView.swift in Sources */,
@@ -1568,6 +1641,8 @@
 				FDE9CCFB2A13E414004844AD /* AddressCollectionDropDownCell.swift in Sources */,
 				FD3719292A2B94B100CF6FA5 /* LoginTarget.swift in Sources */,
 				FDE9CCF72A139252004844AD /* Int.swift in Sources */,
+				FDE1162A2A38D94B003A24B3 /* RoomStatusCell.swift in Sources */,
+				FDE116302A38E1A1003A24B3 /* OneCategoryRoomInfoView.swift in Sources */,
 				FD4DF3C829ED92CD00AB6A50 /* LoginViewModel.swift in Sources */,
 				FDADC1AA29F1319900803536 /* MainScreenCell.swift in Sources */,
 				FD5110202A289F9600D5E620 /* EditStatusButtonViewModel.swift in Sources */,
@@ -1630,6 +1705,7 @@
 				FDE9CD1F2A17E3A6004844AD /* AddressInfoViewViewModel.swift in Sources */,
 				FDE9CCEA2A132AED004844AD /* AddressCollectionRadioView.swift in Sources */,
 				FD57659C2963CD9D005969BE /* Color.swift in Sources */,
+				FDE116372A39C574003A24B3 /* CGPoint.swift in Sources */,
 				FDADC1B329F2608500803536 /* AlertViewModel.swift in Sources */,
 				FD564B82296568E300A527ED /* APIError.swift in Sources */,
 				FDF300BE29E3C99A0084562A /* Realm.swift in Sources */,

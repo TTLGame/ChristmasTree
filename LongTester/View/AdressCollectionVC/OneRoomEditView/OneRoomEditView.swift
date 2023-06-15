@@ -163,6 +163,15 @@ class OneRoomEditView : UIView {
         addGesture()
         electricTextField.keyboardType = .asciiCapableNumberPad
         waterTextField.keyboardType = .asciiCapableNumberPad
+        electricTextField.layer.cornerRadius = 5
+        electricTextField.layer.borderWidth = 1
+        electricTextField.layer.borderColor = Color.viewDefaultColor.cgColor
+        electricTextField.layer.masksToBounds = true
+        
+        waterTextField.layer.cornerRadius = 5
+        waterTextField.layer.borderWidth = 1
+        waterTextField.layer.borderColor = Color.viewDefaultColor.cgColor
+        waterTextField.layer.masksToBounds = true
         
         self.roomLbl.text = Language.localized("room")
         self.electricLbl.text = Language.localized("electric")
@@ -179,8 +188,6 @@ class OneRoomEditView : UIView {
         quotaPriceTitle.text = Language.localized("quotaPrice")
         rentersTitle.text = Language.localized("renters")
         
-//        electricTextField.delegate = self
-//        waterTextField
         electricTextField.delegate = self
         waterTextField.delegate = self
         quotaPriceTextField.delegate = self
@@ -366,6 +373,14 @@ extension OneRoomEditView : TextFieldMoneyViewDelegate {
 }
 
 extension OneRoomEditView : UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderColor = Color.selectedTextView.cgColor
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderColor = Color.viewDefaultColor.cgColor
+    }
+    
     private func changeOldLabel(type: roomValueType){
         let index = viewModel.getIndex()
         if index >= viewModel.cellViewModels.value.count {
