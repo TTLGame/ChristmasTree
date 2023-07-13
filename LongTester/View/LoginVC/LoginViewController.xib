@@ -85,7 +85,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAnimation" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Christmas Tree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jM5-fR-JIa">
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Christmas Tree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jM5-fR-JIa">
                                             <rect key="frame" x="75.000000000000014" y="158.33333333333334" width="243.33333333333337" height="40.666666666666657"/>
                                             <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="35"/>
                                             <color key="textColor" red="0.3686057026450823" green="0.81190028335108899" blue="0.73077257264876738" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

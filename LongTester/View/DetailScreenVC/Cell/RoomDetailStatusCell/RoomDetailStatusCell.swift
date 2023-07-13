@@ -19,6 +19,8 @@ class RoomDetailStatusCell: UITableViewCell {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var rentersShadowView: UIView!
+    @IBOutlet weak var rentersView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,6 +56,12 @@ class RoomDetailStatusCell: UITableViewCell {
         shadowView.addBottomShadow(height: 0, alpha: 0.4,radius: 4)
         shadowView.layer.masksToBounds = false
         shadowView.backgroundColor = .white
+        
+        rentersShadowView.addBottomShadow(height: 3, alpha: 0.7,radius: 4)
+        rentersShadowView.layer.cornerRadius = 10
+        
+        rentersView.layer.cornerRadius = 10
+        rentersView.layer.masksToBounds = true
         
 
     }

@@ -32,6 +32,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QE-ly-N0h" userLabel="MainView">
                                 <rect key="frame" x="5" y="0.0" width="160" height="137"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addressShineImage" translatesAutoresizingMaskIntoConstraints="NO" id="kID-y0-xg8">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="137"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4XD-aA-UrV" userLabel="HeaderView">
                                         <rect key="frame" x="0.0" y="0.0" width="105" height="25"/>
                                         <subviews>
@@ -49,7 +52,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="bA3-VC-Adw" firstAttribute="leading" secondItem="4XD-aA-UrV" secondAttribute="leading" constant="4" id="PUX-qe-Eeh"/>
                                             <constraint firstAttribute="height" constant="25" id="WMQ-0X-cA6"/>
@@ -70,7 +73,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="44z-Of-fLu" secondAttribute="trailing" constant="2" id="Gvw-ry-Bqi"/>
                                             <constraint firstAttribute="height" constant="25" id="SMQ-Rn-udr"/>
@@ -89,7 +92,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="UDw-Fa-Tny"/>
                                             <constraint firstItem="eXq-J6-ELg" firstAttribute="centerX" secondItem="UH6-jQ-0LN" secondAttribute="centerX" id="VLR-A9-rMp"/>
@@ -184,7 +187,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="2L2-bK-fyg" firstAttribute="top" secondItem="STw-4m-fOI" secondAttribute="bottom" constant="5" id="3Yo-xZ-Epn"/>
                                             <constraint firstAttribute="trailing" secondItem="S59-Qi-lOs" secondAttribute="trailing" id="7xU-Nr-Yin"/>
@@ -199,14 +202,18 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="UH6-jQ-0LN" firstAttribute="top" secondItem="0QE-ly-N0h" secondAttribute="top" id="9lz-Vu-aXD"/>
+                                    <constraint firstItem="kID-y0-xg8" firstAttribute="top" secondItem="0QE-ly-N0h" secondAttribute="top" id="EFJ-af-JBz"/>
+                                    <constraint firstAttribute="bottom" secondItem="kID-y0-xg8" secondAttribute="bottom" id="Ef4-1d-DLF"/>
+                                    <constraint firstItem="kID-y0-xg8" firstAttribute="leading" secondItem="0QE-ly-N0h" secondAttribute="leading" id="JOB-8X-lvg"/>
                                     <constraint firstItem="eSe-vd-rxz" firstAttribute="top" secondItem="nJ8-ng-8uQ" secondAttribute="bottom" constant="5" id="NBS-N8-Jef"/>
                                     <constraint firstAttribute="trailing" secondItem="UH6-jQ-0LN" secondAttribute="trailing" id="QGr-f2-RYl"/>
                                     <constraint firstItem="4XD-aA-UrV" firstAttribute="top" secondItem="0QE-ly-N0h" secondAttribute="top" id="QhT-wD-nGi"/>
                                     <constraint firstItem="4XD-aA-UrV" firstAttribute="leading" secondItem="0QE-ly-N0h" secondAttribute="leading" id="Rsi-gs-BNN"/>
                                     <constraint firstItem="eSe-vd-rxz" firstAttribute="leading" secondItem="0QE-ly-N0h" secondAttribute="leading" id="SOF-V5-73F"/>
+                                    <constraint firstAttribute="trailing" secondItem="kID-y0-xg8" secondAttribute="trailing" id="ehf-y0-Lhi"/>
                                     <constraint firstItem="UH6-jQ-0LN" firstAttribute="leading" secondItem="nJ8-ng-8uQ" secondAttribute="trailing" constant="5" id="fNz-bQ-gwN"/>
                                     <constraint firstItem="nJ8-ng-8uQ" firstAttribute="top" secondItem="4XD-aA-UrV" secondAttribute="bottom" id="iEA-Ez-phu"/>
                                     <constraint firstItem="nJ8-ng-8uQ" firstAttribute="leading" secondItem="0QE-ly-N0h" secondAttribute="leading" id="jQI-14-bjF"/>
@@ -261,6 +268,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="addressShineImage" width="220" height="84.666664123535156"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

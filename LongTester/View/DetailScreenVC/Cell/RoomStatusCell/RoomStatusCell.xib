@@ -30,6 +30,9 @@
                                     <constraint firstAttribute="width" secondItem="a8T-oH-AXF" secondAttribute="height" multiplier="1:1" id="Bdk-ZU-YeN"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addressDetailCircleShadowImage" translatesAutoresizingMaskIntoConstraints="NO" id="nnY-3k-eLr">
+                                <rect key="frame" x="0.0" y="0.0" width="85.333333333333329" height="85.333333333333329"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N75-4b-9ln">
                                 <rect key="frame" x="85.333333333333343" y="0.0" width="300.66666666666663" height="85.333333333333329"/>
                                 <subviews>
@@ -100,14 +103,18 @@
                         <constraints>
                             <constraint firstItem="0qn-B6-NUp" firstAttribute="leading" secondItem="a8T-oH-AXF" secondAttribute="leading" id="1gu-DV-pNr"/>
                             <constraint firstItem="a8T-oH-AXF" firstAttribute="width" secondItem="sUL-al-eXX" secondAttribute="width" multiplier="0.4" id="4Cg-N2-FSN"/>
+                            <constraint firstItem="nnY-3k-eLr" firstAttribute="top" secondItem="a8T-oH-AXF" secondAttribute="top" id="6e5-J9-Pm6"/>
                             <constraint firstItem="0qn-B6-NUp" firstAttribute="top" secondItem="a8T-oH-AXF" secondAttribute="top" id="6qF-7r-hXS"/>
                             <constraint firstItem="a8T-oH-AXF" firstAttribute="leading" secondItem="sUL-al-eXX" secondAttribute="leading" id="FeA-BH-jal"/>
                             <constraint firstItem="N75-4b-9ln" firstAttribute="leading" secondItem="a8T-oH-AXF" secondAttribute="trailing" id="Hys-dZ-C8L"/>
                             <constraint firstAttribute="trailing" secondItem="N75-4b-9ln" secondAttribute="trailing" id="JUx-7o-Xnc"/>
                             <constraint firstAttribute="bottom" secondItem="a8T-oH-AXF" secondAttribute="bottom" id="O4A-70-FXU"/>
                             <constraint firstItem="0qn-B6-NUp" firstAttribute="bottom" secondItem="a8T-oH-AXF" secondAttribute="bottom" id="UTi-Uv-ZcA"/>
+                            <constraint firstItem="nnY-3k-eLr" firstAttribute="leading" secondItem="a8T-oH-AXF" secondAttribute="leading" id="bkn-sR-86l"/>
+                            <constraint firstItem="nnY-3k-eLr" firstAttribute="trailing" secondItem="a8T-oH-AXF" secondAttribute="trailing" id="d7K-1e-8Ym"/>
                             <constraint firstItem="a8T-oH-AXF" firstAttribute="top" secondItem="sUL-al-eXX" secondAttribute="top" id="gRR-Sa-yeu"/>
                             <constraint firstItem="N75-4b-9ln" firstAttribute="top" secondItem="sUL-al-eXX" secondAttribute="top" id="ke0-gE-lvH"/>
+                            <constraint firstItem="nnY-3k-eLr" firstAttribute="bottom" secondItem="a8T-oH-AXF" secondAttribute="bottom" id="nAj-QZ-wS3"/>
                             <constraint firstItem="0qn-B6-NUp" firstAttribute="trailing" secondItem="a8T-oH-AXF" secondAttribute="trailing" id="xMH-pe-qeg"/>
                             <constraint firstAttribute="bottom" secondItem="N75-4b-9ln" secondAttribute="bottom" id="z87-k7-pF9"/>
                         </constraints>
@@ -127,11 +134,13 @@
                 <outlet property="bgView" destination="H2p-sc-9uM" id="Eyx-eM-E52"/>
                 <outlet property="borderView" destination="0qn-B6-NUp" id="45v-eR-Kui"/>
                 <outlet property="statusImgView" destination="a8T-oH-AXF" id="YyK-qy-ujp"/>
+                <outlet property="statusShadowImgView" destination="nnY-3k-eLr" id="eyo-y2-XxP"/>
             </connections>
             <point key="canvasLocation" x="25.954198473282442" y="124.29577464788733"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="addressDetailCircleShadowImage" width="200" height="106.66666412353516"/>
         <image name="yesSymbol" width="85.333335876464844" height="85.333335876464844"/>
     </resources>
 </document>

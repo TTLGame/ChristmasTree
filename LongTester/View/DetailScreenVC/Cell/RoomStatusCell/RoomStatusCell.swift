@@ -9,6 +9,7 @@ import UIKit
 
 class RoomStatusCell: UITableViewCell {
     
+    @IBOutlet weak var statusShadowImgView: UIImageView!
     @IBOutlet weak var statusImgView: UIImageView!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var borderView: UIView!
@@ -24,14 +25,26 @@ class RoomStatusCell: UITableViewCell {
         bgView.backgroundColor = Color.viewDefaultColor
         
         DispatchQueue.main.async {
+            self.statusShadowImgView.layer.cornerRadius = self.statusShadowImgView.bounds.size.height / 2.0
             self.borderView.addBorderGradient(startColor: Color.redPrimary, endColor: Color.darkGreen, lineWidth: 10, startPoint: CGPoint.topLeft, endPoint: CGPoint.bottomRight)
+            
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.statusShadowImgView.transform = CGAffineTransform(rotationAngle: .pi * 1)
+            }
+            UIView.animate(withDuration: 0.5, delay: 0.3, options: []) { [weak self] in
+                self?.statusShadowImgView.transform = CGAffineTransform(rotationAngle: .pi * 2)
+            }
+            
             
             UIView.animate(withDuration: 2) { [weak self] in
                 self?.borderView.transform = CGAffineTransform(rotationAngle: .pi * 1)
+//                self?.statusShadowImgView.transform = CGAffineTransform(rotationAngle: .pi * 2)
+                
             }
             
             UIView.animate(withDuration: 3, delay: 2, options: [.repeat, .autoreverse, .allowUserInteraction]) { [weak self] in
                 self?.borderView.transform = CGAffineTransform(rotationAngle: .pi * 2)
+                
             }
         
             UIView.animate(withDuration: 3, delay: 2.5, options: [.repeat, .autoreverse, .allowUserInteraction]) { [weak self] in

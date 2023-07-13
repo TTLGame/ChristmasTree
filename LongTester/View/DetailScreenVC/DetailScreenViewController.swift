@@ -19,6 +19,8 @@ class DetailScreenViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.addBottomShadow(height: 3, alpha: 0.2,radius: 4)
+        navigationController?.navigationBar.layer.masksToBounds = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -37,8 +39,6 @@ class DetailScreenViewController: BaseViewController {
 extension DetailScreenViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-        case 0:
-            return 40
         case 1:
             return UITableView.automaticDimension
         default:
@@ -68,22 +68,14 @@ extension DetailScreenViewController : UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         switch indexPath.row {
-        case 0 :
-            let cell: RoomDetailStatusHeaderCell! = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: RoomDetailStatusHeaderCell.self),
-                for: indexPath) as? RoomDetailStatusHeaderCell
-            let myCustomSelectionColorView = UIView()
-            myCustomSelectionColorView.backgroundColor = .clear
-            cell.selectedBackgroundView = myCustomSelectionColorView
-            return cell
-        case 2:
+        case 1:
             let cell: RoomDetailStatusCell! = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: RoomDetailStatusCell.self),
                 for: indexPath) as? RoomDetailStatusCell

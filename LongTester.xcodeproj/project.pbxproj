@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C1B64E0047D83EDA569D046 /* Pods_LongTester.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C1E2B479E6288276C29BD4 /* Pods_LongTester.framework */; };
+		78F83CCAAB6AC6D6276AD8A4 /* Pods_LongTester.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D00307F40BD64DF71887908 /* Pods_LongTester.framework */; };
 		FD0B1FCF29AB38730069F98F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0B1FCE29AB38730069F98F /* ButtonView.swift */; };
 		FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD0B1FD029AB38D60069F98F /* ButtonView.xib */; };
 		FD2015522A1BCBFF006A4C2E /* DateSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015512A1BCBFF006A4C2E /* DateSelectView.swift */; };
@@ -210,13 +210,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09A420D693CD9A5EF5F68C14 /* Pods-LongTester.release-uat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-uat.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-uat.xcconfig"; sourceTree = "<group>"; };
-		33C1E2B479E6288276C29BD4 /* Pods_LongTester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LongTester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		547BD16E8008791BAA11D10B /* Pods-LongTester.debug-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-stg.xcconfig"; sourceTree = "<group>"; };
-		9346FA632B4BF64E8D8A79E6 /* Pods-LongTester.debug-uat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-uat.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-uat.xcconfig"; sourceTree = "<group>"; };
-		AB20A8C25F86DA0BDDC2569B /* Pods-LongTester.debug-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-prod.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-prod.xcconfig"; sourceTree = "<group>"; };
-		C18E2EE3D8B0FE30C6FCDA0D /* Pods-LongTester.release-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-prod.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-prod.xcconfig"; sourceTree = "<group>"; };
-		F54645999DA342962EE17425 /* Pods-LongTester.release-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-stg.xcconfig"; sourceTree = "<group>"; };
+		0AB9DC1317BFC978E4977CBD /* Pods-LongTester.debug-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-prod.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-prod.xcconfig"; sourceTree = "<group>"; };
+		4071F7493522D004241C4604 /* Pods-LongTester.release-uat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-uat.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-uat.xcconfig"; sourceTree = "<group>"; };
+		61D091795959FE9AA94B24D2 /* Pods-LongTester.debug-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-stg.xcconfig"; sourceTree = "<group>"; };
+		7D00307F40BD64DF71887908 /* Pods_LongTester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LongTester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C75E6F9E721E368A5F403078 /* Pods-LongTester.debug-uat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-uat.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-uat.xcconfig"; sourceTree = "<group>"; };
+		D344821CFF5F902209272067 /* Pods-LongTester.release-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-stg.xcconfig"; sourceTree = "<group>"; };
+		E3D7B600069D8BC5974BCFA7 /* Pods-LongTester.release-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-prod.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-prod.xcconfig"; sourceTree = "<group>"; };
 		FD0B1FCE29AB38730069F98F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		FD0B1FD029AB38D60069F98F /* ButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonView.xib; sourceTree = "<group>"; };
 		FD2015512A1BCBFF006A4C2E /* DateSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectView.swift; sourceTree = "<group>"; };
@@ -427,32 +427,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C1B64E0047D83EDA569D046 /* Pods_LongTester.framework in Frameworks */,
+				78F83CCAAB6AC6D6276AD8A4 /* Pods_LongTester.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1ED3C17D1273C53C7E89B5FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D00307F40BD64DF71887908 /* Pods_LongTester.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		21AC0ABC4A85891B9EA36A73 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9346FA632B4BF64E8D8A79E6 /* Pods-LongTester.debug-uat.xcconfig */,
-				09A420D693CD9A5EF5F68C14 /* Pods-LongTester.release-uat.xcconfig */,
-				547BD16E8008791BAA11D10B /* Pods-LongTester.debug-stg.xcconfig */,
-				F54645999DA342962EE17425 /* Pods-LongTester.release-stg.xcconfig */,
-				AB20A8C25F86DA0BDDC2569B /* Pods-LongTester.debug-prod.xcconfig */,
-				C18E2EE3D8B0FE30C6FCDA0D /* Pods-LongTester.release-prod.xcconfig */,
+				C75E6F9E721E368A5F403078 /* Pods-LongTester.debug-uat.xcconfig */,
+				0AB9DC1317BFC978E4977CBD /* Pods-LongTester.debug-prod.xcconfig */,
+				4071F7493522D004241C4604 /* Pods-LongTester.release-uat.xcconfig */,
+				E3D7B600069D8BC5974BCFA7 /* Pods-LongTester.release-prod.xcconfig */,
+				61D091795959FE9AA94B24D2 /* Pods-LongTester.debug-stg.xcconfig */,
+				D344821CFF5F902209272067 /* Pods-LongTester.release-stg.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C0EE13AED34A19FC71514DF8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				33C1E2B479E6288276C29BD4 /* Pods_LongTester.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FD0B1FCD29AB38640069F98F /* ButtonView */ = {
@@ -963,7 +963,7 @@
 				FD738FAD2A0FCD1400088BF0 /* LongTesterTests */,
 				FD896195295BF11A00C7BE20 /* Products */,
 				21AC0ABC4A85891B9EA36A73 /* Pods */,
-				C0EE13AED34A19FC71514DF8 /* Frameworks */,
+				1ED3C17D1273C53C7E89B5FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1395,11 +1395,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD8961A8295BF11D00C7BE20 /* Build configuration list for PBXNativeTarget "LongTester" */;
 			buildPhases = (
-				461957A604FF2ACD3199DD27 /* [CP] Check Pods Manifest.lock */,
+				288CC0C1B9B4C0FAFD336D5A /* [CP] Check Pods Manifest.lock */,
 				FD896190295BF11A00C7BE20 /* Sources */,
 				FD896191295BF11A00C7BE20 /* Frameworks */,
 				FD896192295BF11A00C7BE20 /* Resources */,
-				7F1019D9F74FE119F8581C3E /* [CP] Embed Pods Frameworks */,
+				68339A58D25D661C8F883F72 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1515,7 +1515,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		461957A604FF2ACD3199DD27 /* [CP] Check Pods Manifest.lock */ = {
+		288CC0C1B9B4C0FAFD336D5A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1537,7 +1537,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F1019D9F74FE119F8581C3E /* [CP] Embed Pods Frameworks */ = {
+		68339A58D25D661C8F883F72 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1807,7 +1807,7 @@
 		};
 		FD3719422A2F133D00CF6FA5 /* Debug-PROD */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB20A8C25F86DA0BDDC2569B /* Pods-LongTester.debug-prod.xcconfig */;
+			baseConfigurationReference = 0AB9DC1317BFC978E4977CBD /* Pods-LongTester.debug-prod.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = ChristmasTree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1975,7 +1975,7 @@
 		};
 		FD3719452A2F135D00CF6FA5 /* Release-PROD */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C18E2EE3D8B0FE30C6FCDA0D /* Pods-LongTester.release-prod.xcconfig */;
+			baseConfigurationReference = E3D7B600069D8BC5974BCFA7 /* Pods-LongTester.release-prod.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = ChristmasTree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2137,7 +2137,7 @@
 		};
 		FD564B5C2963E5E400A527ED /* Release-UAT */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09A420D693CD9A5EF5F68C14 /* Pods-LongTester.release-uat.xcconfig */;
+			baseConfigurationReference = 4071F7493522D004241C4604 /* Pods-LongTester.release-uat.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "[UAT]ChristmasTree";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2233,7 +2233,7 @@
 		};
 		FD564B5E2963E5EA00A527ED /* Debug-STG */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 547BD16E8008791BAA11D10B /* Pods-LongTester.debug-stg.xcconfig */;
+			baseConfigurationReference = 61D091795959FE9AA94B24D2 /* Pods-LongTester.debug-stg.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "[STG]ChristmasTree";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2661,7 +2661,7 @@
 		};
 		FD8961A9295BF11D00C7BE20 /* Debug-UAT */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9346FA632B4BF64E8D8A79E6 /* Pods-LongTester.debug-uat.xcconfig */;
+			baseConfigurationReference = C75E6F9E721E368A5F403078 /* Pods-LongTester.debug-uat.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "[UAT]ChristmasTree";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2696,7 +2696,7 @@
 		};
 		FD8961AA295BF11D00C7BE20 /* Release-STG */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F54645999DA342962EE17425 /* Pods-LongTester.release-stg.xcconfig */;
+			baseConfigurationReference = D344821CFF5F902209272067 /* Pods-LongTester.release-stg.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "[STG]ChristmasTree";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
