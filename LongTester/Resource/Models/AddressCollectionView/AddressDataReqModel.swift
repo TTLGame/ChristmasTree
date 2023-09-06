@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RoomDataReqModel : Codable, Model {
+public final class RoomDataReqModel : Codable, Model {
     var monthYear: String?
     var roomData : [RoomDataModel]?
     

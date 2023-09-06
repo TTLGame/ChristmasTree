@@ -42,6 +42,7 @@ class BaseViewController: UIViewController, BasicViewPresentableView {
                 let alert = AlertBuilder.buildAlertController(for: model)
                 self?.present(alert, animated: true, completion: nil)
             })
+
         disposable.disposed(by: disposeBag)
         return disposable
     }

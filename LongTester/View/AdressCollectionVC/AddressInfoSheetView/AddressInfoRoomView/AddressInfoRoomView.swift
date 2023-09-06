@@ -63,7 +63,7 @@ class AddressInfoRoomView : UIView {
         self.detailTblView.register(UINib(nibName: String(describing: AddressInfoRoomViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: AddressInfoRoomViewCell.self))
         self.detailTblView.delegate = self
         self.detailTblView.dataSource = self
-        
+        self.detailTblView.prefetchDataSource = self
         self.roomLbl.text = Language.localized("room")
         self.electricLbl.text = Language.localized("electric")
         self.waterLbl.text = Language.localized("water")
@@ -156,6 +156,17 @@ extension AddressInfoRoomView : UITableViewDelegate {
         return UITableView.automaticDimension
     }
 }
+
+extension AddressInfoRoomView : UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print("PreFetching \(indexPaths)")
+    }
+    
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print("Cancel PreFetching")
+    }
+}
+
 
 extension AddressInfoRoomView : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
