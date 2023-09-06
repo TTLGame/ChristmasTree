@@ -16,8 +16,6 @@ class MainScreenViewModel : NSObject {
     private(set) var mainViewDataModel : BehaviorRelay<[MainViewDataModel]> = BehaviorRelay(value: [])
     var cellViewModels : BehaviorRelay<[MainScreenCellViewModel]> = BehaviorRelay(value: [])
     var dropdownCellVM : BehaviorRelay<[AddressCollectionDropDownCellViewModel]> = BehaviorRelay(value: [])
-    
-    var longA : PublishSubject<Int> = PublishSubject()
     var willAddMore : BehaviorRelay<Int> = BehaviorRelay(value: 0)
     
     var baseVC : BaseViewController? {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final public class RegisterReqModel : Codable, Model {
+public class RegisterReqModel : Codable, Model {
     var email : String?
     var password : String?
     var fullname : String?

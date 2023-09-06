@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MainScreenAddMorePopUpViewModel : Model{
+class MainScreenAddMorePopUpViewModel : Model{
     var inputName : String
     var inputAddress : String
     var inputRooms : Int

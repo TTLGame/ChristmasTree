@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AddressDataMonthModel : Codable, Model {
+class AddressDataMonthModel : Codable, Model {
     var monthYear : String?
     var globalElectric : Int?
     var globalWater : Int?

@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		78F83CCAAB6AC6D6276AD8A4 /* Pods_LongTester.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D00307F40BD64DF71887908 /* Pods_LongTester.framework */; };
-		C31CD8212A8A1FCA0014E132 /* TestDoubleScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31CD8202A8A1FCA0014E132 /* TestDoubleScreenVC.swift */; };
-		C31CD8232A8A200A0014E132 /* TestDoubleScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31CD8222A8A200A0014E132 /* TestDoubleScreenVC.xib */; };
-		C31CD8252A8A201D0014E132 /* TestDoubleScreenVC~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31CD8242A8A201D0014E132 /* TestDoubleScreenVC~ipad.xib */; };
 		FD0B1FCF29AB38730069F98F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0B1FCE29AB38730069F98F /* ButtonView.swift */; };
 		FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD0B1FD029AB38D60069F98F /* ButtonView.xib */; };
 		FD2015522A1BCBFF006A4C2E /* DateSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2015512A1BCBFF006A4C2E /* DateSelectView.swift */; };
@@ -217,9 +214,6 @@
 		4071F7493522D004241C4604 /* Pods-LongTester.release-uat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-uat.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-uat.xcconfig"; sourceTree = "<group>"; };
 		61D091795959FE9AA94B24D2 /* Pods-LongTester.debug-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-stg.xcconfig"; sourceTree = "<group>"; };
 		7D00307F40BD64DF71887908 /* Pods_LongTester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LongTester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C31CD8202A8A1FCA0014E132 /* TestDoubleScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubleScreenVC.swift; sourceTree = "<group>"; };
-		C31CD8222A8A200A0014E132 /* TestDoubleScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestDoubleScreenVC.xib; sourceTree = "<group>"; };
-		C31CD8242A8A201D0014E132 /* TestDoubleScreenVC~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "TestDoubleScreenVC~ipad.xib"; sourceTree = "<group>"; };
 		C75E6F9E721E368A5F403078 /* Pods-LongTester.debug-uat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.debug-uat.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.debug-uat.xcconfig"; sourceTree = "<group>"; };
 		D344821CFF5F902209272067 /* Pods-LongTester.release-stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-stg.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-stg.xcconfig"; sourceTree = "<group>"; };
 		E3D7B600069D8BC5974BCFA7 /* Pods-LongTester.release-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LongTester.release-prod.xcconfig"; path = "Target Support Files/Pods-LongTester/Pods-LongTester.release-prod.xcconfig"; sourceTree = "<group>"; };
@@ -459,16 +453,6 @@
 				D344821CFF5F902209272067 /* Pods-LongTester.release-stg.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C31CD81F2A8A1FA90014E132 /* TestDoubleScreenVC */ = {
-			isa = PBXGroup;
-			children = (
-				C31CD8202A8A1FCA0014E132 /* TestDoubleScreenVC.swift */,
-				C31CD8222A8A200A0014E132 /* TestDoubleScreenVC.xib */,
-				C31CD8242A8A201D0014E132 /* TestDoubleScreenVC~ipad.xib */,
-			);
-			path = TestDoubleScreenVC;
 			sourceTree = "<group>";
 		};
 		FD0B1FCD29AB38640069F98F /* ButtonView */ = {
@@ -1007,7 +991,6 @@
 		FD8961AB295C1D3900C7BE20 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C31CD81F2A8A1FA90014E132 /* TestDoubleScreenVC */,
 				FDADC1AE29F1818700803536 /* RootView */,
 				FD4DF3C229ED929300AB6A50 /* BaseView */,
 				FD3B1DD829DAABDF00448F99 /* CropImage */,
@@ -1495,7 +1478,6 @@
 				FDE116352A3966DF003A24B3 /* RoomDetailStatusCell.xib in Resources */,
 				FDDB486029EFB01000D212A7 /* SlideMenuViewCell.xib in Resources */,
 				FDE9CD032A13F0E3004844AD /* DropDownView.xib in Resources */,
-				C31CD8232A8A200A0014E132 /* TestDoubleScreenVC.xib in Resources */,
 				FDFDFD942A29F9A3009FD96C /* MainScreenAddMoreCell.xib in Resources */,
 				FDFDFD8F2A29F91B009FD96C /* MainScreenCell.xib in Resources */,
 				FD0B1FD129AB38D60069F98F /* ButtonView.xib in Resources */,
@@ -1504,7 +1486,6 @@
 				FD20155A2A1BD688006A4C2E /* MonthYearView.xib in Resources */,
 				FDDB486429EFB0D200D212A7 /* SubSlideMenuView.xib in Resources */,
 				FD564B7129655D8600A527ED /* TableScreenCell.xib in Resources */,
-				C31CD8252A8A201D0014E132 /* TestDoubleScreenVC~ipad.xib in Resources */,
 				FD51101E2A28941600D5E620 /* EditStatusButtonView.xib in Resources */,
 				FDE9CCEC2A132BD9004844AD /* AddressCollectionRadioView.xib in Resources */,
 				FDE9CD082A13F2FD004844AD /* BaseDropDownCell.xib in Resources */,
@@ -1620,7 +1601,6 @@
 				FD37195B2A32245000CF6FA5 /* OneRoomEditView.swift in Sources */,
 				FD51101C2A28940F00D5E620 /* EditStatusButtonView.swift in Sources */,
 				FD564B632965582200A527ED /* TableScreenViewModel.swift in Sources */,
-				C31CD8212A8A1FCA0014E132 /* TestDoubleScreenVC.swift in Sources */,
 				FD37193E2A2CD1EF00CF6FA5 /* ReturnBlankModel.swift in Sources */,
 				FD20159C2A238765006A4C2E /* AddressInfoRoomViewCell.swift in Sources */,
 				FDDB486829EFC8CE00D212A7 /* SubSlideMenuViewModel.swift in Sources */,
@@ -1837,14 +1817,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "[UAT]ChristmasTree";
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2006,14 +1985,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "[UAT]ChristmasTree";
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2169,14 +2147,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "[UAT]ChristmasTree";
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2266,14 +2243,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "[UAT]ChristmasTree";
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2695,14 +2671,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "[UAT]ChristmasTree";
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2731,14 +2706,13 @@
 				DEVELOPMENT_TEAM = 6895JCA9DD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LongTester/Main/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "[UAT]ChristmasTree";
+				INFOPLIST_KEY_CFBundleDisplayName = "${APP_DISPLAY_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
